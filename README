@@ -1,0 +1,9 @@
+TextMate Bundle for FileMaker
+
+This is currently just a copy of the bundle as taken from
+the google code svn repo at
+http://code.google.com/p/filemaker-textmate-bundle/
+
+My goal is to clean up some of the snippets per my own
+standards and remove items not specifically related to
+FileMaker ( such as plugin specific code )
