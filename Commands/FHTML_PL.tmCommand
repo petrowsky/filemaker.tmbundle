@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/perl
+#
+# FHTML.PL (for TextMate)
+# Copyright (C) 1997 John Watson
+# e-mail: john@watson-net.com
+#
+# modified for TextMate by Ross A. Reyman - 12/2005
+# rareyman@fastmail.fm
+#
+# -----About-----
+# This Script formats and indents html source code.
+# It makes code generated easier to read for humans.
+#
+# The latest copy of this script and documentation can be obtained from
+# http://www.watson-net.com/
+
+# settings
+
+$amount = 2;
+$usetabs = 0;
+
+# tags to format
+$tags = "&lt;!DOCTYPE|&lt;html|&lt;/html|&lt;body|&lt;/body|&lt;head|&lt;/head|&lt;title|&lt;meta";
+$tags .= "|&lt;isindex|&lt;link";
+$tags .= "|&lt;table|&lt;tr|&lt;th|&lt;td|&lt;/th|&lt;/tr|&lt;/table|&lt;caption";
+$tags .= "|&lt;style|&lt;/style";
+$tags .= "|&lt;thead|&lt;/thead|&lt;tbody|&lt;/tbody";
+$tags .= "|&lt;p|&lt;blockquote|&lt;/blockquote|&lt;hr|&lt;div|&lt;/div";
+$tags .= "|&lt;img";
+$tags .= "|&lt;h1|&lt;h2|&lt;h3|&lt;h4|&lt;h5|&lt;h6";
+$tags .= "|&lt;ul|&lt;/ul|&lt;ol|&lt;/ol|&lt;dl|&lt;/dl|&lt;li|&lt;dt|&lt;dd|&lt;dir|&lt;/dir|&lt;menu|&lt;/menu";
+$tags .= "|&lt;map|&lt;area|&lt;/map";
+$tags .= "|&lt;base";
+$tags .= "|&lt;object|&lt;applet|&lt;param|&lt;/object|&lt;/applet|&lt;embed|&lt;/embed";
+$tags .= "|&lt;form|&lt;/form|&lt;input|&lt;select|&lt;option|&lt;/select|&lt;textarea";
+
+$tagindent = "&lt;html|&lt;body|&lt;head";
+$tagindent .= "|&lt;table|&lt;tr|&lt;td";
+$tagindent .= "|&lt;div|&lt;p|&lt;blockquote";
+$tagindent .= "|&lt;select|&lt;form|&lt;option";
+$tagindent .= "|&lt;ul|&lt;ol|&lt;dl|&lt;dir|&lt;menu|&lt;map";
+
+$tagunindent = "&lt;/html|&lt;/body|&lt;/head";
+$tagunindent .= "|&lt;/table|&lt;/tr|&lt;/td";
+$tagunindent .= "|&lt;/div|&lt;/p|&lt;/blockquote";
+$tagunindent .= "|&lt;/select|&lt;/form|&lt;/option";
+$tagunindent .= "|&lt;/ul|&lt;/ol|&lt;/dl|&lt;/dir|&lt;/menu|&lt;/map";
+
+# pass 1 - get selection and plug into array
+	@lines = ();
+	@temp = ();
+
+	$x = 1;
+    while (&lt;&gt;) {
+        push @temp, $_;
+        $x = $x + 1;
+    }
+    splitlines();
+
+# pass 2 - remove tabs, clean up tags
+    $SCRIPT = 0;
+    $COMMENT = 0;
+    $PRE = 0;
+
+    $temp = '';
+    foreach(@lines) {
+        $SCRIPT = 0 if ($line =~ m@(&lt;/script|%&gt;|\?&gt;)@ig);
+        $COMMENT = 0 if ($line =~ m@(--&gt;|&lt;/comment&gt;|&lt;/style&gt;)@ig);
+        $PRE = 0 if ($line =~ m@&lt;/pre&gt;@ig);
+        
+        $line = $_;
+        
+        $SCRIPT = 1 if ($line =~ m@(&lt;script|&lt;%|&lt;\?php)@ig);
+        $COMMENT = 1 if ($line =~ m@(&lt;!--|&lt;comment|&lt;style)@ig);
+        $PRE = 1 if ($line =~ m@&lt;pre@ig);
+
+        if (!$SCRIPT &amp;&amp; !$COMMENT &amp;&amp; !$PRE) {
+            # remove all tabs
+            $line =~ s/\t//ig;
+            
+            # remove spaces just before or after an angle bracket
+            $line =~ s/&lt;\ /&lt;/ig;
+            $line =~ s/\ &gt;/&gt;/ig;
+            if ($line =~ /&gt;$/) {
+                $temp .= $line;
+            } else {
+                $temp .= $line." ";
+            }
+        } else {
+            $temp .= "\n".$line."\n";
+        }
+    }
+    push @temp, $temp;
+    splitlines();
+    
+    $SCRIPT = 0;
+    $COMMENT = 0;
+    $PRE = 0;
+
+# pass 3 - 
+    foreach(@lines) {
+        $SCRIPT = 0 if ($line =~ m@(&lt;/script|%&gt;|\?&gt;)@ig);
+        $COMMENT = 0 if ($line =~ m@(--&gt;|&lt;/comment&gt;|&lt;/style&gt;)@ig);
+        $PRE = 0 if ($line =~ m@&lt;/pre&gt;@ig);
+        
+        $line = $_;
+        
+        $SCRIPT = 1 if ($line =~ m@(&lt;script|&lt;%|&lt;\?php)@ig);
+        $COMMENT = 1 if ($line =~ m@(&lt;!--|&lt;comment|&lt;style)@ig);
+        $PRE = 1 if ($line =~ m@&lt;pre@ig);
+
+        if (!$SCRIPT &amp;&amp; !$COMMENT &amp;&amp; !$PRE) {
+            # remove extra whitespace
+            $line =~ s/\ {2,}/\ /ig;
+
+            # put tags on new lines
+            $line =~ s@($tags)@\n$1@ig;
+	    }
+        push @temp, $line;
+    }
+    splitlines();
+
+# pass 4 - indent tags (defined in $tagsindent)
+    $indent = 0;
+    
+    $SCRIPT = 0;
+    $COMMENT = 0;
+    $PRE = 0;
+
+    foreach (@lines) {
+        $SCRIPT = 0 if ($line =~ m@(&lt;/script|%&gt;|\?&gt;)@ig);
+        $COMMENT = 0 if ($line =~ m@(--&gt;|&lt;/comment&gt;|&lt;/style&gt;)@ig);
+        $PRE = 0 if ($line =~ m@&lt;/pre&gt;@ig);
+        
+        $line = $_;
+    
+        $SCRIPT = 1 if ($line =~ m@(&lt;script|&lt;%|&lt;\?php)@ig);
+        $COMMENT = 1 if ($line =~ m@(&lt;!--|&lt;comment|&lt;style)@ig);
+        $PRE = 1 if ($line =~ m@&lt;pre@ig);
+        
+        $spaces = "";
+        if (!$SCRIPT &amp;&amp; !$COMMENT &amp;&amp; !$PRE) {
+        	# remove trailing spaces
+        	$line =~ s@(\ $)@@ig;
+        	
+            $indent -= $line =~ s@($tagunindent)@$1@ig;
+
+			$spaces = "";
+            for ($j=0; $j&lt;$indent; $j++) {
+                for ($k=0; $k&lt;$amount; $k++) {
+                    if ($usetabs) {
+                    	$spaces .= "\t";
+                	} else {
+                		$spaces .= " ";
+            		}
+                }
+            }
+        }
+        
+        push @temp, $spaces.$line;
+        
+        if (!$SCRIPT &amp;&amp; !$COMMENT &amp;&amp; !$PRE) {
+            $indent += $line =~ s/($tagindent)/$1/ig;
+        }
+    }
+    splitlines();
+
+# do it! (send back to TextMate)
+    foreach (@lines) { print "$_\n"; }
+
+exit;
+
+# sub-routines
+sub splitlines {
+    @lines = ();
+
+    foreach(@temp) {
+    	$line = $_;
+    	if ($line eq "\n") {
+			# This preserves blank lines in script and comments.
+    		push @lines, " ";
+    	} else {
+	   		push @lines, split(/\n/, $line);
+	   	}
+   	}
+
+    @temp = ();
+}</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>FHTML.PL</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>ECD5DEC8-1642-4FDB-B849-C84032E183D4</string>
+</dict>
+</plist>

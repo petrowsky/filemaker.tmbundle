@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Tan( ${1:angleInRadians} )$0</string>
+	<key>name</key>
+	<string>Tan</string>
+	<key>tabTrigger</key>
+	<string>tan</string>
+	<key>uuid</key>
+	<string>82AE389F-D2BB-4B0D-8452-1E361358493D</string>
+</dict>
+</plist>

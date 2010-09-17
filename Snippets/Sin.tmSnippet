@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Sin( ${1:angleInRadians} )$0</string>
+	<key>name</key>
+	<string>Sin</string>
+	<key>tabTrigger</key>
+	<string>sin</string>
+	<key>uuid</key>
+	<string>65DBC1DA-ED8E-4348-B925-070A1FCF7E28</string>
+</dict>
+</plist>

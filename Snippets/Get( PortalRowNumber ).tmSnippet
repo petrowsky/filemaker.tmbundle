@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Get( PortalRowNumber )</string>
+	<key>name</key>
+	<string>Get( PortalRowNumber )</string>
+	<key>tabTrigger</key>
+	<string>prn</string>
+	<key>uuid</key>
+	<string>4C77B2FC-3CAE-4115-B2E9-A1599B0D291A</string>
+</dict>
+</plist>

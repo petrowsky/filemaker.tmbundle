@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Truncate( ${1:number}; ${2:precision} )$0</string>
+	<key>name</key>
+	<string>Truncate</string>
+	<key>tabTrigger</key>
+	<string>trn</string>
+	<key>uuid</key>
+	<string>201D46AA-AF27-4C0F-976E-2C1D75BD8C34</string>
+</dict>
+</plist>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>File_Write( ${1:filePath}; ${2:text}${3:; ${4:append}} )$0</string>
+	<key>name</key>
+	<string>File_Write</string>
+	<key>tabTrigger</key>
+	<string>px.f.w</string>
+	<key>uuid</key>
+	<string>754AB0F0-D04E-4E40-97E9-11D829B71627</string>
+</dict>
+</plist>

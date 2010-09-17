@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>PHP_GetLastCode</string>
+	<key>name</key>
+	<string>PHP_GetLastCode</string>
+	<key>tabTrigger</key>
+	<string>pher</string>
+	<key>uuid</key>
+	<string>08619476-8589-4333-8D18-08B9EC5D9A87</string>
+</dict>
+</plist>

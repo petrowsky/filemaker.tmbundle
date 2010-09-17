@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>File_Delete( ${1:path} )$0</string>
+	<key>name</key>
+	<string>File_Delete</string>
+	<key>tabTrigger</key>
+	<string>File_Delete</string>
+	<key>uuid</key>
+	<string>C9A2DED2-D064-4A24-A97F-215C92041CBD</string>
+</dict>
+</plist>

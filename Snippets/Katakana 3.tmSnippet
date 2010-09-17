@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Katakana( ${1:text} )$0</string>
+	<key>name</key>
+	<string>Katakana</string>
+	<key>tabTrigger</key>
+	<string>kk</string>
+	<key>uuid</key>
+	<string>7A89C063-1D53-43F5-90A0-4C134DBBE769</string>
+</dict>
+</plist>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>&lt;?php
+# For security reasons, these lines should be
+# included from a file above the web directory
+define('FM_HOST', '127.0.0.1');
+define('FM_FILE', 'Product Catalog');
+define('FM_USER', 'esmith');
+define('FM_PASS', 'm4rg0t');
+#
+# this is the include for the API for PHP
+require_once ('FileMaker.php');
+#
+# instantiate a new FileMaker object
+\$${1:fm} = new FileMaker(FM_FILE, FM_HOST, FM_USER, FM_PASS);
+#
+# create a new search transaction
+\$${2:request} = \$$1-&gt;newFindCommand('Product');
+\$$2-&gt;addFindCriterion('ID', 2245);
+#
+# execute the search transaction
+\$${3:result} = \$$2-&gt;execute();
+#
+# check for errors
+if (FileMaker::isError(\$$3)) {
+    die('&lt;p&gt;' . \$$3-&gt;getMessage() . ' (error ' . \$$3-&gt;code . ')&lt;/p&gt;');
+}
+#
+# get the result record set as an array of record objects
+\$${4:records} = \$$3-&gt;getRecords();
+#
+# loop through records compiling row html
+\$${5:rows} = '';
+foreach(\$$4 as \$${6:record}) {
+    \$$4.= '&lt;tr&gt;';
+    \$$4.= '&lt;td&gt;' . \$$6-&gt;getField('Field1') . '&lt;/td&gt;';
+    \$$4.= '&lt;td&gt;' . \$$6-&gt;getField('Field2') . '&lt;/td&gt;';
+    \$$4.= '&lt;td&gt;' . \$$6-&gt;getField('Field3') . '&lt;/td&gt;';
+    \$$4.= '&lt;/tr&gt;';
+}
+
+?&gt;
+</string>
+	<key>name</key>
+	<string>FM Find</string>
+	<key>tabTrigger</key>
+	<string>fmfind</string>
+	<key>uuid</key>
+	<string>C6A02D7C-A7FA-4B82-AE83-455DCF111872</string>
+</dict>
+</plist>

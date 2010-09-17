@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>fm_close_progress_bar( ${1:progress_bar_name} )$0</string>
+	<key>name</key>
+	<string>fm_close_progress_bar</string>
+	<key>tabTrigger</key>
+	<string>fm_close_progress_bar</string>
+	<key>uuid</key>
+	<string>36C34DA1-7B80-4EE6-899C-FAC949654296</string>
+</dict>
+</plist>

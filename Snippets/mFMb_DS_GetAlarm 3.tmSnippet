@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>mFMb_DS_GetAlarm( ${1:$TM_SELECTED_TEXT} )$0</string>
+	<key>keyEquivalent</key>
+	<string>~E</string>
+	<key>name</key>
+	<string>mFMb_DS_GetAlarm</string>
+	<key>tabTrigger</key>
+	<string>aaup</string>
+	<key>uuid</key>
+	<string>79E6BD0B-73FD-41E3-A343-48E6C4B38DA6</string>
+</dict>
+</plist>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>FM_DOCUMENTS_PATH</string>
+	<key>name</key>
+	<string>FM_DOCUMENTS_PATH</string>
+	<key>tabTrigger</key>
+	<string>fm.doc</string>
+	<key>uuid</key>
+	<string>E2A72713-3A44-4F5A-BB9E-48749DEA3CD8</string>
+</dict>
+</plist>

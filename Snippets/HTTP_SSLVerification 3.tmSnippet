@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>HTTP_SSLVerification( ${1:$TM_SELECTED_TEXT} )$0</string>
+	<key>keyEquivalent</key>
+	<string>~E</string>
+	<key>name</key>
+	<string>HTTP_SSLVerification</string>
+	<key>tabTrigger</key>
+	<string>aaup</string>
+	<key>uuid</key>
+	<string>EB31451E-3F8B-4A2E-9F29-CACA758E5837</string>
+</dict>
+</plist>

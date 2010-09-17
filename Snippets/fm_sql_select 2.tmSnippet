@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>fm_sql_select( ${1:sql_query}${2:, ${3:column_separator}${4:, ${5:row_separator}}} )$0</string>
+	<key>name</key>
+	<string>fm_sql_select</string>
+	<key>tabTrigger</key>
+	<string>fm.ss</string>
+	<key>uuid</key>
+	<string>A334E81C-AF07-48AD-977D-D98426266D0C</string>
+</dict>
+</plist>

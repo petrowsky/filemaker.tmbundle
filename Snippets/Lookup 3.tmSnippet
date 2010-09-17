@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Lookup( ${1:sourceField}${2:; ${3:failExpression}} )$0</string>
+	<key>name</key>
+	<string>Lookup</string>
+	<key>tabTrigger</key>
+	<string>lu</string>
+	<key>uuid</key>
+	<string>A3C7DF90-A10D-46F4-B0FB-493E0FC8C03E</string>
+</dict>
+</plist>

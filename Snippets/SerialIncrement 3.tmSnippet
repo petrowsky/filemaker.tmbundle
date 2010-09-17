@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>SerialIncrement( ${1:text}; ${2:incrementBy} )$0</string>
+	<key>name</key>
+	<string>SerialIncrement</string>
+	<key>tabTrigger</key>
+	<string>si</string>
+	<key>uuid</key>
+	<string>613770C7-20F7-4BF4-9A26-C99518D95334</string>
+</dict>
+</plist>

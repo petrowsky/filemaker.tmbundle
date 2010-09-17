@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>fm_progress_bar_timeout( ${1:seconds} )$0</string>
+	<key>name</key>
+	<string>fm_progress_bar_timeout</string>
+	<key>tabTrigger</key>
+	<string>fm_progress_bar_timeout</string>
+	<key>uuid</key>
+	<string>4D56D5BA-7835-4D8D-B509-BC6C6D89229E</string>
+</dict>
+</plist>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Get( SystemDrive )</string>
+	<key>name</key>
+	<string>Get( SystemDrive )</string>
+	<key>tabTrigger</key>
+	<string>syd</string>
+	<key>uuid</key>
+	<string>2A795595-15D1-49EE-BD6C-2A28F90FE0A0</string>
+</dict>
+</plist>

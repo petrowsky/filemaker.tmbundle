@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>WindowNames${1:( ${2:Get( FileName )} )}</string>
+	<key>name</key>
+	<string>WindowNames</string>
+	<key>tabTrigger</key>
+	<string>wnm</string>
+	<key>uuid</key>
+	<string>8CD18100-8F73-4AB0-9049-AE27D7D6A358</string>
+</dict>
+</plist>

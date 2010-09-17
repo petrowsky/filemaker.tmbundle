@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>\$${1:rows} = '';
+foreach (\$${2:record}s as \$$2) {
+    \$$1 .= '&lt;tr&gt;';
+    \$$1 .= '&lt;td&gt;'.\$$2-&gt;getField('${3:fieldname}').'&lt;/td&gt;';
+    \$$1 .= '&lt;/tr&gt;';
+}
+</string>
+	<key>name</key>
+	<string>Record Loop</string>
+	<key>tabTrigger</key>
+	<string>recloop</string>
+	<key>uuid</key>
+	<string>55B7936B-A84F-4516-90FC-89527158BBE4</string>
+</dict>
+</plist>

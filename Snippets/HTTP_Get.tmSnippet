@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>HTTP_Get( ${1:url}${2:; ${3:message}${4:; ${5:timeout}}} )$0</string>
+	<key>name</key>
+	<string>HTTP_Get</string>
+	<key>tabTrigger</key>
+	<string>HTTP_Get</string>
+	<key>uuid</key>
+	<string>EB0537D7-05C1-4DBC-B25E-4A7186C67C44</string>
+</dict>
+</plist>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>\$${1:request}-&gt;addFindCriterion('${2:fieldname}', '${3:fieldvalue}');
+$0</string>
+	<key>name</key>
+	<string>addFindCriterion</string>
+	<key>scope</key>
+	<string>source.php</string>
+	<key>tabTrigger</key>
+	<string>addfind</string>
+	<key>uuid</key>
+	<string>F79B4638-6CAC-4834-A5A5-93FEFC4A5A65</string>
+</dict>
+</plist>

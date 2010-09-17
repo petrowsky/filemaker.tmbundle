@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Substitute(
+  ${1:text};
+  ${2:${3:incrementBy};
+  ${4:replaceString}}
+)$0</string>
+	<key>name</key>
+	<string>Substitute</string>
+	<key>tabTrigger</key>
+	<string>substitute</string>
+	<key>uuid</key>
+	<string>E09EF4BB-80BA-436F-A8F3-379286A0BC73</string>
+</dict>
+</plist>

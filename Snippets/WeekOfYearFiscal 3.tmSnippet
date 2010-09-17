@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>WeekOfYearFiscal( ${1:date}; ${2:startingDay} )$0</string>
+	<key>name</key>
+	<string>WeekOfYearFiscal</string>
+	<key>tabTrigger</key>
+	<string>woyf</string>
+	<key>uuid</key>
+	<string>5FAF0486-74F4-4F95-BE36-78A7053D7298</string>
+</dict>
+</plist>

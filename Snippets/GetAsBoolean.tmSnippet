@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>GetAsBoolean( ${1:data} )$0</string>
+	<key>name</key>
+	<string>GetAsBoolean</string>
+	<key>tabTrigger</key>
+	<string>getasboolean</string>
+	<key>uuid</key>
+	<string>0BE5E445-E122-4D9A-B3B4-1326F20ECDD3</string>
+</dict>
+</plist>

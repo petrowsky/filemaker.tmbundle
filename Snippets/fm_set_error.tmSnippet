@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>fm_set_error( ${1:error_number}${2:, ${3:error_message}} )$0</string>
+	<key>name</key>
+	<string>fm_set_error</string>
+	<key>tabTrigger</key>
+	<string>fm_set_error</string>
+	<key>uuid</key>
+	<string>F889EC6D-AA1B-47FC-8CB4-99D803DE4FBB</string>
+</dict>
+</plist>

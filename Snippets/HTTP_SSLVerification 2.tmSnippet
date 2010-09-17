@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>HTTP_SSLVerification${1:( ${2:1=enable | 0=disable} )}$0</string>
+	<key>name</key>
+	<string>HTTP_SSLVerification</string>
+	<key>tabTrigger</key>
+	<string>px.h.ssl</string>
+	<key>uuid</key>
+	<string>E196B8B3-22EC-4248-88B0-B97C18095747</string>
+</dict>
+</plist>

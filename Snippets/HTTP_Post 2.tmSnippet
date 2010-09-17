@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>HTTP_Post( ${1:url}; ${2:data}${3:; ${4:message}${5:; ${6:timeout}}} )$0</string>
+	<key>name</key>
+	<string>HTTP_Post</string>
+	<key>tabTrigger</key>
+	<string>px.h.p</string>
+	<key>uuid</key>
+	<string>6B53F919-6FF6-4A7D-9264-1CC362E8408B</string>
+</dict>
+</plist>

@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>zippScript Documentation</title>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  
+<a name="zippScript_Version" id="zippScript_Version"></a><h1>zippScript_Version( {Format} ) </h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Returns the version number of the currently installed plug-in. </dd>
+  <dt> Parameters </dt>
+  <dd> <span class="param">Format</span> – an optional parameter specifying an alternate format of version information. </dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">zippScript_Version</span> returns <span class="code">2.2<br />zippScript_Version( &quot;&quot; )</span> returns <span class="code">2.2<br />zippScript_Version( &quot;short&quot; )</span>returns <span class="code">2.2<br />zippScript_Version( &quot;long&quot; )</span> returns <span class="code">zippScript 2.2<br />zippScript_Version( &quot;platform&quot; )</span> returns <span class="code">Mac OS X (Intel)</span> when FileMaker 8.5 is running on an Intel Mac. </dd>
+  <dt> Note </dt>
+  <dd> If the plug-in is not installed, calling this function will return an invalid result. If the plug-in is installed but disabled, the function will return an empty string. This feature may be used to test for the existence of the plug-in if your solution requires it to enable some functionality.<span class="code"><br />
+  </span> </dd>
+</dl>
+
+<a name="zippScript_PerformScript" id="zippScript_Version2"></a><h1>zippScript_PerformScript( FileName; ScriptName {; Param; Control} ) </h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Allow a script to be run from any FileMaker calculation dialog. </dd>
+  <dt> Parameters </dt>
+  <dd> <span class="param">FileName</span> – the name of the open file containing the script to be run. This will typically be set to <span class="code">Get( FileName )</span>, but may be a text string explicitly naming the file (<span class="code">&quot;MyFile.fp7&quot;</span>), a text field containing the name of the file, or a calculation or custom function returning the name of the file.<br /><span class="param">ScriptName</span> – the name of the script to run. As with the <span class="param">FileName</span> parameter, the name may be supplied by text string, field or calculation.<br /><span class="param">Param</span> –&nbsp;an optional parameter containing a string to be passed to the specified script as a text script parameter. Multiple script parameters may be passed to the script using any delimiter you choose. The default value is an empty script parameter.<br /><span class="param">Control</span> –&nbsp;an optional parameter used to modify FileMaker's handling of other running scripts when the specified script is run. This value may be one of <span class="code">&quot;halt&quot;</span>, <span class="code">&quot;exit&quot;</span>, <span class="code">&quot;resume&quot;</span>, <span class="code">&quot;pause&quot;</span>, or the corresponding numerical values <span class="code">0</span>, <span class="code">1</span>, <span class="code">2</span> or <span class="code">3</span>. The default value is <span class="code">&quot;pause&quot;</span>. </dd>
+  <dt> Note </dt>
+  <dd> If script triggers have been disabled by a previous use of the <span class="code">zippScript_DisableTriggers</span> function, the call to this function will be ignored and no script will be triggered. An error code may be returned if the named file is not open or the named script cannot be found in that file.<span class="code"><br />
+  </span> </dd>
+</dl>
+
+<a name="zippScript_ScheduleScript" id="zippScript_Version3"></a><h1>zippScript_ScheduleScript( Time; FileName; ScriptName {; Param; Control} ) </h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Schedule a single script trigger to be performed at some future time. </dd>
+  <dt> Parameters </dt>
+  <dd> <span class="param">Time</span> – a Date, Time or TimeStamp specifying the time at which the scheduled script is to be triggered.<br />
+      <span class="param">FileName</span> – the name of the file containing the script to be run. This will typically be set to <span class="code">Get( FileName )</span>.<br />
+      <span class="param">ScriptName</span> – the name of the script to run.<br />
+      <span class="param">Param</span> –&nbsp;an optional parameter containing a string to be passed to the specified script as a text script parameter. Multiple script parameters may be passed to the script using any delimiter you choose. The default value is an empty script parameter.<br />
+      <span class="param">Control</span> –&nbsp;an optional parameter used to modify FileMaker's handling of other running scripts when the specified script is run. This value may be one of <span class="code">&quot;halt&quot;</span>, <span class="code">&quot;exit&quot;</span>, <span class="code">&quot;resume&quot;</span>, <span class="code">&quot;pause&quot;</span>, or the corresponding numerical values <span class="code">0</span>, <span class="code">1</span>, <span class="code">2</span> or <span class="code">3</span>. The default value is <span class="code">&quot;pause&quot;</span>. </dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">zippScript_ScheduleScript( &quot;1/1/2007&quot;; &quot;MyFile&quot;; &quot;NewYearScript&quot; )</span>will perform the script just as the clock strikes on New Year's day.<span class="code"><br />zippScript_ScheduleScript( Get( CurrentTimeStamp ) + 30; &quot;MyFile&quot;; &quot;MyScript&quot;; SomeField )</span>will perform the script in 30 seconds from now.<span class="code"><br />zippScript_ScheduleScript( Get( CurrentHostTimeStamp ) + 60; &quot;MyFile&quot;; &quot;MyScript&quot; )</span>will schedule the script relative to the server's clock, which may be a different time than the local clock. </dd>
+  <dd>
+</dl>
+    
+<a name="zippScript_GetScheduledScript" id="zippScript_Version4"></a><h1>zippScript_GetScheduledScript </h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Returns information about the scheduled script trigger in a pipe-delimited (<span class="code">&quot;|&quot;</span>) string. </dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">zippScript_GetScheduledScript</span> returns an empty string when no script trigger has been scheduled, or after a scheduled script trigger has been activated.<span class="code"><br />zippScript_GetScheduledScript</span> returns <span class="code">&quot;12/31/2006 11:59:59 PM|zippScript Example|ShowMessage|Happy New Year!&quot;</span> when a script trigger has been scheduled to run a script to display a message ust before Midnight on New Year's Eve. </dd>
+  <dt> Note </dt>
+  <dd> This function will return an empty string when no script trigger has been scheduled, or after a scheduled script trigger has been activated. Scheduled script triggers may not be activated exactly at the specified time if FileMaker is busy or if script triggers have been disabled. FileMaker's text manipulation functions may be used to extract individual pieces from the string of scheduled script trigger information. </dd>
+</dl>
+    
+<a name="zippScript_CancelScheduledScript" id="zippScript_Version5"></a><h1>zippScript_CancelScheduledScript </h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Cancel a previously scheduled script trigger before the event time has occurred. </dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">zippScript_CancelScheduledScript</span> cancels any pending scheduled script trigger. No value is returned. </dd>
+  <dt> Note </dt>
+  <dd> This function may be called at any time, even if a script has not been scheduled or the event time has occurred and the scheduled script has already been triggered. Any pending scheduled script trigger will be canceled and the details of that trigger will be forgotten. A subsequent call to <span class="code">zippScript_GetScheduledScript</span> will return an empty string. You may want to call this function after calling <span class="code">zippScript_DisableTriggers</span> to ensure a scheduled script trigger whose event time occurs during the period that triggers are disabled does not attempt to run as soon as events are re-enabled. You may also want to call this function if you close the file but do not quit FileMaker. A scheduled script trigger calling a script in the closed file will attempt to perform the script at the scheduled time and will silently fail when the file cannot be found. </dd>
+</dl>
+    
+<a name="zippScript_IdleScript" id="zippScript_Version6"></a><h1>zippScript_IdleScript( Minutes; FileName; ScriptName {; Param; Control} ) </h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Schedule a single script trigger to be performed after a period of no user activity. </dd>
+  <dt> Parameters </dt>
+  <dd> <span class="param">Minutes</span> – a number specifying the minutes of no user activity that must pass before the idle script is to be triggered.<br /><span class="param">FileName</span> – the name of the file containing the script to be run. This will typically be set to <span class="code">Get( FileName )</span>.<br /><span class="param">ScriptName</span> – the name of the script to run.<br /><span class="param">Param</span> –&nbsp;an optional parameter containing a string to be passed to the specified script as a text script parameter. Multiple script parameters may be passed to the script using any delimiter you choose. The default value is an empty script parameter.<br /><span class="param">Control</span> –&nbsp;an optional parameter used to modify FileMaker's handling of other running scripts when the specified script is run. This value may be one of <span class="code">&quot;halt&quot;</span>, <span class="code">&quot;exit&quot;</span>, <span class="code">&quot;resume&quot;</span>, <span class="code">&quot;pause&quot;</span>, or the corresponding numerical values <span class="code">0</span>, <span class="code">1</span>, <span class="code">2</span> or <span class="code">3</span>. The default value is <span class="code">&quot;pause&quot;</span>. </dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">zippScript_IdleScript( 30; &quot;MyFile&quot;; &quot;LogoutUser&quot; )</span> will perform the <span class="code">LogoutUser</span> script after approximately 30 minutes of no user activity. </dd>
+</dl>
+    
+<a name="zippScript_GetIdleScript" id="zippScript_Version7"></a><h1>zippScript_GetIdleScript </h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Returns information about the idle script trigger in a pip-delimited (&quot;<span class="code">|</span>&quot;) string. </dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">zippScript_GetIdleScript</span> returns an empty string when no idle script trigger has been set, or after an idle script trigger has been activated.<br /><span class="code">zippScript_GetIdleScript</span> returns <span class="code">&quot;30|SomeFile|LogoutUser&quot;</span> when an idle script trigger has been set to run the <span class="code">LogoutUser</span> script after 30 minute of no user activity. </dd>
+  <dt> Note </dt>
+  <dd> This function will return an empty string when no idle script trigger has been set up, or after an idle script trigger has been activated. FileMaker's text manipulation functions may be used to extract individual pices from the string of sceduled script trigger information. </dd>
+</dl>
+    
+<a name="zippScript_CancelIdleScript" id="zippScript_Version8"></a><h1>zippScript_CancelIdleScript </h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Cancel a previously set idle script trigger before the time-out event has occurred. </dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">zippScript_CancelIdleScript</span> cancels any pending idle script trigger. No value is returned. </dd>
+  <dt> Note </dt>
+  <dd> This function may be called at any time, even if an idle script has not been scheduled or the time-out event has occurred and the idle script has already been triggered. Any pending idle script trigger will be canceled and the details of that trigger will be forgotten. A subsequent call to <span class="code">zippScript_GetIdleScript</span> will return an emtpy string. You may want to call this function if you close the file but do not quit FileMaker. An idle script trigger calling a script in a closed file will attempt to perform the script and will silently fail when the file cannot be found. </dd>
+</dl>
+    
+<a name="zippScript_CancelIdleScript" id="zippScript_Version10"></a><h1>zippScript_CancelIdleScript </h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Cancel a previously set idle script trigger before the time-out event has occurred. </dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">zippScript_CancelIdleScript</span> cancels any pending idle script trigger. No value is returned. </dd>
+  <dt> Note </dt>
+  <dd> This function may be called at any time, even if an idle script has not been scheduled or the time-out event has occurred and the idle script has already been triggered. Any pending idle script trigger will be canceled and the details of that trigger will be forgotten. A subsequent call to <span class="code">zippScript_GetIdleScript</span> will return an emtpy string. You may want to call this function if you close the file but do not quit FileMaker. An idle script trigger calling a script in a closed file will attempt to perform the script and will silently fail when the file cannot be found. </dd>
+</dl>
+
+<a name="zippScript_EnableTriggers" id="zippScript_Version9"></a><h1>zippScript_EnableTriggers </h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Allow zippScript to perform immediate and scheduled script triggers. </dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">zippScript_EnableTriggers</span> will allow processing of script triggers. No value is returned. </dd>
+  <dt> Note </dt>
+  <dd> This function will re-enable script triggers for all open files. A pending scheduled script trigger whose event time has passed during the period that script triggers were disabled will be activated shortly after script triggers are re-enabled. Any pending scheduled script trigger may be canceled by calling <span class="code">zippScript_CancelScheduledScript</span> after calling <span class="code">zippScript_DisableTriggers</span> or before calling this function. See also <span class="code"><a href="#zippScript_DisableTriggers">zippScript_DisableTriggers</a></span>. </dd>
+  <dd>
+</dl>
+    
+<a name="zippScript_DisableTriggers" id="zippScript_Version11"></a><h1>zippScript_DisableTriggers </h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Prevent zippScript from performing any script triggers. </dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">zippScript_DisableTriggers</span> will prevent processing of all script triggers until triggers are re-enabled. No value is returned. </dd>
+  <dt> Note </dt>
+  <dd> This function will disable script triggers for all open files. You will often want to do this as part of a scripted process that modifies fields that have script triggers attached so that the changes made to those records will not attempt to run the script triggers. You may want to disable triggers at the beginning of the script and re-enabled them at the end of the script. While triggers are disabled, any call to <span class="code">zippScript_PerformScript</span> will be ignored and no script will be triggered. You may still use <span class="code">zippScript_ScheduleScript</span>, but no scheduled script triggers will be activated when event times occur. A pending scheduled script triggers will not be automatically canceled but will be activated when script triggers are re-enabled. See also <span class="code"><a href="#zippScript_EnableTriggers">zippScript_EnableTriggers</a></span>. </dd>
+</dl>
+    
+<a name="zippScript_GetTriggerState" id="zippScript_Version12"></a><h1>zippScript_GetTriggerState </h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Returns a boolean value indicating whether script triggers are currently enabled. </dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">zippScript_GetTriggerState</span> returns <span class="code">1</span> if script triggers are currently enabled or <span class="code">0</span> if script triggers have been disabled. </dd>
+  <dt> Note </dt>
+  <dd> Script triggers may be temporarily enabled or disabled by using the <span class="code">zippScript_EnableTriggers</span> or <span class="code">zippScript_DisableTriggers</span> functions, respectively. See also <span class="code"><a href="#zippScript_EnableTriggers">zippScript_EnableTriggers</a></span> and <span class="code"><a href="#zippScript_DisableTriggers">zippScript_DisableTriggers</a></span>. </dd>
+</dl>
+</body>
+</html>

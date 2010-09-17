@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>fm_perform_script( ${1:file_name}, ${2:script_name}${3:, ${4:script_parameter}${5:control 0=halt | 1=exit | 2=resume | 3=pause}} )$0</string>
+	<key>name</key>
+	<string>fm_perform_script</string>
+	<key>tabTrigger</key>
+	<string>fm_perform_script</string>
+	<key>uuid</key>
+	<string>C4895E8E-121A-48E4-BF61-6B7F846A9863</string>
+</dict>
+</plist>

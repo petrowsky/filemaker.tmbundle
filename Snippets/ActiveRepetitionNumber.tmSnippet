@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Get( ActiveRepetitionNumber )</string>
+	<key>name</key>
+	<string>Get( ActiveRepetitionNumber )</string>
+	<key>tabTrigger</key>
+	<string>activerepetitionnumber</string>
+	<key>uuid</key>
+	<string>8D385A1F-A34C-4318-9AA4-B736C8927B7C</string>
+</dict>
+</plist>

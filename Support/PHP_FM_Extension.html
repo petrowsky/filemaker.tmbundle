@@ -1,0 +1,591 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>SmartPill PHP Documentation</title>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.style4 {font-family: Arial, Helvetica, sans-serif; font-size: smaller; }
+-->
+</style>
+</head>
+
+<body>
+  
+<a name="fm_evaluate" id="fm_evaluate"></a>
+<h1>string fm_evaluate( string $expression )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Evaluates the specified expression using FileMaker's calculation engine and returns the results.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">expression</span> (required) — Any expression that can be used with FileMaker's Evaluate function.</dd>
+  <dt>Return Values</dt>
+  <dd>Returns the result of the expression.</dd>
+  <dt> Examples </dt>
+  <dd><span class="code">// this example uses one of FileMaker's get functions<br />
+    $expression = &quot;Get( ApplicationVersion )&quot;;<br />  
+    <br />
+    // print the expression and results<br />
+    print( &quot;Example 1:\n&quot; . $expression . &quot; = &quot; . fm_evaluate($expression));<br />  
+    </span><br />
+  Returns:<br />
+  <span class="code">Example 1:<br />
+  Get( ApplicationVersion ) = ProAdvanced 8.5v1<br />  
+  <br />
+  // this example returns the contents of a field<br />
+  $expression = &quot;GetField( \&quot;Test::Note\&quot; )&quot;;<br />  
+  <br />
+  // print the expression and results<br />
+  print( &quot;\n\nExample 2:\n&quot; . $expression . &quot; = &quot; . fm_evaluate($expression));<br />  
+  <br />
+  </span>Returns:<br />
+  <span class="code">Example 2:<br />
+  GetField( &quot;Test::Note&quot; ) = Hi, I'm the contents of the note field.<br />  
+  <br />
+  // this example uses one of FileMaker's design functions<br />
+  $expression = &quot;Substitute( ValueListItems( Get( FileName ); \&quot;Colors\&quot; ); \&quot;¶\&quot;; \&quot;, \&quot; )&quot;;<br />  
+  <br />
+  // print the expression and results<br />
+  print( &quot;\n\nExample 3:\n&quot; . $expression . &quot; = &quot; . fm_evaluate($expression));<br />  
+  </span><br />
+  Returns:<br />
+  <span class="code">Example 3:<br />
+  Substitute( ValueListItems( Get( FileName ); &quot;Colors&quot; ); &quot;¶&quot;; &quot;, &quot; ) = Red, Green, Blue<br />  
+  <br />
+  // this is an example of an invalid expression<br />
+  // notice that the quotes are missing from the field name<br />
+  $expression = &quot;GetField( Test::Note )&quot;;<br />  
+  <br />
+  // print the expression and results<br />
+  print($expression . &quot; = &quot; . fm_evaluate($expression));<br />  
+  </span><br />
+    Returns:<br />
+    <span class="code">GetField( Test::Note ) = ?</span><br />
+  </dd>
+</dl>
+
+<a name="fm_perform_script" id="fm_evaluate2"></a>
+<h1>mixed fm_perform_script( string $file_name, string $script_name [, string $script_parameter [, int $control]] )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Used to perform FileMaker scripts.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">file_name</span> (required) — The name of the file that contains the script to be performed.<br />
+    <span class="param">script_name</span> (required) — The name of the script to be performed.<br />
+    <span class="param">script_parameter</span> (optional) — Script parameter to be sent to the script.<br />
+    <span class="param">control</span> (optional) — Tell FileMaker what to do when other scripts are already running, <span class="code">0</span> = halt, <span class="code">1</span> = exit, <span class="code">2</span> = resumt, <span class="code">3</span> = pause, which is the default.</dd>
+  <dt>Return Values</dt>
+  <dd>Returns one of the following FileMaker error codes when script triggering is enabled or <span class="code">NULL</span> when script triggering is disabled. If script triggering is disabled, fm_get_last_error will return <span class="code">901 Script triggering is disabled.</span><br />
+    <br />
+    <table width="100%" border="0">
+      <tr>
+        <th width="9%" scope="col"><div align="left" class="style4">Error code</div></th>
+        <th width="91%" scope="col"><div align="left" class="style4">Description</div></th>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>No error</td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td>File is missing</td>
+      </tr>
+      <tr>
+        <td>104</td>
+        <td>Script is missing</td>
+      </tr>
+    </table>
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">// this example triggers a script named &quot;Test Script&quot;<br />
+    // in the file named &quot;FM_Perform_Script_Example&quot;<br />
+    // with a script parameter value of &quot;Hello World!&quot;<br />
+    echo fm_perform_script( &quot;FM_Perform_Script_Example, &quot;Test Script&quot;, &quot;Hello World!&quot; );<br />
+    </span><br />
+    Returns:<br />
+    <span class="code">0</span></dd>
+</dl>
+<p><a name="fm_script_control" id="fm_evaluate3"></a> </p>
+<h1>bool fm_script_control( [bool $enable_disable] )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Allows script triggering to be disabled when needed. To disable, pass in <span class="code">false</span>. To enable, pass in <span class="code">true</span>. Using <span class="code">fm_script_control</span> with no parameter will return the current seting, <span class="code">true</span> if enabled, <span class="code">false</span> if disabled. The current setting is always returned, so enabling will return <span class="code">true</span>, disabling will return <span class="code">false</span>. By default, script triggering is enabled when the plug-in first starts up.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">enable_disable</span> (optional)</dd>
+  <dt>Return Values</dt>
+  <dd>Returns <span class="code">true</span> or <span class="code">false</span> depending on the current setting.<br />
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">// to disable script triggering<br />
+    var_dump( fm_script_control(false) );<br />
+    </span><br />
+    Returns:<br />
+    <span class="code">bool(false)</span><br />
+    <br />
+    <span class="code">// to enable script triggering<br />
+var_dump( fm_script_control(true) );<br />
+    </span><br />
+Returns:<br />
+<span class="code">bool(true)<br />
+<br />
+// to return the current setting<br />
+var_dump( fm_script_control );<br />
+<br />
+</span>Returns:<span class="code"><br />
+bool(true)</span> or <span class="code">bool(false)</span> depending on the current setting</dd>
+</dl>
+<a name="fm_get_last_error" id="fm_evaluate4"></a> 
+<h1>mixed fm_get_last_error( [int $selector] )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Used to check for errors returned byt he &quot;fm&quot; functions included with the FileMaker PHP extension.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">selector</span> (optional) — Use <span class="code">1</span> to return only the error code or <span class="code">2</span> to return only the error message. By default, both the error code and error message are returned.</dd>
+  <dt>Return Values</dt>
+  <dd>Returns the last error after calling one of the &quot;fm&quot; funcitons included with the PHP FileMaker extension. <span class="code">0</span> is returned if there was no error. If only the error code is returned (using a selector value of <span class="code">1</span>) OR when there is no error, the return type will be int, otherwise the return type will be string.<br />
+      <br />
+    Note that error numbers less than 1000 are plug-in errors, while errors that are equal to or greater than 1000 are user-defined errors (that have been set using the <span class="code">fm_set_error</span> funciton).<br />
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">echo fm_get_last_error();<br />
+    </span><br />
+    Returns:<br />
+    <span class="code">106 ERROR: Table missing (106) // return type is string<br />
+    <br />
+    echo fm_get_last_error(1);<br />
+    <br />
+</span>Returns:<span class="code"><br />
+106 // return type is int<br />
+<br />
+echo fm_get_last_error(2);<br />
+<br />
+</span>Returns:<span class="code"><br />
+ERROR: Table missing (106) // return type is string</span></dd>
+</dl>
+<a name="fm_set_error" id="fm_evaluate5"></a>
+<h1>bool fm_set_error( int $error_number [, string $error_message])</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Used to set a user-defined error number and message. The error number and message can be retrieved using the plug-in's <span class="code">PHP_GetLastError</span> function.<br />
+    <br />
+  Note that error numbers below 1000 are reserved for plug-in errors.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">error_number</span> (required) — User defined error number. Must be greater than or equal to 1000.<br />
+    <span class="param">error_message</span> (optional) — A message explaining the error.</dd>
+  <dt>Return Values</dt>
+  <dd>Returns <span class="code">false</span> if an invalid error_number is specified, otherwise <span class="code">true</span>. If an error number less than 1000 is specified, <span class="code">fm_get_last_error</span> will return <span class="code">900 Error number must be greater than or equal to 1000</span>.<br />
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">$error = fm_set_error(1000, 'The supplied URL is invalid, please check the format and try again.');<br />
+      <br />
+    var_dump($error);<br />
+    </span><br />
+    Returns:<br />
+    <span class="code">bool(true)</span></dd>
+</dl>
+<a name="fm_sql_select" id="fm_evaluate6"></a>
+<h1>mixed fm_sql_select( string $sql_query [, int $column_separator [, int $row_separator]] )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Used to perform an SQL select and return the selected data.<br />
+    <br />
+  Calls the ExecuteSQL function in the FileMaker plug-in API. This function is considered experimental by FileMaker, so use with caution. See the FileMaker ODBC and JDBC Developer's Guide for reference to the supported SQL.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">sql_query</span> (required) — Any supported SQL select query.<br />
+      <span class="param">column_separator</span> (optional) — ASCII or Unicode character code. The pipe character &quot;<span class="code">|</span>&quot; (code 124) is the default.<br />
+      <span class="param">row_separator</span> (optional) — ASCII or Unicode character code. The return character &quot;<span class="code">¶</span>&quot; (code 167) is the default.</dd>
+  <dt>Return Values</dt>
+  <dd>Returns the <strong>results</strong> of the select query or false if an error occurs. Most errors are caused by invalid SQL statements. Use <span class="code">fm_get_last_error</span> to get error details and keep in mind that the error that's returned will be a FileMaker error, so you can reference FileMaker help for more information.<br />
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">echo fm_sql_select(&quot;SELECT &amp; FROM Company WHERE Status_ID = 'A'&quot;);<br />
+    </span><br />
+    Returns:<br />
+    All columns from the company table for records that have a <span class="code">Status_ID</span> of <span class="code">'A'</span>. Columns are separated by the default pipe character and rows are separated by the default return character.</dd>
+</dl>
+<a name="fm_sql_execute" id="fm_evaluate7"></a>
+<h1>bool fm_sql_execute( string $sql_query )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Used to execute any supported SQL query <strong>except</strong> <span class="code">CREATE</span>, <span class="code">ALTER</span> and <span class="code">DROP</span>. Use this function for <span class="code">INSERT</span>, <span class="code">UPDATE</span> and <span class="code">DELETE</span>. Use <span class="code">fm_sql_select</span> for <span class="code">SELECT</span>.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">sql_query</span> (required) — Any supported SQL query except <span class="code">SELECT</span>, <span class="code">CREATE</span>, <span class="code">ALTER</span> or <span class="code">DROP</span>.<br />
+    <br />
+  It's very important that you do not attempt to execute an SQL query that includes <span class="code">CREATE</span>, <span class="code">ALTER</span> or <span class="code">DROP</span> statements. This is not supported by this function and will require you to force quite FileMaker.</dd>
+  <dt>Return Values</dt>
+  <dd>Returns <span class="code">true</span> if execution is successful, otherwise <span class="code">false</span>. Use <span class="code">fm_get_last_error</span> to get error details and keep in mind that the error that's returned will be a FileMaker error, so you can reference FileMaker help for more information.<br />
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">echo fm_sql_execute(&quot;UPDATE Company SET Name = 'Scodigo' WHERE Company_ID = '1000'&quot;);<br />
+    </span><br />
+    Returns:<br />
+    <span class="code">true</span></dd>
+</dl>
+<a name="fm_set_variable" id="fm_evaluate8"></a>
+<h1>mixed fm_set_variable( string $name, string $value )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Used to set the value of a new or existing variable in the plug-in's memory.<br />
+    <br />
+  These variables are different from standard FileMaker variables in that they are available &quot;application-wide&quot; (meaning that they can be accessed from any open FileMaker database).<br />
+    <br />
+  Once a variable is created, it will persist in memory until 1) you delete it using <span class="code">fm_unset</span>, 2) you quit FileMaker or 3) you stop the plug-in by un-checking it in the preferences.<br />
+    <br />
+  All variables are stored as text so you many need to apply one of FileMaker's &quot;GetAs&quot; functions to convert variables back to the desired type.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">name</span> (required) — The name of the variable to set. Note that any variable that begins with double underscores &quot;<span class="code">__</span>&quot; will be considered hidden and will not be returned by the <span class="code">fm_get_defined_variables</span> function.<br />
+      <span class="param">value</span> (required) — The value to set.<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Returns the <strong>value</strong> on success or <span class="code">false</span> on failure.<br />
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">echo fm_set_variable('foo', '100');<br />
+    </span><br />
+    Returns:<br />
+    <span class="code">100</span></dd>
+</dl>
+<a name="fm_get_variable" id="fm_evaluate9"></a>
+<h1>mixed fm_get_variable( string $name )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Used to get the value of an existing variable.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">name</span> (required) — The name of the variable to get.<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Returns the <strong>value</strong> on if the variable exists, otherwise <span class="code">NULL</span>. Keep in mind that there's a difference between an empty string '' and <span class="code">NULL</span>. It's perfectly legitimate for the value to be empty.<br />
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">fm_get_variable('foo');<br />
+    </span><br />
+    Returns:<br />
+  <span class="code">100</span><br />
+  <br />
+  <span class="code">fm_get_variable('bar');<br />
+  </span><br />
+Returns:<br />
+<span class="code">NULL</span></dd>
+</dl>
+<a name="fm_isset" id="fm_evaluate10"></a>
+<h1>bool fm_isset( string $name )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Used to determine whether a variable is set.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">name</span> (required) — The name of the variable to check.<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Returns <span class="code">true</span> if the variable exists, otherwise <span class="code">false</span>.<br />
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">echo fm_isset('foo');<br />
+    </span><br />
+    Returns:<br />
+    <span class="code">true</span><br />
+    <br />
+    <span class="code">echo fm_isset('bar');<br />
+    </span><br />
+    Returns:<br />
+  <span class="code">false</span></dd>
+</dl>
+<a name="fm_unset" id="fm_evaluate11"></a>
+<h1>bool fm_unset( string $name )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Used to destroy the specified variable.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">name</span> (required) — The name of the variable to destroy.<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Destroys the specified variable. Returns <span class="code">true</span> if the variable existed, otherwise <span class="code">false</span>.<br />
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">echo fm_unset('foo');<br />
+    </span><br />
+    Returns:<br />
+    <span class="code">true</span><br />
+    <br />
+    <span class="code">echo fm_unset('bar');<br />
+    </span><br />
+    Returns:<br />
+    <span class="code">false</span></dd>
+</dl>
+<a name="fm_get_defined_variables" id="fm_evaluate12"></a>
+<h1>array fm_get_defined_variables( void )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Returns an array of all defined variables, along with their values. If no defined variables exist, or only hidden variables exist, an empty array is returned. Any variable that begins with double underscores &quot;<span class="code">__</span>&quot; is considered hidden and will not be returned by this funciton. Use this naming convention for any variables that you don't want to be exposed by this function.</dd>
+  <dt>Parameters</dt>
+  <dd>none<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Array.<br />
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">print_r(fm_get_defined_variables());<br />
+    </span><br />
+    Returns:<br />
+    <span class="code">Array<br />
+    {<br />
+    &nbsp;&nbsp;[foo]=&gt;100<br />
+    }</span></dd>
+</dl>
+<a name="fm_save_file" id="fm_evaluate13"></a>
+<h1>mixed fm_save_file( string $message [, string $default_file_name [, string $initial_folder_path]] )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Used to prompt the user for the location and file name of a file to be saved to disk.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">message</span> (required) — The message to be displayed in the dialog.<br />
+      <span class="param">default_file_name</span> (optional) — The default file name to be used in the dialog.<br />
+      <span class="param">initial_folder_path</span> (optional) — The starting location for the dialog.<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Returns the <strong>path</strong> to the saved file or <span class="param">false</span> if the user cancels.<br />
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">// prompt the user to save a report file<br />
+  $path = fm_save_file('Where would you like to save the report?', 'Report.html', FM_DESKTOP_PATH);<br />
+    <br />
+  echo $path;<br />
+  </span><br />
+    Returns:<br />
+    <span class="code">/Users/scodigo/Desktop/Report.html</span> (assuming the user didn't cancel)</dd>
+</dl>
+<a name="fm_select_file" id="fm_evaluate14"></a>
+<h1>mixed fm_select_file( string $message [, string $initial_folder_path [, string $file_type_list]] )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Used to prompt the user to select a file from disk.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">message</span> (required) — The message to be displayed in the dialog.<br />
+  <span class="param">initial_folder_path</span> (optional) — The starting location for the dialog.<br />
+  <span class="param">file_type_list</span> (optional) — A comma separated list of file types that can be selected. For example, if you only want the user to be able to select text files, then the <span class="code">file_type_list</span> would be <span class="code">&quot;txt&quot;</span>.<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Returns the <strong>path</strong> to the selected file or <span class="code">false </span>if the user cancels.<br />
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">// prompt the user to select a text file<br />
+    $path = fm_select_file('Please select a text file.', FM_DESKTOP_PATH, 'txt');<br />
+    <br />
+    echo $path;<br />
+    </span><br />
+    Returns:<br />
+    <span class="code">/Users/scodigo/Desktop/Test.txt</span> (assuming the user didn't cancel)</dd>
+</dl>
+<a name="fm_save_file" id="fm_evaluate15"></a>
+<h1>mixed fm_select_folder( string $message [, string $initial_folder_path] )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd>Used to prompt the user to select a folder from disk.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">message</span> (required) — The message to be displayed in the dialog.<br />
+      <span class="param">initial_folder_path</span> (optional) — The starting location for the dialog.<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Returns the <strong>path</strong> to the selected folder or <span class="code">false </span>if the user cancels.<br />
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">// prompt the user to select a folder<br />
+    $path = fm_select_folder('Please select the folder you want to upload.');<br />
+    <br />
+    echo $path;<br />
+    </span><br />
+    Returns:<br />
+    <span class="code">/Users/scodigo/Desktop/Upload</span> (assuming the user didn't cancel)</dd>
+</dl>
+<a name="fm_new_progress_bar" id="fm_evaluate16"></a>
+<h1>bool fm_new_progress_bar( string $progress_bar_name, int $number_of_steps, string $message [, int $left [, int $top]] )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd>Used to display a progress bar.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">progress_bar_name</span> (required) — The name to be used when referencing the progress bar. Multiple progress bars can be displayed at the same time so this allows you to keep track of individual progress bars by name.<br />
+      <span class="param">number_of_steps</span> (required) — The number of steps that the progress bar will display. Use <span class="code">0</span> for a &quot;barber pole&quot; type progress bar.<br />
+      <span class="param">message</span> (required) — The message to display in the progress bar.<br />
+      <span class="param">left</span> (optional) — The left position of the progress bar. The default position is the center of the screen.<br />
+      <span class="param">top</span> (optional) — The top position of the progress bar. The default position is the center of the screen.<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Returns <span class="code">true</span> if the progress bar was created or <span class="code">false</span> if there was an error. If a progress bar with the same name already exiss, <span class="code">fm_get_last_error</span> will return <span class="code">903 Progress bar already exists</span>.<br />
+  </dd>
+  <dt> Examples </dt>
+  <dd><span class="code">// display a progress bar with 3 steps<br />
+    $iterations = 3;<br />
+      <br />
+    $pb = fm_new_progress_bar('Test', $iterations, 'Testing...', 25, 50);<br />
+      <br />
+    for ($i = 0; $i &lt; $iterations; $i++) {<br />
+    &nbsp;&nbsp;$pb = fm_update_progress_bar('Test', 1, &quot;Step &quot; . ($i + 1));<br />
+    &nbsp;&nbsp;sleep(1); // this is where you would do your processing<br />
+    }<br />
+      <br />
+    $pb = fm_close_progres_bar('Test');<br />
+      <br />
+    // display a progress bar with 3 steps with each<br />
+  // step having its own progress bar with 100 sub-steps<br />
+    <br />
+  $iterations = 3;<br />
+  sub_iterations = 100;<br />
+    <br />
+  $pb = fm_new_progress_bar('Test', $iteraitons, 'Testing...', 25, 50);<br />
+    <br />
+  for ($i = 0; $i &lt; $iterations; $i++) {<br />
+  &nbsp;&nbsp;$pb = fm_update_progress_bar('Test', 1, &quot;Step &quot; . ($i + 1));<br />
+  &nbsp;&nbsp;$pb = fm_new_progress_bar('Test2', $sub_iterations, 'Sub-steps...', 25, 200);<br />
+  &nbsp;&nbsp;for ($j = 0; $j &lt; $sub_iterations; $j++) {<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;$pb = fm_update_progress_bar('Test2', 1, &quot;Sub-step &quot; . ($j + 1));<br />
+  &nbsp;&nbsp;}<br />
+  &nbsp;&nbsp;$pb = fm_close_progress_bar('Test2');<br />
+  }<br />
+    <br />
+  $pb = fm_close_progress_bar('Test');</span><span class="code"></span></dd>
+</dl>
+<a name="fm_update_progress_bar" id="fm_evaluate17"></a>
+<h1>bool fm_update_progress_bar( string $progress_bar_name, int $number_of_steps_to_increment [, string $message] )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd>Used to update a progress bar. Note that the timeout timer is reset each time <span class="code">fm_update_progress_bar</span> is called.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">progress_bar_name</span> (required) — The name of the progres bar to update.<br />
+      <span class="param">number_of_steps_to_increment</span> (required) — The number of steps to increment.<br />
+      <span class="param">message</span>( optional) — A new message to be displayed.<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Returns <span class="code">true</span> if the progress bar is updated or <span class="code">false</span> if the progress bar doesn't exist. If the progress bar doesn't exist, fm_get_last_error will return <span class="code">904 Progress bar doesn't exist</span>.</dd>
+</dl>
+<a name="fm_close_progress_bar" id="fm_evaluate18"></a>
+<h1>bool fm_close_progress_bar( $string progress_bar_name )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd>Used to close a progress bar.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">progress_bar_name</span> (required) — The name of the progres bar to close.<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Returns <span class="code">true</span> if the progress bar is closed or <span class="code">false</span> if the progress bar doesn't exist. If the progress bar doesn't exist, fm_get_last_error will return <span class="code">904 Progress bar doesn't exist</span>.</dd>
+</dl>
+<a name="fm_progress_bar_position" id="fm_evaluate19"></a>
+<h1>mixed fm_progress_bar_position( [int $left, int $top] )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd>Used to set or return the default progress bar position. Using <span class="code">fm_progress_bar_position</span> with no parameters will return the current position settings.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">left</span> (optional) — The left position of the progress bar.<br />
+    <span class="param">top</span> (optional) — The top position of the progress bar.<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Returns <span class="code">true</span> if the new default position is set (this requires valid left and top parameters) or <span class="code">false</span> if either of the parameters are invalid. If no parameters are supplied, then the current position is returned like this: <span class="code">left, top</span>. The default position is to center the progress bar both horizontally and vertically.</dd>
+  <dt>Examples</dt>
+  <dd><span class="code">// get the current default position<br />
+    echo fm_progress_bar_position();</span><br />
+    <br />
+  Returns:<br />
+  <span class="code">509,390 </span>(assuming a screen dimension of 1440 x 900)<span class="code"><br />  
+  <br />
+  // set the default position<br />
+  $result = fm_progress_bar_position(50, 75);<br />  
+  <br />
+  echo 'Position: ' . fm_progress_bar_position();</span><br />
+    <br />
+  Returns:<br />
+  <span class="code">50,75</span></dd>
+  <dt><span class="code"></span><a name="fm_progress_bar_timeout" id="fm_evaluate20"></a></dt>
+</dl>
+<h1>mixed fm_progress_bar_timeout( [int $seconds] )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd>Used to set or return the default timeout. Using <span class="code">fm_progress_bar_timeout</span> with no parameters will return the current timeout setting.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">secnonds</span> (optional) — The number of seconds to wait until the progress bar is automatically closed. Note that the timeout timer is reset each time <span class="code">fm_update_progress_bar</span> is called.<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Returns <span class="code">true</span> if the new default timeout is set or <span class="code">false</span> if the seconds parameter is invalid. If no parameters are supplied, then the current timeout is returned. The default timeout is 30 seconds.</dd>
+  <dt>Examples</dt>
+  <dd><span class="code">// get the current default timeout<br />
+    echo fm_progress_bar_timeout();</span><br />
+    <br />
+    Returns:<br />
+    <span class="code">30 </span>(assuming a screen dimension of 1440 x 900)<span class="code"><br />
+      <br />
+      // set the default timeout<br />
+      $result = fm_progress_bar_timeout(10);<br />
+      <br />
+      echo &quot;Timeout: &quot; . fm_progress_bar_timeout();</span><br />
+    <br />
+    Returns:<br />
+    <span class="code">10</span></dd>
+</dl>
+<a name="fm_progress_bar_timeout" id="fm_evaluate21"></a>
+<h1>bool fm_progress_bar_control( [bool $enable_disable] )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd>Allows progress bars to be disabled when needed. To disable, pass in <span class="code">false</span>. To enable, pass in <span class="code">true</span>. Using <span class="code">fm_progress_bar_control</span> with no parameter will return the current setting, <span class="code">true</span> if enabled, <span class="code">false</span> if disabled. The current setting is always returned, so enabling will return <span class="code">true</span>, disabling will return <span class="code">false</span>. By default, progress bars are enabled when the plug-in first starts up.<br />
+    <br />
+  Disabling progress bars can be very helpful during development and debugging.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">enable_disable</span> (optional)<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Returns <span class="code">true</span>  or <span class="code">false</span> depending on the current setting.</dd>
+  <dt>Examples</dt>
+  <dd><span class="code">// to disable progress bars<br />
+  var_dump(fm_progress_bar_controll(false));<br />
+  </span><br />
+    Returns:<br />
+    <span class="code">bool(false)<br />
+    <br />
+    // to enable progress bars<br />
+var_dump(fm_progress_bar_controll(true));</span><br />
+    <br />
+    Returns:<br />
+  <span class="code">bool(true)</span><span class="code"><br />
+  <br />
+// to return the current setting<br />
+var_dump(fm_progress_bar_controll());</span><br />
+<br />
+Returns:<br />
+<span class="code">bool(true)</span> or <span class="code">bool(false)</span> depending on the current setting</dd>
+</dl>
+<a name="fm_get_parameter" id="fm_evaluate22"></a>
+<h1>mixed fm_get_parameter( string $name )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd>Used when creating your own plug-in functions. Returns the value of the named parameter.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">name</span> (required) — The name of the parameter to get.<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Returns the parameter value<span class="code"></span> or <span class="code">false</span> if the named parameter doesn't exist.</dd>
+  <dt>Examples</dt>
+  <dd><span class="code">// set variables from request<br />
+    $url = fm_get_parameter('url');<br />
+      <br />
+    // Echo back the parameter value<br />
+    echo $url;<br />
+    </span><br />
+    Returns:<br />
+  <span class="code">http://www.scodigo.com </span>(assuming the function was called with this value in the <span class="code">url</span> parameter)</dd>
+</dl>
+<a name="fm_set_container_file_name" id="fm_evaluate23"></a>
+<h1>void fm_set_container_file_name( string $file_name )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd>Used to set the name of the file to be returned by the <span class="code">PHP_ExecuteToContainer</span> function. This can be helpful when the name of the file is determined within the PHP code.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">file_name</span> (required) — The file name to be returned by <span class="code">PHP_ExecuteToContainer</span>.<br />
+  </dd>
+  <dt>Return Values</dt>
+  <dd>Void</dd>
+  <dt>Examples</dt>
+  <dd><span class="code">// set the container file name to be used<br />
+    fm_set_container_file_name('Some_File.jpg');<br />
+    </span><br />
+    Returns:<br />
+  <span class="code">void</span></dd>
+</dl>
+</body>
+</html>

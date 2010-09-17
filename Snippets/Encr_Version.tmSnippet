@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Encr_Version${1:( ${2:option="Version" | "Author" | "Release Date" | "Download URL"} )}$0</string>
+	<key>name</key>
+	<string>Encr_Version</string>
+	<key>tabTrigger</key>
+	<string>Encr_Version</string>
+	<key>uuid</key>
+	<string>51993083-764A-4E84-960C-3972ACFC13AA</string>
+</dict>
+</plist>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Get( SortState )</string>
+	<key>name</key>
+	<string>Get( SortState )</string>
+	<key>tabTrigger</key>
+	<string>sortstate</string>
+	<key>uuid</key>
+	<string>86671D0E-659D-4F57-972A-B87540525F68</string>
+</dict>
+</plist>

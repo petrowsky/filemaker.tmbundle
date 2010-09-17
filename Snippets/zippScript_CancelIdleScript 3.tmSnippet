@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>zippScript_CancelIdleScript</string>
+	<key>name</key>
+	<string>zippScript_CancelIdleScript</string>
+	<key>tabTrigger</key>
+	<string>zsci</string>
+	<key>uuid</key>
+	<string>0A65C13F-4E45-43B7-AB30-E64EAA0779C1</string>
+</dict>
+</plist>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>PHP_LoadFunctionsFromURL( ${1:url}${2:; ${3:savePath}${4:; ${5:timeoutSeconds}}} )$0</string>
+	<key>name</key>
+	<string>PHP_LoadFunctionsFromURL</string>
+	<key>tabTrigger</key>
+	<string>PHP_LoadFunctionsFromURL</string>
+	<key>uuid</key>
+	<string>27D90BAF-D026-4BA4-819D-036F48B77578</string>
+</dict>
+</plist>

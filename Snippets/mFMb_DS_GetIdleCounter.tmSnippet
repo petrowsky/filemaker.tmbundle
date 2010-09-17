@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>mFMb_DS_GetIdleCounter${1:( idleMode = "safeIdle" | "semiSafeIdle" | "unSafeIdle" )}$0</string>
+	<key>name</key>
+	<string>mFMb_DS_GetIdleCounter</string>
+	<key>tabTrigger</key>
+	<string>mFMb_DS_GetIdleCounter</string>
+	<key>uuid</key>
+	<string>6CA8D1D2-4BE1-4A9E-9BFE-DD65A062A624</string>
+</dict>
+</plist>

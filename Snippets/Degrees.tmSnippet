@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Degrees( ${1:angleInRadians} )$0</string>
+	<key>name</key>
+	<string>Degrees</string>
+	<key>tabTrigger</key>
+	<string>degrees</string>
+	<key>uuid</key>
+	<string>55E6A10A-5EF5-4478-8FC5-A568F3ED4394</string>
+</dict>
+</plist>

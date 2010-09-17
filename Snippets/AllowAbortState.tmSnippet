@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Get( AllowAbortState )</string>
+	<key>name</key>
+	<string>Get( AllowAbortState )</string>
+	<key>tabTrigger</key>
+	<string>allowabortstate</string>
+	<key>uuid</key>
+	<string>84FA2C50-6AD5-459C-BF8E-97C3B2A6F95B</string>
+</dict>
+</plist>

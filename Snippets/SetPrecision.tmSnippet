@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>SetPrecision( ${1:expression}; ${2:precision} )$0</string>
+	<key>name</key>
+	<string>SetPrecision</string>
+	<key>tabTrigger</key>
+	<string>setprecision</string>
+	<key>uuid</key>
+	<string>1EA6717E-1F1D-4099-8254-3C142F55F99C</string>
+</dict>
+</plist>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>fm_progress_bar_position( ${1:${2:left}, ${3:top}} )$0</string>
+	<key>name</key>
+	<string>fm_progress_bar_position</string>
+	<key>tabTrigger</key>
+	<string>fm.pbp</string>
+	<key>uuid</key>
+	<string>5BDC2823-AD67-4C33-8D1D-9F78BD9B0544</string>
+</dict>
+</plist>

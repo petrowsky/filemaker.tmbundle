@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>GetAsSVG( ${1:text} )$0</string>
+	<key>name</key>
+	<string>GetAsSVG</string>
+	<key>tabTrigger</key>
+	<string>getassvg</string>
+	<key>uuid</key>
+	<string>859ABC38-B5B3-49F2-A3FB-2409640F4ED6</string>
+</dict>
+</plist>

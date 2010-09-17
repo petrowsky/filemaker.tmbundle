@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>FMSAUC_Version( 0 )$0</string>
+	<key>name</key>
+	<string>FMSAUC_Version</string>
+	<key>tabTrigger</key>
+	<string>FMSAUC_Version</string>
+	<key>uuid</key>
+	<string>B7D421FA-6A97-4B38-BD35-ECECD37D2BC8</string>
+</dict>
+</plist>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>PHP_Control${1:( ${2:0=disable | 1=enable}; ${3:password} )}$0</string>
+	<key>name</key>
+	<string>PHP_Control</string>
+	<key>tabTrigger</key>
+	<string>phc</string>
+	<key>uuid</key>
+	<string>706288BF-6933-4577-98C7-7DF260CBC60D</string>
+</dict>
+</plist>

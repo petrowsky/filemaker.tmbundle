@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>fm_update_progress_bar( ${1:progress_bar_name} ${2:number_of_steps_to_increment}${3:, ${4:message}} )$0</string>
+	<key>name</key>
+	<string>fm_new_progress_bar</string>
+	<key>tabTrigger</key>
+	<string>fm_new_progress_bar</string>
+	<key>uuid</key>
+	<string>F59CEA12-9A9E-4B46-996A-EB7FA83D33FA</string>
+</dict>
+</plist>

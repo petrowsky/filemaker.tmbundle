@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>mFMb_DoScript_Version( ${1:0=complete version | 1=first version number | 2=second version number | 3=third version number | 4=fourth version number | 5=license type | 6=user license count | 7=registrar name | 8=activation code} )$0</string>
+	<key>name</key>
+	<string>mFMb_DoScript_Version</string>
+	<key>tabTrigger</key>
+	<string>dsv</string>
+	<key>uuid</key>
+	<string>F180C01F-6844-4562-A133-70B9BFEEAC5C</string>
+</dict>
+</plist>

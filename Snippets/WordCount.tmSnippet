@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>WordCount( ${1:text} )$0</string>
+	<key>name</key>
+	<string>WordCount</string>
+	<key>tabTrigger</key>
+	<string>wordcount</string>
+	<key>uuid</key>
+	<string>D4A051EB-1D8A-4B7F-9EEB-01785140D8B6</string>
+</dict>
+</plist>

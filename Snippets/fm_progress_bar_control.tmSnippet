@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>fm_progress_bar_control( ${1:true=enable | false=disable} )$0</string>
+	<key>name</key>
+	<string>fm_progress_bar_control</string>
+	<key>tabTrigger</key>
+	<string>fm_progress_bar_control</string>
+	<key>uuid</key>
+	<string>573E726B-75E4-4709-8879-94A597997295</string>
+</dict>
+</plist>

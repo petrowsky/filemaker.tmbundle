@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Get( RecordOpenState )</string>
+	<key>name</key>
+	<string>Get( RecordOpenState )</string>
+	<key>tabTrigger</key>
+	<string>ros</string>
+	<key>uuid</key>
+	<string>77D801D6-2CB4-447E-B038-3FE36BE07B4E</string>
+</dict>
+</plist>

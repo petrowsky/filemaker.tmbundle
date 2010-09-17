@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Get( DesktopPath )</string>
+	<key>name</key>
+	<string>Get( DesktopPath )</string>
+	<key>tabTrigger</key>
+	<string>dskp</string>
+	<key>uuid</key>
+	<string>60DC0C45-156A-4F5F-975A-33883E3108BA</string>
+</dict>
+</plist>

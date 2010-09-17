@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Average( ${1:field1}${2:; field2...} )$0</string>
+	<key>name</key>
+	<string>Average</string>
+	<key>tabTrigger</key>
+	<string>ave</string>
+	<key>uuid</key>
+	<string>8B648654-1795-4A28-8A6F-775B9EF8D3B9</string>
+</dict>
+</plist>

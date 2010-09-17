@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>mFMb_DS_GetAlarm${1:( idleMode = "userIdle" | "userNotIdle" | "scriptPaused" | "scriptRunning" | "unSafe" )}$0</string>
+	<key>name</key>
+	<string>mFMb_DS_GetAlarm</string>
+	<key>tabTrigger</key>
+	<string>mFMb_DS_GetAlarm</string>
+	<key>uuid</key>
+	<string>04DC47C3-F718-44F7-8F5F-5E4B79ED6B7B</string>
+</dict>
+</plist>

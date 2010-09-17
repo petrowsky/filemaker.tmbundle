@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>GetAsTimestamp( ${1:text} )$0</string>
+	<key>name</key>
+	<string>GetAsTimestamp</string>
+	<key>tabTrigger</key>
+	<string>gats</string>
+	<key>uuid</key>
+	<string>A2914149-AC43-4C2E-97F9-BB7E01CFDEBB</string>
+</dict>
+</plist>

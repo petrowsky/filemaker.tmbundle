@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>AutoUpdate Documentation</title>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.style4 {font-family: Arial, Helvetica, sans-serif; font-size: smaller; }
+-->
+</style>
+</head>
+
+<body>
+  
+<a name="mFMd_DoScript" id="mFMd_DoScript"></a>
+<h1>mFMd_DoScript( scriptName{; fileName{; scriptParameter{; scriptControl}}} )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Tells FileMaker it should execute a script.</dd>
+  <dt> Parameters </dt>
+  <dd> <span class="param">scriptName</span> (required) — the name of the script, be careful to type it correctly<br />
+      <span class="param">fileName</span> (optional) — the name of the file where the script resides (default is the current file)<br />
+    <span class="param">scriptParameter</span> (optional) — the parameter you would like the script to receive and handle with <span class="code">Get( ScriptParmaeter )</span> (default is nothing)<br />
+  <span class="param">scriptControl</span> (optional) — should be one of the following: pause, resume, halt, exit. FileMaker should document these options in the &quot;button&quot; section of the manual</dd>
+  <dt>Returns</dt>
+  <dd>nothing as an immediate result, error conditions can be obtained with the functions <span class="code">mFMb_DS_LastErrNum</span> and <span class="code">mFMd_DS_LastErr_Text</span></dd>
+</dl>
+
+<a name="mFMd_DoScript_Version" id="mFMd_DoScript2"></a>
+<h1>mFMd_DoScript_Version( dataSelector )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> It provides plugin information. Could return myFMbutler error 10 / Evaluation Error 14 (out of range). This function has the same structure as the one from our PrinterSwitch plug-in, to keep some consistency in the myFMbutler product range. This function helps determine the need for update when using AutoUpdate on a FileMaker Server.</dd>
+  <dt> Parameters </dt>
+  <dd> <span class="param">dataSelector</span> (required) — a number from <span class="code">0</span> to <span class="code">8</span>. <span class="code">0</span> returns the complete <span class="code">4</span> number version number of the plug-in, e.g. &quot;2.0.0.0&quot;, <span class="code">1</span> to <span class="code">4</span> respectively returns each number of the version string, <span class="code">5</span> returns the license type (still &quot;Freeware&quot;!), <span class="code">6</span> returns the user license count (&quot;unlimited&quot;), <span class="code">7</span> returns the registrar name (&quot;everybody&quot;), <span class="code">8</span> returns the activation code of the plug-in (&quot;not needed&quot;)</dd>
+</dl>
+<a name="mFMb_DS_GetAlarm" id="mFMd_DoScript3"></a>
+<h1>mFMb_DS_GetAlarm( {idleMode} )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> It returns true or false, depending if an alarm is set for the optional idle mode. Returns the alarm boolean for <span class="code">&quot;userNotIdle&quot;</span> if no parameter is given. For more information see the example file &quot;Idle Modes&quot;. See also <span class="code"><a href="#mFMb_DS_SetAlarm">mFMb_DS_SetAlarm</a></span>.</dd>
+  <dt> Parameters </dt>
+  <dd> <span class="param">idleMode</span> (optional) — <span class="code">&quot;userIdle&quot;</span>, <span class="code">&quot;userNotIdle&quot;</span>, <span class="code">&quot;scriptPaused&quot;</span>, <span class="code">&quot;scriptRunning&quot;</span> or <span class="code">&quot;unSafe&quot;</span></dd>
+  <dt>Returns</dt>
+  <dd>true or false or evaluation error <span class="code">1224</span> (could return error number <span class="code">7</span> in <span class="code">mFMb_GetErrNum</span> afterwards)</dd>
+</dl>
+<a name="mFMb_DS_GetIdleCounter" id="mFMd_DoScript4"></a>
+<h1>mFMb_DS_GetIdleCounter( idleMode )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> It gets the number of times the given idle mode has been looped through by the plug-in since FileMaker startup. For more information, see the example file &quot;Idle Modes&quot;.</dd>
+  <dt> Parameters </dt>
+  <dd> <span class="param">idleMode</span> (required) — <span class="code">&quot;safeIdle&quot;</span>, <span class="code">&quot;semiSafeIdle&quot;</span> or <span class="code">&quot;unSafeIdle&quot;</span></dd>
+  <dt>Returns</dt>
+  <dd>the number of idle loops, could return myFMbutler error <span class="code">9</span> / Evaluation error <span class="code">1224</span></dd>
+</dl>
+<a name="mFMb_DS_GetIdleMode" id="mFMd_DoScript5"></a>
+<h1>mFMb_DS_GetIdleMode</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> It tells you which idleMode FileMaker is currently in.</dd>
+  <dt>Returns</dt>
+  <dd><span class="code">&quot;userIdle&quot;</span> or <span class="code">&quot;userNotIdle&quot;</span>, <span class="code">&quot;unsafeIdle&quot;</span> is always around.</dd>
+</dl>
+<a name="mFMb_DS_GetIdleTimer" id="mFMd_DoScript6"></a>
+<h1>mFMb_DS_GetIdleTimer( {idleMode} )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> It gets the number of seconds that the myFMbutler DoScript plug-in will wait before going into the next idle processing for the given idle mode. It returns the timer for <span class="code">&quot;semiSafeIdle&quot;</span> when no parameter is passed to the function. The smaller the number returned, the more frequenly the DoScript plug-in will evaluate the trigger. It <em>could</em> slow you down.</dd>
+  <dt>Parameters</dt>
+  <dd>idleMode (optional) — <span class="code">&quot;safeIdle&quot;</span>, <span class="code">&quot;semiSafeIdle&quot;</span> or <span class="code">&quot;unSafeIdle&quot;</span></dd>
+  <dt>Returns</dt>
+  <dd>the number of seconds FileMaker will wait in its idle loops, could return myFMbutler error <span class="code">9</span> / Evaluation Error <span class="code">1224</span></dd>
+</dl>
+<a name="mFMb_DS_GetSeconds" id="mFMd_DoScript7"></a>
+<h1>mFMb_DS_GetSeconds</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> It returns the number of seconds since your computer has booted. Based on the internal OS ticks, reliable up to 1/60th of a second on Mac OS, and 1/1000th of a second on Windows.</dd>
+  <dt>Parameters</dt>
+  <dd>none<span class="code"></span></dd>
+  <dt>Returns</dt>
+  <dd>the number of seconds since bootup<span class="code"></span></dd>
+</dl>
+<a name="mFMb_DS_GetTrigger" id="mFMd_DoScript8"></a>
+<h1>mFMb_DS_GetTrigger( {idleMode} )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Gets the currently set evaluation formula for an optionally given idle mode. This is the last formula that was set using <span class="code">mFMb_DS_SetTrigger</span>. If no parameter is passed, defaults to returning the formula for <span class="code">&quot;userNotIdle&quot;</span>.</dd>
+  <dt>Parameters</dt>
+  <dd><span class="param">idleMode</span> (optional) — <span class="code">&quot;userIdle&quot;</span>, <span class="code">&quot;userNotIdle&quot;</span>, <span class="code">&quot;scriptPaused&quot;</span>, <span class="code">&quot;scriptRunning&quot;</span>, or <span class="code">&quot;unsafe&quot;</span></dd>
+  <dt>Returns</dt>
+  <dd>the formula as text, could return myFMbutler error <span class="code">7</span> / Evaluation Error <span class="code">1224</span>.</dd>
+</dl>
+<a name="mFMb_DS_LastErrNum" id="mFMd_DoScript9"></a>
+<h1>mFMb_DS_LastErrNum</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Returns the last error number generated by plug-in functions.</dd>
+  <dt>Parameters</dt>
+  <dd>none<span class="code"></span></dd>
+  <dt>Returns</dt>
+  <dd>
+    <table width="100%" border="0">
+      <tr>
+        <th width="9%" scope="col"><div align="left" class="style4">Error code</div></th>
+        <th width="91%" scope="col"><div align="left" class="style4">Description</div></th>
+      </tr>
+      <tr>
+        <td>–1</td>
+        <td>DoScript has been disabled using <span class="code">mFMb_DS_Toggle( False )</span></td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>no error</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>script could not be executed (may be obsolete)</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>not enough parameters passed to the function</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>to many parameters passed to the function</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>invalid script control value</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>script ^1 not foind in file ^2</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>file ^1 not found</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>invalid idle mode specified, valid idle modes are <span class="code">&quot;userIdle&quot;</span>, <span class="code">&quot;userNotIdle&quot;</span>, <span class="code">&quot;scriptPaused&quot;</span>, <span class="code">&quot;scriptRunning&quot;</span> or <span class="code">&quot;unsafe&quot;</span></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>boolean value expected</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>invalid idle mode specifed, valid idle modes are <span class="code">&quot;safeIdle&quot;</span>, <span class="code">&quot;semiSafeIdle&quot;</span>, or <span class="code">&quot;unsafeIdle&quot;</span></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>value out of range</td>
+      </tr>
+    </table>
+  </dd>
+</dl>
+<a name="mFMb_DS_LastErrText" id="mFMd_DoScript10"></a>
+<h1>mFMb_DS_LastErrText</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> Returns the last error text generated by plug-in functions.</dd>
+  <dt>Parameters</dt>
+  <dd>none<span class="code"></span></dd>
+  <dt>Returns</dt>
+  <dd>a descriptive error text that matches the error described by <span class="code">mFMb_DS_LastErrNum</span>. The <span class="code">mFMb_DS_Toggle</span> function also returns <span class="code">0</span> and a descriptive text.</dd>
+</dl>
+<a name="mFMb_DS_SetAlarm" id="mFMd_DoScript11"></a>
+<h1>mFMb_DS_SetAlarm( boolean{; idleMode} )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> It sets an alarm flag for optional idle mode. If no <span class="code">idleMode</span> parameter are passed, sets the value for <span class="code">&quot;userNotIdle&quot;</span>. For more information see the file &quot;Idle Modes&quot;, see also <span class="code"><a href="#mFMb_DS_GetAlarm">mFMb_DS_GetAlarm</a></span>.</dd>
+  <dt>Parameters</dt>
+  <dd>boolean (required) — the value to set the idleMode to<br />
+  idleMode (optional) — <span class="code">&quot;userIdle&quot;</span>, <span class="code">&quot;userNotIdle&quot;</span>, <span class="code">&quot;scriptPaused&quot;</span>, <span class="code">&quot;scriptRunning&quot;</span> or <span class="code">&quot;unSafe&quot;</span></dd>
+  <dt>Returns</dt>
+  <dd>nothing if the syntax is correct, <span class="code">&lt;?&gt;</span> if not, <span class="code">1218</span> (this number cannot be evaluated) if the boolean flag is invalid, <span class="code">1224</span> (the function is not defined/calculation undefined) if the idleMode string is incorrect.</dd>
+</dl>
+<a name="mFMb_DS_SetIdleTimer" id="mFMd_DoScript12"></a>
+<h1>mFMb_DS_SetIdleTimer( seconds{; idleMode} )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> It sets the number of seconds that the myFMbutler DoScript plug-in will wait before going into the next idle processing for the given idle mode. If no idleMode parameter is passed, sets the seconds for <span class="code">&quot;semiSafeIdle&quot;</span> idle mode. The smaller this number, the more frequently the DoScript plug-in will evaluate the trigger. This <em>could</em> slow you down.</dd>
+  <dt>Parameters</dt>
+  <dd>seconds (required) — the seconds to set the idleMode to<br />
+    idleMode (optional) — <span class="code">&quot;safeIdle&quot;</span>, <span class="code">&quot;semiSafeIdle&quot;</span> or <span class="code">&quot;unSafeIdle&quot;</span></dd>
+  <dt>Returns</dt>
+  <dd>nothing if the syntax is correct, evaluation error <span class="code">14</span> (out of range) if the seconds are less than <span class="code">0</span>, evaluation error <span class="code">1224</span> (function is not defined/calculation undefined) if the idleMode string is incorrect.</dd>
+</dl>
+<a name="mFMb_DS_SetTrigger" id="mFMd_DoScript13"></a>
+<h1>mFMb_DS_SetTrigger( expression{; idleMode} )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> It sets the formula that will be evaluated in the optionally specified idle mode. The formula should be in the form:<br />
+    <br />
+    <span class="code">If( &lt;condition&gt;; mFMb_DoScript( &lt;parameters&gt; ); False )</span><br />
+    <br />
+  or<br />
+    <br />
+    <span class="code">Case(<br />
+    &nbsp;&nbsp;&lt;condition&gt;; mFMb_DoScript( &lt;parameters&gt; );<br />
+    &nbsp;&nbsp;&lt;other condition&gt;; mFMb_DoScript( &lt;other parameters&gt; );<br />
+    &nbsp;&nbsp;…<br />
+    &nbsp;&nbsp;False<br />
+    )</span><br />
+    <br />
+  Due to the nature of the expression parameter, the DoScript plug-in will not verify the syntax of the formula during the mFMb_SetScript, as verifying the formula also triggers it. If the syntax of the trigger is wrong, the formula will not return False, and the DoScript plug-in will make the wrong conclusion and consider the alarm triggered.</dd>
+</dl>
+<dl>
+  <dt>Parameters</dt>
+  <dd>expression (required) — a correct formula. Mind the quoting.<br />
+    idleMode (optional) — <span class="code">&quot;safeIdle&quot;</span>, <span class="code">&quot;semiSafeIdle&quot;</span> or <span class="code">&quot;unSafeIdle&quot;</span></dd>
+  <dt>Returns</dt>
+  <dd>nothing if the syntax is correct, evaluation error <span class="code">7</span> / Evaluation Error <span class="code">1224</span>.</dd>
+</dl>
+<a name="mFMb_DS_Toggle" id="mFMd_DoScript14"></a>
+<h1>mFMb_DS_Toggle( boolean )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> It toggles the DoScript plug-in on or off. Try to construct a validation formula for a trigger that disables DoScript, <span class="code">EvaluationError( Evaluate() )</span> the formula, enables DoScript in one go, using a <span class="code">Let()</span> construction.</dd>
+</dl>
+<dl>
+  <dt>Parameters</dt>
+  <dd>boolean (required) — <span class="code">true</span> or <span class="code">false</span></dd>
+  <dt>Returns</dt>
+  <dd>nothing if the syntax is correct, evaluation error <span class="code">14</span> if the boolean value is not <span class="code">0</span> or <span class="code">1</span>.</dd>
+</dl>
+</body>
+</html>

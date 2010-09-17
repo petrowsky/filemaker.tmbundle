@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>File_Save${1:( ${2:message}; ${3:defaultFileName}${4:; ${5:initialFolderPath}} )}$0</string>
+	<key>name</key>
+	<string>File_Save</string>
+	<key>tabTrigger</key>
+	<string>px.f.s</string>
+	<key>uuid</key>
+	<string>4DCC71C7-53D5-45D3-A843-F25166E24C8E</string>
+</dict>
+</plist>

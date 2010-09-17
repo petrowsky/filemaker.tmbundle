@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Year( ${1:date} )$0</string>
+	<key>name</key>
+	<string>Year</string>
+	<key>tabTrigger</key>
+	<string>yr</string>
+	<key>uuid</key>
+	<string>E039A0F9-8F0A-4CA2-823B-08C3C5DFC509</string>
+</dict>
+</plist>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Encr_Decrypt( ${1:password}; ${2:text} )$0</string>
+	<key>name</key>
+	<string>Encr_Decrypt</string>
+	<key>tabTrigger</key>
+	<string>Encr_Decrypt</string>
+	<key>uuid</key>
+	<string>2A0CECCB-C337-4705-BBBF-10769319E0C5</string>
+</dict>
+</plist>

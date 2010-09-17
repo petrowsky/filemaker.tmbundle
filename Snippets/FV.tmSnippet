@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>FV( ${1:payment}; ${2:interestRate}; ${3:periods} )$0</string>
+	<key>name</key>
+	<string>FV</string>
+	<key>tabTrigger</key>
+	<string>fv</string>
+	<key>uuid</key>
+	<string>B427E25E-D1E9-402E-A553-506ED0A64AF9</string>
+</dict>
+</plist>

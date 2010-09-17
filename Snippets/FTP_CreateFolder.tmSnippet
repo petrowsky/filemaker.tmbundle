@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>FTP_CreateFolder( ${1:folderPath} )$0</string>
+	<key>name</key>
+	<string>FTP_CreateFolder</string>
+	<key>tabTrigger</key>
+	<string>FTP_CreateFolder</string>
+	<key>uuid</key>
+	<string>37ECBB06-86A7-4F99-841A-78A5526E8565</string>
+</dict>
+</plist>

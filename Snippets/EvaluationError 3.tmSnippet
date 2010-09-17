@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>EvaluationError( ${1:expression} )$0</string>
+	<key>name</key>
+	<string>EvaluationError</string>
+	<key>tabTrigger</key>
+	<string>ever</string>
+	<key>uuid</key>
+	<string>91209A43-E80A-4C40-8DB2-5F69C6DAFC4F</string>
+</dict>
+</plist>

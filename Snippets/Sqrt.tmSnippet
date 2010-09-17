@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Sqrt( ${1:number} )$0</string>
+	<key>name</key>
+	<string>Sqrt</string>
+	<key>tabTrigger</key>
+	<string>sqrt</string>
+	<key>uuid</key>
+	<string>6E7D4323-B544-470A-9126-1FC3D9A19DB0</string>
+</dict>
+</plist>

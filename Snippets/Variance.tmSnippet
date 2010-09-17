@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Variance( ${1:field1}${2:; field2...} )$0</string>
+	<key>name</key>
+	<string>Variance</string>
+	<key>tabTrigger</key>
+	<string>variance</string>
+	<key>uuid</key>
+	<string>C8257D2B-6B80-42C4-82E3-5F8719B27014</string>
+</dict>
+</plist>

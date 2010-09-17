@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>TextFontRemove( ${1:text}${2:; ${3:fontName}; ${4:fontScript = Roman | Greek | Cryllic | CentralEurope | ShiftJIS | TraditionalChinese | SimplifiedChinese | OEM | Symbol | Other}} )$0</string>
+	<key>name</key>
+	<string>TextFontRemove</string>
+	<key>tabTrigger</key>
+	<string>textfontremove</string>
+	<key>uuid</key>
+	<string>D82F68E4-6971-42F3-A80D-CB72D2ADCFD1</string>
+</dict>
+</plist>

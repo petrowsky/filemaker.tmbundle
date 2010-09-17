@@ -1,0 +1,447 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>SmartPill PHP Documentation</title>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  
+<a name="PHP_Register" id="PHP_Register"></a>
+<h1>PHP_Register{( licenseOwnerName; licenseOwnerCompany; licenseKey )}</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> This function allows the plug-in to be registered. Using <span class="code">PHP_Register</span> with no parameters will return the current registration information. The plug-in will function for 30 minutes without being registered each time FileMaker is launched. After a 30 minute grace period, attempting to use any function other than <span class="code">PHP_Version</span> will result in error <span class="code">100</span> (plug-in is not registered).</dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">// valid registration<br />
+  PHP_Register( &quot;Beta Tester&quot;; &quot;Beta&quot;; &quot;GKQJN2-MHY2TX-1DD1HI-WP0201-0100F3-3E3201&quot; )</span><br />    
+    <br />
+    Returns:<br />
+    <span class="code">0</span> (no error, plug-in is registered)<br />
+    <br />
+    <span class="code">// get registration info<br />
+    PHP_Register</span><br />
+    <br />
+    Returns:<br />
+    <span class="code">Name: Beta Tester<br />
+    Company: Beta<br />
+    License Type: Temporary<br />
+    User Count: 1<br />
+  Expiration Date: 01-31-2007<br />
+    <br />
+    // invalid registration<br />
+    PHP_Register( &quot;Boogie Man&quot;; &quot;BMI&quot;; &quot;123456-123456-</span><span class="code">123456-</span><span class="code">123456-</span><span class="code">123456-</span><span class="code">123456&quot; )<br />
+    <br />
+    </span>Returns:<span class="code"><br />
+    101</span> <span class="code">Invalid regirstion</span> (error, plug-in is not registered)<br />
+  </dd>
+</dl>
+
+<p><a name="PHP_Version" id="PHP_Register2"></a> </p>
+<h1>PHP_Version</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> This function returns both the plug-in version and the PHP version.</dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">// check the version<br />
+    PHP_Version</span><br />
+    <br />
+    Returns:<br />
+    <span class="code">2.0.0<br />
+    PHP Version 5.2.4<br />
+    Copyright © 2007 Scodigo, Inc. Visit http://www.scodigo.com for more info. This product includes PHP software, freely available from http://www.php.net/software.</span></dd>
+  <p><a name="PHP_VersionAutoUpdate" id="PHP_Register3"></a> </p>
+  <h1>PHP_VersionAutoUpdate</h1>
+  <dl>
+    <dt> Description </dt>
+    <dd> This function returns the plug-in version for use with FileMaker Server's AutoUpdate function. An 8-digit number representing the AutoUpdate version is returned.<br />
+      <br />
+    FileMaker includes an AutoUpdate plug-in that allows plug-ins to be installed and updated on client machines. This provides an easy way for administrators to maintain the correct plug-ins for their solutions. For more details, please download FileMaker's documentation here: <a href="http://www.filemaker.com/downloads/pdf/fms9_audoupdate_en.pdf">http://www.filemaker.com/downloads/pdf/fms9_audoupdate_en.pdf</a>.<br />
+    <br />
+    Here's our recomended folder structure which works together with the new <span class="code">PHP_VersionAutoUpdate</span> function.<br />
+    <br />
+    <img src="images/smartpillautoupdatefolderstructure.jpg" width="344" height="237" /><br />
+    <br />
+    You can download the above folder structure including the files here: <a href="http://www.scodigo.com/support/downloads">http://www.scodigo.com/support/downloads</a>. To install, simply unzip into the AutoUpdate folder on your server.</dd>
+    <dt>&nbsp;</dt>
+    <dt> Examples </dt>
+    <dd> To calculate the version:<br />
+      <span class="code"><br />
+      PHP_VersionAutoUpdate</span><br />
+      <br />
+      Returns:<br />
+      <span class="code">02000000 </span>if the version is 2.0.0 or <span class="code">02010000</span> if the version is 2.1.0.<br />
+      <br />
+    To update the plug-in to version 2.0.0:<br />
+    <span class="code"><br />
+    Let(<br />
+     &nbsp;&nbsp;[<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;platform = Case( Get( SystemPlatform ) = -1; &quot;_PPC&quot;; Get( SystemPlatform ) = 1; &quot;_Intel&quot; )<br />
+      &nbsp;&nbsp;];<br />
+    &nbsp;&nbsp;FMSAUC_UpdatePlugin( &quot;PHP&quot; &amp; platform &amp; &quot; 02000000&quot; )<br />
+    )<br />
+    <br />
+    Returns:<br />
+    0</span> if there's no error or one of the errors from FileMaker's documentation on the <span class="code"><a href="AutoUpdate.html#FMSAUC_UpdatePlugin">FMSAUC_UpdatePlugin</a></span> function.<span class="code"><br />
+    </span></dd>
+  </dl>
+  <dt>&nbsp;</dt>
+<a name="PHP_Control" id="PHP_Control"></a>
+<h1>PHP_Control{( enableDisable; password )}</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> This function allows the plug-in to be disabled. It is useful in situations where access to the plug-in needs to be restricted.<br />
+    <br />
+  To disable, pass in a <span class="code">0</span> as the first parameter and a password of your choosing as the second parameter. Once the plug-in is disabled, it can only be enabled by passing in a <span class="code">1</span> as the first parameter and the correct password as the second parameter. Using <span class="code">PHP_Control</span> with no parameters will return the current setting: <span class="code">1</span> if enabled, <span class="code">0</span> if not enabled.</dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">// disable the plug-in<br />
+  PHP_Control( 0; &quot;secret&quot; )</span><br />    
+    <br />
+    Returns:<br />
+    <span class="code">0</span> (no error, plug-in is disabled)<br />
+    <br />
+    <span class="code">// check the current setting<br />
+    PHP_Control</span><br />
+    <br />
+    Returns:<br />
+    <span class="code">0 </span>(plug-in is disabled)<span class="code"><br />
+    <br />
+    // attempt to enable the plug-in with the wrong password<br />
+    PHP_Control( 0; &quot;boogie man&quot;</span><span class="code"> )<br />
+    <br />
+    </span>Returns:<span class="code"><br />
+    105</span> <span class="code">Password to enable is wrong</span> (error, plug-in is still disabled)<br />
+    <br />
+    <span class="code">// enable the plug-in with the correct password<br />
+PHP_Control( 0; &quot;secret&quot;</span><span class="code"> )<br />
+<br />
+</span>Returns:<span class="code"><br />
+0 </span>(no error, plug-in is enabled</dd>
+  </dl>
+</dl>
+<dl>
+  <a name="PHP_Timeout" id="PHP_Register4"></a>
+  <h1>PHP_Timeout{( seconds )}</h1>
+  <dl>
+    <dt> Description </dt>
+    <dd> This function allows you to set the timeout duration for PHP execution. For example, if you want to download a large file from an FTP server, you may need to increase the timeout duration.<br />
+      <br />
+    To set the timeout duration, pass in the number of seconds.<br />
+      <br />
+    Using <span class="code">PHP_Timeout</span> with no parameters will return the current setting. The default setting is 60 seconds.</dd>
+    <dt> Examples </dt>
+    <dd> <span class="code">// check the current setting<br />
+      PHP_Timeout</span><br />
+      <br />
+      Returns:<br />
+      <span class="code">60</span> (assuming the default setting hasn't been changed)<br />
+      <br />
+    <span class="code">// set the time out to 10 seconds<br />
+        PHP_Timeout( 10 )<br />
+    </span><br />
+      Returns:<br />
+      <span class="code">0 </span>(no error, timeout setting is changed)<br />
+    </dd>
+  </dl>
+</dl>
+<a name="PHP_Timeout" id="PHP_Register5"></a>
+<h1>PHP_GetLastError{( selector )}</h1>
+  <dl>
+    <dt> Description </dt>
+    <dd> This function provides an easy way to check for plug-in errors.<br />
+      <br />
+    If there is no error, this function will return <span class="code">0</span>, otherwise it will return an error number with a description of the error.<br />
+      <br />
+    Pass in a <span class="code">1</span> if you only want the error number to be returned. Pass in a <span class="code">2</span> to return only the error description.<br />
+      <br />
+    See the <a href="PHP_FM_Extension.html#fm_set_error">fm_set_error</a> function in the PHP FileMaker Extension section below for information on how to return use-defined errors from your PHP code.</dd>
+    <dt> Examples </dt>
+    <dd> <span class="code">PHP_GetLastError</span><br />
+      <br />
+      Returns:<br />
+      <span class="code">0</span> (assuming no error)</dd>
+    <dt>Possible Errors</dt>
+    <dd>
+      <table width="100%" border="0">
+
+        <tr>
+          <td width="9%">0</td>
+          <td width="91%">No error</td>
+        </tr>
+        <tr>
+          <td>100</td>
+          <td>Plug-in is not registered</td>
+        </tr>
+        <tr>
+          <td>101</td>
+          <td>INvalid registration</td>
+        </tr>
+        <tr>
+          <td>102</td>
+          <td>License is for an older version of the plug-in (upgrade required)</td>
+        </tr>
+        <tr>
+          <td>103</td>
+          <td>License is expired (new license required)</td>
+        </tr>
+        <tr>
+          <td>104</td>
+          <td>Plug-in is currently disabled</td>
+        </tr>
+        <tr>
+          <td>105</td>
+          <td>Plug-in could not be enabled (incorrect password)</td>
+        </tr>
+        <tr>
+          <td>106</td>
+          <td>Invalid parameter</td>
+        </tr>
+        <tr>
+          <td>200</td>
+          <td>Plug-in is busy (main)</td>
+        </tr>
+        <tr>
+          <td>202</td>
+          <td>PHP parse error</td>
+        </tr>
+        <tr>
+          <td>300</td>
+          <td>Invalid package path</td>
+        </tr>
+        <tr>
+          <td>301</td>
+          <td>Invalid package file</td>
+        </tr>
+        <tr>
+          <td>302</td>
+          <td>No package files found in specified folder</td>
+        </tr>
+        <tr>
+          <td>303</td>
+          <td>Invalid URL format</td>
+        </tr>
+        <tr>
+          <td>304</td>
+          <td>Can't connect to server</td>
+        </tr>
+        <tr>
+          <td>305</td>
+          <td>Server isn't responding</td>
+        </tr>
+        <tr>
+          <td>306</td>
+          <td>Requested URL not found on server</td>
+        </tr>
+        <tr>
+          <td>307</td>
+          <td>Server requires authentication</td>
+        </tr>
+        <tr>
+          <td>308</td>
+          <td>Server doesn't support basic authentication</td>
+        </tr>
+        <tr>
+          <td>309</td>
+          <td>Authentication failed</td>
+        </tr>
+        <tr>
+          <td>310</td>
+          <td>Invalid save path</td>
+        </tr>
+        <tr>
+          <td>311</td>
+          <td>Can't write to save path (check permissions)</td>
+        </tr>
+        <tr>
+          <td>312</td>
+          <td>Too many open files</td>
+        </tr>
+        <tr>
+          <td>313</td>
+          <td>Too many symbolic links encountered while resolving save path</td>
+        </tr>
+        <tr>
+          <td>314</td>
+          <td>Container file name not set</td>
+        </tr>
+      </table>
+    </dd>
+  </dl>
+  <dl>
+  <a name="PHP_Execute" id="PHP_Register4"></a>
+  <h1>PHP_Execute( phpCode {; keepMemory {; timeoutSeconds}} )</h1>
+  <dt> Description </dt>
+    <dd> This is the main function. It allows PHP code to be executed and for the results to be returned to FileMaker.<br />
+      <br />
+    The default behavior for the plug-in is to clear any previous variables, objects, etc. from memory before starting a new execution. In some cases, you may not want memory to be cleared.<br />
+      <br />
+    The first parameter is the PHP code that is to be executed. Please note that the <span class="code">phpCode</span> parameter is limited to the ISO-8859-1 character set. This means that Unicode and other characters that fall outside ISO-8859-1 cannot be read by the plug-in. We hope to include Unicode support when the new PHP6 version is released.<br />
+      <br />
+    The second parameter is used to indicate if you would like to maintain the values of the PHP code execution in memory. This allows subsequent calls to PHP to access the values that were set by the previous call. Pass in a <span class="code">1</span> as the second parameter to &quot;keepMemory&quot;. The default is <span class="code">0</span>.<br />
+      <br />
+    The third parameter can be used to control the timeout duration for a single execution. Simply pass in the number of seconds for the timeout. The default is 60 seconds.</dd>
+    <dt> Examples </dt>
+<dd> <span class="code">// the obligatory hellow world<br />
+      PHP_Execute( &quot;echo 'hello world';&quot; )</span><br />
+      <br />
+  Returns:<br />
+    <span class="code">hello world</span><br />
+      <br />
+  <span class="code">// set $my_var to 'hello world'<br />
+  PHP_Execute( &quot;$my_var = 'hello world';&quot; ) &amp;<br />
+  <br />
+  // use the PHP var_dump function to show that $my_var<br />
+  // still exists when the keepMemory parameter is<br />
+  // set to 1<br />
+  PHP_Execute( &quot;var_dump($my_var);&quot;; 1 ) &amp;<br />
+  <br />
+  // now execute the same code with keepMemory set to 0<br />
+  // and notice that $my_var is now NULL<br />
+  PHP_Execute( &quot;@var_dump($my_var);&quot;; 0 )<br />
+  </span><br />
+      Returns:<br />
+      <span class="code">string(11) &quot;hello world&quot;<br />
+      NULL<br />
+      <br />
+      // use the PHP sleep function to show what happens when<br />
+      // the timeoutseconds parameter is set to a duration<br />
+      // that's less than the execution time<br />
+      PHP_Execute( &quot;sleep( 2 );&quot;; 0; 1 )<br />
+      <br />
+  </span>Returns:<span class="code"><br />
+  201 Timeout</span><br />
+</dd>
+
+<a name="PHP_ExecuteToContainer" id="PHP_Register6"></a>
+<h1>PHP_ExecuteToContainer( phpCode {; fileName {; keepMemory {; timeoutSeconds}}} )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> This function allows you to save the results of your PHP code directly to a FileMaker container field.<br />
+    <br />
+  Other than the fileName parameter, this function is identical to PHP_Execute.<br />
+    <br />
+  As of version 2.0, the fileName parameter now supports Unicode characters and is optional (use the <a href="PHP_FM_Extension.html#fm_set_container_file_name">fm_set_container_file_name</a> function to set the file name from without your PHP code). Note that if the fileName isn't set, error 314 &quot;Container file name not set&quot; will be returned.<br />
+  <br />
+  The file extension should be included in the file name, for example, &quot;scodigo-logo.<strong>png</strong>&quot;. If the plug-in recognizes the file extension and considers it to be a graphic file, it will generate a preview for display. The supported graphic file types are bmp, gif, giff, jpeg, jpg, pct, pdf, png, psd, tif, tiff. Files are stored in the database just as if you had imported them without &quot;Store only a reference to the file&quot; checked.<br />
+  <br />
+  As of version 2.0, the <span class="code">PHP_Execute_To_Container</span> function has been deprecated. It still works but has been replaced with <span class="code">PHP_ExecuteToContainer</span> which properly follows our function naming convention.</dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">$url = 'http://www.scodigo.com/images/scodigo-logo.png';<br />
+    <br />
+  $file = file_get_contents($url);<br />
+    <br />
+  if (! $file) {<br />
+  &nbsp;&nbsp;die(&quot;Could not load file.&quot;);<br />
+  }<br />
+    <br />
+  echo $file;</span><span class="code"></span><br />
+    <br />
+    Returns:<br />
+  scodigo-logo.phg file with preview</dd>
+</dl>
+<a name="PHP_GetLastCode" id="PHP_Register7"></a>
+<h1>PHP_GetLastCode</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> This function returns the PHP code that was last executed. This can be very helpful during developoment and troubleshooting. The function works with PHP code that's executed with <span class="code">PHP_Execute</span>, <span class="code">PHP_ExecuteToContainer</span> and with PHPx functions as well.</dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">// execute a simple line of PHP code<br />
+  PHP_Execute( &quot;$my_var = 'hello world';&quot; ) &amp;<br />
+    <br />
+  // use GetLastCode to view the code that was executed<br />
+  PHP_GetLastCode</span><span class="code"></span><br />
+    <br />
+    Returns:<br />
+    <span class="code">$my_var = 'hello world';</span></dd>
+</dl>
+<a name="PHP_LoadFunctions" id="PHP_Register8"></a>
+<h1>PHP_LoadFunctions{( pathOrXMLString )}</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> This funciton allows you to load additional plug-in functions by reading specially formatted &quot;PHPx&quot; XML files or XML strings. You can load individual files by supplying a file path or you can supply a folder path and all XML files within the specified folder will be loaded. If no path parameter is supplied, all XML files located in the PHPx folder (located within the PHP Support Folder) will be loaded. You can also load functions by supplying an XML string instead of loading from file. This allows you to store the XML for your functions in FileMaker and avoid having to write files to disk.<br />
+    <br />
+  If there is no error, a return delimited list of the functions that were loaded will be returned.<br />
+    <br />
+  The path parameter is optional and can either be the path to a file or a folder.<br />
+    <br />
+  NOTE: When specifying a path, you can either supply the full path or a relative path that starts with the PHPx folder. For example, these path specifications point to the same file:<br />
+    <br />
+  Full path: <span class="code">/Users/scodigo/Library/Application Support/FileMaker/Extensions/PHP Support/PHPx/Functions/My_Functions.xml</span><br />
+  Relative path: <span class="code">Functions/My_Functions.xml</span></dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">// load ALL files in the default PHPx folder<br />
+  PHP_LoadFunctions</span><span class="code"></span><br />
+    <br />
+    Returns:<br />
+  List of functions loaded from all XML files in the PHPx folder.<br />
+  <br /> 
+  <span class="code">// load a specific file (using relative path)<br />
+  PHP_LoadFunctions( &quot;Functions/My_Functions.xml&quot; )</span><span class="code"></span><br />
+    <br />
+    Returns:<br />
+    List of functions loaded frmo the My_Funcitons.xml file<br />
+    <br />
+    <span class="code">// load a specific file (using full path)<br />
+PHP_LoadFunctions( &quot;/Users/scodigo/Library/Application Support/FileMaker/Extensions/PHP Support/PHPx/Functions/My_Functions.xml&quot; )</span><span class="code"></span><br />
+<br />
+Returns:<br />
+List of functions loaded frmo the My_Funcitons.xml file<br />
+<br />
+<span class="code">// load functions from an XML string stored in a field<br />
+PHP_LoadFunctions( Code::My_XML_String )</span><span class="code"></span><br />
+<br />
+Returns:<br /> 
+List of functions loaded from the XML stored in the field &quot;Code::My_XML_String&quot;<br />
+<br />
+<span class="code">// attempt to load using invalid path (here we assume<br />
+// that My_Functions.xml is actually located within the<br />
+// Functions folder and thus cannot be found<br />
+PHP_LoadFunctions( &quot;My_Functions.xml&quot; )</span><span class="code"></span><br />
+<br />
+Returns:<br /> 
+<span class="code">300 Invalid package path</span><br />
+<br />
+<span class="code">// attempt to load an invalid file<br />
+PHP_LoadFunctions( &quot;Invalid.xml&quot; )</span><span class="code"></span><br />
+<br />
+Returns:<br />
+<span class="code">301 Invalid package file</span><br />
+<br />
+<span class="code">// attempt to load files in an empty folder<br />
+PHP_LoadFunctions( &quot;Empty&quot; )</span><span class="code"></span><br />
+<br />
+Returns:<br />
+<span class="code">302 No package files found in specified folder</span><br />
+  </dd>
+</dl>
+<a name="PHP_LoadFunctionsFromURL" id="PHP_Register9"></a>
+<h1>PHP_LoadFunctionsFromURL( url {; savePath {; timeoutSeconds}} )</h1>
+<dl>
+  <dt> Description </dt>
+  <dd> This function is similar to <span class="code">PHP_LoadFunctions</span> except it allows you to load functions from an HTTP server instead of from disk. By including the <span class="code">savePath</span> parameter you can insall or update a local copy of the XML file. You can choose to load functions from URL each time your solution starts up, or you can use this function as an installer to maintain the correct file versions on each client machine (and only load from URL when there's a new version).<br />
+    <br />
+  If there is no error, a return delimited list of the functions that were loaded will be returned.<br />
+    <br />
+  The <span class="code">url</span> parameter must point to a properly formatted XML file, for example: <span class="code">http://www.scodigo.com/PHPx/TestA.xml</span> (where <span class="code">TestA.xml</span> is a properly formatted XML file).<br />
+    <br />
+  The <span class="code">savePath</span> parameter is optional and must be a valid folder. Consider using the <span class="code">FM_PHPX_PATH</span> constant as an easy way to get the PHPx path which is the default location for PHPx files.<br />
+    <br />
+  For web server connections, HTTPS and basic authentication are supported.</dd>
+  <dt> Examples </dt>
+  <dd> <span class="code">// load functions from TextA.xml<br />
+    PHP_LoadFunctionsFromURL( &quot;http://www.scodigo.com/PHPx/TestA.xml&quot; )</span><br />
+    <br />
+    Returns:<br />
+    List of functions loaded from the <span class="code">TestA.xml</span> file located on the Scodigo web site.<br />
+    <br />
+  </dd>
+  <dt></dt>
+  <dd> <span class="code">// load functions from TestA.xml and install locally<br />
+    PHP_LoadFunctionsFromURL( &quot;http://www.scodigo.com/PHPx/TestA.xml&quot;; &quot;/Applications/FileMaker Pro 9 Advanced/Extensions/PHP Support/PHPx&quot;; 10 )</span><br />
+  <br />
+    Returns:<br />
+  List of functions loaded from the <span class="code">TestA.xml</span> file located on the Scodigo web site and installs the file locally in <span class="code">/Applications/FileMaker Pro 9 Advanced/Extensions/PHP Support/PHPx</span>. Also uses a timeout of 10 seconds.</dd>
+</dl>
+</body>
+</html>

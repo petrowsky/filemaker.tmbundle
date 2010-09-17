@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Trim( ${1:text}; ${2:trimSpaces = true | false}; ${3:trimType = 0 | 1 | 2 | 3} )$0</string>
+	<key>name</key>
+	<string>TrimAll</string>
+	<key>tabTrigger</key>
+	<string>trimall</string>
+	<key>uuid</key>
+	<string>164AF681-D88A-4470-91C8-FECAB3D6B10F</string>
+</dict>
+</plist>

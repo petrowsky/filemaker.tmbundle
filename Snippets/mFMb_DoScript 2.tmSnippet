@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>mFMb_DoScript( ${1:scriptName}${2:; ${3:Get( FileName )${4:; ${5:scriptParameter}${6:; ${7:"pause" | "resume" | "halt" | "exit"}}}}} )$0</string>
+	<key>name</key>
+	<string>mFMb_DoScript</string>
+	<key>tabTrigger</key>
+	<string>ds</string>
+	<key>uuid</key>
+	<string>24415908-53CD-4B17-B2FC-9880BDE694CD</string>
+</dict>
+</plist>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>HTTP_SetProxyServer( ${1:address}${2:; ${3:port}} )$0</string>
+	<key>name</key>
+	<string>HTTP_SetProxyServer</string>
+	<key>tabTrigger</key>
+	<string>px.h.sps</string>
+	<key>uuid</key>
+	<string>1FA4D093-ABCD-469E-8B35-3FA1E514D522</string>
+</dict>
+</plist>

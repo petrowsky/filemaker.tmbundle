@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>File_CreateFolder( ${1:folderPath} )$0</string>
+	<key>name</key>
+	<string>File_CreateFolder</string>
+	<key>tabTrigger</key>
+	<string>px.f.cf</string>
+	<key>uuid</key>
+	<string>DB6E1003-16AC-4A3D-9262-AD93D0049FF6</string>
+</dict>
+</plist>

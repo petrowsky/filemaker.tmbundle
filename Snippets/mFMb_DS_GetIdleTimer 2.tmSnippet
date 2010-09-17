@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>mFMb_DS_GetIdleTimer${1:( idleMode = "safeIdle" | "semiSafeIdle" | "unSafeIdle" )}$0</string>
+	<key>name</key>
+	<string>mFMb_DS_GetIdleTimer</string>
+	<key>tabTrigger</key>
+	<string>dsgit</string>
+	<key>uuid</key>
+	<string>E1BDDB40-1107-42AE-B7E9-2CD77C4FAE17</string>
+</dict>
+</plist>

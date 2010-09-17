@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Get( WindowDesktopHeight )</string>
+	<key>name</key>
+	<string>Get( WindowDesktopHeight )</string>
+	<key>tabTrigger</key>
+	<string>wdh</string>
+	<key>uuid</key>
+	<string>FC1B7A44-3FCD-403D-A9F6-3736B2C2DC3F</string>
+</dict>
+</plist>

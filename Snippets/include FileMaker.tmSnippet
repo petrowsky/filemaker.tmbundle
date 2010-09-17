@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>require_once ('FileMaker.php');
+$0</string>
+	<key>name</key>
+	<string>include FileMaker</string>
+	<key>scope</key>
+	<string>source.php</string>
+	<key>tabTrigger</key>
+	<string>includefm</string>
+	<key>uuid</key>
+	<string>AB35A77F-097D-43B4-9523-0CE371029499</string>
+</dict>
+</plist>

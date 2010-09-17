@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>fm_unset( ${1:name} )$0</string>
+	<key>name</key>
+	<string>fm_unset</string>
+	<key>tabTrigger</key>
+	<string>fm_unset</string>
+	<key>uuid</key>
+	<string>3A15FD51-E317-4C38-BE2F-1DBCBA82030F</string>
+</dict>
+</plist>

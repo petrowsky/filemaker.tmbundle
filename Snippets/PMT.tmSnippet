@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>PMT( ${1:principal}; ${2:interestRate}; ${3:term} )$0</string>
+	<key>name</key>
+	<string>PMT</string>
+	<key>tabTrigger</key>
+	<string>pmt</string>
+	<key>uuid</key>
+	<string>BF6F1634-E725-4F9A-903C-E4DDAD1A169E</string>
+</dict>
+</plist>

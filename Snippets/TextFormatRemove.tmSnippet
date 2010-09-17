@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>TextFormatRemove( ${1:text} )$0</string>
+	<key>name</key>
+	<string>TextFormatRemove</string>
+	<key>tabTrigger</key>
+	<string>textformatremove</string>
+	<key>uuid</key>
+	<string>EC419322-C501-4778-B9F5-15853DF39320</string>
+</dict>
+</plist>

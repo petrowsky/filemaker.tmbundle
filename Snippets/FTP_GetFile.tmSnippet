@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>FTP_GetFile( ${1:remoteFilePath}; ${2: localFilePath}; ${3:transferMode = "ASCII" | "BINARY"}${4:; ${5:overwrite=true | false}} )$0</string>
+	<key>name</key>
+	<string>FTP_GetFile</string>
+	<key>tabTrigger</key>
+	<string>FTP_GetFile</string>
+	<key>uuid</key>
+	<string>D9A41552-2E17-423D-B346-6EC3116CD26C</string>
+</dict>
+</plist>

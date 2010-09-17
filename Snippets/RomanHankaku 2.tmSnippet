@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>RomanHankaku( ${1:text} )$0</string>
+	<key>name</key>
+	<string>RomanHankaku</string>
+	<key>tabTrigger</key>
+	<string>rh</string>
+	<key>uuid</key>
+	<string>AA0DCF50-72C6-48D0-8CC6-0C60A0337D5D</string>
+</dict>
+</plist>

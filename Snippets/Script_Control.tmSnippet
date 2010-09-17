@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Script_Control${1:( ${2:enableDisable = true | false} )}$0</string>
+	<key>name</key>
+	<string>Script_Control</string>
+	<key>tabTrigger</key>
+	<string>Script_Control</string>
+	<key>uuid</key>
+	<string>68D90830-5C06-48A7-A006-D97B8F61560E</string>
+</dict>
+</plist>

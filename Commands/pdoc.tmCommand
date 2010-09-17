@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/php
+&lt;?php
+/**
+ * pdoc fetches the first few lines of syntax for given functions from nl.php.net (in English)
+ * Usage: pdoc {function}
+ * Crude, but it works after a fashion, for most functions :-)
+ * Copyright 2004 M.Spreij &lt;mac.com@nemo&gt; under the GPL: http://www.gnu.org/licenses/gpl.txt
+ * 
+ * Updated:
+ *  2005-08-31: added html_decode() at final print statement
+ * 
+**/
+
+require_once 'inc/lib.php'; # http://dev.expocom.nl/functions.php?id=61
+
+if ($argc == 1) {
+  echo "  pdoc fetches the first few lines of syntax for given functions from nl.php.net (in English)\n".
+       "  Usage: pdoc {function}\n";
+  return;
+}
+
+# Settings
+ini_set('display_errors', '1');
+ini_set('track_errors', '1');
+
+$function = $argv[1];
+$url      = 'http://nl.php.net/';
+
+$header  = "Accept-Language: en-gb, en";
+$options = array('CURLOPT_HTTPHEADER' =&gt; array($header));
+
+$res = fetch_url($url . $function, $options);
+
+if ($res[0] != 200) {
+  if ($res == 302) {
+    echo "Function not found";
+  }else{
+    echo "Error fetching syntax, ". $res[1];
+  }
+  echo "\n";
+  return false;
+}else{
+  if (strtolower($argv[2])=='w') {
+    echo "Opening $url$function.. \n";
+    shell_exec('open '. $url.$function);
+    die();
+  }
+  $data = $res[1];
+}
+
+
+$start = 'Swedish'; # nice point to start cutting
+
+$data = substr($data, strpos($data, $start) + strlen($start), 1000);
+# cuts underneath the table with 'last updated' and stuff
+$data = substr($data, strpos(strtolower($data), '&lt;/table&gt;') + 8);
+# replace linebreaks with spaces, fix tags, remove nonbreaking spaces
+$data = str_replace(array('&amp;nbsp;', "\n", ' &gt;'), array(' ', ' ', '&gt;'), nl2unix($data));
+# insert linebreaks for paragraph and header tags
+$data = str_replace(array('&lt;P&gt;', '&lt;/P&gt;'), "\n", $data);
+$data = str_replace(array('&lt;H1&gt;', '&lt;/H1&gt;'), "\n", $data);
+# cut until the first ')' after the description identifier (that's '&lt;H2&gt;')
+$find = strpos(strtolower($data), '&lt;h2&gt;');
+$find = strpos(strtolower($data), ')', $find + 5);
+$data = substr($data, 0, $find + 1);
+# then insert linebreaks for &lt;H2&gt; too
+$data = str_replace(array('&lt;H2&gt;', '&lt;/H2&gt;'), "\n", $data);
+# remove all the tags and remove double returns
+$data = strip_tags($data);
+$data = trim(str_replace("\n\n", "\n", $data));
+print html_decode($data); # from lib.php
+
+echo "\n\n";
+
+?&gt;
+</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>pdoc</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>40D2F020-4E51-4B03-BB86-41C0097F054A</string>
+</dict>
+</plist>

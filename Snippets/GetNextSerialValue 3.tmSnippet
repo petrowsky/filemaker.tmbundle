@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>GetNextSerialValue( ${1:Get( FileName )}; ${2:fieldName} )$0</string>
+	<key>name</key>
+	<string>GetNextSerialValue</string>
+	<key>tabTrigger</key>
+	<string>gnsv</string>
+	<key>uuid</key>
+	<string>E8B7018C-8F9A-462C-B1C6-5C579597F778</string>
+</dict>
+</plist>

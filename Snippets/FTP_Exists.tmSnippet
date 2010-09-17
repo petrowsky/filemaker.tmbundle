@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>FTP_Exists( ${1:path} )$0</string>
+	<key>name</key>
+	<string>FTP_Exists</string>
+	<key>tabTrigger</key>
+	<string>FTP_Exists</string>
+	<key>uuid</key>
+	<string>C75CB8B3-BBF5-46BE-BCC8-3FBF05D9016A</string>
+</dict>
+</plist>

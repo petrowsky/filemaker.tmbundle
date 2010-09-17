@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Get( HighContrastState )</string>
+	<key>name</key>
+	<string>Get( HighContrastState )</string>
+	<key>tabTrigger</key>
+	<string>hcs</string>
+	<key>uuid</key>
+	<string>4C331EDC-2AB4-41F7-BA61-8F8D0957F4CE</string>
+</dict>
+</plist>

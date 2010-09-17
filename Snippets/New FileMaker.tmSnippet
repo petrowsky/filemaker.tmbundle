@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>\$${1:fm} = new FileMaker(${2:FM_FILE}, ${3:FM_HOST}, ${4:FM_USER}, ${5:FM_PASS});
+$0</string>
+	<key>name</key>
+	<string>New FileMaker</string>
+	<key>scope</key>
+	<string>source.php</string>
+	<key>tabTrigger</key>
+	<string>newfm</string>
+	<key>uuid</key>
+	<string>07C921B8-05AF-417D-9608-14C70753B83D</string>
+</dict>
+</plist>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>TextStyleRemove( ${1:text}; ${2:styles = Plain | Bold | Italic | Underline | Condense | Extend | Strikethrough | SmallCaps | Superscript | Subscript | Uppercase | Lowercase | Titlecase | WordUnderline | DoubleUnderline | AllStyles} )$0</string>
+	<key>name</key>
+	<string>TextStyleRemove</string>
+	<key>tabTrigger</key>
+	<string>textstyleadd</string>
+	<key>uuid</key>
+	<string>D7B9C695-A403-4FF5-87B8-98194E708B8D</string>
+</dict>
+</plist>

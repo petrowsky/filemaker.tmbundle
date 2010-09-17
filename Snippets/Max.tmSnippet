@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Max( ${1:field1}${2:; field2...} )$0</string>
+	<key>name</key>
+	<string>Max</string>
+	<key>tabTrigger</key>
+	<string>max</string>
+	<key>uuid</key>
+	<string>45CD47D3-A38C-4ED5-8678-CECEB9B8C63D</string>
+</dict>
+</plist>

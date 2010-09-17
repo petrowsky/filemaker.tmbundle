@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>FieldStyle( ${1:Get( FileName )}; ${2:layoutName}; ${3:fieldName} )$0</string>
+	<key>name</key>
+	<string>FieldStyle</string>
+	<key>tabTrigger</key>
+	<string>fieldstyle</string>
+	<key>uuid</key>
+	<string>E15A4652-FEBF-4FBD-8CA9-6B0A1EFC324E</string>
+</dict>
+</plist>

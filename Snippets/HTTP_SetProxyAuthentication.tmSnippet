@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>HTTP:SetProxyAuthentication( ${1:userName}; ${2:password}; ${3:authenticationType} )$0</string>
+	<key>name</key>
+	<string>HTTP_SetProxyAuthentication</string>
+	<key>tabTrigger</key>
+	<string>HTTP_SetProxyAuthentication</string>
+	<key>uuid</key>
+	<string>AF261E4F-0DC6-40AF-BB41-961F8603AC22</string>
+</dict>
+</plist>

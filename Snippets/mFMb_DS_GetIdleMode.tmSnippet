@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>mFMb_DS_GetIdleMode</string>
+	<key>name</key>
+	<string>mFMb_DS_GetIdleMode</string>
+	<key>tabTrigger</key>
+	<string>mFMb_DS_GetIdleMode</string>
+	<key>uuid</key>
+	<string>A62E1356-70DB-4497-83C1-553EAA8FC513</string>
+</dict>
+</plist>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>DONE
+- Snippets with the full name of each of the built-in FileMaker functions tied to the name of the function showing a function template (i.e., "LastError[TAB]" results in "Get( LastError)", "Left[TAB]" results in "Left( text; numberOfCharacters )" ) with tab stops at each of the parameters and the final tab stop at the end of the function. Complicated functions such as Case, Let and Substitute will include complex built-in formatting.
+
+DONE
+- Snippets with shortcut names, such as "err" for "Get( LastError )".
+
+DONE
+- Snippets for sub sets of parameters, such as "[[TAB]" resulting in "[ string; replacementString ];", meant to be inserted into a Substitute function.
+
+- Snippets for at least the plugin functions that I use, such as SmartPill PHP and SuperContainer, and possibly other popular plugins as well.
+
+DONE
+- Snippets for enclosing the selected text inside of a function. So if "MyField" is selected, pressing, for example, Shift-Ctrl-E will offer a menu of functions that can be wrapped around it, typing "l-e-n-[ENTER] results in, perhaps, "Length( MyField )".
+
+IN PROGRESS
+- Obviously, syntax highlighting.
+
+DONE
+- Documentation lookup. Selecting a function and pressing a key command will bring up the FileMaker's web site or the built-in help page for the given function.
+
+DONE
+- Code completion for the built-in functions.
+
+- Code completion for plugin functions.
+
+IN PROGRESS
+- An organized bundle menu for access to features via that interface rather than just with the keyboard.
+
+UNTOUCHED
+- Provide snippets for constants and functions that are included as part of the SmartPill plugin.
+
+DONE
+- Integrate FileMaker PHP API bundle.
+
+UNTOUCHED
+- Provide documentation lookup for SmartPill PHP FileMaker Extension functions.
+
+That's at a minimum. Additionally, if I can figure out a good way to use AppleScript or something else to help out the process, I'd like to include the following.
+
+- Code completion for any custom functions available in the open files.
+
+- Ability to press a key and have a calculation open in TextMate. I have installed the tool to make this available to some apps (i.e., Safari), but FileMaker doesn't seem to support the feature. I'm going to try to figure out a workaround.
+
+- Code completion for any global variables.
+
+- Ability to somehow use comments in the calc to indicate default values parameters or local and global script variables for testing so that a TextMate command can be issued that will show the result of the calculation.
+
+- Ability to syntax highlight embedded PHP code, and maybe also HTML and JavaScript.
+
+- Figure out a way to look up documentation when more than just the function name is selected, so that, for example, if "Left( FieldName; 5 )" is selected and the user opts to look up the documentation, that for the Left function will be looked up. This will need to work around the Get functions, which should only work if the entire function is selected.</string>
+	<key>name</key>
+	<string>Features List</string>
+	<key>scope</key>
+	<string>never</string>
+	<key>uuid</key>
+	<string>4C4186E3-C241-4EE4-B04B-4BCC8F17F1D1</string>
+</dict>
+</plist>

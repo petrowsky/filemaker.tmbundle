@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>GetSummary( ${1:summaryField}; ${2:breakField} )$0</string>
+	<key>name</key>
+	<string>GetSummary</string>
+	<key>tabTrigger</key>
+	<string>getsummary</string>
+	<key>uuid</key>
+	<string>8B9E2306-1447-438D-9269-D2CAC40C99B0</string>
+</dict>
+</plist>

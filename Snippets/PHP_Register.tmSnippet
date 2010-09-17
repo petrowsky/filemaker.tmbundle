@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>PHP_Register${1:( ${2:licenseOwnerName}; ${3:licenseOwnerCompany}; ${4:licenseKey} )}$0</string>
+	<key>name</key>
+	<string>PHP_Register</string>
+	<key>tabTrigger</key>
+	<string>PHP_Register</string>
+	<key>uuid</key>
+	<string>4B28497D-9793-4CEB-83CC-3A5DDFE7CEE9</string>
+</dict>
+</plist>

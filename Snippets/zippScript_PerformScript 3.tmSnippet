@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>zippScript_PerformScript( ${1:Get( FileName )}; ${2:scriptName}${3:; ${4:param}${5:; ${6:"halt" | "exit" | "resume" | "pause"}}} )$0</string>
+	<key>name</key>
+	<string>zippScript_PerformScript</string>
+	<key>tabTrigger</key>
+	<string>zsps</string>
+	<key>uuid</key>
+	<string>2F44B2AC-BCDC-4E11-927A-A7FEE527100D</string>
+</dict>
+</plist>

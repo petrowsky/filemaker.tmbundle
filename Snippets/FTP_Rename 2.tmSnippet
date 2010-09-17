@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>FTP_Rename( ${1:sourcePath}; ${2:destinationPath} )$0</string>
+	<key>name</key>
+	<string>FTP_Rename</string>
+	<key>tabTrigger</key>
+	<string>px.ft.rn</string>
+	<key>uuid</key>
+	<string>BD821846-7591-43FC-8501-145F934A891C</string>
+</dict>
+</plist>

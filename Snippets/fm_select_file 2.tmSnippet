@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>fm_select_file( ${1:message}${2:, ${3:initial_folder_path}${4:, ${5:file_type_list}}} )$0</string>
+	<key>name</key>
+	<string>fm_select_file</string>
+	<key>tabTrigger</key>
+	<string>fm.file</string>
+	<key>uuid</key>
+	<string>0A9664A9-11D5-4DED-BDA2-98EF46BDE4E1</string>
+</dict>
+</plist>

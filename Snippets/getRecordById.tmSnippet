@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>\$${1:record} = \$${2:fm}-&gt;getRecordById('${3:layout}', '${4:recid}');
+$0</string>
+	<key>name</key>
+	<string>getRecordById</string>
+	<key>scope</key>
+	<string>source.php</string>
+	<key>tabTrigger</key>
+	<string>getrecbyid</string>
+	<key>uuid</key>
+	<string>33C92394-2D9E-470C-82EF-1E9800592086</string>
+</dict>
+</plist>

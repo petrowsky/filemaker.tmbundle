@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>mFMb_DS_LastErrText</string>
+	<key>name</key>
+	<string>mFMb_DS_LastErrText</string>
+	<key>tabTrigger</key>
+	<string>dslet</string>
+	<key>uuid</key>
+	<string>AA802C00-A389-4EF2-94D5-7B3EEB263308</string>
+</dict>
+</plist>

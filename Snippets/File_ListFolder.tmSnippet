@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>File_ListFolder( ${1:path}${2:; ${3:includeFiles = true | false}${4:; ${5:includeFolders = true | false}${6:; ${7:includeInvisibles = true | false}}}} )$0</string>
+	<key>name</key>
+	<string>File_ListFolder</string>
+	<key>tabTrigger</key>
+	<string>File_ListFolder</string>
+	<key>uuid</key>
+	<string>86990790-AD1F-4823-885D-0F809CB4956E</string>
+</dict>
+</plist>

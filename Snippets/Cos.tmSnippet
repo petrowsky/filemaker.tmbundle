@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Cos( ${1:angleInRadians} )$0</string>
+	<key>name</key>
+	<string>Cos</string>
+	<key>tabTrigger</key>
+	<string>cos</string>
+	<key>uuid</key>
+	<string>5431E718-A226-4051-8369-4B9F5BC8613A</string>
+</dict>
+</plist>

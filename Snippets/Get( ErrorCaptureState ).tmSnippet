@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Get( ErrorCaptureState )</string>
+	<key>name</key>
+	<string>Get( ErrorCaptureState )</string>
+	<key>tabTrigger</key>
+	<string>ecs</string>
+	<key>uuid</key>
+	<string>22E4BDDE-F3C7-4B6F-A51E-678FD4973310</string>
+</dict>
+</plist>

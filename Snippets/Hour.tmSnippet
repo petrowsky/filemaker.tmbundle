@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Hour( ${1:time} )$0</string>
+	<key>name</key>
+	<string>Hour</string>
+	<key>tabTrigger</key>
+	<string>hour</string>
+	<key>uuid</key>
+	<string>66A6F4AC-3C77-452F-9676-D914EDDA52C7</string>
+</dict>
+</plist>

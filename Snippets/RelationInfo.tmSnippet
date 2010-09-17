@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>RelationInfo( ${1:Get( FileName )}; ${2:tableName} )$0</string>
+	<key>name</key>
+	<string>RelationInfo</string>
+	<key>tabTrigger</key>
+	<string>relationinfo</string>
+	<key>uuid</key>
+	<string>6A282A57-C577-412F-A4C1-436586A0ECB6</string>
+</dict>
+</plist>

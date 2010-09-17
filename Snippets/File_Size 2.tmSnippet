@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>File_Size( ${1:path}${2:; ${3:formatResult}} )$0</string>
+	<key>name</key>
+	<string>File_Size</string>
+	<key>tabTrigger</key>
+	<string>px.f.sz</string>
+	<key>uuid</key>
+	<string>A9427535-D8EC-4828-BA3F-AE2A93C6E844</string>
+</dict>
+</plist>

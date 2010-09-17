@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>FTP_ConnectionSettings${1:( ${2:host}${3:; ${4:port}${5:; ${6:userName}${7:; ${8:password}${9:; ${10:timeout}}}}} )}$0</string>
+	<key>name</key>
+	<string>FTP_ConnectionSettings</string>
+	<key>tabTrigger</key>
+	<string>FTP_ConnectionSettings</string>
+	<key>uuid</key>
+	<string>C157E2C1-DF11-40B2-84C9-87459CE3A4ED</string>
+</dict>
+</plist>

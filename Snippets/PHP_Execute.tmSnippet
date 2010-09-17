@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>PHP_Execute( ${1:phpCode}${2:; ${3:keepMemory 0=true | 1=false}${4:; ${5:timeoutSeconds}}} )$0</string>
+	<key>name</key>
+	<string>PHP_Execute</string>
+	<key>tabTrigger</key>
+	<string>PHP_Execute</string>
+	<key>uuid</key>
+	<string>035F8003-2618-4F7A-B5D1-7A542E7A5CCB</string>
+</dict>
+</plist>

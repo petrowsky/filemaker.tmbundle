@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>fm_get_last_error${1:( ${2:selector 1=return error code only | 2=return error message only | no parameter to return both} )}$0</string>
+	<key>name</key>
+	<string>fm_get_last_error</string>
+	<key>tabTrigger</key>
+	<string>fm_get_last_error</string>
+	<key>uuid</key>
+	<string>A5A30075-5473-480B-9063-955A5C5FC1F4</string>
+</dict>
+</plist>
