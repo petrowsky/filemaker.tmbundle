@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>TextStyleRemove</string>
 	<key>tabTrigger</key>
-	<string>textstyleadd</string>
+	<string>textstylerm</string>
 	<key>uuid</key>
 	<string>D7B9C695-A403-4FF5-87B8-98194E708B8D</string>
 </dict>

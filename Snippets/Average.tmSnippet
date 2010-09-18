@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Timestamp ( ${1:date}; ${2:time} )$0</string>
+	<string>Average ( ${1:field}${2:; ${3:field...}} )</string>
 	<key>name</key>
-	<string>Timestamp</string>
+	<string>Average</string>
 	<key>tabTrigger</key>
-	<string>ts</string>
+	<string>avg</string>
 	<key>uuid</key>
-	<string>C6810274-C446-4F33-A503-33F0EDF5E834</string>
+	<string>E49775D1-B116-4348-B7E3-2D423CCA9B6E</string>
 </dict>
 </plist>
