@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>RightValues</string>
 	<key>tabTrigger</key>
-	<string>rightvalues</string>
+	<string>rightval</string>
 	<key>uuid</key>
 	<string>E8AB165C-70D3-4D98-A283-F8524CE58418</string>
 </dict>

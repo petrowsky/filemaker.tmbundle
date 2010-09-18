@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( ScreenDepth )</string>
 	<key>tabTrigger</key>
-	<string>screendepth</string>
+	<string>getsd</string>
 	<key>uuid</key>
 	<string>80F91279-D85F-4B5B-9EFF-D8110F8189B2</string>
 </dict>

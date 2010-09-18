@@ -10,7 +10,7 @@
 	<key>name</key>
 	<string>Substitute</string>
 	<key>tabTrigger</key>
-	<string>substitute</string>
+	<string>sub</string>
 	<key>uuid</key>
 	<string>E09EF4BB-80BA-436F-A8F3-379286A0BC73</string>
 </dict>

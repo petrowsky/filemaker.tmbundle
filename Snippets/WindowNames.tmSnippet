@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>WindowNames</string>
 	<key>tabTrigger</key>
-	<string>windownames</string>
+	<string>winnames</string>
 	<key>uuid</key>
 	<string>5C2F6626-4AA0-436E-BE7F-3F7C79BFD98C</string>
 </dict>

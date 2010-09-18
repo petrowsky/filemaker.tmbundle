@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>TextStyleRemove ( ${1:text}; ${2:styles = Plain | Bold | Italic | Underline | Condense | Extend | Strikethrough | SmallCaps | Superscript | Subscript | Uppercase | Lowercase | Titlecase | WordUnderline | DoubleUnderline | AllStyles} )$0</string>
+	<string>TextStyleRemove ( ${1:text}; ${2:Plain | Bold | Italic | Underline | Condense | Extend | Strikethrough | SmallCaps | Superscript | Subscript | Uppercase | Lowercase | Titlecase | WordUnderline | DoubleUnderline | AllStyles} )$0</string>
 	<key>name</key>
 	<string>TextStyleRemove</string>
 	<key>tabTrigger</key>

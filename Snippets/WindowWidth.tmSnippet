@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( WindowWidth )</string>
 	<key>tabTrigger</key>
-	<string>windowwidth</string>
+	<string>getww</string>
 	<key>uuid</key>
 	<string>30F6F8D8-3AC5-49FA-AC60-1906D905E9F6</string>
 </dict>

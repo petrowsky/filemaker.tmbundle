@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( WindowTop )</string>
 	<key>tabTrigger</key>
-	<string>windowtop</string>
+	<string>getwt</string>
 	<key>uuid</key>
 	<string>A33D411F-E305-49A1-B0EA-558BD00D960C</string>
 </dict>

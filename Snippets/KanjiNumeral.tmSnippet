@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>KanjiNumeral</string>
 	<key>tabTrigger</key>
-	<string>kanjinumeral</string>
+	<string>kanjinum</string>
 	<key>uuid</key>
 	<string>DC955BC3-8374-43AE-B476-96E0A289CEC1</string>
 </dict>

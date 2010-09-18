@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>LayoutObjectNames</string>
 	<key>tabTrigger</key>
-	<string>layoutobjectnames</string>
+	<string>layoutobnames</string>
 	<key>uuid</key>
 	<string>2B11068E-AB0D-4703-A9B3-B14C4DCB5C4F</string>
 </dict>

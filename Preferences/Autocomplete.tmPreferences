@@ -257,41 +257,6 @@
 			<string>WordCount</string>
 			<string>Year</string>
 			<string>YearName</string>
-			<string>FMSAUC_Version</string>
-			<string>FMSAUC_FindPlugin</string>
-			<string>FMSAUC_UpdatePlugin</string>
-			<string>PHP_Control</string>
-			<string>PHP_Execute</string>
-			<string>PHP_ExecuteToContainer</string>
-			<string>PHP_GetLastCode</string>
-			<string>PHP_GetLastError</string>
-			<string>PHP_LoadFunctions</string>
-			<string>PHP_LoadFunctionsFromURL</string>
-			<string>PHP_Register</string>
-			<string>PHP_Timeout</string>
-			<string>PHP_Version</string>
-			<string>PHP_VersionAutoUpdate</string>
-			<string>zippScript_CancelIdleScript</string>
-			<string>zippScript_CancelScheduledScript</string>
-			<string>zippScript_DisableTriggers</string>
-			<string>zippScript_EnableTriggers</string>
-			<string>zippScript_GetIdleScript</string>
-			<string>zippScript_GetScheduledScript</string>
-			<string>zippScript_GetTriggerState</string>
-			<string>zippScript_IdleScript</string>
-			<string>zippScript_PerformScript</string>
-			<string>zippScript_ScheduleScript</string>
-			<string>zippScript_Version</string>
-			<string>mFMb_DoScript</string>
-			<string>mFMb_DoScript_Version</string>
-			<string>mFMb_DS_GetAlarm</string>
-			<string>mFMb_DS_GetIdleCounter</string>
-			<string>mFMb_DS_GetIdleMode</string>
-			<string>mFMb_DS_GetIdleTimer</string>
-			<string>mFMb_DS_GetSeconds</string>
-			<string>mFMb_DS_GetTrigger</string>
-			<string>mFMb_DS_LastErrNum</string>
-			<string>mFMb_DS_LastErrText</string>
 		</array>
 	</dict>
 	<key>uuid</key>

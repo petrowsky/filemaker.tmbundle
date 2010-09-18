@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( UserName )</string>
 	<key>tabTrigger</key>
-	<string>username</string>
+	<string>getun</string>
 	<key>uuid</key>
 	<string>D208E108-7664-4996-AD7F-D03A3B644E7C</string>
 </dict>

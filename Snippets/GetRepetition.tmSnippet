@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>GetRepetition</string>
 	<key>tabTrigger</key>
-	<string>getrepetition</string>
+	<string>getrep</string>
 	<key>uuid</key>
 	<string>00572292-DD11-4CC8-A089-E7BEA0391B31</string>
 </dict>

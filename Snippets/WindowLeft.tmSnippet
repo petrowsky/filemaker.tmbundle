@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( WindowLeft )</string>
 	<key>tabTrigger</key>
-	<string>windowleft</string>
+	<string>getwl</string>
 	<key>uuid</key>
 	<string>FCED4D5E-187F-40D2-B4A0-D1279CD71AC7</string>
 </dict>

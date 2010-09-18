@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( ScriptResult )</string>
 	<key>tabTrigger</key>
-	<string>scriptresult</string>
+	<string>getsr</string>
 	<key>uuid</key>
 	<string>5206EBF6-8092-4F29-BBCF-3BC5D7F02D11</string>
 </dict>

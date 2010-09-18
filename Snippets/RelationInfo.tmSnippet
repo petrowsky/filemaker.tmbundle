@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>RelationInfo</string>
 	<key>tabTrigger</key>
-	<string>relationinfo</string>
+	<string>relinfo</string>
 	<key>uuid</key>
 	<string>6A282A57-C577-412F-A4C1-436586A0ECB6</string>
 </dict>

@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( PrinterName )</string>
 	<key>tabTrigger</key>
-	<string>printername</string>
+	<string>getprinter</string>
 	<key>uuid</key>
 	<string>6F6CF16A-6CCB-4121-BC1C-FCC275223310</string>
 </dict>

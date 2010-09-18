@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>GetAsNumber</string>
 	<key>tabTrigger</key>
-	<string>getasnumber</string>
+	<string>getasnum</string>
 	<key>uuid</key>
 	<string>696D9C84-CD99-491D-A3C4-B170165528BB</string>
 </dict>

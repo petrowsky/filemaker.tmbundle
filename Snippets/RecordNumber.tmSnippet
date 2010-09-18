@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( RecordNumber )</string>
 	<key>tabTrigger</key>
-	<string>recordnumber</string>
+	<string>getrn</string>
 	<key>uuid</key>
 	<string>3A458B7A-B75C-4204-B5E6-DC8375DA3E9B</string>
 </dict>

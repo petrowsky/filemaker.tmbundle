@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>GetAsURLEncoded</string>
 	<key>tabTrigger</key>
-	<string>getasurlencoded</string>
+	<string>getasurl</string>
 	<key>uuid</key>
 	<string>318A6911-E8AA-43C2-B2A8-ED347EA3B92B</string>
 </dict>

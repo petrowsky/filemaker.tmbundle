@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( PreferencesPath )</string>
 	<key>tabTrigger</key>
-	<string>preferencespath</string>
+	<string>getpp</string>
 	<key>uuid</key>
 	<string>C9C03551-1CD8-43CC-ADCA-163024C2CE7C</string>
 </dict>

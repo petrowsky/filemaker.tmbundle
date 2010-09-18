@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>ValueListNames</string>
 	<key>tabTrigger</key>
-	<string>valuelistnames</string>
+	<string>vln</string>
 	<key>uuid</key>
 	<string>4C8F9A29-143E-45AF-8CF8-AE4E2D7C5802</string>
 </dict>

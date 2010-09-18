@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( NetworkProtocol )</string>
 	<key>tabTrigger</key>
-	<string>networkprotocol</string>
+	<string>getnp</string>
 	<key>uuid</key>
 	<string>D17B283B-CE30-4DC5-AF5D-1AA61DB5918D</string>
 </dict>

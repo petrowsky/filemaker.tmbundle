@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>PatternCount</string>
 	<key>tabTrigger</key>
-	<string>patterncount</string>
+	<string>pcount</string>
 	<key>uuid</key>
 	<string>338EC081-3CA8-4FFC-96F1-EA123D96519C</string>
 </dict>

@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( PortalRowNumber )</string>
 	<key>tabTrigger</key>
-	<string>portalrownumber</string>
+	<string>getprn</string>
 	<key>uuid</key>
 	<string>396EDCEC-86C2-4FFB-A61E-1FFDEF7D93E1</string>
 </dict>

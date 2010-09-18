@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>MiddleValues</string>
 	<key>tabTrigger</key>
-	<string>middlevalues</string>
+	<string>middleval</string>
 	<key>uuid</key>
 	<string>D770E1FC-4EAD-4AED-9583-29B73EA51A37</string>
 </dict>

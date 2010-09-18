@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>GetNthRecord</string>
 	<key>tabTrigger</key>
-	<string>getnthrecord</string>
+	<string>getnthrec</string>
 	<key>uuid</key>
 	<string>6E306361-12BA-49C7-951D-BCD29A828CFE</string>
 </dict>

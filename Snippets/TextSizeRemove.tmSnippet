@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>TextSizeRemove</string>
 	<key>tabTrigger</key>
-	<string>textsizeremove</string>
+	<string>textsizerm</string>
 	<key>uuid</key>
 	<string>55792E16-4663-4046-8B45-BFA4667C3E18</string>
 </dict>

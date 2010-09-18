@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( WindowName )</string>
 	<key>tabTrigger</key>
-	<string>windowname</string>
+	<string>getwn</string>
 	<key>uuid</key>
 	<string>32594502-601A-450E-BF1C-3E27FF43A09E</string>
 </dict>

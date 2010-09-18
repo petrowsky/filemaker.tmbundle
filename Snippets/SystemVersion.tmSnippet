@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( SystemVersion )</string>
 	<key>tabTrigger</key>
-	<string>systemversion</string>
+	<string>getsysver</string>
 	<key>uuid</key>
 	<string>91BE537B-83BF-4BC8-BAA1-29B032BE8EBF</string>
 </dict>

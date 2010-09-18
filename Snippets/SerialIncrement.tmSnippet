@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>SerialIncrement</string>
 	<key>tabTrigger</key>
-	<string>serialincrement</string>
+	<string>serialinc</string>
 	<key>uuid</key>
 	<string>CA98CC26-2918-4281-B589-31636F37D6FE</string>
 </dict>

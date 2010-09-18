@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( WindowVisible )</string>
 	<key>tabTrigger</key>
-	<string>windowvisible</string>
+	<string>getwv</string>
 	<key>uuid</key>
 	<string>105A4297-C984-4E60-A67F-73D69DA46311</string>
 </dict>

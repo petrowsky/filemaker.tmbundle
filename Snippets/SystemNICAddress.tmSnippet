@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( SystemNICAddress )</string>
 	<key>tabTrigger</key>
-	<string>systemnicaddress</string>
+	<string>getsysnic</string>
 	<key>uuid</key>
 	<string>1175215F-D66A-4A30-947A-E3DF64ADA91F</string>
 </dict>

@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( ScriptParameter )</string>
 	<key>tabTrigger</key>
-	<string>scriptparameter</string>
+	<string>getsp</string>
 	<key>uuid</key>
 	<string>D983358F-6114-4EC5-BC40-84DE03E2BE5D</string>
 </dict>

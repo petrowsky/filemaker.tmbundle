@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( SystemLanguage )</string>
 	<key>tabTrigger</key>
-	<string>systemlanguage</string>
+	<string>getsyslang</string>
 	<key>uuid</key>
 	<string>F6230CD8-0248-46C7-A7D8-EE847E558036</string>
 </dict>

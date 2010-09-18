@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( WindowMode )</string>
 	<key>tabTrigger</key>
-	<string>windowmode</string>
+	<string>getwm</string>
 	<key>uuid</key>
 	<string>4548420A-71D1-409F-90D1-88069B26EB0C</string>
 </dict>

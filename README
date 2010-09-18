@@ -1,9 +1,16 @@
 TextMate Bundle for FileMaker
+Revision: 9/17/10
 
-This is currently just a copy of the bundle as taken from
-the google code svn repo at
-http://code.google.com/p/filemaker-textmate-bundle/
+This is a paired down version of the FileMaker bundle
+created by Chuck Ross. I've taken out all duplicate functions
+and started making keyword expansion more memorable.
 
-My goal is to clean up some of the snippets per my own
-standards and remove items not specifically related to
-FileMaker ( such as plugin specific code )
+Keyword shorthand versions of words
+
+  record = rec
+  number = num
+  summary = sum
+  timestamp = ts
+  evaluate = eval
+  object = ob
+  value(s) = val

@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( WindowContentHeight )</string>
 	<key>tabTrigger</key>
-	<string>windowcontentheight</string>
+	<string>getwch</string>
 	<key>uuid</key>
 	<string>16C46B4D-5CA1-469A-A378-904C3577FE8D</string>
 </dict>

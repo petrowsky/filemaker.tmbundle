@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( TemporaryPath )</string>
 	<key>tabTrigger</key>
-	<string>temporarypath</string>
+	<string>gettp</string>
 	<key>uuid</key>
 	<string>D9F77E4D-5317-46FC-86B8-BD6AAA2B434C</string>
 </dict>

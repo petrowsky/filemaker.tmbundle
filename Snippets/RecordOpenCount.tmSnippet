@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Get ( RecordOpenCount )</string>
 	<key>tabTrigger</key>
-	<string>recordopencount</string>
+	<string>getroc</string>
 	<key>uuid</key>
 	<string>D7861AB5-F3FF-4780-93AA-B9C1B743AF0D</string>
 </dict>

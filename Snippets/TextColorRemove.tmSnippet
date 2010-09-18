@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>TextColor ( ${1:text}${2:; RGB ( ${3:red}; ${4:green}; ${5:blue}} )$0</string>
+	<string>TextColor ( ${1:text}${2:; RGB ( ${3:red}; ${4:green}; ${5:blue} )} )$0</string>
 	<key>name</key>
 	<string>TextColorRemove</string>
 	<key>tabTrigger</key>
-	<string>textcolorremove</string>
+	<string>textcolorrm</string>
 	<key>uuid</key>
 	<string>E44EF1F2-533F-478B-AE82-1FD8F1F4FF8E</string>
 </dict>
