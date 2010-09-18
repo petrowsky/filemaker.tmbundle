@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Timestamp( ${1:date}; ${2:time} )$0</string>
+	<string>Timestamp ( ${1:date}; ${2:time} )$0</string>
 	<key>name</key>
 	<string>Timestamp</string>
 	<key>tabTrigger</key>

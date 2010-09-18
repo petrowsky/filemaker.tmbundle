@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( LastError )</string>
+	<string>Get ( LastError )</string>
 	<key>name</key>
-	<string>Get( LastError )</string>
+	<string>Get ( LastError )</string>
 	<key>tabTrigger</key>
-	<string>lasterror</string>
+	<string>getle</string>
 	<key>uuid</key>
 	<string>D4D71935-B748-492D-96E3-695C068169BF</string>
 </dict>

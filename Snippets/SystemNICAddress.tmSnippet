@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( SystemNICAddress )</string>
+	<string>Get ( SystemNICAddress )</string>
 	<key>name</key>
-	<string>Get( SystemNICAddress )</string>
+	<string>Get ( SystemNICAddress )</string>
 	<key>tabTrigger</key>
 	<string>systemnicaddress</string>
 	<key>uuid</key>

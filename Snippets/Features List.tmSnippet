@@ -4,10 +4,10 @@
 <dict>
 	<key>content</key>
 	<string>DONE
-- Snippets with the full name of each of the built-in FileMaker functions tied to the name of the function showing a function template (i.e., "LastError[TAB]" results in "Get( LastError)", "Left[TAB]" results in "Left( text; numberOfCharacters )" ) with tab stops at each of the parameters and the final tab stop at the end of the function. Complicated functions such as Case, Let and Substitute will include complex built-in formatting.
+- Snippets with the full name of each of the built-in FileMaker functions tied to the name of the function showing a function template (i.e., "LastError[TAB]" results in "Get ( LastError)", "Left[TAB]" results in "Left ( text; numberOfCharacters )" ) with tab stops at each of the parameters and the final tab stop at the end of the function. Complicated functions such as Case, Let and Substitute will include complex built-in formatting.
 
 DONE
-- Snippets with shortcut names, such as "err" for "Get( LastError )".
+- Snippets with shortcut names, such as "err" for "Get ( LastError )".
 
 DONE
 - Snippets for sub sets of parameters, such as "[[TAB]" resulting in "[ string; replacementString ];", meant to be inserted into a Substitute function.
@@ -15,7 +15,7 @@ DONE
 - Snippets for at least the plugin functions that I use, such as SmartPill PHP and SuperContainer, and possibly other popular plugins as well.
 
 DONE
-- Snippets for enclosing the selected text inside of a function. So if "MyField" is selected, pressing, for example, Shift-Ctrl-E will offer a menu of functions that can be wrapped around it, typing "l-e-n-[ENTER] results in, perhaps, "Length( MyField )".
+- Snippets for enclosing the selected text inside of a function. So if "MyField" is selected, pressing, for example, Shift-Ctrl-E will offer a menu of functions that can be wrapped around it, typing "l-e-n-[ENTER] results in, perhaps, "Length ( MyField )".
 
 IN PROGRESS
 - Obviously, syntax highlighting.
@@ -52,7 +52,7 @@ That's at a minimum. Additionally, if I can figure out a good way to use AppleSc
 
 - Ability to syntax highlight embedded PHP code, and maybe also HTML and JavaScript.
 
-- Figure out a way to look up documentation when more than just the function name is selected, so that, for example, if "Left( FieldName; 5 )" is selected and the user opts to look up the documentation, that for the Left function will be looked up. This will need to work around the Get functions, which should only work if the entire function is selected.</string>
+- Figure out a way to look up documentation when more than just the function name is selected, so that, for example, if "Left ( FieldName; 5 )" is selected and the user opts to look up the documentation, that for the Left function will be looked up. This will need to work around the Get functions, which should only work if the entire function is selected.</string>
 	<key>name</key>
 	<string>Features List</string>
 	<key>scope</key>

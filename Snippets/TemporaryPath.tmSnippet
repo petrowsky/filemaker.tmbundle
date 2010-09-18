@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( TemporaryPath )</string>
+	<string>Get ( TemporaryPath )</string>
 	<key>name</key>
-	<string>Get( TemporaryPath )</string>
+	<string>Get ( TemporaryPath )</string>
 	<key>tabTrigger</key>
 	<string>temporarypath</string>
 	<key>uuid</key>

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( RequestCount )</string>
+	<string>Get ( RequestCount )</string>
 	<key>name</key>
-	<string>Get( RequestCount )</string>
+	<string>Get ( RequestCount )</string>
 	<key>tabTrigger</key>
 	<string>requestcount</string>
 	<key>uuid</key>

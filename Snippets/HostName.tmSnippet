@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( HostName )</string>
+	<string>Get ( HostName )</string>
 	<key>name</key>
-	<string>Get( HostName )</string>
+	<string>Get ( HostName )</string>
 	<key>tabTrigger</key>
-	<string>hostname</string>
+	<string>gethn</string>
 	<key>uuid</key>
 	<string>10834F8C-619D-4DD9-AB82-1A8224CD3E3D</string>
 </dict>

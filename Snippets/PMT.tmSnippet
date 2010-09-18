@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>PMT( ${1:principal}; ${2:interestRate}; ${3:term} )$0</string>
+	<string>PMT ( ${1:principal}; ${2:interestRate}; ${3:term} )$0</string>
 	<key>name</key>
 	<string>PMT</string>
 	<key>tabTrigger</key>

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( ScreenHeight )</string>
+	<string>Get ( ScreenHeight )</string>
 	<key>name</key>
-	<string>Get( ScreenHeight )</string>
+	<string>Get ( ScreenHeight )</string>
 	<key>tabTrigger</key>
 	<string>screenheight</string>
 	<key>uuid</key>

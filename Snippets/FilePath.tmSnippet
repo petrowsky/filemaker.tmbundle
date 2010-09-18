@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( FilePath )</string>
+	<string>Get ( FilePath )</string>
 	<key>name</key>
-	<string>Get( FilePath )</string>
+	<string>Get ( FilePath )</string>
 	<key>tabTrigger</key>
-	<string>filepath</string>
+	<string>getfp</string>
 	<key>uuid</key>
 	<string>E01D14F3-8A53-4CED-92E8-C693B65EE43F</string>
 </dict>

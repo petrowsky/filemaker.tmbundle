@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Degrees( ${1:angleInRadians} )$0</string>
+	<string>Degrees ( ${1:angleInRadians} )$0</string>
 	<key>name</key>
 	<string>Degrees</string>
 	<key>tabTrigger</key>

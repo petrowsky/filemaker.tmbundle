@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( WindowVisible )</string>
+	<string>Get ( WindowVisible )</string>
 	<key>name</key>
-	<string>Get( WindowVisible )</string>
+	<string>Get ( WindowVisible )</string>
 	<key>tabTrigger</key>
 	<string>windowvisible</string>
 	<key>uuid</key>

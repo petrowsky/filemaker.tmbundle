@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Tan( ${1:angleInRadians} )$0</string>
+	<string>Tan ( ${1:angleInRadians} )$0</string>
 	<key>name</key>
 	<string>Tan</string>
 	<key>tabTrigger</key>

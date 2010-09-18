@@ -3,12 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Case(
-  ${1:test};
-  ${2:result0};
-  ${3:result1}${4:;
-  ${5:result2}}
-)$0</string>
+	<string>Choose ( ${1:test}; ${2:result0}; ${3:result1} )</string>
 	<key>name</key>
 	<string>Choose</string>
 	<key>tabTrigger</key>

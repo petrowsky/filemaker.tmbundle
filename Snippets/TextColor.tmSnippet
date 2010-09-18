@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>TextColor( ${1:text}; RGB( ${2:red}; ${3:green}; ${4:blue} )$0</string>
+	<string>TextColor ( ${1:text}; RGB ( ${2:red}; ${3:green}; ${4:blue} )$0</string>
 	<key>name</key>
 	<string>TextColor</string>
 	<key>tabTrigger</key>

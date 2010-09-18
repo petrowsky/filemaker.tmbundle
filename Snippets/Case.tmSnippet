@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Case(
-  ${1:test1};
-  ${2:result1}${3:;
-  ${4:test2};
-  ${5:result2};
-  ${6:defaultResult}}
+	<string>Case (
+	${1:test1};
+		${2:result1}${3:;
+	${4:test2};
+		${5:result2};
+	${6:defaultResult}}
 )$0</string>
 	<key>name</key>
 	<string>Case</string>
 	<key>tabTrigger</key>
-	<string>test</string>
+	<string>case</string>
 	<key>uuid</key>
 	<string>ED0BC0E8-AE2E-4267-A3BE-D675D98E56C8</string>
 </dict>

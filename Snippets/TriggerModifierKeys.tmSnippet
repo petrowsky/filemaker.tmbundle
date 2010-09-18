@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( TriggerModifierKeys )</string>
+	<string>Get ( TriggerModifierKeys )</string>
 	<key>name</key>
-	<string>Get( TriggerModifierKeys )</string>
+	<string>Get ( TriggerModifierKeys )</string>
 	<key>tabTrigger</key>
 	<string>triggermodifierkeys</string>
 	<key>uuid</key>

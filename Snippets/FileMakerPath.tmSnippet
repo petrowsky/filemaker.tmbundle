@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( FileMakerPath )</string>
+	<string>Get ( FileMakerPath )</string>
 	<key>name</key>
-	<string>Get( FileMakerPath )</string>
+	<string>Get ( FileMakerPath )</string>
 	<key>tabTrigger</key>
-	<string>filemakerpath</string>
+	<string>getfmpath</string>
 	<key>uuid</key>
 	<string>798747EA-6870-49EE-B898-85597347DBA0</string>
 </dict>

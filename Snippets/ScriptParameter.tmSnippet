@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( ScriptParameter )</string>
+	<string>Get ( ScriptParameter )</string>
 	<key>name</key>
-	<string>Get( ScriptParameter )</string>
+	<string>Get ( ScriptParameter )</string>
 	<key>tabTrigger</key>
 	<string>scriptparameter</string>
 	<key>uuid</key>

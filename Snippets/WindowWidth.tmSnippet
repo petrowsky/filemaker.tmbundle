@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( WindowWidth )</string>
+	<string>Get ( WindowWidth )</string>
 	<key>name</key>
-	<string>Get( WindowWidth )</string>
+	<string>Get ( WindowWidth )</string>
 	<key>tabTrigger</key>
 	<string>windowwidth</string>
 	<key>uuid</key>

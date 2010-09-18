@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>RomanHankaku( ${1:text} )$0</string>
+	<string>RomanHankaku ( ${1:text} )$0</string>
 	<key>name</key>
 	<string>RomanHankaku</string>
 	<key>tabTrigger</key>

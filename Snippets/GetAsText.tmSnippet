@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>GetAsText( ${1:data} )$0</string>
+	<string>GetAsText ( ${1:data} )$0</string>
 	<key>name</key>
 	<string>GetAsText</string>
 	<key>tabTrigger</key>

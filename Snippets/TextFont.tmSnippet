@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>TextFont( ${1:text}; ${2:fontName}${3:; ${4:fontScript = Roman | Greek | Cryllic | CentralEurope | ShiftJIS | TraditionalChinese | SimplifiedChinese | OEM | Symbol | Other}} )$0</string>
+	<string>TextFont ( ${1:text}; ${2:fontName}${3:; ${4:fontScript = Roman | Greek | Cryllic | CentralEurope | ShiftJIS | TraditionalChinese | SimplifiedChinese | OEM | Symbol | Other}} )$0</string>
 	<key>name</key>
 	<string>TextFont</string>
 	<key>tabTrigger</key>

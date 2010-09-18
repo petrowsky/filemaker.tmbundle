@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>DatabaseNames</string>
 	<key>tabTrigger</key>
-	<string>databasenames</string>
+	<string>dbnames</string>
 	<key>uuid</key>
 	<string>658E3739-71AB-4608-BA64-638FFB0E5E91</string>
 </dict>

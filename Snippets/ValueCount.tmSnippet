@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>ValueCount( ${1:text} )$0</string>
+	<string>ValueCount ( ${1:text} )$0</string>
 	<key>name</key>
 	<string>ValueCount</string>
 	<key>tabTrigger</key>

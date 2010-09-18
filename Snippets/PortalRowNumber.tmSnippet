@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( PortalRowNumber )</string>
+	<string>Get ( PortalRowNumber )</string>
 	<key>name</key>
-	<string>Get( PortalRowNumber )</string>
+	<string>Get ( PortalRowNumber )</string>
 	<key>tabTrigger</key>
 	<string>portalrownumber</string>
 	<key>uuid</key>

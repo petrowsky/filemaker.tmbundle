@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( TriggerKeystroke )</string>
+	<string>Get ( TriggerKeystroke )</string>
 	<key>name</key>
-	<string>Get( TriggerKeystroke )</string>
+	<string>Get ( TriggerKeystroke )</string>
 	<key>tabTrigger</key>
 	<string>triggerkeystroke</string>
 	<key>uuid</key>

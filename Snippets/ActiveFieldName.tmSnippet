@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( ActiveFieldName )</string>
+	<string>Get ( ActiveFieldName )</string>
 	<key>name</key>
-	<string>Get( ActiveFieldName )</string>
+	<string>Get ( ActiveFieldName )</string>
 	<key>tabTrigger</key>
-	<string>activefieldname</string>
+	<string>getafn</string>
 	<key>uuid</key>
 	<string>6E84EDE1-320A-4865-BA56-92C56251D776</string>
 </dict>

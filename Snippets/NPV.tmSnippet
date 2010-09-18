@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>NPV( ${1:payment}; ${2:interestRate} )$0</string>
+	<string>NPV ( ${1:payment}; ${2:interestRate} )$0</string>
 	<key>name</key>
 	<string>NPV</string>
 	<key>tabTrigger</key>

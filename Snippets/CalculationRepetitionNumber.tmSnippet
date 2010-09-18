@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( CalculationRepetitionNumber )</string>
+	<string>Get ( CalculationRepetitionNumber )</string>
 	<key>name</key>
-	<string>Get( CalculationRepetitionNumber )</string>
+	<string>Get ( CalculationRepetitionNumber )</string>
 	<key>tabTrigger</key>
-	<string>calculationrepetitionnumber</string>
+	<string>getcrn</string>
 	<key>uuid</key>
 	<string>52C9B76B-E580-41E3-9341-DE043C5C446C</string>
 </dict>

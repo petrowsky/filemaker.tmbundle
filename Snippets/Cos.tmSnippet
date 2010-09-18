@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Cos( ${1:angleInRadians} )$0</string>
+	<string>Cos ( ${1:angleInRadians} )$0</string>
 	<key>name</key>
 	<string>Cos</string>
 	<key>tabTrigger</key>

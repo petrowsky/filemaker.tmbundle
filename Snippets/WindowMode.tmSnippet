@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( WindowMode )</string>
+	<string>Get ( WindowMode )</string>
 	<key>name</key>
-	<string>Get( WindowMode )</string>
+	<string>Get ( WindowMode )</string>
 	<key>tabTrigger</key>
 	<string>windowmode</string>
 	<key>uuid</key>

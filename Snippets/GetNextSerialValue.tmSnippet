@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>GetNextSerialValue( ${1:Get( FileName )}; ${2:fieldName} )$0</string>
+	<string>GetNextSerialValue ( ${1:Get ( FileName )}; ${2:fieldName} )$0</string>
 	<key>name</key>
 	<string>GetNextSerialValue</string>
 	<key>tabTrigger</key>

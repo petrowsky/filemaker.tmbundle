@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Length( ${1:field} )$0</string>
+	<string>Length ( ${1:field} )$0</string>
 	<key>name</key>
 	<string>Length</string>
 	<key>tabTrigger</key>

@@ -3,13 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Let(
-  [
-    ${1:var1} = ${2:expression};
-    ${3:var2} = ${4:expression}
-  ];
-
-  ${5:calculation}
+	<string>Let ( [
+	${1:var.Name} = ${2:expression};
+];
+	${3:calculation}
 )$0</string>
 	<key>name</key>
 	<string>Let</string>

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( WindowZoomLevel )</string>
+	<string>Get ( WindowZoomLevel )</string>
 	<key>name</key>
-	<string>Get( WindowZoomLevel )</string>
+	<string>Get ( WindowZoomLevel )</string>
 	<key>tabTrigger</key>
 	<string>windowzoomlevel</string>
 	<key>uuid</key>

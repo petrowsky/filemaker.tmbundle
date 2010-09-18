@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>IsEmpty( ${1:field} )$0</string>
+	<string>IsEmpty ( ${1:field} )$0</string>
 	<key>name</key>
 	<string>IsEmpty</string>
 	<key>tabTrigger</key>

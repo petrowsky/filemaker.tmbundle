@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>RightValues( ${1:text}; ${2:numberofvalues} )$0</string>
+	<string>RightValues ( ${1:text}; ${2:numberofvalues} )$0</string>
 	<key>name</key>
 	<string>RightValues</string>
 	<key>tabTrigger</key>

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( UseSystemFormatsState )</string>
+	<string>Get ( UseSystemFormatsState )</string>
 	<key>name</key>
-	<string>Get( UseSystemFormatsState )</string>
+	<string>Get ( UseSystemFormatsState )</string>
 	<key>tabTrigger</key>
 	<string>usesystemformatsstate</string>
 	<key>uuid</key>

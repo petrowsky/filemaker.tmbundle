@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( ActiveFieldTableName )</string>
+	<string>Get ( ActiveFieldTableName )</string>
 	<key>name</key>
-	<string>Get( ActiveFieldTableName )</string>
+	<string>Get ( ActiveFieldTableName )</string>
 	<key>tabTrigger</key>
 	<string>activefieldtablename</string>
 	<key>uuid</key>

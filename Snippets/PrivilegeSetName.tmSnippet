@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( PrivilegeSetName )</string>
+	<string>Get ( PrivilegeSetName )</string>
 	<key>name</key>
-	<string>Get( PrivilegeSetName )</string>
+	<string>Get ( PrivilegeSetName )</string>
 	<key>tabTrigger</key>
 	<string>privilegesetname</string>
 	<key>uuid</key>

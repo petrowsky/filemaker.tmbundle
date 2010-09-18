@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( UserName )</string>
+	<string>Get ( UserName )</string>
 	<key>name</key>
-	<string>Get( UserName )</string>
+	<string>Get ( UserName )</string>
 	<key>tabTrigger</key>
 	<string>username</string>
 	<key>uuid</key>

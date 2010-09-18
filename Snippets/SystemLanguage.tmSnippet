@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( SystemLanguage )</string>
+	<string>Get ( SystemLanguage )</string>
 	<key>name</key>
-	<string>Get( SystemLanguage )</string>
+	<string>Get ( SystemLanguage )</string>
 	<key>tabTrigger</key>
 	<string>systemlanguage</string>
 	<key>uuid</key>

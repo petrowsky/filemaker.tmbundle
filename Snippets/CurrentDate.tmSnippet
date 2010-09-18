@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( CurrentDate )</string>
+	<string>Get ( CurrentDate )</string>
 	<key>name</key>
-	<string>Get( CurrentDate )</string>
+	<string>Get ( CurrentDate )</string>
 	<key>tabTrigger</key>
-	<string>currentdate</string>
+	<string>getcd</string>
 	<key>uuid</key>
 	<string>CBA65C5D-69A4-4426-8E85-1E5BC0506A15</string>
 </dict>

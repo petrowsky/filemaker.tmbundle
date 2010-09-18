@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>StDev( ${1:field1}${2:; field2...} )$0</string>
+	<string>StDev ( ${1:field1}${2:; field2...} )$0</string>
 	<key>name</key>
 	<string>StDev</string>
 	<key>tabTrigger</key>

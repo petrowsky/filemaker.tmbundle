@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Lower( ${1:text} )$0</string>
+	<string>Lower ( ${1:text} )$0</string>
 	<key>name</key>
 	<string>Lower</string>
 	<key>tabTrigger</key>

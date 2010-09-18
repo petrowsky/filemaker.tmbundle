@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>WordCount( ${1:text} )$0</string>
+	<string>WordCount ( ${1:text} )$0</string>
 	<key>name</key>
 	<string>WordCount</string>
 	<key>tabTrigger</key>

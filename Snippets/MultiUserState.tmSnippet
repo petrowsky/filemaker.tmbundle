@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( MultiUserState )</string>
+	<string>Get ( MultiUserState )</string>
 	<key>name</key>
-	<string>Get( MultiUserState )</string>
+	<string>Get ( MultiUserState )</string>
 	<key>tabTrigger</key>
-	<string>multiuserstate</string>
+	<string>getmus</string>
 	<key>uuid</key>
 	<string>B80CFA2B-F124-45B7-B493-B4D4AB969E58</string>
 </dict>

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>TableIDs( ${1:Get( FileName )} )$0</string>
+	<string>TableIDs ( ${1:Get ( FileName )} )$0</string>
 	<key>name</key>
 	<string>TableIDs</string>
 	<key>tabTrigger</key>

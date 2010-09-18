@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Extend( ${1:non-repeatingField} )$0</string>
+	<string>Extend ( ${1:non-repeatingField} )$0</string>
 	<key>name</key>
 	<string>Extend</string>
 	<key>tabTrigger</key>

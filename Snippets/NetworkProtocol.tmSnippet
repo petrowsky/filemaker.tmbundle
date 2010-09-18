@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( NetworkProtocol )</string>
+	<string>Get ( NetworkProtocol )</string>
 	<key>name</key>
-	<string>Get( NetworkProtocol )</string>
+	<string>Get ( NetworkProtocol )</string>
 	<key>tabTrigger</key>
 	<string>networkprotocol</string>
 	<key>uuid</key>

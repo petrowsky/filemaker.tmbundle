@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>FilterValues( ${1:textToFilter}; ${2:filterValues} )$0</string>
+	<string>FilterValues ( ${1:textToFilter}; ${2:filterValues} )$0</string>
 	<key>name</key>
 	<string>FilterValues</string>
 	<key>tabTrigger</key>

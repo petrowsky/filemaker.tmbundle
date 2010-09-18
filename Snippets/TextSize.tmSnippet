@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>TextSize( ${1:text}; ${2:fontSize} )$0</string>
+	<string>TextSize ( ${1:text}; ${2:fontSize} )$0</string>
 	<key>name</key>
 	<string>TextSize</string>
 	<key>tabTrigger</key>

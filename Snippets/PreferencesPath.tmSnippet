@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( PreferencesPath )</string>
+	<string>Get ( PreferencesPath )</string>
 	<key>name</key>
-	<string>Get( PreferencesPath )</string>
+	<string>Get ( PreferencesPath )</string>
 	<key>tabTrigger</key>
 	<string>preferencespath</string>
 	<key>uuid</key>

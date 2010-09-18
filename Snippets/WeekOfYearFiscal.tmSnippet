@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>WeekOfYearFiscal( ${1:date}; ${2:startingDay} )$0</string>
+	<string>WeekOfYearFiscal ( ${1:date}; ${2:startingDay} )$0</string>
 	<key>name</key>
 	<string>WeekOfYearFiscal</string>
 	<key>tabTrigger</key>

@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( ActiveSelectionSize )</string>
+	<string>Get ( ActiveSelectionSize )</string>
 	<key>name</key>
-	<string>Get( ActiveSelectionSize )</string>
+	<string>Get ( ActiveSelectionSize )</string>
 	<key>tabTrigger</key>
-	<string>activeselectionsize</string>
+	<string>getassize</string>
 	<key>uuid</key>
 	<string>6B03ABE5-C7F0-4654-9168-BCD14A1953B1</string>
 </dict>

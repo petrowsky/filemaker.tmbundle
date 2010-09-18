@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( WindowTop )</string>
+	<string>Get ( WindowTop )</string>
 	<key>name</key>
-	<string>Get( WindowTop )</string>
+	<string>Get ( WindowTop )</string>
 	<key>tabTrigger</key>
 	<string>windowtop</string>
 	<key>uuid</key>

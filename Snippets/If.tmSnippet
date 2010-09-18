@@ -3,10 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>If(
-  ${1:test};
-  ${2:result1};
-  ${3:result2}
+	<string>If ( ${1:test};
+	${2:result1};
+	${3:result2}
 )$0</string>
 	<key>name</key>
 	<string>If</string>

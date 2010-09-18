@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>WindowNames${1:( ${2:Get( FileName )} )}</string>
+	<string>WindowNames${1:( ${2:Get ( FileName )} )}</string>
 	<key>name</key>
 	<string>WindowNames</string>
 	<key>tabTrigger</key>

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>RomanKankaku( ${1:$TM_SELECTED_TEXT} )$0</string>
+	<string>RomanKankaku ( ${1:$TM_SELECTED_TEXT} )$0</string>
 	<key>keyEquivalent</key>
 	<string>~E</string>
 	<key>name</key>

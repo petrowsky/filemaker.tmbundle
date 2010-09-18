@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( SortState )</string>
+	<string>Get ( SortState )</string>
 	<key>name</key>
-	<string>Get( SortState )</string>
+	<string>Get ( SortState )</string>
 	<key>tabTrigger</key>
 	<string>sortstate</string>
 	<key>uuid</key>

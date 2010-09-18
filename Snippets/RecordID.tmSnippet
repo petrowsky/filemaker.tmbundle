@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( RecordID )</string>
+	<string>Get ( RecordID )</string>
 	<key>name</key>
-	<string>Get( RecordID )</string>
+	<string>Get ( RecordID )</string>
 	<key>tabTrigger</key>
 	<string>recordid</string>
 	<key>uuid</key>

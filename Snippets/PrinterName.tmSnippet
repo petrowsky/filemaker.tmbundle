@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( PrinterName )</string>
+	<string>Get ( PrinterName )</string>
 	<key>name</key>
-	<string>Get( PrinterName )</string>
+	<string>Get ( PrinterName )</string>
 	<key>tabTrigger</key>
 	<string>printername</string>
 	<key>uuid</key>

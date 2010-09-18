@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( StatusAreaState )</string>
+	<string>Get ( StatusAreaState )</string>
 	<key>name</key>
-	<string>Get( StatusAreaState )</string>
+	<string>Get ( StatusAreaState )</string>
 	<key>tabTrigger</key>
 	<string>statusareastate</string>
 	<key>uuid</key>

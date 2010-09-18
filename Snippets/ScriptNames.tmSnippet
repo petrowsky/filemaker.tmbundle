@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>ScriptNames( ${1:Get( FileName )} )$0</string>
+	<string>ScriptNames ( ${1:Get ( FileName )} )$0</string>
 	<key>name</key>
 	<string>ScriptNames</string>
 	<key>tabTrigger</key>

@@ -3,10 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Substitute(
-  ${1:text};
-  ${2:${3:incrementBy};
-  ${4:replaceString}}
+	<string>Substitute (
+	${1:text};
+	[ ${2:searchString} ; ${3:replaceString} ]
 )$0</string>
 	<key>name</key>
 	<string>Substitute</string>

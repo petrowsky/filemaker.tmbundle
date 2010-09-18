@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Round( ${1:number}; ${2:precision} )$0</string>
+	<string>Round ( ${1:number}; ${2:precision} )$0</string>
 	<key>name</key>
 	<string>Round</string>
 	<key>tabTrigger</key>

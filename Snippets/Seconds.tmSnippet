@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Seconds( ${1:time} )$0</string>
+	<string>Seconds ( ${1:time} )$0</string>
 	<key>name</key>
 	<string>Seconds</string>
 	<key>tabTrigger</key>

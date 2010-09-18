@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( SystemVersion )</string>
+	<string>Get ( SystemVersion )</string>
 	<key>name</key>
-	<string>Get( SystemVersion )</string>
+	<string>Get ( SystemVersion )</string>
 	<key>tabTrigger</key>
 	<string>systemversion</string>
 	<key>uuid</key>

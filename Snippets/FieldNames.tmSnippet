@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>FieldNames( ${1:Get( FileName )}; ${2:layoutName} )$0</string>
+	<string>FieldNames ( ${1:Get ( FileName )}; ${2:layoutName} )$0</string>
 	<key>name</key>
 	<string>FieldNames</string>
 	<key>tabTrigger</key>

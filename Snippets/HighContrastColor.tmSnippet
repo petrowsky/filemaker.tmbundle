@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( HighContrastColor )</string>
+	<string>Get ( HighContrastColor )</string>
 	<key>name</key>
-	<string>Get( HighContrastColor )</string>
+	<string>Get ( HighContrastColor )</string>
 	<key>tabTrigger</key>
-	<string>highcontrastcolor</string>
+	<string>gethcc</string>
 	<key>uuid</key>
 	<string>338FD146-C304-424A-B7DF-8A08DA57270F</string>
 </dict>

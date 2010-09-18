@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Day( ${1:date} )$0</string>
+	<string>Day ( ${1:date} )$0</string>
 	<key>name</key>
 	<string>Day</string>
 	<key>tabTrigger</key>

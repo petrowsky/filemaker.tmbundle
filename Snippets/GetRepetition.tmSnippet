@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>GetRepetition( ${1:repeatingField}; ${2:number} )$0</string>
+	<string>GetRepetition ( ${1:repeatingField}; ${2:number} )$0</string>
 	<key>name</key>
 	<string>GetRepetition</string>
 	<key>tabTrigger</key>

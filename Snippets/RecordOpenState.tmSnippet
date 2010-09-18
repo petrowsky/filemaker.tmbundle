@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( RecordOpenState )</string>
+	<string>Get ( RecordOpenState )</string>
 	<key>name</key>
-	<string>Get( RecordOpenState )</string>
+	<string>Get ( RecordOpenState )</string>
 	<key>tabTrigger</key>
 	<string>recordopenstate</string>
 	<key>uuid</key>

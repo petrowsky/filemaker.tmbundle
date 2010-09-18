@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Katakana( ${1:text} )$0</string>
+	<string>Katakana ( ${1:text} )$0</string>
 	<key>name</key>
 	<string>Katakana</string>
 	<key>tabTrigger</key>

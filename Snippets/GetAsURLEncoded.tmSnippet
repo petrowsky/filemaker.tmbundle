@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>GetAsURLEncoded( ${1:text} )$0</string>
+	<string>GetAsURLEncoded ( ${1:text} )$0</string>
 	<key>name</key>
 	<string>GetAsURLEncoded</string>
 	<key>tabTrigger</key>

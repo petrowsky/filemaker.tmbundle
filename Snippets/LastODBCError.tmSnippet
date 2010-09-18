@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( LastODBCError )</string>
+	<string>Get ( LastODBCError )</string>
 	<key>name</key>
-	<string>Get( LastODBCError )</string>
+	<string>Get ( LastODBCError )</string>
 	<key>tabTrigger</key>
-	<string>lastodbcerror</string>
+	<string>getlodbc</string>
 	<key>uuid</key>
 	<string>49390B31-3CDF-4748-8791-0A8006BA99C6</string>
 </dict>

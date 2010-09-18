@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Min( ${1:field1}${2:; field2...} )$0</string>
+	<string>Min ( ${1:field1}${2:; field2...} )$0</string>
 	<key>name</key>
 	<string>Min</string>
 	<key>tabTrigger</key>

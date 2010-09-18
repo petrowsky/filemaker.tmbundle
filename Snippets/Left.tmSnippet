@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Left( ${1:text}; ${2:numberOfCharacters} )$0</string>
+	<string>Left ( ${1:text}; ${2:numberOfCharacters} )$0</string>
 	<key>name</key>
 	<string>Left</string>
 	<key>tabTrigger</key>

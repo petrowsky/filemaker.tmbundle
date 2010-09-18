@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( TextRulerVisible )</string>
+	<string>Get ( TextRulerVisible )</string>
 	<key>name</key>
-	<string>Get( TextRulerVisible )</string>
+	<string>Get ( TextRulerVisible )</string>
 	<key>tabTrigger</key>
 	<string>textrulervisible</string>
 	<key>uuid</key>

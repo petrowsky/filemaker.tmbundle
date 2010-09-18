@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>MiddleWords( ${1:text}; ${2:startingWord}; ${3:numberOfWords} )$0</string>
+	<string>MiddleWords ( ${1:text}; ${2:startingWord}; ${3:numberOfWords} )$0</string>
 	<key>name</key>
 	<string>MiddleWords</string>
 	<key>tabTrigger</key>

@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Get( LayoutName )</string>
+	<string>Get ( LayoutName )</string>
 	<key>name</key>
-	<string>Get( LayoutName )</string>
+	<string>Get ( LayoutName )</string>
 	<key>tabTrigger</key>
-	<string>layoutname</string>
+	<string>getln</string>
 	<key>uuid</key>
 	<string>F2B5A21A-E24F-4AB1-B973-CF8B6DE2A19B</string>
 </dict>

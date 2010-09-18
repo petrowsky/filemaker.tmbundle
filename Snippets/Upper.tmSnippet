@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Upper( ${1:text} )$0</string>
+	<string>Upper ( ${1:text} )$0</string>
 	<key>name</key>
 	<string>Upper</string>
 	<key>tabTrigger</key>
