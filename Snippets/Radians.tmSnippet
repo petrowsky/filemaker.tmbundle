@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Radians</string>
 	<key>tabTrigger</key>
-	<string>radians</string>
+	<string>rad</string>
 	<key>uuid</key>
 	<string>A06CF167-4A6C-4E18-B9E4-322D20D4B0C7</string>
 </dict>

@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>GetAsBoolean</string>
 	<key>tabTrigger</key>
-	<string>getasboolean</string>
+	<string>getasbool</string>
 	<key>uuid</key>
 	<string>0BE5E445-E122-4D9A-B3B4-1326F20ECDD3</string>
 </dict>

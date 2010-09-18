@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>DayOfYear</string>
 	<key>tabTrigger</key>
-	<string>dayofyear</string>
+	<string>doy</string>
 	<key>uuid</key>
 	<string>002B31E6-BEFA-400A-9C54-BC70643E0F8A</string>
 </dict>

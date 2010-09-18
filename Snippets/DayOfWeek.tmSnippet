@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>DayOfWeek</string>
 	<key>tabTrigger</key>
-	<string>dayofweek</string>
+	<string>dow</string>
 	<key>uuid</key>
 	<string>8E093014-08CD-463B-8637-5DBF5AE39F12</string>
 </dict>

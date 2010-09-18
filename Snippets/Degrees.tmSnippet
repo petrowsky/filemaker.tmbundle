@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>Degrees</string>
 	<key>tabTrigger</key>
-	<string>degrees</string>
+	<string>deg</string>
 	<key>uuid</key>
 	<string>55E6A10A-5EF5-4478-8FC5-A568F3ED4394</string>
 </dict>

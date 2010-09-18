@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>ValueCount</string>
 	<key>tabTrigger</key>
-	<string>valuecount</string>
+	<string>valcount</string>
 	<key>uuid</key>
 	<string>88AAFDF1-600D-40E9-84F8-33D14D1C2422</string>
 </dict>

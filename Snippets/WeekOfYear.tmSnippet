@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>WeekOfYear</string>
 	<key>tabTrigger</key>
-	<string>weekofyear</string>
+	<string>woy</string>
 	<key>uuid</key>
 	<string>DAE341FA-61F9-49FA-B6CE-3BB01AA75397</string>
 </dict>

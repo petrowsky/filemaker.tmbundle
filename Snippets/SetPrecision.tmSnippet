@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>SetPrecision</string>
 	<key>tabTrigger</key>
-	<string>setprecision</string>
+	<string>setprec</string>
 	<key>uuid</key>
 	<string>1EA6717E-1F1D-4099-8254-3C142F55F99C</string>
 </dict>

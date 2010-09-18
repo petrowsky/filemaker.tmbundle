@@ -21,7 +21,6 @@
 			<string>3132356E-695B-4F55-9E63-6EC58368A4F3</string>
 			<string>29155769-EC4C-4048-9224-AA77C63D1C6B</string>
 			<string>5D553784-9B04-4251-BBBE-EEECB8CFB93E</string>
-			<string>32CA3210-B53C-49A0-BEE5-D4147DFA1B53</string>
 			<string>AFB2A6AB-DA43-4343-9900-E9A3D6030087</string>
 			<string>9D5077B1-5928-4F63-AEBB-538485A046B4</string>
 			<string>C24D8804-F257-4C93-ADA4-84C15A639BE1</string>
@@ -138,13 +137,6 @@
 				</array>
 				<key>name</key>
 				<string>Aggregate Functions</string>
-			</dict>
-			<key>32CA3210-B53C-49A0-BEE5-D4147DFA1B53</key>
-			<dict>
-				<key>items</key>
-				<array/>
-				<key>name</key>
-				<string>External Functions</string>
 			</dict>
 			<key>4E3C664E-9324-46FA-A789-6876617F75EC</key>
 			<dict>
@@ -325,7 +317,7 @@
 					<string>C6810274-C446-4F33-A503-33F0EDF5E834</string>
 				</array>
 				<key>name</key>
-				<string>Time &amp; Timestamp functions</string>
+				<string>Time/Timestamp functions</string>
 			</dict>
 			<key>C24D8804-F257-4C93-ADA4-84C15A639BE1</key>
 			<dict>

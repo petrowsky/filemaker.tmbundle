@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>WeekOfYearFiscal</string>
 	<key>tabTrigger</key>
-	<string>woyfiscal</string>
+	<string>woyf</string>
 	<key>uuid</key>
 	<string>36F2BB8E-2766-4CD5-AD6A-BFA6A99027CD</string>
 </dict>
