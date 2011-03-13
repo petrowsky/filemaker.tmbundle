@@ -1,18 +1,6 @@
 # TextMate Bundle for FileMaker
 #### Revision: 3/13/11
 
-# Contents #
-
-1. Introduction
-1. Features
-	* Tab Triggers
-	* Function Enclosing
-	* Documentation Lookup
-	* Commands
-1. Preferences
-1. Syntax Highlighting
-1. History
-
 # Introduction #
 
 This is my ongoing enhancement of the FileMaker bundle posted by Matt Petrowsky.  His bundle was a simplification of the original bundle by Charles Ross.  This version mostly adds to the commands.
@@ -29,7 +17,7 @@ This is my ongoing enhancement of the FileMaker bundle posted by Matt Petrowsky.
 
 Tab triggers exist for every native FileMaker function, each named after the function itself. Templates are included for function parameters to allow you to tab through them.  To discover or modify the abbreviated tab triggers, find the function in the FileMaker bundle menu (Bundles>FileMaker>[Function Category]>[Function Name]).
 
-Keyword shorthand versions of words:
+There is one version of each snippet, adjusted for the conventions I use at Beezwax Datatools. Keyword shorthand versions of words:
 
 	record = rec
 	number = num
@@ -58,10 +46,6 @@ Handles XML text extracted from the FileMaker clipboard.  Can be pasted back int
 ### DDR ###
 
 ### Logs ###
-
-# Preferences #
-
-# Syntax Highlighting #
 
 # History ##
 
