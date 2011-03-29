@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Variables</string>
+	<key>settings</key>
+	<dict>
+		<key>shellVariables</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>TM_PATH_PASTE_SNIPPET</string>
+				<key>value</key>
+				<string>/PasteSnippet.applescript</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_PATH_GET_SNIPPET</string>
+				<key>value</key>
+				<string>/GetSnippet.applescript</string>
+			</dict>
+		</array>
+	</dict>
+	<key>uuid</key>
+	<string>7B7CCFA9-1D9B-45AD-B90B-1D0522FB58A9</string>
+</dict>
+</plist>

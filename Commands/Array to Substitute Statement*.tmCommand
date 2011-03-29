@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/bin/bash
+#
+# PURPOSE:
+#	Builds substitute statement from tab-delim array
+#
+# EXAMPLE:
+#	For format:	col1     col2     col3
+#	Returns:		[ "col1"	; "col2" ] ; // col3
+#
+# TO DO:
+#	Make third column optional
+#	Don't add enclosing paren if text was selected
+
+body=`sed 's/\(.*\)	\(.*\)\	\(.*\)/	\[ "\1"	; "\2" \] ;	\/\/ \3/'`
+
+echo -n -e "Substitute ( \${1:text}\n${body}\n)"</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Array to Substitute Statement*</string>
+	<key>output</key>
+	<string>insertAsSnippet</string>
+	<key>uuid</key>
+	<string>582F4EC7-CD77-46A3-8C79-7EEB43FEC48A</string>
+</dict>
+</plist>

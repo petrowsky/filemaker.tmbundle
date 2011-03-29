@@ -7,10 +7,14 @@
 		<string>calc</string>
 		<string>fmfn</string>
 	</array>
+	<key>firstLineMatch</key>
+	<string>/\*|Case|Let</string>
 	<key>foldingStartMarker</key>
-	<string>/\*\*|\{\s*$</string>
+	<string>/\*|\{\s*$|\(\[*\s*$</string>
 	<key>foldingStopMarker</key>
-	<string>\*\*/|^\s*\}</string>
+	<string>\*/|^\s*\}|^\s*\)|^\s*\]</string>
+	<key>keyEquivalent</key>
+	<string>^~F</string>
 	<key>name</key>
 	<string>FileMaker</string>
 	<key>patterns</key>
@@ -126,6 +130,6 @@
 	<key>scopeName</key>
 	<string>source.filemaker</string>
 	<key>uuid</key>
-	<string>E56DCDCB-8FEB-424A-B074-A5EE2F132103</string>
+	<string>B60B1704-B890-43ED-80B5-E5E827CD55A3</string>
 </dict>
 </plist>

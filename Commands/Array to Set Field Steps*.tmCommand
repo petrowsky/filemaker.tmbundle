@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION:
+#	Generates FileMaker snippet for Set Field script steps
+#
+# USAGE A:
+#	col1 = table name
+#	col2 = field name
+#	col3 = field value
+#	col4 = field repetition
+#	CONTACT \t NAME \t $_name \t $_rep =&gt; Set Field [CONTACT::NAME[$rep]; $_name]
+#
+# USAGE B:
+#	col1 = table::field
+#	col2 = field value
+#	col3 = field repetition
+#	CONTACT::NAME \t $_name \t $_rep =&gt; Set Field [CONTACT::NAME; $_name]
+#
+# TO DO
+#	Finish adding support for field repetition.  Needs to discern if rep is a calculation or not
+#	Prompt for table name if not provided
+#
+
+require 'rexml/document'
+include REXML
+#
+# Templates
+#
+fieldTemplate = &lt;&lt;-'END'
+&lt;Step enable="True" id="" name="Set Field"&gt;
+	&lt;Calculation&gt;&lt;![CDATA[#{calc}]]&gt;&lt;/Calculation&gt;
+	&lt;Field table="#{table}" id="" repetition="#{rep}" name="#{field}"&gt;&lt;/Field&gt;
+&lt;/Step&gt;
+END
+
+fieldRep = &lt;&lt;-'END'
+&lt;Repetition&gt;
+	&lt;Calculation&gt;&lt;![CDATA[#{repCalc}]]&gt;&lt;/Calculation&gt;
+&lt;/Repetition&gt;
+END
+#
+# Open document
+text = STDIN.read
+#text = "table\tname\t2+2\t$_rep\ntable::name\t3\t$rep"
+doc = Document.new
+
+root = Element.new "fmxmlsnippet"
+root.attributes["type"] = "FMObjectList"
+doc.add_element root
+
+# Ensure array is formatted properly
+text.gsub!(/::/,"\t")
+
+# Insert Fields
+xml = ""
+text.split(/\n/).each { |row|
+	col = row.split(/\t/)
+	table = col[0]
+	field = col[1]
+	calc = col[2]
+	rep = col [3]
+	# Add fieldRep template if rep is not a simple integer
+
+	xml = xml &lt;&lt; "\n" &lt;&lt; eval('%*' + fieldTemplate + '*')
+
+	}
+doc.root.text =
+    Text.new(
+      xml,
+      respect_whitespace=true,
+      parent=nil,
+      raw=true,
+      entity_filter=nil,
+      illegal=%r/\n\[.^/m           # match nothing!
+    )
+
+print doc</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Array to Set Field Steps*</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>6C78D4D2-E093-4984-BB9C-37954A433B0C</string>
+</dict>
+</plist>

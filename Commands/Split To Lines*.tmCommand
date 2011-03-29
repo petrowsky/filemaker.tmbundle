@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION:
+#	Breaks function into multiple lines
+#
+# TO DO:
+#	Make \n and \t work in substitution string
+#	Respect leading indentation and add extra level to nested lines
+#
+text = STDIN.read
+
+#indent = 
+#text.gsub!(/\(\s*\);/,'\n\t;')
+text.gsub!(/\s*;/,'\n\t;')
+
+print text</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Split To Lines*</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>24A65EA0-5CF6-4A87-89AB-1B7EC48743C4</string>
+</dict>
+</plist>

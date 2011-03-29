@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Preferences</string>
+	<key>settings</key>
+	<dict>
+		<key>decreaseIndentPattern</key>
+		<string>^(.*\*/)?\s*\)[;\s]*$</string>
+		<key>fileTypes</key>
+		<array>
+			<string>calc</string>
+			<string>fmfn</string>
+		</array>
+		<key>foldingStartMarker</key>
+		<string>/\*\*|\{\s*$</string>
+		<key>foldingStopMarker</key>
+		<string>\*\*/|^\s*\}</string>
+		<key>increaseIndentPattern</key>
+		<string>^.*\([^\)\"]*$</string>
+		<key>scopeName</key>
+		<string>source.filemaker</string>
+		<key>shellVariables</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>TM_SOFT_TABS</string>
+				<key>value</key>
+				<string>NO</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_TAB_SIZE</string>
+				<key>value</key>
+				<integer>4</integer>
+			</dict>
+		</array>
+	</dict>
+	<key>uuid</key>
+	<string>FA5B16E1-153F-4221-897A-B7C508DF04FF</string>
+</dict>
+</plist>

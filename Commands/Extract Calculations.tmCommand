@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+#
+# TO DO
+#	Return name of element or path?
+
+require 'rexml/document'
+include REXML
+
+text = STDIN.read
+
+delim = "-------------\n"
+
+doc = Document.new text
+
+doc.elements.each { |e| puts e.cdatas, delim }</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Extract Calculations</string>
+	<key>output</key>
+	<string>openAsNewDocument</string>
+	<key>uuid</key>
+	<string>A1E767F1-36E3-487D-BC24-EAC15F60973D</string>
+</dict>
+</plist>

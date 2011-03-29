@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/bin/bash
+#
+# PURPOSE:
+#	Builds Case statement from tab-delim array
+#
+# EXAMPLE:
+#	For format:	col1     col2     col3
+#	Returns:		"col1"\n	; "col2" ;
+#
+# TO DO:
+#	Make third column optional
+#	Don't add enclosing paren if text was selected
+#	Don't quote calculations
+#	Place second column on new line
+
+body=`sed 's/\(.*\)	\(.*\)[\s]*/	\"\1"	; "\2" ;/'`
+
+echo -n -e "Case (\n${body}\n)"</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Array to Case Statement*</string>
+	<key>output</key>
+	<string>insertAsSnippet</string>
+	<key>uuid</key>
+	<string>E1DF67F6-E7F6-4C16-995E-6B0CA6866AB2</string>
+</dict>
+</plist>

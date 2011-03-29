@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+
+# TO DO
+#	Remove leading spaces, etc.
+#	Filter to unique values
+
+text = STDIN.read
+
+text = text.scan(/[\s;&amp;-](.*?)\(/) {|x| print x, " (\n" }
+#text = text.scan(/[\s;&amp;-]([^\s]*)\(/) {|x| print x, " (\n" }</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Extract Function Names From Calcs*</string>
+	<key>output</key>
+	<string>openAsNewDocument</string>
+	<key>uuid</key>
+	<string>3506ED10-5732-4FD3-911C-94727B3A25AB</string>
+</dict>
+</plist>

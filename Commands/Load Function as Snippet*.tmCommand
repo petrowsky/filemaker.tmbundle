@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION:
+#	Loads custom function text onto pasteboard for pasting into FileMaker.
+#	Requires format specified in custom function template supplied with bundle.
+#
+# TO DO:
+#	Determine why pasting sometimes doesn't work for same text
+#
+require 'rexml/document'
+include REXML
+#
+# Templates
+#
+fieldTemplate = &lt;&lt;-'END'
+&lt;CustomFunction id="" functionArity="" visible="True" parameters="#{params}" name="#{name}"&gt;
+	&lt;Calculation&gt;&lt;![CDATA[#{calc}]]&gt;&lt;/Calculation&gt;
+&lt;/CustomFunction&gt;
+END
+
+# Open document
+text = STDIN.read
+doc = Document.new
+
+# Set variables
+nameFull = text.match(/^\/\*.*?\n\s*NAME:[\s\n]*(.+?)\n/m)[1]
+name = nameFull.match(/\s*(.+?)\(/)[1].strip
+params = nameFull.match(/\((.*?)\)/)[1].gsub(/\s*/,'')
+calc = text
+
+root = Element.new "fmxmlsnippet"
+root.attributes["type"] = "FMObjectList"
+doc.add_element root
+
+# Insert Functions
+xml = eval('%*' + fieldTemplate + '*')
+doc.root.text =
+    Text.new(
+      xml,
+      respect_whitespace=true,
+      parent=nil,
+      raw=true,
+      entity_filter=nil,
+      illegal=%r/\n\[.^/m           # match nothing!
+    )
+
+# Load to pasteboard
+script_path = ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_PASTE_SNIPPET']
+script_path.gsub!(/ /,'\ ')
+snippet = doc.to_s.gsub(/'/,'"')
+shellScript = "osascript #{script_path} '#{snippet}'"
+system shellScript
+
+# Return feedback
+puts "Function ready to paste into FileMaker"</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>^@l</string>
+	<key>name</key>
+	<string>Load Function as Snippet*</string>
+	<key>output</key>
+	<string>showAsTooltip</string>
+	<key>uuid</key>
+	<string>FF7F98E2-B54B-48D0-BB18-1C612E8AD0F2</string>
+</dict>
+</plist>

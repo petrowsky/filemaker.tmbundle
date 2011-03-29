@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+
+text = STDIN.read
+
+# backslashes
+text.gsub!(/\\/,'\\')
+
+# pilcrows
+text.gsub!(/¶/,'\\¶')
+
+# double quotes
+text.gsub!(/"/,'\\"')
+
+textFinal = '"'.concat(text).concat('"')
+
+print textFinal</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Quote Block</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>61CED1FA-2FA6-47DF-B5B5-24FA86FB533F</string>
+</dict>
+</plist>

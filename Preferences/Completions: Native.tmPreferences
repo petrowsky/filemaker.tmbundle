@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Completions</string>
+	<string>Completions: Native</string>
 	<key>settings</key>
 	<dict>
 		<key>completions</key>
@@ -257,9 +257,12 @@
 			<string>WordCount</string>
 			<string>Year</string>
 			<string>YearName</string>
+			<string>FMSAUC_Version</string>
+			<string>FMSAUC_FindPlugin</string>
+			<string>FMSAUC_UpdatePlugin</string>
 		</array>
 	</dict>
 	<key>uuid</key>
-	<string>8E66A705-0E11-47EC-B965-282011CA7456</string>
+	<string>3D10EB12-D9BF-405F-B765-E725D177F712</string>
 </dict>
 </plist>

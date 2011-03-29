@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION
+#	Pretty prints FileMaker calculation
+#
+# TO DO
+#	Convert to hard tabs
+#	Clean indentation (see FHTML.PL command)
+
+text = STDIN.read
+
+# semi-colons
+text.gsub!(/(\n)[ \t]*;/,';\1')
+text.gsub!(/ *; */,' ; ')
+
+# brackets
+text.gsub!(/ *\[ */,'[ ')
+text.gsub!(/ *\] */,' ]')
+
+# parentheses
+text.gsub!(/ *\( */,' ( ')
+
+# remove trailing spaces
+text.gsub!(/[ \t]+(\n)/,'\1')
+
+# convert to hard tabs
+
+print text</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>^W</string>
+	<key>name</key>
+	<string>Tidy*</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>FA742894-F5C0-4E13-BC0E-F1D38416E084</string>
+</dict>
+</plist>
