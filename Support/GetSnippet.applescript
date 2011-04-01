@@ -12,7 +12,7 @@ HISTORY:
 	Created 2011.03.23 by Donovan Chandler, donovan_c@beezwax.net
 
 NOTES:
-	Conversion to text still needs some work.
+	Line endings are converted to line feed (LF)
 *)
 ------------------------------------------------
 
@@ -32,7 +32,12 @@ on run argv
 	set snippetText to read theFile as «class utf8»
 	close access theFile
 	
+	-- Convert CR to LF (recommended line ending in TextMate)
+	set snippetText to searchReplaceText(snippetText, {ascii character 13},{ascii character 10})
+	
 	-- Strip invalid characters left over from record
+	--	You can also do this by retrieving the clipboard contents as 
+	--	«class XMFN», etc. But this is more flexible.
 	set charStart to offset of "<" in snippetText
 	set snippetText to text charStart thru (length of snippetText) of snippetText
 	return snippetText
@@ -46,13 +51,12 @@ end run
 on getSnippet()
 	--tell application "FileMaker Pro Advanced"
 	try
-		--set clipboardData to the clipboard as record
 		set clipboardData to the clipboard as record
+		-- Alternative method: set clipboardText to «class XMSC» of clipboardData
 		set clipboardText to clipboardData
 		return clipboardText
 	on error errMsg number errNum
-		display dialog "Invalid clipboard data" & return & errNum & ": " & errMsg
-		return
+		return "Invalid clipboard data" & return & errNum & ": " & errMsg
 	end try
 	--end tell
 end getSnippet
@@ -74,3 +78,21 @@ on saveText(theText, filePath)
 	end try
 	return filePath as alias
 end saveText
+
+-- Handler: Searches and replaces string within text block
+to searchReplaceText(theText, searchString, replaceString)
+	set searchString to searchString as list
+	set replaceString to replaceString as list
+	set theText to theText as text
+	
+	set oldTID to AppleScript's text item delimiters
+	repeat with i from 1 to count searchString
+		set AppleScript's text item delimiters to searchString's item i
+		set theText to theText's text items
+		set AppleScript's text item delimiters to replaceString's item i
+		set theText to theText as text
+	end repeat
+	set AppleScript's text item delimiters to oldTID
+	
+	return theText
+end searchReplaceText
