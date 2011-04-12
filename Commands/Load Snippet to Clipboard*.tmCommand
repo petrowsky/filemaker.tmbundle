@@ -9,19 +9,16 @@
 # DESCRIPTION
 #	Loads fmxmlsnippet onto pasteboard in proper format for pasting into FileMaker
 #
-# TO DO
-#	Fix bugs - only works itermittently
-#
 TEXT="$(ruby -e 'puts STDIN.read')"
-#read TEXT
 
 SCRIPT_PATH="$TM_BUNDLE_SUPPORT$TM_PATH_PASTE_SNIPPET"
-osascript "$SCRIPT_PATH" "$TEXT"
-echo "Snippet copied to clipboard"</string>
+osascript "$SCRIPT_PATH" "$TEXT"</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>@b</string>
 	<key>name</key>
-	<string>Load Snippet to Clipboard*</string>
+	<string>Load Snippet to Clipboard</string>
 	<key>output</key>
 	<string>showAsTooltip</string>
 	<key>uuid</key>
