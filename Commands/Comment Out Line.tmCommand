@@ -9,7 +9,7 @@
 
 text = STDIN.read
 
-puts "/*\n".concat(text).concat("\n/*")</string>
+puts "/*\n".concat(text).concat("\n*/")</string>
 	<key>fallbackInput</key>
 	<string>line</string>
 	<key>input</key>
