@@ -6,7 +6,7 @@
 	<string>Case (
 	${1:test1} ;
 		${2:result1}${3: ;
-	${4:test2};
+	${4:test2} ;
 		${5:result2} ;
 	${6:defaultResult}}
 )$0</string>
