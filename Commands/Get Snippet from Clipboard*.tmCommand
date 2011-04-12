@@ -9,11 +9,20 @@
 # DESCRIPTION
 #	Retrieves fmxmlsnippet from FileMaker pasteboard as text
 #
+# TO DO
+#	Save to temp file so we can detect the language grammar
+#
 
 SCRIPT_PATH="$TM_BUNDLE_SUPPORT$TM_PATH_GET_SNIPPET"
-osascript "$SCRIPT_PATH"</string>
+RESULT=$(osascript "$SCRIPT_PATH")
+if [ "${RESULT:0:1}" != "&lt;" ] ; then
+	exit_show_tool_tip "Unrecognized clipboard format"
+fi
+echo "$RESULT"</string>
 	<key>input</key>
 	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>~@b</string>
 	<key>name</key>
 	<string>Get Snippet from Clipboard*</string>
 	<key>output</key>
