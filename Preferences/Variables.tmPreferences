@@ -12,13 +12,13 @@
 				<key>name</key>
 				<string>TM_PATH_PASTE_SNIPPET</string>
 				<key>value</key>
-				<string>/PasteSnippet.applescript</string>
+				<string>/lib/PasteSnippet.applescript</string>
 			</dict>
 			<dict>
 				<key>name</key>
 				<string>TM_PATH_GET_SNIPPET</string>
 				<key>value</key>
-				<string>/GetSnippet.applescript</string>
+				<string>/lib/GetSnippet.applescript</string>
 			</dict>
 		</array>
 	</dict>
