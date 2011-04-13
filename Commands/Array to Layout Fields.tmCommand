@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION
+#	Generates FileMaker snippet of Fields
+#
+# USAGE
+#	col1 = fully qualified field name
+#	col2 = tooltip (optional)
+#	col3 = font (optional)
+#	col4 = fontSize (optional)
+#
+# TO DO
+#
+
+require 'rexml/document'
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+include REXML
+#
+# Open document
+text = STDIN.read
+doc = Document.new
+
+root = Element.new "fmxmlsnippet"
+root.attributes["type"] = "FMObjectList"
+doc.add_element root
+
+# Insert Fields
+xml = ""
+text.split(/\n/).each { |row|
+	col = row.split(/\t/)
+	name = col[0]
+	arg = {
+		:fieldQualified	=&gt; col[1],
+		:tooltip			=&gt; col[2],
+		:font			=&gt; col[3],
+		:fontSize			=&gt; col[4]
+	}
+	xml = xml &lt;&lt; "\n" &lt;&lt; doc.layoutField(arg)
+	}
+doc.root.text = doc.newElements(xml)
+
+print doc</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Array to Layout Fields</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>4D7894C2-1B75-4D65-809C-8255700BEC3D</string>
+</dict>
+</plist>
