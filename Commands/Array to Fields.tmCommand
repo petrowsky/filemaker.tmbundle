@@ -7,27 +7,26 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 #
-# DESCRIPTION:
-#	Generates FileMaker snippet for Fields
+# DESCRIPTION
+#	Generates FileMaker snippet of Fields
 #
-# USAGE:
+# USAGE
 #	col1 = field name
-#	col2 = field comment (optional)
+#	col2 = field type
+#	col3 = boolean (True = Global field)
+#	col4 = comment
+#	col5 = max repetitions
+#	col6 = calculation
 #
+# TO DO
+#
+
 require 'rexml/document'
+require ENV['TM_BUNDLE_SUPPORT'] + '/lib/FMSnippet.rb'
 include REXML
-#
-# Templates
-#
-fieldTemplate = &lt;&lt;-'END'
-&lt;Field id="" dataType="Text" fieldType="Normal" name="#{fieldName}"&gt;
-	&lt;Comment&gt;#{fieldComment}&lt;/Comment&gt;
-&lt;/Field&gt;
-END
 #
 # Open document
 text = STDIN.read
-# text = "dog\twoof\ncat\tmeow"
 doc = Document.new
 
 root = Element.new "fmxmlsnippet"
@@ -36,22 +35,19 @@ doc.add_element root
 
 # Insert Fields
 xml = ""
-text.split(/\n/).each { |row| 
+text.split(/\n/).each { |row|
 	col = row.split(/\t/)
-	fieldName = col[0]
-	fieldComment = col[1]
-	xml = xml &lt;&lt; "\n" &lt;&lt; eval('%*' + fieldTemplate + '*')
-
+	name = col[0]
+	arg = {
+		:type		=&gt; col[1],
+		:isGlobal		=&gt; col[2],
+		:comment		=&gt; col[3],
+		:repetitions	=&gt; col[4],
+		:calculation	=&gt; col[5]
 	}
-doc.root.text =
-    Text.new(
-      xml,
-      respect_whitespace=true,
-      parent=nil,
-      raw=true,
-      entity_filter=nil,
-      illegal=%r/\n\[.^/m           # match nothing!
-    )
+	xml = xml &lt;&lt; "\n" &lt;&lt; doc.field(name,arg)
+	}
+doc.root.text = doc.newElements(xml)
 
 print doc</string>
 	<key>input</key>

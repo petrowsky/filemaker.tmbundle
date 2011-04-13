@@ -7,17 +7,17 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 #
-# DESCRIPTION:
+# DESCRIPTION
 #	Generates FileMaker snippet for Set Field script steps
 #
-# USAGE A:
+# USAGE A
 #	col1 = table name
 #	col2 = field name
 #	col3 = field value
 #	col4 = field repetition
 #	CONTACT \t NAME \t $_name \t $_rep =&gt; Set Field [CONTACT::NAME[$rep]; $_name]
 #
-# USAGE B:
+# USAGE B
 #	col1 = table::field
 #	col2 = field value
 #	col3 = field repetition
@@ -29,22 +29,8 @@
 #
 
 require 'rexml/document'
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 include REXML
-#
-# Templates
-#
-fieldTemplate = &lt;&lt;-'END'
-&lt;Step enable="True" id="" name="Set Field"&gt;
-	&lt;Calculation&gt;&lt;![CDATA[#{calc}]]&gt;&lt;/Calculation&gt;
-	&lt;Field table="#{table}" id="" repetition="#{rep}" name="#{field}"&gt;&lt;/Field&gt;
-&lt;/Step&gt;
-END
-
-fieldRep = &lt;&lt;-'END'
-&lt;Repetition&gt;
-	&lt;Calculation&gt;&lt;![CDATA[#{repCalc}]]&gt;&lt;/Calculation&gt;
-&lt;/Repetition&gt;
-END
 #
 # Open document
 text = STDIN.read
@@ -62,24 +48,15 @@ text.gsub!(/::/,"\t")
 xml = ""
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)
-	table = col[0]
-	field = col[1]
-	calc = col[2]
-	rep = col [3]
-	# Add fieldRep template if rep is not a simple integer
-
-	xml = xml &lt;&lt; "\n" &lt;&lt; eval('%*' + fieldTemplate + '*')
-
+	arg = {
+		:table			=&gt; col[0],
+		:field			=&gt; col[1],
+		:calculation		=&gt; col[2],
+		:repetition		=&gt; col[3]
 	}
-doc.root.text =
-    Text.new(
-      xml,
-      respect_whitespace=true,
-      parent=nil,
-      raw=true,
-      entity_filter=nil,
-      illegal=%r/\n\[.^/m           # match nothing!
-    )
+	xml = xml &lt;&lt; "\n" &lt;&lt; doc.setField(arg)
+	}
+doc.root.text = doc.newElements(xml)
 
 print doc</string>
 	<key>input</key>
