@@ -21,6 +21,8 @@ osascript "$SCRIPT_PATH" "$TEXT"</string>
 	<string>Load Snippet to Clipboard</string>
 	<key>output</key>
 	<string>showAsTooltip</string>
+	<key>scope</key>
+	<string>text.xml.filemakerClipboard</string>
 	<key>uuid</key>
 	<string>9519435C-60DB-400F-853D-356CD98B214F</string>
 </dict>
