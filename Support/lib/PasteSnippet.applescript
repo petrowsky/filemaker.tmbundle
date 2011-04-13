@@ -91,8 +91,7 @@ on determineClass(clipText)
 	try
 		set array to my split(clipText,"<")
 		set child1 to item 3 of array
-		set childLO to item 4 of array
-	on error errMsg number errNum
+gdfdfd	on error errMsg number errNum
 		--return "Error: " & errNum & ": " & errMsg
 		return "Error: Unrecognized format"
 	end try
@@ -106,7 +105,7 @@ on determineClass(clipText)
 		set theClass to "XMFD"
 	else if child1 starts with "CustomFunction" then
 		set theClass to "XMFN"
-	else if childLO starts with "Layout" then
+	else if child1 starts with "Layout" then
 		set theClass to "XMLO"
 	else
 		return "Error: Snippet format not recognized"
@@ -159,3 +158,12 @@ on readFile(fileAlias)
 		return "Error: " & errNum & ": " & errMsg
 	end try
 end readFile
+
+--Handler: Returns patterncount
+on patternCount(theText, matchString)
+	set oldTID to AppleScript's text item delimiters
+	set AppleScript's text item delimiters to {matchString}
+	set countedPattern to count of text items of theText
+	set AppleScript's text item delimiters to oldTID
+	return countedPattern - 1
+end PatternCount
