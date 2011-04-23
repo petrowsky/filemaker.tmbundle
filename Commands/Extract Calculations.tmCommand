@@ -7,8 +7,9 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 #
-# TO DO
+# TODO
 #	Return name of element or path?
+#
 
 require 'rexml/document'
 include REXML

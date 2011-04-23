@@ -9,7 +9,7 @@
 # DESCRIPTION
 #	Retrieves fmxmlsnippet from FileMaker pasteboard as text
 #
-# TO DO
+# TODO
 #	Save to temp file so we can detect the language grammar
 #
 
@@ -27,8 +27,6 @@ echo "$RESULT"</string>
 	<string>Get Snippet from Clipboard*</string>
 	<key>output</key>
 	<string>openAsNewDocument</string>
-	<key>scope</key>
-	<string>text.xml.filemakerClipboard</string>
 	<key>uuid</key>
 	<string>7DAAABED-A892-4159-9A2E-1DA77ECBBB48</string>
 </dict>

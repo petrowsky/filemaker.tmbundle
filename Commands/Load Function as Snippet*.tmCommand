@@ -7,11 +7,11 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 #
-# DESCRIPTION:
+# DESCRIPTION
 #	Loads custom function text onto pasteboard for pasting into FileMaker.
 #	Requires format specified in custom function template supplied with bundle.
 #
-# TO DO:
+# TODO
 #	Determine why pasting sometimes doesn't work for same text
 #
 require 'rexml/document'

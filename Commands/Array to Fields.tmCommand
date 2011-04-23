@@ -18,11 +18,11 @@
 #	col5 = max repetitions
 #	col6 = calculation
 #
-# TO DO
+# TODO
 #
 
 require 'rexml/document'
-require ENV['TM_BUNDLE_SUPPORT'] + '/lib/FMSnippet.rb'
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 include REXML
 #
 # Open document

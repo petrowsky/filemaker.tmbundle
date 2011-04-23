@@ -16,7 +16,7 @@
 #	col3 = font (optional)
 #	col4 = fontSize (optional)
 #
-# TO DO
+# TODO
 #
 
 require 'rexml/document'

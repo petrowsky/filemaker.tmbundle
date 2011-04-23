@@ -6,10 +6,11 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/ruby
-
-# TO DO
+#
+# TODO
 #	Remove leading spaces, etc.
 #	Filter to unique values
+#
 
 text = STDIN.read
 

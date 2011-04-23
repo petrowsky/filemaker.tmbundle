@@ -139,7 +139,7 @@ h2. Becoming a power user
 
 h3. Read a tutorial
 
-Here's a good place to start: [TextMate Tutorials and More](http://projects.serenity.de/textmate/tutorials/basics/) By Stanley Rost (maintainer of TO DO bundle)
+Here's a good place to start: [TextMate Tutorials and More](http://projects.serenity.de/textmate/tutorials/basics/) By Stanley Rost (maintainer of TODO bundle)
 
 h3. Learn which commands are available to you
 

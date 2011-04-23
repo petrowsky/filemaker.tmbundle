@@ -14,9 +14,10 @@
 #	For format:	col1     col2     col3
 #	Returns:		[ "col1"	; "col2" ] ; // col3
 #
-# TO DO:
+# TODO:
 #	Make third column optional
 #	Don't add enclosing paren if text was selected
+#
 
 body=`sed 's/\(.*\)	\(.*\)\	\(.*\)/	\[ "\1"	; "\2" \] ;	\/\/ \3/'`
 

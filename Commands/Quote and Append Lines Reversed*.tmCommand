@@ -6,9 +6,10 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/ruby
-
-# TO DO
+#
+# TODO
 #	Remove leading and trailing "
+#
 
 text = STDIN.read
 
