@@ -89,9 +89,10 @@ end convertClip
 --	XMLO for layout objects
 on determineClass(clipText)
 	try
+		set clipText to searchReplaceText(clipText, "<?", "?")
 		set array to my split(clipText,"<")
 		set child1 to item 3 of array
-gdfdfd	on error errMsg number errNum
+	on error errMsg number errNum
 		--return "Error: " & errNum & ": " & errMsg
 		return "Error: Unrecognized format"
 	end try
