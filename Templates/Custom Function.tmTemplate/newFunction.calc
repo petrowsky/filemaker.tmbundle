@@ -2,7 +2,7 @@
 
 /* —————————————————————————————— //
 NAME:
-	${TM_NEW_FILE_BASENAME} ( )
+	${1:TM_NEW_FILE_BASENAME} ( )
 
 PURPOSE:
 	
