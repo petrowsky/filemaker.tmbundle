@@ -7,20 +7,22 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 #
-# DESCRIPTION:
+# DESCRIPTION
 #	Breaks function into multiple lines
 #
-# TO DO:
-#	Make \n and \t work in substitution string
-#	Respect leading indentation and add extra level to nested lines
+# TODO
+#	• Respect leading indentation
+#	• Remove space after leading tabs
 #
+
 text = STDIN.read
 
-#indent = 
-#text.gsub!(/\(\s*\);/,'\n\t;')
-text.gsub!(/\s*;/,'\n\t;')
+text.gsub!(/\s*?;\s*?/," ;\n\t")
+text.gsub!(/\)\s*?$/,"\n)")
 
 print text</string>
+	<key>fallbackInput</key>
+	<string>line</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
