@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Let ( [
+	valCur = GetValue ( ${1:inputList} ; 1 ) ;
+	valRemaining = RightValues ( $1 ; ValueCount ( $1 ) - 1 )
+	//-- Logic goes here
+	];
+	Case (
+		ValueCount ( valRemaining ) &gt; 1 ; ${2:Function()} ;
+		${3:result}
+	)
+)</string>
+	<key>name</key>
+	<string>Recursion, Nested</string>
+	<key>tabTrigger</key>
+	<string>calc</string>
+	<key>uuid</key>
+	<string>0607FDEA-C112-470E-8E12-9794B69B9290</string>
+</dict>
+</plist>

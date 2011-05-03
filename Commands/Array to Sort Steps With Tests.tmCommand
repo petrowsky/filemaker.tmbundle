@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION
+#	Generates FileMaker snippet of Sort script steps
+#
+# USAGE
+#	col1 = test
+#	col2 = sort field
+#	col3 = sort direction
+#	True \t TABLE::NAME \t ascending
+#
+
+require 'FMSnippet.rb'
+# require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+#
+# Open document
+# text = STDIN.read
+text = "True\ttable::name\nTrue\ttable::name"
+doc = FMSnippet.new("")
+
+# Ensure array is formatted properly
+text.gsub!(/::/,"\t")
+
+# Insert Fields
+xml = ""
+rep = 0
+text.split(/\n/).each { |row|
+	col = row.split(/\t/)
+	calc = col[0]
+	rep = rep + 1
+  rep == 1 ? doc.stepIf(calc) : doc.stepElseIf(calc)
+	arg = [{
+		:field			=&gt; col[1],
+		:direction		=&gt; col[2]
+	}]
+	doc.stepSort(arg,"True")
+}
+doc.stepEndIf
+puts doc</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Array to Sort Steps With Tests</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>7BD516A9-A36B-4E65-AC45-6CF7C77F858A</string>
+</dict>
+</plist>
