@@ -23,23 +23,17 @@
 #	col3 = field repetition
 #	CONTACT::NAME \t $_name \t $_rep =&gt; Set Field [CONTACT::NAME; $_name]
 #
-# TO DO
+# TODO
 #	Finish adding support for field repetition.  Needs to discern if rep is a calculation or not
 #	Prompt for table name if not provided
 #
 
-require 'rexml/document'
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
-include REXML
 #
 # Open document
 text = STDIN.read
-#text = "table\tname\t2+2\t$_rep\ntable::name\t3\t$rep"
-doc = Document.new
-
-root = Element.new "fmxmlsnippet"
-root.attributes["type"] = "FMObjectList"
-doc.add_element root
+# text = "table\tname\t2+2\t$_rep\ntable::name\t3\t$rep"
+doc = FMSnippet.new("")
 
 # Ensure array is formatted properly
 text.gsub!(/::/,"\t")
@@ -48,17 +42,18 @@ text.gsub!(/::/,"\t")
 xml = ""
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)
-	arg = {
-		:table			=&gt; col[0],
-		:field			=&gt; col[1],
-		:calculation		=&gt; col[2],
-		:repetition		=&gt; col[3]
-	}
-	xml = xml &lt;&lt; "\n" &lt;&lt; doc.setField(arg)
-	}
-doc.root.text = doc.newElements(xml)
+	if not col[0].include?("::")
+	  col[0] = col[0] + '::' + col[1]
+	  col.slice!(1)
+  end
+	arg = [{
+		:field			=&gt; col[0],
+		:direction		=&gt; col[1]
+	}]
+	doc.stepSort(arg,"True")
+}
 
-print doc</string>
+puts doc</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
