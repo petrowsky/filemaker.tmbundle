@@ -9,7 +9,12 @@
 
 text = STDIN.read
 
-text = text.scan(/\$[_a-zA-Z]+/).sort.uniq!.each { |x| print x, "\n" }</string>
+text = text.scan(/\${1,2}[_a-zA-Z]+/)
+if text.length
+	puts text.sort.uniq.each { |x| print x, "\n" }
+else
+	exit_show_tool_tip "No variables found"
+end</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
