@@ -10,22 +10,29 @@
 # DESCRIPTION
 #	Pretty prints FileMaker calculation
 #
-# TO DO
+# TODO
 #	Convert to hard tabs
 #	Clean indentation (see FHTML.PL command)
+#
 
 text = STDIN.read
 
 # semi-colons
-text.gsub!(/(\n)[ \t]*;/,';\1')
+#text.gsub!(%r{(\n)[ \t]*;},';\1')
+text.gsub!(%r{(//.*)?\n[ \t]*;},";\\1\n")
 text.gsub!(/ *; */,' ; ')
 
 # brackets
 text.gsub!(/ *\[ */,'[ ')
-text.gsub!(/ *\] */,' ]')
+text.gsub!(/(\S) *\] */,'\1 ]')
+text.gsub!(/\] *;/,'] ;')
 
 # parentheses
-text.gsub!(/ *\( */,' ( ')
+text.gsub!(/(\S) *\( */,'\1 ( ')
+text.gsub!(/(\S) *\) */,'\1 ) ')
+
+# operators
+text.gsub!(/ *([≤≥&lt;&gt;+=≠\-]+) */,' \1 ')
 
 # remove trailing spaces
 text.gsub!(/[ \t]+(\n)/,'\1')
@@ -36,11 +43,13 @@ print text</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>
-	<string>^W</string>
+	<string>^H</string>
 	<key>name</key>
 	<string>Tidy*</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>FA742894-F5C0-4E13-BC0E-F1D38416E084</string>
 </dict>
