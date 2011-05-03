@@ -9,7 +9,7 @@
 # DESCRIPTION
 #	Loads fmxmlsnippet onto pasteboard in proper format for pasting into FileMaker
 #
-TEXT="$(ruby -e 'puts STDIN.read')"
+TEXT="$(ruby -e 'puts STDIN.read.lstrip')"
 
 SCRIPT_PATH="$TM_BUNDLE_SUPPORT$TM_PATH_PASTE_SNIPPET"
 osascript "$SCRIPT_PATH" "$TEXT"</string>
