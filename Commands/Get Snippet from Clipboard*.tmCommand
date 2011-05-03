@@ -10,7 +10,7 @@
 #	Retrieves fmxmlsnippet from FileMaker pasteboard as text
 #
 # TODO
-#	Save to temp file so we can detect the language grammar
+#	Check that mate is installed before using it
 #
 
 SCRIPT_PATH="$TM_BUNDLE_SUPPORT$TM_PATH_GET_SNIPPET"
@@ -18,7 +18,10 @@ RESULT=$(osascript "$SCRIPT_PATH")
 if [ "${RESULT:0:1}" != "&lt;" ] ; then
 	exit_show_tool_tip "Unrecognized clipboard format"
 fi
-echo "$RESULT"</string>
+
+# Swap these calls if you are have not added a symbolic link for the 'mate' shell utility
+#echo "$RESULT"
+echo "$RESULT" | mate -a</string>
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>
