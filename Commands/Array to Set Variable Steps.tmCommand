@@ -7,10 +7,10 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 #
-# DESCRIPTION:
+# DESCRIPTION
 #	Generates FileMaker snippet for Set Variable script steps
 #
-# USAGE:
+# USAGE
 #	col1 = variable name
 #	col2 = calculation
 #	col3 = variable repetition (optional)

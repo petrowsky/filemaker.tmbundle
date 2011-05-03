@@ -17,6 +17,9 @@ NOTES:
 ------------------------------------------------
 
 on run argv
+	global errorText
+	set errorText to ""
+	
 	-- Localize parameters
 	--set filePath to (item 1 of argv)
 	set filePath to (path to "temp" from user domain as text) & "tempSnippet.xml"
@@ -25,12 +28,14 @@ on run argv
 	tell application "FileMaker Pro Advanced"
 		set snippetRecord to my getSnippet()
 	end tell
+	if errorText is not "" then return errorText
 
 	-- Convert snippet to text
 	set fileAlias to my saveText(snippetRecord, filePath)
 	set theFile to open for access fileAlias
 	set snippetText to read theFile as «class utf8»
 	close access theFile
+	if errorText is not "" then return errorText
 	
 	-- Convert CR to LF (recommended line ending in TextMate)
 	set snippetText to searchReplaceText(snippetText, {ascii character 13},{ascii character 10})
@@ -89,7 +94,8 @@ to getSnippet()
 	try
 		set clipboardData to the clipboard as record
 	on error errMsg number errNum
-		return "Invalid clipboard data" & return & errNum & ": " & errMsg
+		set errorText to "Invalid clipboard data" & return & errNum & ": " & errMsg
+		return
 	end try	
 	try
 		set clipboardText to «class XMSC» of clipboardData
@@ -115,5 +121,5 @@ to getSnippet()
 		set clipboardText to «class XMLO» of clipboardData
 		return clipboardText
 	end try
-	return "Unrecognized clipboard data: " & clipboardData
+	set errorText to "Unrecognized clipboard data"
 end getSnippet

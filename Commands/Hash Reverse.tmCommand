@@ -6,9 +6,10 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/ruby
-
-# Known Bugs:
+#
+# BUGS
 #	- Functions are returned as strings
+#
 
 text = STDIN.read
 

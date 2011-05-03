@@ -16,6 +16,7 @@
 #
 # USAGE
 #	Second column can be empty, but the preceding tab is required
+#
 
 text = STDIN.read
 

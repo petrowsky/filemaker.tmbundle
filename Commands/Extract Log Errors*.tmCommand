@@ -7,8 +7,9 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 #
-# TO DO:
-#	Constrain results to only the most recent import
+# DESCRIPTION
+#	Extracts errors from FileMaker log file
+#
 
 text = STDIN.read
 divider = "---------------------------------------------------"
@@ -45,7 +46,7 @@ print result
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Extract Log Errors*</string>
+	<string>Extract Errors</string>
 	<key>output</key>
 	<string>openAsNewDocument</string>
 	<key>uuid</key>
