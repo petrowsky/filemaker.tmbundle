@@ -5,24 +5,41 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/bin/bash
+	<string>#!/usr/bin/ruby
 #
-# PURPOSE:
-#	Builds Case statement from tab-delim array
+# DESCRIPTION
+#	Builds Case statement from tab-delim array.
+#	Does not add "Case(" if used on part of document.
 #
-# EXAMPLE:
+# EXAMPLE
 #	For format:	col1     col2     col3
-#	Returns:		"col1"\n	; "col2" ;
+#	Returns:		"col1"\n	; "col2" ; // col3
 #
-# TO DO:
-#	Make third column optional
-#	Don't add enclosing paren if text was selected
-#	Don't quote calculations
-#	Place second column on new line
+#	Optional columns: col3
+#
+# TODO
+#	Remove trailing ";"
+#
 
-body=`sed 's/\(.*\)	\(.*\)[\s]*/	\"\1"	; "\2" ;/'`
+text = STDIN.read
 
-echo -n -e "Case (\n${body}\n)"</string>
+# Determine if text is selection or document
+selection = ENV['TM_SELECTED_TEXT']
+createFull = selection == text ? false : true
+
+# Generate calc from array
+final = ""
+text.split(/\n/).each { |row| 
+	col = row.split(/\t/)
+	test = col[0]
+	result = col[1]
+	comment = col[2]
+	comment = (comment ? " // #{comment}" : '')
+	final = final &lt;&lt; "\n" &lt;&lt; %Q[#{test}\t; #{result} ;#{comment}]
+}
+final.strip!
+final = createFull ? "Case (\n #{final}\n)" : final
+print final</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
