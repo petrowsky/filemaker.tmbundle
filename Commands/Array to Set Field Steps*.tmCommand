@@ -24,7 +24,7 @@
 #	CONTACT::NAME \t $_name \t $_rep =&gt; Set Field [CONTACT::NAME; $_name]
 #
 # TODO
-#	Finish adding support for field repetition.  Needs to discern if rep is a calculation or not
+#	Finish adding support for field repetition.  Needs to discern if rep is an integer or calc
 #	Prompt for table name if not provided
 #
 
@@ -39,18 +39,18 @@ doc = FMSnippet.new("")
 text.gsub!(/::/,"\t")
 
 # Insert Fields
-xml = ""
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)
 	if not col[0].include?("::")
 	  col[0] = col[0] + '::' + col[1]
 	  col.slice!(1)
   end
-	arg = [{
+	arg = {
 		:field			=&gt; col[0],
-		:direction		=&gt; col[1]
-	}]
-	doc.stepSort(arg,"True")
+		:calculation		=&gt; col[1],
+		:repetition		=&gt; col[2]
+	}
+	doc.stepSetField(arg)
 }
 
 puts doc</string>

@@ -14,52 +14,39 @@
 # TODO
 #	Determine why pasting sometimes doesn't work for same text
 #
-require 'rexml/document'
-include REXML
-#
-# Templates
-#
-fieldTemplate = &lt;&lt;-'END'
-&lt;CustomFunction id="" functionArity="" visible="True" parameters="#{params}" name="#{name}"&gt;
-	&lt;Calculation&gt;&lt;![CDATA[#{calc}]]&gt;&lt;/Calculation&gt;
-&lt;/CustomFunction&gt;
-END
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 
 # Open document
 text = STDIN.read
-doc = Document.new
+doc = FMSnippet.new("")
 
-# Set variables
-nameFull = text.match(/^\/\*.*?\n\s*NAME:[\s\n]*(.+?)\n/m)[1]
-name = nameFull.match(/\s*(.+?)\(/)[1].strip
-params = nameFull.match(/\((.*?)\)/)[1].gsub(/\s*/,'')
-calc = text
+begin
 
-root = Element.new "fmxmlsnippet"
-root.attributes["type"] = "FMObjectList"
-doc.add_element root
+  # Parse function attributes
+  nameFull = text.match(/^\/\*.*?\n\s*NAME:[\s\n]*(.+?)\n/m)[1]
+  name = nameFull.match(/\s*(.+?)\(/)[1].strip
+  params = nameFull.match(/\((.*?)\)/)[1].gsub(/\s*/,'')
+  calc = text
 
-# Insert Functions
-xml = eval('%*' + fieldTemplate + '*')
-doc.root.text =
-    Text.new(
-      xml,
-      respect_whitespace=true,
-      parent=nil,
-      raw=true,
-      entity_filter=nil,
-      illegal=%r/\n\[.^/m           # match nothing!
-    )
+  # Create function snippet
+  doc.customFunction(name,params,calc)
+  docArray = doc.to_s.lstrip.split("\n")
+  docText = docArray[1,docArray.length].join("\n")
 
-# Load to pasteboard
-script_path = ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_PASTE_SNIPPET']
-script_path.gsub!(/ /,'\ ')
-snippet = doc.to_s.gsub(/'/,'"')
-shellScript = "osascript #{script_path} '#{snippet}'"
-system shellScript
+  # Load to pasteboard
+  script_path = ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_PASTE_SNIPPET']
+  script_path.gsub!(/ /,'\ ')
+  snippet = docText.gsub(/'/,'"')
+  shellScript = "osascript #{script_path} '#{snippet}'"
+  system shellScript
 
-# Return feedback
-puts "Function ready to paste into FileMaker"</string>
+  # Return feedback
+  puts "Function ready to paste into FileMaker"
+
+rescue
+  puts "Unrecognized function format"
+  
+end</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>

@@ -16,20 +16,12 @@
 #	col3 = font (optional)
 #	col4 = fontSize (optional)
 #
-# TODO
-#
 
-require 'rexml/document'
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
-include REXML
-#
+
 # Open document
 text = STDIN.read
-doc = Document.new
-
-root = Element.new "fmxmlsnippet"
-root.attributes["type"] = "FMObjectList"
-doc.add_element root
+doc = FMSnippet.new("")
 
 # Insert Fields
 xml = ""
@@ -42,9 +34,8 @@ text.split(/\n/).each { |row|
 		:font			=&gt; col[3],
 		:fontSize			=&gt; col[4]
 	}
-	xml = xml &lt;&lt; "\n" &lt;&lt; doc.layoutField(arg)
+	doc.layoutField(arg)
 	}
-doc.root.text = doc.newElements(xml)
 
 print doc</string>
 	<key>input</key>
