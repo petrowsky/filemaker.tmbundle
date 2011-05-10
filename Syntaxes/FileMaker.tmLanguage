@@ -8,7 +8,7 @@
 		<string>fmfn</string>
 	</array>
 	<key>firstLineMatch</key>
-	<string>/\*|Case|Let</string>
+	<string>\s*(Case|Let)\s*\(</string>
 	<key>foldingStartMarker</key>
 	<string>/\*|\{\s*$|\(\[*\s*$</string>
 	<key>foldingStopMarker</key>
