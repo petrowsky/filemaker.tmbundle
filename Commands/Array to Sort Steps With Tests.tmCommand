@@ -17,19 +17,17 @@
 #	True \t TABLE::NAME \t ascending
 #
 
-require 'FMSnippet.rb'
-# require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
-#
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+
 # Open document
-# text = STDIN.read
-text = "True\ttable::name\nTrue\ttable::name"
+text = STDIN.read
+#text = "True\ttable::name\nTrue\ttable::name"
 doc = FMSnippet.new("")
 
 # Ensure array is formatted properly
 text.gsub!(/::/,"\t")
 
 # Insert Fields
-xml = ""
 rep = 0
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)
@@ -43,7 +41,14 @@ text.split(/\n/).each { |row|
 	doc.stepSort(arg,"True")
 }
 doc.stepEndIf
-puts doc</string>
+puts doc
+
+# How to handle field name that's possibly split into two columns
+# col = row.split(/\t/)
+# if not col[0].include?("::")
+#   col[0] = col[0] + '::' + col[1]
+#   col.slice!(1)
+# end</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
