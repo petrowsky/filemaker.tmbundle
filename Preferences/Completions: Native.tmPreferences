@@ -9,6 +9,7 @@
 		<key>completions</key>
 		<array>
 			<string>Abs</string>
+			<string>AccountPrivilegeSetName</string>
 			<string>Acos</string>
 			<string>Asin</string>
 			<string>Atan</string>
@@ -97,7 +98,6 @@
 			<string>PortalRowNumber</string>
 			<string>PreferencesPath</string>
 			<string>PrinterName</string>
-			<string>PrivilegeSetName</string>
 			<string>RecordAccess</string>
 			<string>RecordID</string>
 			<string>RecordModificationCount</string>
