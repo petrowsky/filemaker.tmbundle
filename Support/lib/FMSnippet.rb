@@ -7,6 +7,12 @@ class FMSnippet
   
   # types = {layout_object}
   def initialize(type)
+    # Optional bypass of root element
+    if type == 'partial'
+      @template = ''
+      return
+    end
+    # Default - create root element for snippet
     @type = 
       if type == 'layout_object'
         'LayoutObjectList'
@@ -63,30 +69,6 @@ class FMSnippet
   # ------------------------------------
   # Script and Script Step
   # ------------------------------------
-  
-  def stepSort(fieldArray,hideDialog="True")
-    hideDialog = "True"
-    template = %q{
-  <Step enable="True" id="" name="Sort Records">
-    <NoInteract state="<%= hideDialog %>"/>
-    <Restore state="True"/>
-    <SortList value="True">
-      % fieldArray.each do |field_cur|
-        % direction = field_cur[:direction] || "Ascending"
-        % fieldQualified = field_cur[:field]
-        % table = getFieldTable(fieldQualified)
-        % name = getFieldName(fieldQualified)
-        <Sort type="<% field_cur['direction'] %>">
-          <PrimaryField>
-            <Field table="<%= table %>" id="" name="<%= name %>"/>
-          </PrimaryField>
-        </Sort>
-      % end
-    </SortList>
-  </Step>}.gsub(/^\s*%/, '%')
-    tpl = ERB.new(template, 0, '%<>')
-    @template << tpl.result(binding)
-  end
   
   def stepIf(calculation)
     template = %q{
@@ -153,6 +135,45 @@ class FMSnippet
      <Calculation><![CDATA[<%= repCalc %>]]></Calculation>
     </Repetition>
     % end
+  </Step>}.gsub(/^\s*%/, '%')
+    tpl = ERB.new(template, 0, '%<>')
+    @template << tpl.result(binding)
+  end
+  
+  def stepSetVariable(name,rep,calc)
+    template = %q{
+  <Step enable="True" id="" name="Set Variable">
+     <Value>
+       <Calculation><![CDATA[<%= calc %>]]></Calculation>
+     </Value>
+     <Repetition>
+       <Calculation><![CDATA[<%= rep %>]]></Calculation>
+     </Repetition>
+     <Name><%= name %></Name>
+  </Step>}.gsub(/^\s*%/, '%')
+    tpl = ERB.new(template, 0, '%<>')
+    @template << tpl.result(binding)
+  end
+  
+  def stepSort(fieldArray,hideDialog="True")
+    hideDialog = "True"
+    template = %q{
+  <Step enable="True" id="" name="Sort Records">
+    <NoInteract state="<%= hideDialog %>"/>
+    <Restore state="True"/>
+    <SortList value="True">
+      % fieldArray.each do |field_cur|
+        % direction = field_cur[:direction] || "Ascending"
+        % fieldQualified = field_cur[:field]
+        % table = getFieldTable(fieldQualified)
+        % name = getFieldName(fieldQualified)
+        <Sort type="<% field_cur['direction'] %>">
+          <PrimaryField>
+            <Field table="<%= table %>" id="" name="<%= name %>"/>
+          </PrimaryField>
+        </Sort>
+      % end
+    </SortList>
   </Step>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @template << tpl.result(binding)
