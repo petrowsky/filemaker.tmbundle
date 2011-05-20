@@ -6,10 +6,16 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/ruby
+#
+# TODO
+#	Comment out single line using //
+#	Uncomment commented lines
 
 text = STDIN.read
 
-puts "/*\n".concat(text).concat("\n*/")</string>
+# print "/*\n".concat(text).concat("\n*/")
+
+ print text.gsub(/^/,'//')</string>
 	<key>fallbackInput</key>
 	<string>line</string>
 	<key>input</key>
