@@ -40,6 +40,10 @@
 					<key>name</key>
 					<string>constant.character.escape.filemaker</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>text.filemaker.hash</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>
@@ -76,7 +80,7 @@
 			<key>match</key>
 			<string>(?i)\b(AccountName|ActiveFieldContents|ActiveFieldName|ActiveFieldTableName|ActiveLayoutObjectName|ActiveModifierKeys|ActiveRepetitionNumber|ActiveSelectionSize|ActiveSelectionStart|AllowAbortState|AllowToolbarState|ApplicationLanguage|ApplicationVersion|CalculationRepetitionNumber|CurrentDate|CurrentHostTimestamp|CurrentTime|CurrentTimestamp|CustomMenuSetName|DesktopPath|DocumentsPath|DocumentsPathListing|ErrorCaptureState|ExtendedPrivileges|FileMakerPath|FileName|FilePath|FileSize|FoundCount|HighContrastColor|HighContrastState|HostApplicationVersion|HostIPAddress|HostName|LastError|LastMessageChoice|LastODBCError|LayoutAccess|LayoutCount|LayoutName|LayoutNumber|LayoutTableName|LayoutViewState|MultiUserState|NetworkProtocol|PageNumber|PortalRowNumber|PreferencesPath|PrinterName|PrivilegeSetName|RecordAccess|RecordID|RecordModificationCount|RecordNumber|RecordOpenCount|RecordOpenState|RequestCount|RequestOmitState|ScreenDepth|ScreenHeight|ScreenWidth|ScriptName|ScriptParameter|ScriptResult|SortState|StatusAreaState|SystemDrive|SystemIPAddress|SystemLanguage|SystemNICAddress|SystemPlatform|SystemVersion|TemporaryPath|TextRulerVisible|TotalRecordCount|TriggerKeystroke|TriggerModifierKeys|UserCount|UserName|UseSystemFormatsState|WindowContentHeight|WindowContentWidth|WindowDesktopHeight|WindowDesktopWidth|WindowHeight|WindowLeft|WindowMode|WindowName|WindowTop|WindowVisible|WindowWidth|WindowZoomLevel|Roman|Greek|Cryllic|CentralEurope|ShiftJIS|TraditionalChinese|SimplifiedChinese|OEM|Symbol|Other|Plain|Bold|Italic|Underline|Condense|Extend|Strikethrough|SmallCaps|Superscript|Subscript|Uppercase|Lowercase|Titlecase|WordUnderline|DoubleUnderline|AllStyles|objectType|hasFocus|containsFocus|isFrontTabPanel|bounds|left|right|top|bottom|width|height|rotation|startPoint|endPoint|source|content|enclosingObject|containedObjects)\b</string>
 			<key>name</key>
-			<string>constant.language.php</string>
+			<string>constant.language.filemaker</string>
 		</dict>
 		<dict>
 			<key>match</key>
