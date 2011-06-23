@@ -5,12 +5,35 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string># TODO: Update for use with help.textile
+	<string>#!/usr/bin/env ruby
+#
+# NOTES: Markdown is the default help document markup, but I used textile to support rendering of tables.
+# TODO: Add contents with links to headers
 
-. "$TM_SUPPORT_PATH/lib/webpreview.sh"
-html_header "FileMaker Bundle Help" "FileMaker"
-"$TM_SUPPORT_PATH/lib/markdown_to_help.rb" "$TM_BUNDLE_SUPPORT/help.textile"
-html_footer
+begin 
+  require 'rubygems'
+  require 'redcloth'
+rescue LoadError
+  require ENV['TM_BUNDLE_SUPPORT'] + '/lib/redcloth'
+end
+
+require "#{ENV['TM_SUPPORT_PATH']}/lib/tm/htmloutput"
+
+filePath = ENV['TM_BUNDLE_SUPPORT'] + '/help.textile'
+file = File.new(filePath)
+contents = file.readlines
+
+output = RedCloth.new(contents.join()).to_html(:textile)
+
+TextMate::HTMLOutput.show(:title =&gt; "Textile Preview", :sub_title =&gt; ENV['TM_FILENAME']) do |io|
+  io &lt;&lt; output
+ end
+
+# Code for markdown version (in case I revert)
+# . "$TM_SUPPORT_PATH/lib/webpreview.sh"
+# html_header "FileMaker Bundle Help" "FileMaker"
+# "$TM_SUPPORT_PATH/lib/markdown_to_help.rb" "$TM_BUNDLE_SUPPORT/help.textile"
+# html_footer
 </string>
 	<key>input</key>
 	<string>none</string>
