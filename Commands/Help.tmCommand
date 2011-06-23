@@ -5,9 +5,11 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
+	<string># TODO: Update for use with help.textile
+
+. "$TM_SUPPORT_PATH/lib/webpreview.sh"
 html_header "FileMaker Bundle Help" "FileMaker"
-"$TM_SUPPORT_PATH/lib/markdown_to_help.rb" "$TM_BUNDLE_SUPPORT/help.markdown"
+"$TM_SUPPORT_PATH/lib/markdown_to_help.rb" "$TM_BUNDLE_SUPPORT/help.textile"
 html_footer
 </string>
 	<key>input</key>
