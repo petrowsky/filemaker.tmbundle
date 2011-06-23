@@ -6,29 +6,27 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/ruby
-#
 
 text = STDIN.read
 
-reg = Regexp.new('^(\s*)\/\/')
-if reg =~ text
-  print text.gsub!(reg,'\1')
-else
-	print text.gsub(/^/,'//')
-end</string>
-	<key>fallbackInput</key>
-	<string>line</string>
+# postfixes
+text.gsub!(/_(AT|AN|CT|CN)$/,' (\1)')
+
+# underscores
+text.gsub!('_',' ')
+
+# sort
+#text = text.split(/\n/).sort
+
+# title case
+print text.to_s.gsub(/\w+/) { |s| s.capitalize }</string>
 	<key>input</key>
 	<string>selection</string>
-	<key>keyEquivalent</key>
-	<string>@/</string>
 	<key>name</key>
-	<string>Comment Out Line</string>
+	<string>Readable Field Names</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
-	<key>scope</key>
-	<string>source.filemaker</string>
 	<key>uuid</key>
-	<string>8F4B6496-2192-4186-8D77-2B976813F360</string>
+	<string>7C7B20D0-435D-4167-97E5-F93205E5B7EB</string>
 </dict>
 </plist>
