@@ -1,9 +1,10 @@
 # TextMate Bundle for FileMaker
-#### Revision: 3/13/11
 
 # Introduction #
 
-This is my ongoing enhancement of the FileMaker bundle posted by Matt Petrowsky.  His bundle was a simplification of the original bundle by Charles Ross.  This version mostly adds to the commands.
+Provides syntax highlighting, code snippets, quick documentation reference and robust code generating commands. You can even interact directly with FileMaker's clipboard from within this bundle.
+
+This project was forked from a simpler version by Matt Petrowsky.  His bundle was a simplification of the original bundle by Charles Ross.  My version mostly adds to the commands.
 
 For more information, please see the help file.  You can access that in the bundle menu or in the support folder.
 
