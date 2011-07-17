@@ -102,6 +102,12 @@
 		</dict>
 		<dict>
 			<key>match</key>
+			<string>\b(?:True|true|False|false)\b</string>
+			<key>name</key>
+			<string>constant.language.boolean.filemaker</string>
+		</dict>
+		<dict>
+			<key>match</key>
 			<string>(\-|\+|\*|/)</string>
 			<key>name</key>
 			<string>keyword.operator.arithmetic.filemaker</string>
