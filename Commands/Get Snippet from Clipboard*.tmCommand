@@ -9,9 +9,6 @@
 # DESCRIPTION
 #	Retrieves fmxmlsnippet from FileMaker pasteboard as text
 #
-# TODO
-#	Check that mate is installed before using it
-#
 
 SCRIPT_PATH="$TM_BUNDLE_SUPPORT$TM_PATH_GET_SNIPPET"
 RESULT=$(osascript "$SCRIPT_PATH")
@@ -19,15 +16,14 @@ if [ "${RESULT:0:1}" != "&lt;" ] ; then
 	exit_show_tool_tip "Unrecognized clipboard format"
 fi
 
-# Swap these calls if you are have not added a symbolic link for the 'mate' shell utility
-#echo "$RESULT"
+trap 'echo "$RESULT"' TERM
 echo "$RESULT" | mate -a</string>
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>
 	<string>~@b</string>
 	<key>name</key>
-	<string>Get Snippet from Clipboard*</string>
+	<string>Get Snippet from Clipboard</string>
 	<key>output</key>
 	<string>openAsNewDocument</string>
 	<key>uuid</key>

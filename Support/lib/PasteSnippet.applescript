@@ -16,12 +16,14 @@ NOTES:
 *)
 ------------------------------------------------
 
+-- TODO: Fix - Broken by chars: ¶, '
+
 on run argv
 	---- Parameters ----
 	--set clipAlias to (item 1 of argv) as POSIX file
 	set clipText to (item 1 of argv)
 	if clipText equals "" then return "Error: Missing text"
-	
+
 	---- Settings ----
 	-- Format of FileMaker object in clip [script|script_step|table|field|custom_function]
 	set clipClass to determineClass(clipText)
@@ -30,6 +32,12 @@ on run argv
 	------------------------------------------------
 	---- Strip leading blank lines ----
 	set clipText to trim(clipText,ASCII character 10,0)
+
+	------------------------------------------------
+	---- Validate XML ----
+	set clipText to do shell script "echo '" & clipText & "' | xmllint -"
+	-- searchReplaceText(clipText, "&#xB6;", "¶")
+	-- return clipText
 
 	---- Convert clip to proper class ----
 	set clipTextFormatted to convertClip(clipText, clipClass)

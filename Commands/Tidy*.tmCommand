@@ -10,9 +10,10 @@
 # DESCRIPTION
 #	Pretty prints FileMaker calculation
 #
-# TODO
-#	Convert to hard tabs
-#	Clean indentation (see FHTML.PL command)
+# TODO: Convert to hard tabs
+# TODO: Clean indentation (see FHTML.PL command)
+# FIXME: Operators section clears entire input (test with json functions)
+# FIXME: "]" —&gt; " ]"
 #
 
 text = STDIN.read
@@ -32,7 +33,7 @@ text.gsub!(/(\S) *\( */,'\1 ( ')
 text.gsub!(/(\S) *\) */,'\1 ) ')
 
 # operators
-text.gsub!(/ *([≤≥&lt;&gt;+=≠\-]+) */,' \1 ')
+#text.gsub!(/ *([≤≥&lt;&gt;+=≠\-]+) */,' \1 ')
 
 # remove trailing spaces
 text.gsub!(/[ \t]+(\n)/,'\1')

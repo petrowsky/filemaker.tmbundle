@@ -7,7 +7,7 @@
 		<string>xml</string>
 	</array>
 	<key>firstLineMatch</key>
-	<string>.*fmxmlsnippet.*</string>
+	<string>.*&lt;fmxmlsnippet.*</string>
 	<key>firstlinematch</key>
 	<string>&lt;?xml|&lt;fmxmlsnippet</string>
 	<key>foldingStartMarker</key>

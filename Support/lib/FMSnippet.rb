@@ -1,32 +1,45 @@
+#!/usr/bin/env ruby
+#
+# fmsnippet.rb - helps manipulate and construct FileMaker clipboard XML (snippets)
+#
+
 require 'erb'
 
-# class REXML::Document
 class FMSnippet
-  TEMPLATE_HEADER = '<?xml version="1.0" encoding="UTF-8"?>'
+  TEMPLATE_HEADER = '<?xml version="1.0"?>'
   TEMPLATE_FOOTER = "\n</fmxmlsnippet>"
   
-  # types = {layout_object}
+  # types = {partial,layout_object}
   def initialize(type)
-    # Optional bypass of root element
-    if type == 'partial'
+    case type
+    when 'partial'
       @template = ''
+      @isPartial = true
       return
-    end
-    # Default - create root element for snippet
-    @type = 
-      if type == 'layout_object'
-        'LayoutObjectList'
-      else
-        'FMObjectList'
-      end
-    @template = %!
+    when 'layout_object'
+      @type = 'LayoutObjectList'
+      @template = %!
+#{TEMPLATE_HEADER}
+<fmxmlsnippet type="#{@type}">
+<Layout>!
+    else
+      @type = 'FMObjectList'
+      @template = %!
 #{TEMPLATE_HEADER}
 <fmxmlsnippet type="#{@type}">!
+    end
   end
   
   def to_s
+    if @type == 'LayoutObjectList'
+      @template << '</Layout>'
+    end
     @template << TEMPLATE_FOOTER
     @template.lstrip!
+  end
+  
+  def self.step
+    new!('partial')
   end
   
   # ------------------------------------
@@ -34,12 +47,14 @@ class FMSnippet
   # ------------------------------------
   
   def getFieldTable(fieldName)
+    fieldName = fieldName.to_s
     if fieldName.include?("::")
       return fieldName.split(/::/)[0]
     end
   end
   
   def getFieldName(fieldName)
+    fieldName = fieldName.to_s
     if fieldName.include?("::")
       return fieldName.split(/::/)[1]
     else
@@ -47,11 +62,15 @@ class FMSnippet
     end
   end
   
-  # def Boolean(string)
-  #   return true if string== true || string.downcase =~ (/(true|t|yes|y|1)$/i)
-  #   return false if string== false || string.nil? || string.downcase =~ (/(false|f|no|n|0)$/i)
-  #   raise ArgumentError.new(“invalid value for Boolean: \”#{string}\”")
-  # end
+  def Boolean(string)
+    string = string.to_s
+    case string  
+      when /^(false|f|no|0)$/i
+        false
+      else
+        string.class == String
+    end 
+  end
   
   # ------------------------------------
   # Custom Function
@@ -104,32 +123,17 @@ class FMSnippet
   def stepSetField(options={})
     # options = { :repetition => 2 }.merge(options)
     fieldQualified = options[:fieldQualified]
-    if fieldQualified
-      table = getFieldTable(fieldQualified)
-      field = getFieldName(fieldQualified)
-    else
-      table = options[:table]
-      field = options[:field]
-    end
+    table = options[:table] ||= getFieldTable(fieldQualified)
+    field = options[:field] ||= getFieldName(fieldQualified)
     repetition = options[:repetition]
     
+    # FIXME: Repetition element being created for number reps
     repCalc = repetition.class == Fixnum ? nil : repetition
     rep = repCalc ? 0 : repetition
-  #   repTemplate = %q{
-  # <Repetition>
-  #   <Calculation><![CDATA[<%= repCalc %>]]></Calculation>
-  # </Repetition>}.gsub(/^\s*%/, '%')
-  #   repTemplate = repCalc ? "\n" + repTemplate : nil
-  #   template = %q{
-  # <Step enable=\"True\" id=\"\" name=\"Set Field\">
-  #   <Calculation><![CDATA[<%= options[:calculation] %>]]></Calculation>
-  #   <Field table=\"<%= table %>\" id=\"\" repetition=\"<%= rep %>\" name=\"<%= field %>\"></Field>
-  #   <%= repTemplate %>
-  # </Step>}.gsub(/^\s*%/, '%')
     template = %q{
-  <Step enable=\"True\" id=\"\" name=\"Set Field\">
+  <Step enable="True" id="" name="Set Field">
     <Calculation><![CDATA[<%= options[:calculation] %>]]></Calculation>
-    <Field table=\"<%= table %>\" id=\"\" repetition=\"<%= rep %>\" name=\"<%= field %>\"></Field>
+    <Field table="<%= table %>" id="" repetition="<%= rep %>" name="<%= field %>"></Field>
     % if repCalc
     <Repetition>
      <Calculation><![CDATA[<%= repCalc %>]]></Calculation>
@@ -141,25 +145,31 @@ class FMSnippet
   end
   
   def stepSetVariable(name,rep,calc)
-    template = %q{
-  <Step enable="True" id="" name="Set Variable">
+    template = %q{  <Step enable="True" id="" name="Set Variable">
      <Value>
        <Calculation><![CDATA[<%= calc %>]]></Calculation>
      </Value>
+     % unless rep == 1 || nil
      <Repetition>
        <Calculation><![CDATA[<%= rep %>]]></Calculation>
      </Repetition>
+     % end
      <Name><%= name %></Name>
-  </Step>}.gsub(/^\s*%/, '%')
+  </Step>
+}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
-    @template << tpl.result(binding)
+    if @isPartial
+      tpl.result(binding)
+    elsif
+      @template << tpl.result(binding)
+    end
   end
   
-  def stepSort(fieldArray,hideDialog="True")
-    hideDialog = "True"
+  # fieldArray includes { field, direction }
+  def stepSort(fieldArray,hideDialog=true)
     template = %q{
   <Step enable="True" id="" name="Sort Records">
-    <NoInteract state="<%= hideDialog %>"/>
+    <NoInteract state="<%= Boolean(hideDialog) %>"/>
     <Restore state="True"/>
     <SortList value="True">
       % fieldArray.each do |field_cur|
@@ -167,7 +177,7 @@ class FMSnippet
         % fieldQualified = field_cur[:field]
         % table = getFieldTable(fieldQualified)
         % name = getFieldName(fieldQualified)
-        <Sort type="<% field_cur['direction'] %>">
+        <Sort type="<%= direction %>">
           <PrimaryField>
             <Field table="<%= table %>" id="" name="<%= name %>"/>
           </PrimaryField>
@@ -191,9 +201,10 @@ class FMSnippet
       :isGlobal     => false,
       :repetitions  => 1
     }.merge(options)
-    isGlobal = options[:isGlobal] ? "True" : "False"
+    calc = options[:calculation]
+    isGlobal = Boolean(options[:isGlobal]) ? "True" : "False"
     template = %q{
-  <Field id="" dataType="<%= options[:type] %>" fieldType="Normal" name="<%= name %>">
+  <Field id="" dataType="<%= options[:type] %>" fieldType="<%= options[:calculation].nil? ? 'Normal' : 'Calculated' %>" name="<%= name %>">
     <Calculation table=""><![CDATA[<%= options[:calculation] %>]]></Calculation>
     <Comment><%= options[:comment] %></Comment>
     <Storage indexLanguage="English" global="<%= isGlobal %>" maxRepetition="<%= options[:repetitions] %>"/>
@@ -202,8 +213,10 @@ class FMSnippet
     @template << tpl.result(binding)
   end
   
-  # options includes { ((field, table) | fieldQualified), tooltip, font, fontSize}
+  # options includes { ((field, table) | fieldQualified), tooltip, font, fontSize, objectName}
   def layoutField(options={})
+    # FIXME: Does not update @boundTop in subsequent calls
+    @boundTop.nil? ? @boundTop = 20 : @boundTop =+ 20
     fieldQualified = options[:fieldQualified]
     if fieldQualified
       table = getFieldTable(fieldQualified)
@@ -218,18 +231,17 @@ class FMSnippet
       :fontSize => "12"
     }.merge(options)
     template = %q{
-  <Layout>
     <ObjectStyle id="0" fontHeight="" graphicFormat="5" fieldBorders="0">
       <CharacterStyle mask="32567">
-        <Font-family codeSet="" fontId="">Verdana</Font-family>
+        <Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
         <Font-size><%= options[:fontSize] %></Font-size>
         <Face>0</Face>
         <Color>#000000</Color>
       </CharacterStyle>
     </ObjectStyle>
-    <Object type="Field" flags="0" portal="-1" rotation="0">
+    <Object type="Field" name="<%= options[:objectName] %>" flags="0" portal="-1" rotation="0">
       <StyleId>0</StyleId>
-      <Bounds top=" 24.000000" left="214.000000" bottom=" 40.000000" right="293.000000"/>
+      <Bounds top="<%= @boundTop %>" left="200.000000" bottom="38.000000" right="300.000000"/>
       <ToolTip>
         <Calculation><![CDATA[<%= options[:tooltip] %>]]></Calculation>
       </ToolTip>
@@ -239,8 +251,7 @@ class FMSnippet
           <Field name="<%= field %>" id="1" repetition="1" maxRepetition="1" table="<%= table %>"/>
         </DDRInfo>
       </FieldObj>
-    </Object>
-  </Layout>}.gsub(/^\s*%/, '%')
+    </Object>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @template << tpl.result(binding)
   end
