@@ -1,24 +1,22 @@
-(Table of contents currently unavailable)
+# Introduction
 
-h1. Introduction
+This bundle provides tools for developing solutions in FileMaker Pro (a proprietary RDBMS). It provides basic features like syntax highlighting and tab triggers for calcuations. But it goes much deeper, allowing you to generate code and even interact directly with FileMaker objects on your clipboard.
 
-This is my ongoing enhancement of the FileMaker bundle posted by Matt Petrowsky.  His bundle was a simplification of the original bundle by Charles Ross.  This version mostly adds to the commands.
-
-h1. Features
+# Features
 
 * Tab triggers for FileMaker functions
 * Documentation for functions, script steps and error codes
 * Commands
-** Manipulating/generating calculations
-** Manipulating/generating FileMaker clipboard XML
-** Extracting data from the DDR
-** Extracting data from import.log files
+	* Manipulating/generating calculations
+	* Manipulating/generating FileMaker clipboard XML
+	* Extracting data from the DDR
+	* Extracting data from import.log files
 * Syntax highlighting
-** FileMaker
-** FileMaker Clipboard
-** FileMaker Log
+	* FileMaker
+	* FileMaker Clipboard
+	* FileMaker Log
 
-h2. Tab Triggers
+## Tab Triggers
 
 This feature was last modified by Matt Petrowsky.
 
@@ -26,76 +24,80 @@ Tab triggers exist for every native FileMaker function, each named after the fun
 
 Keyword shorthand versions of words:
 
-|_.Word|_.Shortcut|
-|record|rec|
-|number|num|
-|summary|sum|
-|timestamp|ts|
-|evaluate|eval|
-|object|ob|
-|value(s)|val|
+<table>
+	<tr><th>Word</th><th>Shortcut</th></tr>
+	<tr><td>record</td><td>rec</td></tr>
+	<tr><td>number</td><td>num</td></tr>
+	<tr><td>summary</td><td>sum</td></tr>
+	<tr><td>timestamp</td><td>ts</td></tr>
+	<tr><td>evaluate</td><td>eval</td></tr>
+	<tr><td>object</td><td>ob</td></tr>
+	<tr><td>value(s)</td><td>val</td></tr>
+</table>
 
 For example, typing "leftval" will expand to "LeftValues ( template1 ; template2 )"
 
-h2. Function Enclosing
+## Function Enclosing
 
-h2. Documentation Lookup
+## Documentation Lookup
 
 Place your cursor on a work and press ^H to search for related documentation. Documentation is provided for the following:
 
 * Functions (native, fmsauc, SimpleDialog, SuperContainer)
 * Script steps
-* Error codes
+* Error codes (including AppleScript errors)
 
 A search window will appear if no entries are found.
 
-h2. Commands
+## Commands
 
 Functions are organized according to the type of text being worked with.
 
 Commands postfixed with "**" do not work.
 Commands postfixed with "*" are incomplete but functional.
 
-h3. Calculations
+### Calculations
 
-h3. Calculation Generation
+### Calculation Generation
 
 Allows you to programmatically write code using simpler arrays and lists.  Here's an example you might use if you were using transactions and were writing values from global fields to local fields:
 
-# Create first column (target field names)
-** Type in names of fields
-** Extract list of field names (using other command)
-# Create second column (values)
-** Type in values
-** Generate field names from first column (using regular expression or shell script)
-# Run "Build Set Field Steps" command
-# Paste new script steps into FileMaker
-** See following section, Clipboard, for more details
+1. Create first column (target field names)
+	* Type in names of fields
+	* Extract list of field names (using other command)
+1. Create second column (values)
+	* Type in values
+	* Generate field names from first column (using regular expression or shell script)
+1. Run "Build Set Field Steps" command
+1. Paste new script steps into FileMaker
+	* See following section, Clipboard, for more details
 
-h3. Clipboard
+### Clipboard
 
 Handles XML text extracted from the FileMaker clipboard.  There are two central commands for this functionality:
 
-|_.Shortcut|_.Name|_.Action|
-|⌘+Opt+b|Get Snippet From Clipboard|Opens FileMaker clipboard contents as new XML document|
-|⌘+b|Load Snippet to Clipboard|Loads current XML document to FileMaker's clipboard as snippet|
+<table>
+	<tr><th>Shortcut</th><th>Name</th><th>Action</th></tr>
+	<tr><td>⌘+Opt+b</td><td>Get Snippet From Clipboard</td><td>Opens FileMaker clipboard contents as new XML document</td></tr>
+	<tr><td>⌘+b</td><td>Load Snippet to Clipboard</td><td>Loads current XML document to FileMaker's clipboard as snippet</td></tr>
+</table>
 
 Note, you must have the current XML document assigned to the FileMaker Clipboard language in order to use these shortcuts.
 
 Here's a very simple example of how a workflow might look:
 
-# Copy script steps in FileMaker
-# Use fmClipboardBroker to save clipboard contents to text file
-# Manipulate text
-** Change variable names
-** Change table occurrence names
-** Change function name
-** Add function parameter
-# Save the text file
-# Return to fmClipboardBroker and load the new script steps onto your clipboard
-# Paste in your new script steps
+1. Copy script steps in FileMaker
+1. Use fmClipboardBroker to save clipboard contents to text file
+1. Manipulate text
+	* Change variable names
+	* Change table occurrence names
+	* Change function name
+	* Add function parameter
+1. Save the text file
+1. Return to fmClipboardBroker and load the new script steps onto your clipboard
+1. Paste in your new script steps
 
-h4. Clipboard Manipulation Utilities
+#### Clipboard Manipulation Utilities
 
 There are several utilities available to help you manipulate the clipboard:
 
@@ -105,31 +107,31 @@ There are several utilities available to help you manipulate the clipboard:
 * Clip Manager (excellent, full-featured utility)
 * ScriptMaster Advanced (allows access to FileMaker clipboard)
 
-h3. DDR
+### DDR
 
 Helps you extract specific information from the DDR.
 
-h3. Logs
+### Logs
 
 Helps you extract specific information from FileMaker's import log files, which describe your paste and import actions.
 
-h1. Preferences
+# Preferences
 
 Preferences will favor conventions adopted by the FOCUS Framework at Beezwax.
 
-h1. Syntax Highlighting
+# Syntax Highlighting
 
 Provided for the following formats:
 
 * FileMaker
 * FileMaker Clipboard
-** Basically XML, but it should provide highlighting for FileMaker syntax within that XML
+	* Basically XML, but it should provide highlighting for FileMaker syntax within that XML
 * FileMaker Log
-** Very basic, but those logs can be very difficult to read without it!
+	* Very basic, but those logs can be very difficult to read without it!
 
-h1. Usage Tips
+# Usage Tips
 
-h2. To open calculations in TextMate faster
+## To open calculations in TextMate faster
 
 I find copy/paste sufficient, but you may have higher ambitions.  Here are some ideas:
 
@@ -137,33 +139,40 @@ I find copy/paste sufficient, but you may have higher ambitions.  Here are some 
 * Trigger a shell script or AppleScript using TextExpander
 * TextMate provides some functionality for this use case, but I have not looked to see if FileMaker supports it
 
-h2. Becoming a power user
+## Becoming a power user
 
-h3. Read a tutorial
+### Read a tutorial
 
 Here's a good place to start: [TextMate Tutorials and More](http://projects.serenity.de/textmate/tutorials/basics/) By Stanley Rost (maintainer of TODO bundle)
 
-h3. Learn which commands are available to you
+### Learn which commands are available to you
 
 Other bundles, or maybe even this one, may have many useful commands you have not noticed before.  You can easily find what's available to you by browsing the menu's.  Even easier, try selecting something and pressing ^ ⌘T to show the Budles > Select Bundle Item... menu option.
 
-h3. Learn to manipulate text
+### Learn to manipulate text
 
 Manipulating text can make your development much more efficient.  Sometimes the power trip can also provide a thrill in itself!  Learning to use tools like shell scripts — grep, sed, awk — will give you many returns.  You can run one-off scripts against your documents using the menu option Text > Filter Through Command.
 
-h2. To create your own commands or customizations
+## To create your own commands or customizations
 
 Look in the help docs to get started.  To peruse the bundle contents, open the Bundle Editor by selecting Bundles > Bundle Editor > Show Bundle Editor.
 
 TextMate supports multiple languages.  I've found that Ruby has some great resources for learning and is very easy to practice.  You can test it out using irb in the terminal or run your scripts from within TextMate.
 
-h1. History
+# Known Bugs
 
-Original bundle by Charles Ross, puvinyel@znp.pbz
-Forked 3/12/11 by Donovan Chandler from Matt Petrowsky
+* Function snippets are not loading to the clipboard
 
-h1. Contact
+# History
 
-Donovan Chandler
-Beezwax Datatools, Inc.
+Original bundle by Charles Ross, puvinyel@znp.pbz  
+Next incarnation by Matt Petrowsky (simplified version)  
+Forked 3/12/11 from Matt by Donovan Chandler (added commands and additional languages)
+
+Source available on [GitHub](https://github.com/DonovanChan/filemaker.tmbundle)
+
+# Contact
+
+Donovan Chandler  
+Beezwax Datatools, Inc.  
 donovan_c@beezwax.net
