@@ -5,10 +5,7 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/usr/bin/env ruby
-#
-
-. "$TM_SUPPORT_PATH/lib/webpreview.sh"
+	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
 html_header "FileMaker Bundle Help" "FileMaker"
 "$TM_SUPPORT_PATH/lib/markdown_to_help.rb" "$TM_BUNDLE_SUPPORT/help.markdown"
 html_footer

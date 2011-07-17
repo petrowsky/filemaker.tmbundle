@@ -50,7 +50,7 @@ end</string>
 	<key>keyEquivalent</key>
 	<string>^@l</string>
 	<key>name</key>
-	<string>Load Function as Snippet*</string>
+	<string>Load Function as Snippet**</string>
 	<key>output</key>
 	<string>openAsNewDocument</string>
 	<key>uuid</key>
