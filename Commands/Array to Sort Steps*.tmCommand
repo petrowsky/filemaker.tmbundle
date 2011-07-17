@@ -8,15 +8,17 @@
 	<string>#!/usr/bin/ruby
 #
 # DESCRIPTION
-# Generates FileMaker snippet for Set Field script steps
+#	Generates FileMaker snippet for Sort script steps
 #
 # USAGE
-# col1 = table::field
-# col2 = sort direction (optional)
-# CONTACT::NAME \t Descending =&gt; Sort Records [Restore; No Dialog]
+#	col1 = table::field
+#	col2 = sort direction (optional)
 #
-# TODO
-# Prompt for table name if not provided
+#	Each consecutive line is added to the same sort step.
+#	Add a blank line between steps.
+#
+# EXAMPLE
+#	CONTACT::NAME \t Descending =&gt; Sort Records [Restore; No Dialog]
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
@@ -26,10 +28,9 @@ suppressDialog = true
 
 # Open document
 text = STDIN.read
-#text = "table\tname\t2+2\t$_rep\ntable::name\t3\t$rep"
 doc = FMSnippet.new("")
 
-# Insert Fields
+# Generate Fields
 text.split(/\n\n/).each { |chunk|
   arg = []
   chunk.split(/\n/).each { |row|
@@ -39,7 +40,7 @@ text.split(/\n\n/).each { |chunk|
       :direction  =&gt; col[1] || 'Ascending'
     }
   }
-  doc.stepSort(arg,"True")
+  doc.stepSort(arg)
 }
 
 puts doc</string>

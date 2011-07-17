@@ -8,31 +8,32 @@
 	<string>#!/usr/bin/ruby
 #
 # DESCRIPTION
-#	Generates FileMaker snippet of Fields
+#	Generates FileMaker snippet of field layout objects
 #
 # USAGE
 #	col1 = fully qualified field name
 #	col2 = tooltip (optional)
 #	col3 = font (optional)
 #	col4 = fontSize (optional)
+#	col5 = objectName (optional)
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 
 # Open document
 text = STDIN.read
-doc = FMSnippet.new("")
+doc = FMSnippet.new("layout_object")
 
-# Insert Fields
+# Generate Fields
 xml = ""
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)
-	name = col[0]
 	arg = {
-		:fieldQualified	=&gt; col[1],
-		:tooltip			=&gt; col[2],
-		:font			=&gt; col[3],
-		:fontSize			=&gt; col[4]
+		:fieldQualified	=&gt; col[0],
+		:tooltip			=&gt; col[1],
+		:font			=&gt; col[2],
+		:fontSize			=&gt; col[3],
+		:objectName		=&gt; col[4]
 	}
 	doc.layoutField(arg)
 	}

@@ -32,7 +32,6 @@ text.split(/\n/).each { |row|
 	rep = col[2]
 	rep ||= 1
 	doc.stepSetVariable(name,rep,calc)
-
 }
 
 puts doc</string>

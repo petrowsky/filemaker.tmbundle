@@ -8,12 +8,15 @@
 	<string>#!/usr/bin/ruby
 #
 # DESCRIPTION
-#	Generates FileMaker snippet of Sort script steps
+#	Generates FileMaker snippet of Sort script steps.
+#	Each sort step is preceded by an Else If statement.
 #
 # USAGE
 #	col1 = test
 #	col2 = sort field
 #	col3 = sort direction
+#
+# EXAMPLE
 #	True \t TABLE::NAME \t ascending
 #
 
@@ -21,34 +24,23 @@ require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 
 # Open document
 text = STDIN.read
-#text = "True\ttable::name\nTrue\ttable::name"
 doc = FMSnippet.new("")
 
-# Ensure array is formatted properly
-text.gsub!(/::/,"\t")
-
-# Insert Fields
+# Generate Fields
 rep = 0
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)
 	calc = col[0]
-	rep = rep + 1
-  rep == 1 ? doc.stepIf(calc) : doc.stepElseIf(calc)
+	rep += 1
+	rep == 1 ? doc.stepIf(calc) : doc.stepElseIf(calc)
 	arg = [{
 		:field			=&gt; col[1],
 		:direction		=&gt; col[2]
 	}]
-	doc.stepSort(arg,"True")
+	doc.stepSort(arg)
 }
 doc.stepEndIf
-puts doc
-
-# How to handle field name that's possibly split into two columns
-# col = row.split(/\t/)
-# if not col[0].include?("::")
-#   col[0] = col[0] + '::' + col[1]
-#   col.slice!(1)
-# end</string>
+puts doc</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

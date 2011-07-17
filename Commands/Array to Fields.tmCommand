@@ -11,12 +11,12 @@
 #	Generates FileMaker snippet of Fields
 #
 # USAGE
-#	col1 = field name
-#	col2 = field type
-#	col3 = boolean (True = Global field)
-#	col4 = comment
-#	col5 = max repetitions
-#	col6 = calculation
+#	col1 = field name (Fully qualified)
+#	col2 = field type (optional. Default = Text)
+#	col3 = boolean (optional. True = Global field. Default = false)
+#	col4 = comment (optional)
+#	col5 = max repetitions (optional)
+#	col6 = calculation (optional)
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
@@ -25,8 +25,7 @@ require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 text = STDIN.read
 doc = FMSnippet.new("")
 
-# Insert Fields
-xml = ""
+# Generate Fields
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)
 	name = col[0]
@@ -37,7 +36,7 @@ text.split(/\n/).each { |row|
 		:repetitions	=&gt; col[4],
 		:calculation	=&gt; col[5]
 	}
-	xml = xml &lt;&lt; "\n" &lt;&lt; doc.field(name,arg)
+	doc.field(name,arg)
 	}
 
 print doc</string>
