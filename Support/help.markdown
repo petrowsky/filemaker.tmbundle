@@ -15,6 +15,7 @@ This bundle provides tools for developing solutions in FileMaker Pro (a propriet
 	* FileMaker
 	* FileMaker Clipboard
 	* FileMaker Log
+* Code folding
 
 ## Tab Triggers
 

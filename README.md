@@ -8,6 +8,22 @@ This project was forked from a simpler version by Matt Petrowsky.  His bundle wa
 
 For more information, please see the help file.  You can access that in the bundle menu or in the support folder.
 
+## Features
+
+* Tab triggers for FileMaker functions
+* Documentation for functions, script steps and error codes
+* Commands
+	* Manipulating/generating calculations
+	* Manipulating/generating FileMaker clipboard XML
+	* Extracting data from the DDR
+	* Extracting data from import.log files
+* Syntax highlighting
+	* FileMaker
+	* FileMaker Clipboard
+	* FileMaker Log
+* Code folding
+* Help section
+
 ## Installation
 
 ### For easy installation
