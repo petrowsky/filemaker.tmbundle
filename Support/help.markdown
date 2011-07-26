@@ -164,6 +164,10 @@ TextMate supports multiple languages.  I've found that Ruby has some great resou
 
 * Function snippets are not loading to the clipboard
 
+# How to Report Bugs or Request Features
+
+Issues are being tracked on github [here](https://github.com/DonovanChan/filemaker.tmbundle/issues "github issues page")
+
 # History
 
 Original bundle by Charles Ross, puvinyel@znp.pbz  
