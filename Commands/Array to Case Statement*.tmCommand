@@ -46,6 +46,8 @@ print final</string>
 	<string>Array to Case Statement*</string>
 	<key>output</key>
 	<string>insertAsSnippet</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>E1DF67F6-E7F6-4C16-995E-6B0CA6866AB2</string>
 </dict>

@@ -18,6 +18,8 @@ print "List ( \n#{text}\n)"</string>
 	<string>List to List ( )</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>AAF52C2D-4263-4F58-BE8B-2A53B1A7E19B</string>
 </dict>

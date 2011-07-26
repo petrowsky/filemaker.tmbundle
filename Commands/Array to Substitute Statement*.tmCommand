@@ -28,6 +28,8 @@ echo -n -e "Substitute ( \${1:text}\n${body}\n)"</string>
 	<string>Array to Substitute Statement*</string>
 	<key>output</key>
 	<string>insertAsSnippet</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>582F4EC7-CD77-46A3-8C79-7EEB43FEC48A</string>
 </dict>

@@ -26,6 +26,8 @@ print text</string>
 	<string>Quote and Append Lines Reversed*</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>7D93FE48-B51F-4245-B313-CD597A4D8D5D</string>
 </dict>

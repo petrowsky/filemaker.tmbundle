@@ -36,6 +36,8 @@ print text</string>
 	<string>Array to Hash Set</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>0C3C6730-0303-47E4-A69F-79E9EC3F23EA</string>
 </dict>

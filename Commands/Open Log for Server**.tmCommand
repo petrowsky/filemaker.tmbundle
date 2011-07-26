@@ -18,6 +18,8 @@ open ~/Documents/import.log</string>
 	<string>Open Server Log</string>
 	<key>output</key>
 	<string>discard</string>
+	<key>scope</key>
+	<string>text.fmlog</string>
 	<key>uuid</key>
 	<string>76C98334-7AEF-4778-AACB-03498ECB6BAF</string>
 </dict>

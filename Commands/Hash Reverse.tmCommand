@@ -45,6 +45,8 @@ print text</string>
 	<string>Hash Reverse</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>C9DEC4B4-6E62-4F23-91E5-C39D9A7F9C47</string>
 </dict>

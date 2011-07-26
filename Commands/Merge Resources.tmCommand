@@ -51,6 +51,8 @@ puts text</string>
 	<string>Merge Resource Tags in Document</string>
 	<key>output</key>
 	<string>replaceDocument</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>FEC78232-CEE5-4734-B00E-E8F88B648B05</string>
 </dict>

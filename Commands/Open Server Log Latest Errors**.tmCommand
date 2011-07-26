@@ -62,6 +62,8 @@ print result
 	<string>Open Server Log Latest Errors**</string>
 	<key>output</key>
 	<string>openAsNewDocument</string>
+	<key>scope</key>
+	<string>text.fmlog</string>
 	<key>uuid</key>
 	<string>218DC18A-0984-4772-8DC0-CEE01B2C111C</string>
 </dict>

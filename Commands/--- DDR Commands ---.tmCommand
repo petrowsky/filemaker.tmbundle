@@ -10,6 +10,8 @@
 	<string>--- DDR Commands ---</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>text.xml.filemakerClipboard</string>
 	<key>uuid</key>
 	<string>B62F87D5-EEFB-4185-8417-63B011A00546</string>
 </dict>

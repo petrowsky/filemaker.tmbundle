@@ -10,6 +10,8 @@
 	<string>--- Calculation Commands ---</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>EB705C19-8070-4A45-A581-5592D85AA82F</string>
 </dict>

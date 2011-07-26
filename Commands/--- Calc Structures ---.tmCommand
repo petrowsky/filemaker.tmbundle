@@ -10,6 +10,8 @@
 	<string>--- Calc Structures ---</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>2B3A2773-8D34-4367-A9F4-09C1DF27FC07</string>
 </dict>

@@ -49,6 +49,8 @@ print result
 	<string>Extract Errors</string>
 	<key>output</key>
 	<string>openAsNewDocument</string>
+	<key>scope</key>
+	<string>text.fmlog</string>
 	<key>uuid</key>
 	<string>346DF330-EE6F-48F2-8D45-0319014C71C7</string>
 </dict>

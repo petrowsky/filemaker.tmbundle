@@ -12,6 +12,8 @@
 	<string>Number Lines</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>A8D981EE-2DF1-4CCB-8E37-54F4D2BF5944</string>
 </dict>

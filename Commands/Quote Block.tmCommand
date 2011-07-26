@@ -27,6 +27,8 @@ print textFinal</string>
 	<string>Quote Block</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>61CED1FA-2FA6-47DF-B5B5-24FA86FB533F</string>
 </dict>

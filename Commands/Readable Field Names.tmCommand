@@ -30,6 +30,8 @@ print text.to_s.gsub(/\w+/) { |s| s.capitalize }</string>
 	<string>Readable Field Names</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>7C7B20D0-435D-4167-97E5-F93205E5B7EB</string>
 </dict>

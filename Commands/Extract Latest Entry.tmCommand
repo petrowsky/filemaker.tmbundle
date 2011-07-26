@@ -35,6 +35,8 @@ textLast = text.split(/={66}/).last
 	<string>Extract Latest Entry*</string>
 	<key>output</key>
 	<string>openAsNewDocument</string>
+	<key>scope</key>
+	<string>text.fmlog</string>
 	<key>uuid</key>
 	<string>03F44DD9-6EFF-4454-A10C-3B6BD831B7AF</string>
 </dict>

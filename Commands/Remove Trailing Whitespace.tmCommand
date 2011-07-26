@@ -12,6 +12,8 @@
 	<string>Remove Trailing Whitespace</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>D301E98D-15DF-4BAF-A6BF-7378F01E752B</string>
 </dict>

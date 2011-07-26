@@ -12,6 +12,8 @@
 	<string>Remove Trailing Spaces</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>D7319617-04B2-430B-8F4E-3350F755D3E2</string>
 </dict>

@@ -18,6 +18,8 @@ print text</string>
 	<string>Collapse Lines</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>9BB179C6-CB33-4B25-BBDB-1F923645C33E</string>
 </dict>

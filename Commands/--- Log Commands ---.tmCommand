@@ -10,6 +10,8 @@
 	<string>--- Log Commands ---</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>text.fmlog</string>
 	<key>uuid</key>
 	<string>BFBCBBEE-DADA-4922-BEE4-220899E34301</string>
 </dict>

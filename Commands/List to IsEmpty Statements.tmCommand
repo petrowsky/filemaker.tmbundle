@@ -20,6 +20,8 @@ print text</string>
 	<string>List to IsEmpty Statements</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>7A67DB87-F93A-4BF5-987F-9186CF7F21EB</string>
 </dict>

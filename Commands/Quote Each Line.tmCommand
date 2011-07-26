@@ -22,6 +22,8 @@ print '"'.concat(text).concat('"')</string>
 	<string>Quote Each Line</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>D366B59F-16F5-47C5-A2BC-6CD9098E75AD</string>
 </dict>

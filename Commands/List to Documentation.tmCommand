@@ -20,6 +20,8 @@ print text.upcase</string>
 	<string>List to Documentation</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>61BD68A6-219A-4022-9150-7DEA703F8FEF</string>
 </dict>

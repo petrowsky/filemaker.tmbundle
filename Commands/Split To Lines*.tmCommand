@@ -29,6 +29,8 @@ print text</string>
 	<string>Split To Lines*</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>uuid</key>
 	<string>24A65EA0-5CF6-4A87-89AB-1B7EC48743C4</string>
 </dict>

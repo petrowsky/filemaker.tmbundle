@@ -13,6 +13,8 @@ sed -n 's/.*Color&gt;\(.*\)&lt;.*/\1/p' | sort | uniq</string>
 	<string>Extract Colors (With Tags)*</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>text.xml.filemakerClipboard</string>
 	<key>uuid</key>
 	<string>8BCC1BC7-C8B0-4015-9DA6-7B6861831B3D</string>
 </dict>
