@@ -33,6 +33,7 @@ text.gsub!(/(\S) *\( */,'\1 ( ')
 text.gsub!(/(\S) *\) */,'\1 ) ')
 
 # operators
+text.gsub!(/ *&amp; */,' &amp; ')
 #text.gsub!(/ *([≤≥&lt;&gt;+=≠\-]+) */,' \1 ')
 
 # remove trailing spaces
