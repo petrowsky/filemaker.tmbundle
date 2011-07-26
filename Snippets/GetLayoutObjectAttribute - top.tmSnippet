@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>GetLayoutObjectAttribute ( ${1:"${2:objectName}"} ; "${3:top}"${4: ; ${5:repetitionNumber}${6: ; ${7:portalRowNumber}}} )$0</string>
+	<key>name</key>
+	<string>GetLayoutObjectAttribute - top</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
+	<key>tabTrigger</key>
+	<string>getattri</string>
+	<key>uuid</key>
+	<string>E71CDD17-8C22-4BFF-823F-4B3EE641E5C8</string>
+</dict>
+</plist>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>GetLayoutObjectAttribute ( ${1:"${2:objectName}"} ; "${3:isFrontTabPanel}" )$0</string>
+	<key>name</key>
+	<string>GetLayoutObjectAttribute - isFrontTabPanel</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
+	<key>tabTrigger</key>
+	<string>getattri</string>
+	<key>uuid</key>
+	<string>E62E75DA-5A78-4AFE-89F0-9029243FD492</string>
+</dict>
+</plist>
