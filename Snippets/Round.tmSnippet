@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Round ( ${1:number}; ${2:precision} )$0</string>
+	<string>Round ( ${1:number} ; ${2:precision} )$0</string>
 	<key>name</key>
 	<string>Round</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>round</string>
 	<key>uuid</key>

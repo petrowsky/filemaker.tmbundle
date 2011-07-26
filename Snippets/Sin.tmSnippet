@@ -6,6 +6,8 @@
 	<string>Sin ( ${1:angleInRadians} )$0</string>
 	<key>name</key>
 	<string>Sin</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>sin</string>
 	<key>uuid</key>

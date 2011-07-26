@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>RelationInfo ( ${1:Get ( FileName )}; ${2:tableName} )$0</string>
+	<string>RelationInfo ( ${1:Get ( FileName )} ; ${2:tableName} )$0</string>
 	<key>name</key>
 	<string>RelationInfo</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>relinfo</string>
 	<key>uuid</key>

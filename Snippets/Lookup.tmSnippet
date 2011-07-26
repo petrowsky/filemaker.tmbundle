@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Lookup ( ${1:sourceField}${2:; ${3:failExpression}} )$0</string>
+	<string>Lookup ( ${1:sourceField}${2: ; ${3:failExpression}} )$0</string>
 	<key>name</key>
 	<string>Lookup</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>lookup</string>
 	<key>uuid</key>

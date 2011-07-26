@@ -6,6 +6,8 @@
 	<string>Get ( ActiveModifierKeys )</string>
 	<key>name</key>
 	<string>Get ( ActiveModifierKeys )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getamk</string>
 	<key>uuid</key>

@@ -6,6 +6,8 @@
 	<string>RomanHankaku ( ${1:text} )$0</string>
 	<key>name</key>
 	<string>RomanHankaku</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>romanhankaku</string>
 	<key>uuid</key>

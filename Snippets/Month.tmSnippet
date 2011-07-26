@@ -6,6 +6,8 @@
 	<string>Month ( ${1:date} )$0</string>
 	<key>name</key>
 	<string>Month</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>month</string>
 	<key>uuid</key>

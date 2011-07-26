@@ -6,6 +6,8 @@
 	<string>Get ( ScriptName )</string>
 	<key>name</key>
 	<string>Get ( ScriptName )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getsn</string>
 	<key>uuid</key>

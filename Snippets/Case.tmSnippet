@@ -12,6 +12,8 @@
 )$0</string>
 	<key>name</key>
 	<string>Case</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>case</string>
 	<key>uuid</key>

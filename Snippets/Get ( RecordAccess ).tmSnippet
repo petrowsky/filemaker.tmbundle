@@ -6,6 +6,8 @@
 	<string>Get ( RecordAccess )</string>
 	<key>name</key>
 	<string>Get ( RecordAccess )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getra</string>
 	<key>uuid</key>

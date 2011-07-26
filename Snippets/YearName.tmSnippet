@@ -6,6 +6,8 @@
 	<string>YearName ( ${1:date} )$0</string>
 	<key>name</key>
 	<string>YearName</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>yearname</string>
 	<key>uuid</key>

@@ -6,6 +6,8 @@
 	<string>WindowNames${1:( ${2:Get ( FileName )} )}</string>
 	<key>name</key>
 	<string>WindowNames</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>winnames</string>
 	<key>uuid</key>

@@ -6,6 +6,8 @@
 	<string>Get ( CurrentTimestamp )</string>
 	<key>name</key>
 	<string>Get ( CurrentTimestamp )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getcts</string>
 	<key>uuid</key>

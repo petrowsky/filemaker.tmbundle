@@ -6,6 +6,8 @@
 	<string>Get ( DocumentsPathListing )</string>
 	<key>name</key>
 	<string>Get ( DocumentsPathListing )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getdocpathlist</string>
 	<key>uuid</key>

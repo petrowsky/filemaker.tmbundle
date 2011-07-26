@@ -6,6 +6,8 @@
 	<string>WeekOfYear ( ${1:date} )$0</string>
 	<key>name</key>
 	<string>WeekOfYear</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>woy</string>
 	<key>uuid</key>

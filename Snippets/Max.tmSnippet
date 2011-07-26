@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Max ( ${1:field1}${2:; field2...} )$0</string>
+	<string>Max ( ${1:field1}${2: ; field2...} )$0</string>
 	<key>name</key>
 	<string>Max</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>max</string>
 	<key>uuid</key>

@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>FieldBounds ( ${1:Get ( FileName )}; ${2:layoutName}; ${3:fieldName} )$0</string>
+	<string>FieldBounds ( ${1:Get ( FileName )} ; ${2:layoutName} ; ${3:fieldName} )$0</string>
 	<key>name</key>
 	<string>FieldBounds</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>fieldbounds</string>
 	<key>uuid</key>

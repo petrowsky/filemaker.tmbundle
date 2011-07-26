@@ -6,6 +6,8 @@
 	<string>GetAsBoolean ( ${1:data} )$0</string>
 	<key>name</key>
 	<string>GetAsBoolean</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getasbool</string>
 	<key>uuid</key>

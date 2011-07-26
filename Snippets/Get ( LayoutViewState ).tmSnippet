@@ -6,6 +6,8 @@
 	<string>Get ( LayoutViewState )</string>
 	<key>name</key>
 	<string>Get ( LayoutViewState )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getlvs</string>
 	<key>uuid</key>

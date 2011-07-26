@@ -6,6 +6,8 @@
 	<string>Get ( SystemVersion )</string>
 	<key>name</key>
 	<string>Get ( SystemVersion )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getsysver</string>
 	<key>uuid</key>

@@ -6,6 +6,8 @@
 	<string>Get ( TotalRecordCount )</string>
 	<key>name</key>
 	<string>Get ( TotalRecordCount )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>gettrc</string>
 	<key>uuid</key>

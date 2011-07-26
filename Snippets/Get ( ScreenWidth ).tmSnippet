@@ -6,6 +6,8 @@
 	<string>Get ( ScreenWidth )</string>
 	<key>name</key>
 	<string>Get ( ScreenWidth )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getsw</string>
 	<key>uuid</key>

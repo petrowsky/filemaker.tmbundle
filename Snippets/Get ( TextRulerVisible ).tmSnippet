@@ -6,6 +6,8 @@
 	<string>Get ( TextRulerVisible )</string>
 	<key>name</key>
 	<string>Get ( TextRulerVisible )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>gettrv</string>
 	<key>uuid</key>

@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>StDevP ( ${1:field1}${2:; field2...} )$0</string>
+	<string>StDevP ( ${1:field1}${2: ; field2...} )$0</string>
 	<key>name</key>
 	<string>StDevP</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>stdevp</string>
 	<key>uuid</key>

@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>FilterValues ( ${1:textToFilter}; ${2:filterValues} )$0</string>
+	<string>FilterValues ( ${1:textToFilter} ; ${2:filterValues} )$0</string>
 	<key>name</key>
 	<string>FilterValues</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>filterval</string>
 	<key>uuid</key>

@@ -6,6 +6,8 @@
 	<string>KanaHankaku ( ${1:text} )$0</string>
 	<key>name</key>
 	<string>KanaHankaku</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>kanahankaku</string>
 	<key>uuid</key>

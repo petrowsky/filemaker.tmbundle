@@ -6,6 +6,8 @@
 	<string>Get ( ApplicationVersion )</string>
 	<key>name</key>
 	<string>Get ( ApplicationVersion )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getav</string>
 	<key>uuid</key>

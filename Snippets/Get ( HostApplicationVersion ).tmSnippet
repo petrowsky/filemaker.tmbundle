@@ -6,6 +6,8 @@
 	<string>Get ( HostApplicationVersion )</string>
 	<key>name</key>
 	<string>Get ( HostApplicationVersion )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>gethav</string>
 	<key>uuid</key>

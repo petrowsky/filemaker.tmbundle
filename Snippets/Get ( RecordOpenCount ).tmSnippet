@@ -6,6 +6,8 @@
 	<string>Get ( RecordOpenCount )</string>
 	<key>name</key>
 	<string>Get ( RecordOpenCount )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getroc</string>
 	<key>uuid</key>

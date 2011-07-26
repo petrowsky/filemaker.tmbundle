@@ -6,6 +6,8 @@
 	<string>Radians ( ${1:angleInDegrees} )$0</string>
 	<key>name</key>
 	<string>Radians</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>rad</string>
 	<key>uuid</key>

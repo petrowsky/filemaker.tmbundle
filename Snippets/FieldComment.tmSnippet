@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>FieldComment ( ${1:Get ( FileName )}; ${2:fieldName} )$0</string>
+	<string>FieldComment ( ${1:Get ( FileName )} ; ${2:fieldName} )$0</string>
 	<key>name</key>
 	<string>FieldComment</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>fieldcomment</string>
 	<key>uuid</key>

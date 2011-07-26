@@ -6,6 +6,8 @@
 	<string>Get ( WindowDesktopWidth )</string>
 	<key>name</key>
 	<string>Get ( WindowDesktopWidth )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getwdw</string>
 	<key>uuid</key>

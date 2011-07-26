@@ -6,6 +6,8 @@
 	<string>Get ( WindowMode )</string>
 	<key>name</key>
 	<string>Get ( WindowMode )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getwm</string>
 	<key>uuid</key>

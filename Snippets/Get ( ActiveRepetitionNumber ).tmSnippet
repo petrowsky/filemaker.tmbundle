@@ -6,6 +6,8 @@
 	<string>Get ( ActiveRepetitionNumber )</string>
 	<key>name</key>
 	<string>Get ( ActiveRepetitionNumber )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getarn</string>
 	<key>uuid</key>

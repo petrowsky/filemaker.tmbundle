@@ -6,6 +6,8 @@
 	<string>Get ( ScreenHeight )</string>
 	<key>name</key>
 	<string>Get ( ScreenHeight )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getsh</string>
 	<key>uuid</key>

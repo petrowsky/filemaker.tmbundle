@@ -6,6 +6,8 @@
 	<string>Get ( TemporaryPath )</string>
 	<key>name</key>
 	<string>Get ( TemporaryPath )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>gettp</string>
 	<key>uuid</key>

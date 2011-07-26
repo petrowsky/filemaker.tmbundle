@@ -6,6 +6,8 @@
 	<string>GetAsTimestamp ( ${1:text} )$0</string>
 	<key>name</key>
 	<string>GetAsTimestamp</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getasts</string>
 	<key>uuid</key>

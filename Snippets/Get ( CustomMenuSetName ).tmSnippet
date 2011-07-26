@@ -6,6 +6,8 @@
 	<string>Get ( CustomMenuSetName )</string>
 	<key>name</key>
 	<string>Get ( CustomMenuSetName )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getcmsn</string>
 	<key>uuid</key>

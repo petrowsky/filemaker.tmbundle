@@ -6,6 +6,8 @@
 	<string>Cos ( ${1:angleInRadians} )$0</string>
 	<key>name</key>
 	<string>Cos</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>cos</string>
 	<key>uuid</key>

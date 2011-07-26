@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Truncate ( ${1:number}; ${2:precision} )$0</string>
+	<string>Truncate ( ${1:number} ; ${2:precision} )$0</string>
 	<key>name</key>
 	<string>Truncate</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>trun</string>
 	<key>uuid</key>

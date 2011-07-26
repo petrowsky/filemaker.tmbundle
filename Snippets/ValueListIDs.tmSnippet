@@ -6,6 +6,8 @@
 	<string>ValueListIDs ( ${1:Get ( FileName )} )$0</string>
 	<key>name</key>
 	<string>ValueListIDs</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>valuelistids</string>
 	<key>uuid</key>

@@ -6,6 +6,8 @@
 	<string>TableNames ( ${1:Get ( FileName )} )$0</string>
 	<key>name</key>
 	<string>TableNames</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>tablenames</string>
 	<key>uuid</key>

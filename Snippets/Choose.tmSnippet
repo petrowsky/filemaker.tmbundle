@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Choose ( ${1:test}; ${2:result0}; ${3:result1} )</string>
+	<string>Choose ( ${1:test} ; ${2:result0} ; ${3:result1} )</string>
 	<key>name</key>
 	<string>Choose</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>choose</string>
 	<key>uuid</key>

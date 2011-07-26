@@ -6,6 +6,8 @@
 	<string>Get ( FileName )</string>
 	<key>name</key>
 	<string>Get ( FileName )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getfn</string>
 	<key>uuid</key>

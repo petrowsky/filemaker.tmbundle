@@ -6,6 +6,8 @@
 	<string>LayoutNames ( ${1:Get ( FileName )} )$0</string>
 	<key>name</key>
 	<string>LayoutNames</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>layoutnames</string>
 	<key>uuid</key>

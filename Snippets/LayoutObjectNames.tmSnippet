@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>LayoutObjectNames ( ${1:Get ( FileName )}; ${2:layoutName} )$0</string>
+	<string>LayoutObjectNames ( ${1:Get ( FileName )} ; ${2:layoutName} )$0</string>
 	<key>name</key>
 	<string>LayoutObjectNames</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>layoutobnames</string>
 	<key>uuid</key>

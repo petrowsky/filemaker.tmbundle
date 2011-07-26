@@ -6,6 +6,8 @@
 	<string>Get ( RecordModificationCount )</string>
 	<key>name</key>
 	<string>Get ( RecordModificationCount )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getrmc</string>
 	<key>uuid</key>

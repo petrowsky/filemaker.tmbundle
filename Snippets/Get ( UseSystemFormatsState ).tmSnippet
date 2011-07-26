@@ -6,6 +6,8 @@
 	<string>Get ( UseSystemFormatsState )</string>
 	<key>name</key>
 	<string>Get ( UseSystemFormatsState )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getusfs</string>
 	<key>uuid</key>

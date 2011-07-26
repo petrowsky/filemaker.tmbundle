@@ -6,6 +6,8 @@
 	<string>Get ( PrivilegeSetName )</string>
 	<key>name</key>
 	<string>Get ( PrivilegeSetName )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getpsn</string>
 	<key>uuid</key>

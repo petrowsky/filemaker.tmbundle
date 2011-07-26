@@ -6,6 +6,8 @@
 	<string>Get ( UserName )</string>
 	<key>name</key>
 	<string>Get ( UserName )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getun</string>
 	<key>uuid</key>

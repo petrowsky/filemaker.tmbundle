@@ -6,6 +6,8 @@
 	<string>Get ( SystemNICAddress )</string>
 	<key>name</key>
 	<string>Get ( SystemNICAddress )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getsysnic</string>
 	<key>uuid</key>

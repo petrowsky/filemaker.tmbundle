@@ -6,6 +6,8 @@
 	<string>Get ( LayoutName )</string>
 	<key>name</key>
 	<string>Get ( LayoutName )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getln</string>
 	<key>uuid</key>

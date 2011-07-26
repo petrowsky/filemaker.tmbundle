@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>SetPrecision ( ${1:expression}; ${2:precision} )$0</string>
+	<string>SetPrecision ( ${1:expression} ; ${2:precision} )$0</string>
 	<key>name</key>
 	<string>SetPrecision</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>setprec</string>
 	<key>uuid</key>

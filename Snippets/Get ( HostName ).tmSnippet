@@ -6,6 +6,8 @@
 	<string>Get ( HostName )</string>
 	<key>name</key>
 	<string>Get ( HostName )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>gethn</string>
 	<key>uuid</key>

@@ -6,6 +6,8 @@
 	<string>Get ( SystemIPAddress )</string>
 	<key>name</key>
 	<string>Get ( SystemIPAddress )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getsysip</string>
 	<key>uuid</key>

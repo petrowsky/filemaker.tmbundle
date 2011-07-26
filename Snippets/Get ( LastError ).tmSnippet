@@ -6,6 +6,8 @@
 	<string>Get ( LastError )</string>
 	<key>name</key>
 	<string>Get ( LastError )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getle</string>
 	<key>uuid</key>

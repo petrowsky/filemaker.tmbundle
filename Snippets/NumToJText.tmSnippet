@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>NumToJText ( ${1:number}; ${2:separator}; ${3:characterType} )$0</string>
+	<string>NumToJText ( ${1:number} ; ${2:separator} ; ${3:characterType} )$0</string>
 	<key>name</key>
 	<string>NumToJText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>numtojtext</string>
 	<key>uuid</key>

@@ -6,6 +6,8 @@
 	<string>Ln ( ${1:number} )$0</string>
 	<key>name</key>
 	<string>Ln</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>ln</string>
 	<key>uuid</key>

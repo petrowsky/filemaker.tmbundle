@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Factorial ( ${1:number}${2:; ${3:numberOfFactors}} )$0</string>
+	<string>Factorial ( ${1:number}${2: ; ${3:numberOfFactors}} )$0</string>
 	<key>name</key>
 	<string>Factorial</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>fact</string>
 	<key>uuid</key>

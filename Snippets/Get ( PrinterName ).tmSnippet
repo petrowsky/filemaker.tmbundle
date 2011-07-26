@@ -6,6 +6,8 @@
 	<string>Get ( PrinterName )</string>
 	<key>name</key>
 	<string>Get ( PrinterName )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getprinter</string>
 	<key>uuid</key>

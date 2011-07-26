@@ -6,6 +6,8 @@
 	<string>ScriptNames ( ${1:Get ( FileName )} )$0</string>
 	<key>name</key>
 	<string>ScriptNames</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>scriptnames</string>
 	<key>uuid</key>

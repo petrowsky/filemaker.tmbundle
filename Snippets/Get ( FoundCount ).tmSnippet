@@ -6,6 +6,8 @@
 	<string>Get ( FoundCount )</string>
 	<key>name</key>
 	<string>Get ( FoundCount )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getfc</string>
 	<key>uuid</key>

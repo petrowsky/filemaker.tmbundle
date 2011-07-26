@@ -6,6 +6,8 @@
 	<string>Get ( ActiveSelectionSize )</string>
 	<key>name</key>
 	<string>Get ( ActiveSelectionSize )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getassize</string>
 	<key>uuid</key>

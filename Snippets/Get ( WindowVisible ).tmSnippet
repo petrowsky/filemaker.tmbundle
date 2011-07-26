@@ -6,6 +6,8 @@
 	<string>Get ( WindowVisible )</string>
 	<key>name</key>
 	<string>Get ( WindowVisible )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getwv</string>
 	<key>uuid</key>

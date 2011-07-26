@@ -6,6 +6,8 @@
 	<string>GetAsDate ( ${1:text} )$0</string>
 	<key>name</key>
 	<string>GetAsDate</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getasdate</string>
 	<key>uuid</key>

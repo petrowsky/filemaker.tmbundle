@@ -3,12 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>If ( ${1:test};
-	${2:result1};
+	<string>If ( ${1:test} ;
+	${2:result1} ;
 	${3:result2}
 )$0</string>
 	<key>name</key>
 	<string>If</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>if</string>
 	<key>uuid</key>

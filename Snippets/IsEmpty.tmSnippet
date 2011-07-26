@@ -6,6 +6,8 @@
 	<string>IsEmpty ( ${1:field} )$0</string>
 	<key>name</key>
 	<string>IsEmpty</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>isempty</string>
 	<key>uuid</key>

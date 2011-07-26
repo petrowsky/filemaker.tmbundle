@@ -4,11 +4,13 @@
 <dict>
 	<key>content</key>
 	<string>List (
-		${1:field1};
-		${2:field2};
+		${1:field1} ;
+		${2:field2} ;
 )$0</string>
 	<key>name</key>
 	<string>List</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>list</string>
 	<key>uuid</key>

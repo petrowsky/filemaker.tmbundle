@@ -6,6 +6,8 @@
 	<string>Get ( NetworkProtocol )</string>
 	<key>name</key>
 	<string>Get ( NetworkProtocol )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getnp</string>
 	<key>uuid</key>

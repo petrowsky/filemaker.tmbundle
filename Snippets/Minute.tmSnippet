@@ -6,6 +6,8 @@
 	<string>Minute ( ${1:time} )$0</string>
 	<key>name</key>
 	<string>Minute</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>minute</string>
 	<key>uuid</key>

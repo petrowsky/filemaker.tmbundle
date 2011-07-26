@@ -6,6 +6,8 @@
 	<string>Get ( ErrorCaptureState )</string>
 	<key>name</key>
 	<string>Get ( ErrorCaptureState )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getecs</string>
 	<key>uuid</key>

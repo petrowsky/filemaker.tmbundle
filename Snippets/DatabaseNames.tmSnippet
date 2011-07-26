@@ -6,6 +6,8 @@
 	<string>DatabaseNames</string>
 	<key>name</key>
 	<string>DatabaseNames</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>dbnames</string>
 	<key>uuid</key>

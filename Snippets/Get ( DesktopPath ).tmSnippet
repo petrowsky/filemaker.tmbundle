@@ -6,6 +6,8 @@
 	<string>Get ( DesktopPath )</string>
 	<key>name</key>
 	<string>Get ( DesktopPath )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getdeskpath</string>
 	<key>uuid</key>

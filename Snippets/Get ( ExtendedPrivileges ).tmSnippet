@@ -6,6 +6,8 @@
 	<string>Get ( ExtendedPrivileges )</string>
 	<key>name</key>
 	<string>Get ( ExtendedPrivileges )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getep</string>
 	<key>uuid</key>

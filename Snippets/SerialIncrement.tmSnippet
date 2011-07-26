@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>SerialIncrement ( ${1:text}; ${2:incrementBy} )$0</string>
+	<string>SerialIncrement ( ${1:text} ; ${2:incrementBy} )$0</string>
 	<key>name</key>
 	<string>SerialIncrement</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>serialinc</string>
 	<key>uuid</key>

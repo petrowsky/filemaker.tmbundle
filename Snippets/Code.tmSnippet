@@ -6,6 +6,8 @@
 	<string>Code ( ${1:text} )$0</string>
 	<key>name</key>
 	<string>Code</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>code</string>
 	<key>uuid</key>

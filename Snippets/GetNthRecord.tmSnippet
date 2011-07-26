@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>GetNthRecord ( ${1:fieldName}; ${2:recordNumber} )$0</string>
+	<string>GetNthRecord ( ${1:fieldName} ; ${2:recordNumber} )$0</string>
 	<key>name</key>
 	<string>GetNthRecord</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getnrec</string>
 	<key>uuid</key>

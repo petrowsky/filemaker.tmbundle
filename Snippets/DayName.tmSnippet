@@ -6,6 +6,8 @@
 	<string>DayName ( ${1:date} )$0</string>
 	<key>name</key>
 	<string>DayName</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>dayname</string>
 	<key>uuid</key>

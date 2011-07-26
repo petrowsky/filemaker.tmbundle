@@ -6,6 +6,8 @@
 	<string>Get ( LastODBCError )</string>
 	<key>name</key>
 	<string>Get ( LastODBCError )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getlodbc</string>
 	<key>uuid</key>

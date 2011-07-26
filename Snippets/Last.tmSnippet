@@ -6,6 +6,8 @@
 	<string>Last ( ${1:field} )$0</string>
 	<key>name</key>
 	<string>Last</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>last</string>
 	<key>uuid</key>

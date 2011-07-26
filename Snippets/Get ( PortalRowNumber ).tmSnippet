@@ -6,6 +6,8 @@
 	<string>Get ( PortalRowNumber )</string>
 	<key>name</key>
 	<string>Get ( PortalRowNumber )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getprn</string>
 	<key>uuid</key>

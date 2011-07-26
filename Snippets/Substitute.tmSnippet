@@ -4,11 +4,13 @@
 <dict>
 	<key>content</key>
 	<string>Substitute (
-	${1:text};
+	${1:text} ;
 	[ ${2:searchString} ; ${3:replaceString} ]
 )$0</string>
 	<key>name</key>
 	<string>Substitute</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>sub</string>
 	<key>uuid</key>

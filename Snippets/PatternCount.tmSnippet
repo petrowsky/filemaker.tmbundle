@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>PatternCount ( ${1:text}; ${2:searchString} )$0</string>
+	<string>PatternCount ( ${1:text} ; ${2:searchString} )$0</string>
 	<key>name</key>
 	<string>PatternCount</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>pcount</string>
 	<key>uuid</key>

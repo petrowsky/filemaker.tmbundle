@@ -6,6 +6,8 @@
 	<string>GetFieldName ( ${1:fieldName} )$0</string>
 	<key>name</key>
 	<string>GetFieldName</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getfieldname</string>
 	<key>uuid</key>

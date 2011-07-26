@@ -6,6 +6,8 @@
 	<string>Get ( FilePath )</string>
 	<key>name</key>
 	<string>Get ( FilePath )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getfp</string>
 	<key>uuid</key>

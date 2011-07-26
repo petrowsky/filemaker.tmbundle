@@ -6,6 +6,8 @@
 	<string>Get ( ApplicationLanguage )</string>
 	<key>name</key>
 	<string>Get ( ApplicationLanguage )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getal</string>
 	<key>uuid</key>

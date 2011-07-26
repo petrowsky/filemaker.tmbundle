@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>RGB ( ${1:red}; ${2:green}; ${3:blue} )$0</string>
+	<string>RGB ( ${1:red} ; ${2:green} ; ${3:blue} )$0</string>
 	<key>name</key>
 	<string>RGB</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>rgb</string>
 	<key>uuid</key>

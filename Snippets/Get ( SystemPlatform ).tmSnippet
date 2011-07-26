@@ -6,6 +6,8 @@
 	<string>Get ( SystemPlatform )</string>
 	<key>name</key>
 	<string>Get ( SystemPlatform )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getsysplat</string>
 	<key>uuid</key>

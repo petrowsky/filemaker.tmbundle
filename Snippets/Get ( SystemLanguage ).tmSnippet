@@ -6,6 +6,8 @@
 	<string>Get ( SystemLanguage )</string>
 	<key>name</key>
 	<string>Get ( SystemLanguage )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getsyslang</string>
 	<key>uuid</key>

@@ -6,6 +6,8 @@
 	<string>EvaluationError ( ${1:expression} )$0</string>
 	<key>name</key>
 	<string>EvaluationError</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>evalerr</string>
 	<key>uuid</key>

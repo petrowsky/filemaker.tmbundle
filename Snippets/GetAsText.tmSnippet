@@ -6,6 +6,8 @@
 	<string>GetAsText ( ${1:data} )$0</string>
 	<key>name</key>
 	<string>GetAsText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getastext</string>
 	<key>uuid</key>

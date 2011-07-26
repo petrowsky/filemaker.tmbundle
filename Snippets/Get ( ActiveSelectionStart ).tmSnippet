@@ -6,6 +6,8 @@
 	<string>Get ( ActiveSelectionStart )</string>
 	<key>name</key>
 	<string>Get ( ActiveSelectionStart )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getasstart</string>
 	<key>uuid</key>

@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>LeftValues ( ${1:text}; ${2:numberofvalues} )$0</string>
+	<string>LeftValues ( ${1:text} ; ${2:numberofvalues} )$0</string>
 	<key>name</key>
 	<string>LeftValues</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>leftval</string>
 	<key>uuid</key>

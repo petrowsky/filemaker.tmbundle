@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>FV ( ${1:payment}; ${2:interestRate}; ${3:periods} )$0</string>
+	<string>FV ( ${1:payment} ; ${2:interestRate} ; ${3:periods} )$0</string>
 	<key>name</key>
 	<string>FV</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>fv</string>
 	<key>uuid</key>

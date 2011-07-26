@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Time ( ${1:hours}; ${2:minutes}; ${3:seconds} )$0</string>
+	<string>Time ( ${1:hours} ; ${2:minutes} ; ${3:seconds} )$0</string>
 	<key>name</key>
 	<string>Time</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>time</string>
 	<key>uuid</key>

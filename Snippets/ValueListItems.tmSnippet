@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>ValueListItems ( ${1:Get ( FileName )}; ${2:valueList} )$0</string>
+	<string>ValueListItems ( ${1:Get ( FileName )} ; ${2:valueList} )$0</string>
 	<key>name</key>
 	<string>ValueListItems</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>vli</string>
 	<key>uuid</key>

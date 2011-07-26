@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>LeftWords ( ${1:text}; ${2:numberOfWords} )$0</string>
+	<string>LeftWords ( ${1:text} ; ${2:numberOfWords} )$0</string>
 	<key>name</key>
 	<string>LeftWords</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>leftwords</string>
 	<key>uuid</key>

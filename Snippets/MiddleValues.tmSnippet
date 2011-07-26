@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>MiddleValues ( ${1:text}; ${2:startingValue}; ${3:numberOfValues} )$0</string>
+	<string>MiddleValues ( ${1:text} ; ${2:startingValue} ; ${3:numberOfValues} )$0</string>
 	<key>name</key>
 	<string>MiddleValues</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>middleval</string>
 	<key>uuid</key>

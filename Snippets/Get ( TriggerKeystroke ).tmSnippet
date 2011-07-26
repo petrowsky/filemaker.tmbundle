@@ -6,6 +6,8 @@
 	<string>Get ( TriggerKeystroke )</string>
 	<key>name</key>
 	<string>Get ( TriggerKeystroke )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>gettk</string>
 	<key>uuid</key>

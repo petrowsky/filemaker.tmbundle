@@ -6,6 +6,8 @@
 	<string>Get ( WindowDesktopHeight )</string>
 	<key>name</key>
 	<string>Get ( WindowDesktopHeight )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getwdh</string>
 	<key>uuid</key>

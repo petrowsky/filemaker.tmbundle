@@ -6,6 +6,8 @@
 	<string>Get ( ScreenDepth )</string>
 	<key>name</key>
 	<string>Get ( ScreenDepth )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getsd</string>
 	<key>uuid</key>

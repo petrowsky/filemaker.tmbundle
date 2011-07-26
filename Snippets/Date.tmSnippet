@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Date ( ${1:month}; ${2:day}; ${3:year} )$0</string>
+	<string>Date ( ${1:month} ; ${2:day} ; ${3:year} )$0</string>
 	<key>name</key>
 	<string>Date</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>date</string>
 	<key>uuid</key>

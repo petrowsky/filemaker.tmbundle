@@ -6,6 +6,8 @@
 	<string>Get ( HighContrastState )</string>
 	<key>name</key>
 	<string>Get ( HighContrastState )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>gethcs</string>
 	<key>uuid</key>

@@ -6,6 +6,8 @@
 	<string>Tan ( ${1:angleInRadians} )$0</string>
 	<key>name</key>
 	<string>Tan</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>tan</string>
 	<key>uuid</key>

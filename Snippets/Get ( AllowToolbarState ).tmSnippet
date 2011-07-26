@@ -6,6 +6,8 @@
 	<string>Get ( AllowToolbarState )</string>
 	<key>name</key>
 	<string>Get ( AllowToolbarState )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getats</string>
 	<key>uuid</key>

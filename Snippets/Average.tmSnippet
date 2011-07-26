@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Average ( ${1:field}${2:; ${3:field...}} )</string>
+	<string>Average ( ${1:field}${2: ; ${3:field...}} )</string>
 	<key>name</key>
 	<string>Average</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>avg</string>
 	<key>uuid</key>

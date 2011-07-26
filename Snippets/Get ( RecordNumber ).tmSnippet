@@ -6,6 +6,8 @@
 	<string>Get ( RecordNumber )</string>
 	<key>name</key>
 	<string>Get ( RecordNumber )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getrn</string>
 	<key>uuid</key>

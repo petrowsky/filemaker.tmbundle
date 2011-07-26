@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Variance ( ${1:field1}${2:; field2...} )$0</string>
+	<string>Variance ( ${1:field1}${2: ; field2...} )$0</string>
 	<key>name</key>
 	<string>Variance</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>variance</string>
 	<key>uuid</key>

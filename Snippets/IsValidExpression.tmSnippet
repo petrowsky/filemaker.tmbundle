@@ -6,6 +6,8 @@
 	<string>IsValidExpression ( ${1:expression} )$0</string>
 	<key>name</key>
 	<string>IsValidExpression</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>isvalidexpression</string>
 	<key>uuid</key>

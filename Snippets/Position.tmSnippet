@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>Position ( ${1:text}; ${2:searchString}; ${3:start}; ${4:occurrence} )$0</string>
+	<string>Position ( ${1:text} ; ${2:searchString} ; ${3:start} ; ${4:occurrence} )$0</string>
 	<key>name</key>
 	<string>Position</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>pos</string>
 	<key>uuid</key>

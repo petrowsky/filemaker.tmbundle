@@ -6,6 +6,8 @@
 	<string>Get ( WindowTop )</string>
 	<key>name</key>
 	<string>Get ( WindowTop )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getwt</string>
 	<key>uuid</key>

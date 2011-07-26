@@ -6,6 +6,8 @@
 	<string>Get ( ActiveFieldContents )</string>
 	<key>name</key>
 	<string>Get ( ActiveFieldContents )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
 	<key>tabTrigger</key>
 	<string>getafc</string>
 	<key>uuid</key>
