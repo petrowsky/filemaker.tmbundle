@@ -177,6 +177,8 @@ Forked 3/12/11 from Matt by Donovan Chandler (added commands and additional lang
 
 Source available on [GitHub](https://github.com/DonovanChan/filemaker.tmbundle)
 
+This file has been modifed from its states when forked from Charles Ross and Matt Petrowsky.
+
 # Contact
 
 Donovan Chandler  

@@ -20,6 +20,10 @@
 # and
 #
 # ruby -e 'STDOUT &lt;&lt; "$errors = {\n" &lt;&lt; `curl -s http://www.filemaker.com/11help/html/error_codes.html`.scan(/&lt;div class="td-tabledata"&gt;&lt;a name="(.*?)"&gt;(.*?)&lt;\/a&gt;&lt;\/div&gt;.*?&lt;\/tr/m).map { |e| "  \"#{e[1]}\"".ljust(30) + " =&gt; $fmerrbase + \"\##{e[0]}\"" }.join(",\n") &lt;&lt; "\n}\n"'
+#
+# HISTORY
+#	This file has been modifed from its states when forked from Charles Ross and Matt Petrowsky.
+#
 
 $fmbase = "http://www.filemaker.com/11help/html/"
 $fmerrbase = $fmbase + "error_codes.html"
