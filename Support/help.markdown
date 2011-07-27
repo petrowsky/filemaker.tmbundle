@@ -161,7 +161,7 @@ Look in the help docs to get started. To peruse the bundle contents, open the Bu
 
 TextMate supports multiple languages: shell scripts, Ruby, Python. I've found that Ruby has some great resources for learning and is very easy to practice. You can test it out using irb in Terminal or run your scripts from within TextMate.
 
-Since this is not a native TextMate bundle, your modifications may be overwritten if you re-install the bundle. I haven't tested this behavior, so be cautious.
+You can customize the bundle and then update it without losing your customizations. TextMate will store your updates in ~/Library/Application Support/TextMate/Bundles. It will store the installed/updated copy of the bundle in ~/Library/Application Support/TextMate/Pristine Copy/Bundles.
 
 # FAQ
 
@@ -199,8 +199,8 @@ Issues are being tracked on github [here](https://github.com/DonovanChan/filemak
 
 # History
 
-Original bundle by Charles Ross, puvinyel@znp.pbz  
-Next incarnation by Matt Petrowsky (simplified version)  
+Original bundle by [Charles Ross](http://code.google.com/p/filemaker-textmate-bundle/)
+Next incarnation by [Matt Petrowsky](http://github.com/petrowsky) (simplified version)  
 Forked 3/12/11 from Matt by Donovan Chandler (added commands and additional languages)
 
 Source available on [GitHub](https://github.com/DonovanChan/filemaker.tmbundle)
