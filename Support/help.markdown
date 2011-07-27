@@ -22,7 +22,7 @@ This bundle provides tools for developing solutions in FileMaker Pro (a propriet
 
 This feature was last modified by Matt Petrowsky.
 
-Tab triggers exist for every native FileMaker function, each named after the function itself. Templates are included for function parameters to allow you to tab through them.  To discover or modify the abbreviated tab triggers, find the function in the FileMaker bundle menu (Bundles>FileMaker>[Function Category]>[Function Name]).
+Tab triggers exist for every native FileMaker function, each named after the function itself. Templates are included for function parameters to allow you to tab through them. To discover or modify the abbreviated tab triggers, find the function in the FileMaker bundle menu (Bundles>FileMaker>[Function Category]>[Function Name]).
 
 Keyword shorthand versions of words:
 
@@ -62,7 +62,7 @@ Commands postfixed with "*" are incomplete but functional.
 
 ### Calculation Generation
 
-Allows you to programmatically write code using simpler arrays and lists.  Here's an example you might use if you were using transactions and were writing values from global fields to local fields:
+Allows you to programmatically write code using simpler arrays and lists. Here's an example you might use if you were using transactions and were writing values from global fields to local fields:
 
 1. Create first column (target field names)
 	* Type in names of fields
@@ -76,7 +76,7 @@ Allows you to programmatically write code using simpler arrays and lists.  Here'
 
 ### Clipboard
 
-Handles XML text extracted from the FileMaker clipboard.  There are two central commands for this functionality:
+Handles XML text extracted from the FileMaker clipboard. There are two central commands for this functionality:
 
 <table>
 	<tr><th>Shortcut</th><th>Name</th><th>Action</th></tr>
@@ -135,7 +135,7 @@ Provided for the following formats:
 
 ## To open calculations in TextMate faster
 
-I find copy/paste sufficient, but you may have higher ambitions.  Here are some ideas:
+I find copy/paste sufficient, but you may have higher ambitions. Here are some ideas:
 
 * Use QuickKeys to quickly copy your dialog content to a temporary text file opened in TextMate
 * Trigger a shell script or AppleScript using TextExpander
@@ -149,17 +149,45 @@ Here's a good place to start: [TextMate Tutorials and More](http://projects.sere
 
 ### Learn which commands are available to you
 
-Other bundles, or maybe even this one, may have many useful commands you have not noticed before.  You can easily find what's available to you by browsing the menu's.  Even easier, try selecting something and pressing ^ ⌘T to show the Budles > Select Bundle Item... menu option.
+Other bundles, or maybe even this one, may have many useful commands you have not noticed before. You can easily find what's available to you by browsing the menu's. Even easier, try selecting something and pressing ^ ⌘T to show the Budles > Select Bundle Item... menu option.
 
 ### Learn to manipulate text
 
-Manipulating text can make your development much more efficient.  Sometimes the power trip can also provide a thrill in itself!  Learning to use tools like shell scripts — grep, sed, awk — will give you many returns.  You can run one-off scripts against your documents using the menu option Text > Filter Through Command.
+Manipulating text can make your development much more efficient. Sometimes the power trip can also provide a thrill in itself!  Learning to use tools like shell scripts — grep, sed, awk — will give you many returns. You can run one-off scripts against your documents using the menu option Text > Filter Through Command.
 
 ## To create your own commands or customizations
 
-Look in the help docs to get started.  To peruse the bundle contents, open the Bundle Editor by selecting Bundles > Bundle Editor > Show Bundle Editor.
+Look in the help docs to get started. To peruse the bundle contents, open the Bundle Editor by selecting Bundles > Bundle Editor > Show Bundle Editor.
 
-TextMate supports multiple languages.  I've found that Ruby has some great resources for learning and is very easy to practice.  You can test it out using irb in the terminal or run your scripts from within TextMate.
+TextMate supports multiple languages: shell scripts, Ruby, Python. I've found that Ruby has some great resources for learning and is very easy to practice. You can test it out using irb in Terminal or run your scripts from within TextMate.
+
+Since this is not a native TextMate bundle, your modifications may be overwritten if you re-install the bundle. I haven't tested this behavior, so be cautious.
+
+# FAQ
+
+### Why don't the snippets expand for me?
+
+Many of the bundle snippets are bound to a certain language. Check that the language for your current document is set to "FileMaker". Do this by selecting from the languages available in the left-hand side of the footer bar.
+
+### Why are the FileMaker bundle commands grayed out?
+
+Many of the bundle commands are bound to a certain language. Check that the language for your current document is set appropriately — either "FileMaker", "FileMaker Clipboard", etc. Do this by selecting from the languages available in the left-hand side of the footer bar.
+
+### The snippets aren't formatted the way I want. How do I change them?
+
+Open the Bundle Editor and edit the snippets from there. Please see "To create your own commands and customizations" section above. If you know regular expressions, you can also modify the Tidy command instead of updating every snippet.
+
+### How do I change or add new commands?
+
+You can always request features on [github](https://github.com/DonovanChan/filemaker.tmbundle/issues "github issues page") (see "How to Report Bugs or Request Features" below), but it's much more empowering to learn it yourself! Open the Bundle Editor and edit the commands from there. Please see "To create your own commands and customizations" section above.
+
+### How do I get involved in improving this bundle?
+
+I thought you'd never ask! There's several ways to get involved:
+
+* Submit new issues on [github](https://github.com/DonovanChan/filemaker.tmbundle/issues "github issues page")
+* Send me a pull request on github
+* Email me at [donovan_c@beezwax.net](mailto:donovan_c@beezwax.net)
 
 # Known Bugs
 
@@ -167,7 +195,7 @@ TextMate supports multiple languages.  I've found that Ruby has some great resou
 
 # How to Report Bugs or Request Features
 
-Issues are being tracked on github [here](https://github.com/DonovanChan/filemaker.tmbundle/issues "github issues page")
+Issues are being tracked on github [here](https://github.com/DonovanChan/filemaker.tmbundle/issues "github issues page"). 
 
 # History
 
@@ -179,8 +207,12 @@ Source available on [GitHub](https://github.com/DonovanChan/filemaker.tmbundle)
 
 This file has been modifed from its states when forked from Charles Ross and Matt Petrowsky.
 
+# License
+
+This bundle is licensed under the Apache 2.0 license in an attempt to conform to the license used by Charles Ross in the original bundle. This license requires that files include comments indicating any modifications. I did my best with the comments, but TextMate is not very friendly in that regard.
+
 # Contact
 
 Donovan Chandler  
-Beezwax Datatools, Inc.  
+Beezwax Datatools, Inc. 
 donovan_c@beezwax.net
