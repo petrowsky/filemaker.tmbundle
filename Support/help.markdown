@@ -4,7 +4,7 @@ This bundle provides tools for developing solutions in FileMaker Pro (a propriet
 
 # Features
 
-* Tab triggers for FileMaker functions
+* Tab triggers for FileMaker's functions
 * Documentation for functions, script steps and error codes
 * Commands
 	* Manipulating/generating calculations
@@ -15,6 +15,7 @@ This bundle provides tools for developing solutions in FileMaker Pro (a propriet
 	* FileMaker
 	* FileMaker Clipboard
 	* FileMaker Log
+	* FileMaker Hash (Generated using #( ) custom function)
 * Code folding
 
 ## Tab Triggers

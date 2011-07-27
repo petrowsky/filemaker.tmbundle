@@ -1,8 +1,8 @@
-# TextMate Bundle for FileMaker
+# TextMate bundle for FileMaker Pro
 
 ## Introduction
 
-Provides syntax highlighting, code snippets, quick documentation reference and robust code generating commands. You can even interact directly with FileMaker's clipboard from within this bundle.
+Provides syntax highlighting, code snippets, quick documentation reference and robust code generating commands. You can even interact directly with FileMaker Pro's clipboard from within this bundle.
 
 This project was forked from a simpler version by Matt Petrowsky.  His bundle was a simplification of the original bundle by Charles Ross.  My version mostly adds to the commands.
 
