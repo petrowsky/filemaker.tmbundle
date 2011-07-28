@@ -1,47 +1,35 @@
 #!/usr/bin/ruby
 #
 # DESCRIPTION
-#	Generates FileMaker snippet of Sort script steps
+#	Generates FileMaker snippet of field layout objects
 #
 # USAGE
-#	col1 = test
-#	col2 = sort field
-#	col3 = sort direction
-#	True \t TABLE::NAME \t ascending
+#	col1 = fully qualified field name
+#	col2 = tooltip (optional)
+#	col3 = font (optional)
+#	col4 = fontSize (optional)
+#	col5 = objectName (optional)
 #
 
 require 'FMSnippet.rb'
-# require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
-#
+
 # Open document
 # text = STDIN.read
-text = "True\tCONTACT::name\n\tCOMPANY::name"
-doc = FMSnippet.new("")
+text = "Contact Management::Address_Type1\nContact Management::Address_Type2"
+doc = FMSnippet.new("layout_object")
 
-# Insert Fields
+# Generate Fields
 xml = ""
-rep = 0
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)
-	field = col[1]
-	calc = col[0]
-	if calc == ""
-	  calc = "$_sort_field = GetFieldName ( #{field} )"
-  end
-	rep = rep + 1
-  rep == 1 ? doc.stepIf(calc) : doc.stepElseIf(calc)
-	arg = [{
-		:field			=> field,
-		:direction		=> col[2]
-	}]
-	doc.stepSort(arg,"True")
+	arg = {
+		:fieldQualified	=> col[0],
+		:tooltip			=> col[1],
+		:font			=> col[2],
+		:fontSize			=> col[3],
+		:objectName		=> col[4]
+	}
+	doc.layoutField(arg)
 }
-doc.stepEndIf
-puts doc
 
-# How to handle field name that's possibly split into two columns
-# col = row.split(/\t/)
-# if not col[0].include?("::")
-#   col[0] = col[0] + '::' + col[1]
-#   col.slice!(1)
-# end
+print doc
