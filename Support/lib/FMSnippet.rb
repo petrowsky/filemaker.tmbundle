@@ -18,6 +18,7 @@ class FMSnippet
       return
     when 'layout_object'
       @type = 'LayoutObjectList'
+      @boundTop = 0
       @template = %!
 #{TEMPLATE_HEADER}
 <fmxmlsnippet type="#{@type}">
@@ -120,6 +121,7 @@ class FMSnippet
   end
   
   # options includes { ((table, field)|fieldQualified), repetition, calculation }
+  # TODO: See YARD for how to document params
   def stepSetField(options={})
     # options = { :repetition => 2 }.merge(options)
     fieldQualified = options[:fieldQualified]
@@ -213,10 +215,13 @@ class FMSnippet
     @template << tpl.result(binding)
   end
   
-  # options includes { ((field, table) | fieldQualified), tooltip, font, fontSize, objectName}
+  # TODO: Finish converting documentation to YARD format
+  # Generates field objects to paste onto FileMaker layout
+  #
+  # @param [Hash] options 
+  #   options includes { ((field, table) | fieldQualified), tooltip, font, fontSize, objectName, fieldHeight, fieldWidth}
   def layoutField(options={})
-    # FIXME: Does not update @boundTop in subsequent calls
-    @boundTop.nil? ? @boundTop = 20 : @boundTop =+ 20
+    @boundTop += 20
     fieldQualified = options[:fieldQualified]
     if fieldQualified
       table = getFieldTable(fieldQualified)
@@ -227,9 +232,12 @@ class FMSnippet
       fieldQualified = table + "::" + field
     end
     options = {
-      :font   => "Verdana",
-      :fontSize => "12"
+      :font         => "Verdana",
+      :fontSize     => "12",
+      :fieldheight  => 12,
+      :fieldWidth   => 120
     }.merge(options)
+    fieldLeft = 200
     template = %q{
     <ObjectStyle id="0" fontHeight="" graphicFormat="5" fieldBorders="0">
       <CharacterStyle mask="32567">
@@ -241,7 +249,7 @@ class FMSnippet
     </ObjectStyle>
     <Object type="Field" name="<%= options[:objectName] %>" flags="0" portal="-1" rotation="0">
       <StyleId>0</StyleId>
-      <Bounds top="<%= @boundTop %>" left="200.000000" bottom="38.000000" right="300.000000"/>
+      <Bounds top="<%= @boundTop %>" left="<%= fieldLeft %>" bottom="<%= @boundTop + options[:fieldHeight] %>" right="<%= fieldLeft + options[:fieldWidth] %>"/>
       <ToolTip>
         <Calculation><![CDATA[<%= options[:tooltip] %>]]></Calculation>
       </ToolTip>
