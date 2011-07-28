@@ -14,7 +14,7 @@
 # USAGE
 #	col1 = test
 #	col2 = sort field
-#	col3 = sort direction
+#	col3 = sort direction (optional) [ascending|descending]
 #
 # EXAMPLE
 #	True \t TABLE::NAME \t ascending

@@ -36,7 +36,7 @@ text.split(/\n/).each { |row|
 		:objectName		=&gt; col[4]
 	}
 	doc.layoutField(arg)
-	}
+}
 
 print doc</string>
 	<key>input</key>
