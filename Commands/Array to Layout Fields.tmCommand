@@ -33,7 +33,9 @@ text.split(/\n/).each { |row|
 		:tooltip			=&gt; col[1],
 		:font			=&gt; col[2],
 		:fontSize			=&gt; col[3],
-		:objectName		=&gt; col[4]
+		:objectName		=&gt; col[4],
+		:fieldHeight		=&gt; 18,
+		:fieldWidth		=&gt; 120
 	}
 	doc.layoutField(arg)
 }
