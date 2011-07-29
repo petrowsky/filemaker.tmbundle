@@ -171,11 +171,11 @@ class FMSnippet
   def stepSort(fieldArray,hideDialog=true)
     template = %q{
   <Step enable="True" id="" name="Sort Records">
-    <NoInteract state="<%= Boolean(hideDialog) %>"/>
+    <NoInteract state="<%= Boolean(hideDialog).to_s.capitalize %>"/>
     <Restore state="True"/>
     <SortList value="True">
       % fieldArray.each do |field_cur|
-        % direction = field_cur[:direction] || "Ascending"
+        % direction = field_cur[:direction].capitalize || "Ascending"
         % fieldQualified = field_cur[:field]
         % table = getFieldTable(fieldQualified)
         % name = getFieldName(fieldQualified)
