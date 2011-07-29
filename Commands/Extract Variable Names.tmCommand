@@ -11,7 +11,7 @@ text = STDIN.read
 
 text = text.scan(/\${1,2}[_a-zA-Z]+/)
 if text.length
-	puts text.sort.uniq.each { |x| print x, "\n" }
+	text.sort.uniq.each { |x| puts x }
 else
 	exit_show_tool_tip "No variables found"
 end</string>
