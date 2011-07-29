@@ -6,7 +6,7 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/bin/bash
-sed -n 's/.*Color="\(.*\)".*/\1/p' | sort | uniq</string>
+sed -n 's/.*Color="\(.*?\)".*/\1/p' | sort | uniq</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
