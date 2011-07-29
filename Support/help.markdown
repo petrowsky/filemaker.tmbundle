@@ -20,9 +20,7 @@ This bundle provides tools for developing solutions in FileMaker Pro (a propriet
 
 ## Tab Triggers
 
-This feature was last modified by Matt Petrowsky.
-
-Tab triggers exist for every native FileMaker function, each named after the function itself. Templates are included for function parameters to allow you to tab through them. To discover or modify the abbreviated tab triggers, find the function in the FileMaker bundle menu (Bundles>FileMaker>[Function Category]>[Function Name]).
+Tab triggers exist for every native FileMaker function. Templates are included for function parameters to allow you to tab through them. To discover or modify the abbreviated tab triggers, find the function in the FileMaker bundle menu (Bundles>FileMaker>[Function Category]>[Function Name]). You can also search for them by pressing ⌘^T.
 
 Keyword shorthand versions of words:
 
@@ -39,7 +37,7 @@ Keyword shorthand versions of words:
 
 For example, typing "leftval" will expand to "LeftValues ( template1 ; template2 )"
 
-## Function Enclosing
+Previous incarnations of the bundle included snippets for things like the PHP API, SmartPill PHP and zippScript. If you would like any of those added. Let us know via email or, preferably, by submitting an issue on the github page.
 
 ## Documentation Lookup
 
@@ -86,19 +84,6 @@ Handles XML text extracted from the FileMaker clipboard. There are two central c
 
 Note, you must have the current XML document assigned to the FileMaker Clipboard language in order to use these shortcuts.
 
-Here's a very simple example of how a workflow might look:
-
-1. Copy script steps in FileMaker
-1. Use fmClipboardBroker to save clipboard contents to text file
-1. Manipulate text
-	* Change variable names
-	* Change table occurrence names
-	* Change function name
-	* Add function parameter
-1. Save the text file
-1. Return to fmClipboardBroker and load the new script steps onto your clipboard
-1. Paste in your new script steps
-
 #### Clipboard Manipulation Utilities
 
 There are several utilities available to help you manipulate the clipboard:
@@ -130,6 +115,8 @@ Provided for the following formats:
 	* Basically XML, but it should provide highlighting for FileMaker syntax within that XML
 * FileMaker Log
 	* Very basic, but those logs can be very difficult to read without it!
+* FileMaker Hash
+	* For dictionaries generated using custom function suite from [six.fried.rice](http://sixfriedrice.com/wp/filemaker-dictionary-functions/). [FOCUS](http://focus.beezwax.net/groups/focus) makes extensive use of this hash format. A full suite of functions are vailable on github [here](https://github.com/beezwax/FOCUS/tree/master/Functions)
 
 # Usage Tips
 
@@ -199,7 +186,10 @@ Issues are being tracked on github [here](https://github.com/DonovanChan/filemak
 
 # History
 
+(As far as I can deduce.)
+
 Original bundle by [Charles Ross](http://code.google.com/p/filemaker-textmate-bundle/)
+Bundle modified at some point by Jonathan Stark.
 Next incarnation by [Matt Petrowsky](http://github.com/petrowsky) (simplified version)  
 Forked 3/12/11 from Matt by Donovan Chandler (added commands and additional languages)
 
