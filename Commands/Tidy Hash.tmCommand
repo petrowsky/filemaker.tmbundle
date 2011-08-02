@@ -31,7 +31,7 @@ print text</string>
 	<key>keyEquivalent</key>
 	<string>^H</string>
 	<key>name</key>
-	<string>Tidy Hash</string>
+	<string>Pretty Print</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>scope</key>
