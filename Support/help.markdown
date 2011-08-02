@@ -2,6 +2,8 @@
 
 This bundle provides tools for developing solutions in FileMaker Pro (a proprietary RDBMS). It provides basic features like syntax highlighting and tab triggers for calcuations. But it goes much deeper, allowing you to generate code and even interact directly with FileMaker objects on your clipboard.
 
+*For more information, see the [project page](donovanchan.github.com/filemaker.tmbundle) on github.*
+
 # Features
 
 * Tab triggers for FileMaker's functions
@@ -204,5 +206,5 @@ This bundle is licensed under the Apache 2.0 license in an attempt to conform to
 # Contact
 
 Donovan Chandler  
-Beezwax Datatools, Inc. 
+Beezwax Datatools, Inc.  
 donovan_c@beezwax.net
