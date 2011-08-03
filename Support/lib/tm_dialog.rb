@@ -15,6 +15,7 @@ class TM_Dialog
   end
 
   # See http://cocoadialog.sourceforge.net/documentation.html for documentation
+  # TODO: Preserve whitespace from input
   def cocoa_dialog(command, options = {})
     options_list = []
     options.each_pair do |k, v|

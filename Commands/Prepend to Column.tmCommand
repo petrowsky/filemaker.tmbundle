@@ -10,7 +10,6 @@
 # DESCRIPTION
 #	Prepends string to specified column in each row in selection or document
 #
-# TODO: Enhance error handling for missing column values
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_DIALOG']
@@ -35,7 +34,10 @@ colDelim = "\t"
 result = ""
 text.split(/\n/).each { |row| 
 	col = row.split(colDelim)
-	col[colNum] = strPrepend + col[colNum]
+	colCur = col[colNum]
+	if colCur
+		col[colNum] = strPrepend + colCur
+	end
 	result += col.join(colDelim) + "\n"
 }
 
