@@ -11,7 +11,7 @@
 	<key>foldingStopMarker</key>
 	<string>:&gt;</string>
 	<key>keyEquivalent</key>
-	<string>^~@f</string>
+	<string>^~F</string>
 	<key>name</key>
 	<string>FileMaker Hash</string>
 	<key>patterns</key>
