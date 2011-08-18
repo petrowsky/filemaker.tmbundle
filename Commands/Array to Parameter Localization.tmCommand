@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION
+#	Generates FileMaker snippet for Set Variable script steps that localize values passed through script parameter
+#
+# USAGE
+#	col1 = parameter name
+#	col2 = variable name (optional
+#
+
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+
+# Open document
+text = STDIN.read
+doc = FMSnippet.new("")
+
+# Split text to lines if necessary
+#textLines = ( text =~ /.*(.*$/ ? text.split(/;/) : text )
+if true
+	textLines = text.split(/;/)
+else
+	textLines = text
+end
+
+# Steps to set variables
+textLines.split(/\n/).each { |row| 
+	col = row.split(/\t/)
+	param = col[0]
+
+	# Generate calculation
+	calc = '#P ( "' + param + '" )'
+
+	# Generate variable name
+	name = col[1] || param
+	name = '$_' + name.downcase
+
+	rep = 1
+	doc.stepSetVariable(name,rep,calc)
+}
+
+puts doc</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Array to Parameter Localization</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>3503F6F9-D6E9-41E3-8E9B-A388F1E2F716</string>
+</dict>
+</plist>
