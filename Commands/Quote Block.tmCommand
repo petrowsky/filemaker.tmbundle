@@ -15,6 +15,9 @@ text.gsub!(/\\/,'\\')
 # pilcrows
 text.gsub!(/¶/,'\\¶')
 
+# convert line endings to FileMaker-friendly CR
+text.gsub!(/\n/,"¶\n")
+
 # double quotes
 text.gsub!(/"/,'\\"')
 
