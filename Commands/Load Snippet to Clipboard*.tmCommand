@@ -12,7 +12,11 @@
 TEXT="$(ruby -e 'puts STDIN.read.lstrip')"
 
 SCRIPT_PATH="$TM_BUNDLE_SUPPORT$TM_PATH_PASTE_SNIPPET"
-osascript "$SCRIPT_PATH" "$TEXT"</string>
+
+#osascript "$SCRIPT_PATH" "$TEXT"
+
+cat &lt;&lt;-EOF | iconv -f UTF-8 -t MACROMAN | osascript "$SCRIPT_PATH" "$TEXT"
+EOF</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>
