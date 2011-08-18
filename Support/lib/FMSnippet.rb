@@ -6,7 +6,7 @@
 require 'erb'
 
 class FMSnippet
-  TEMPLATE_HEADER = '<?xml version="1.0"?>'
+  TEMPLATE_HEADER = '<?xml version="1.0" encoding="UTF-8"?>'
   TEMPLATE_FOOTER = "\n</fmxmlsnippet>"
   
   # types = {partial,layout_object}
@@ -175,11 +175,11 @@ class FMSnippet
     <Restore state="True"/>
     <SortList value="True">
       % fieldArray.each do |field_cur|
-        % direction = field_cur[:direction].capitalize || "Ascending"
+        % direction = field_cur[:direction] || "Ascending"
         % fieldQualified = field_cur[:field]
         % table = getFieldTable(fieldQualified)
         % name = getFieldName(fieldQualified)
-        <Sort type="<%= direction %>">
+        <Sort type="<%= direction.capitalize %>">
           <PrimaryField>
             <Field table="<%= table %>" id="" name="<%= name %>"/>
           </PrimaryField>
