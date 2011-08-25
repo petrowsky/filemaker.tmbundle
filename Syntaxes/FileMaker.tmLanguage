@@ -72,7 +72,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(//).*?($\n?|(?=\?&gt;))</string>
+			<string>(//).*?($\n?)</string>
 			<key>name</key>
 			<string>comment.line.double-slash.filemaker</string>
 		</dict>
