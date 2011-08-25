@@ -17,7 +17,14 @@ if [ "${RESULT:0:1}" != "&lt;" ] ; then
 fi
 
 trap 'echo "$RESULT"' TERM
-echo "$RESULT" | mate -a</string>
+
+# Method A: Create file using straight bash
+FILE="/tmp/textmate_fmsnippet_${RANDOM}.xml"
+echo "$RESULT" &gt;&gt; "$FILE"
+open -a TextMate "$FILE"
+
+# Method B: Create file using mate command
+#echo "$RESULT" | mate -a</string>
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>
@@ -25,7 +32,7 @@ echo "$RESULT" | mate -a</string>
 	<key>name</key>
 	<string>Get Snippet from Clipboard</string>
 	<key>output</key>
-	<string>openAsNewDocument</string>
+	<string>discard</string>
 	<key>uuid</key>
 	<string>7DAAABED-A892-4159-9A2E-1DA77ECBBB48</string>
 </dict>
