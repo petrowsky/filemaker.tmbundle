@@ -90,6 +90,31 @@ class FMSnippet
   # Script and Script Step
   # ------------------------------------
   
+  def stepComment(text=" ")
+    template = %q{
+  <Step enable="True" id="" name="Comment">
+    <Text><%= text %></Text>
+  </Step>
+}.gsub(/^\s*%/, '%')
+    tpl = ERB.new(template, 0, '%<>')
+    @template << tpl.result(binding)
+  end
+  
+  def stepCommentHeader(text=" ")
+    template = %q{
+  <Step enable="True" id="" name="Comment"/>
+  <Step enable="True" id="" name="Comment">
+    <Text>__________________________________________________</Text>
+  </Step>
+  <Step enable="True" id="" name="Comment">
+    <Text><%= text %></Text>
+  </Step>
+  <Step enable="True" id="" name="Comment"/>
+}.gsub(/^\s*%/, '%')
+    tpl = ERB.new(template, 0, '%<>')
+    @template << tpl.result(binding)
+  end
+  
   def stepIf(calculation)
     template = %q{
   <Step enable="True" id="" name="If">
@@ -263,5 +288,25 @@ class FMSnippet
     tpl = ERB.new(template, 0, '%<>')
     @template << tpl.result(binding)
   end
+  
+  # ------------------------------------
+  # Misc
+  # ------------------------------------
+  
+  def parseParams(text)
+    if text =~ /;/
+      textArray = text.split(/;/)
+    else
+      textArray = text
+    end
+    result = []
+    textArray.each do |param|
+      param.strip!
+      param[0] == "-" ? param.slice!(0) : param
+      result << param
+    end
+    return result
+  end
+
   
 end
