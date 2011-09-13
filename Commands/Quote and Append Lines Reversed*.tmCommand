@@ -16,6 +16,9 @@ text = STDIN.read
 # Undo escape of double quotes
 text.gsub!(/\\"/,'"')
 
+# Remove leading and trailing quote
+text = text.chomp('"').reverse.chomp('"').reverse
+
 # Undo concatenate lines
 text.gsub!(/" &amp; ¶ &amp;(\n)"/,'\1')
 
@@ -23,7 +26,7 @@ print text</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Quote and Append Lines Reversed*</string>
+	<string>Quote and Append Lines Reversed</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>scope</key>
