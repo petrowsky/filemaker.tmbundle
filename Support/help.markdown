@@ -53,10 +53,10 @@ A search window will appear if no entries are found.
 
 ## Commands
 
-Functions are organized according to the type of text being worked with.
+Functions are organized according to the type of text being worked with. Any documentation for a command can be seen by running the command on an empty document. The documentation will be inserted into the empty document.
 
-Commands postfixed with "**" do not work.
-Commands postfixed with "*" are incomplete but functional.
+Commands postfixed with "\*\*" do not work.
+Commands postfixed with "\*" are incomplete but functional.
 
 ### Calculations
 
@@ -84,13 +84,15 @@ Handles XML text extracted from the FileMaker clipboard. There are two central c
 	<tr><td>⌘+b</td><td>Load Snippet to Clipboard</td><td>Loads current XML document to FileMaker's clipboard as snippet</td></tr>
 </table>
 
+If the Load Snippet to Clipbaord command says that the snippet was loaded but the snippet isn't pasting into FileMaker, it's possible that there's an invalid script step in your XML.
+
 Note, you must have the current XML document assigned to the FileMaker Clipboard language in order to use these shortcuts.
 
 #### Clipboard Manipulation Utilities
 
 There are several utilities available to help you manipulate the clipboard:
 
-* AppleScript (takes some knowhow)
+* AppleScript (takes some know-how)
 * fmClipboardBroker (free!)
 * bBox plug-in (free!)
 * Clip Manager (excellent, full-featured utility)
