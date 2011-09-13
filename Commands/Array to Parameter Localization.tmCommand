@@ -8,31 +8,61 @@
 	<string>#!/usr/bin/ruby
 #
 # DESCRIPTION
-#	Generates FileMaker snippet for Set Variable script steps that localize values passed through script parameter
+#	See documentation section below.
 #
 # USAGE
-#	col1 = parameter name
-#	col2 = variable name (optional
+#	Instructions printed when input is empty.
+#	See documentation section below.
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 
-# Open document
 text = STDIN.read
+
+# Documentation
+if text.empty?
+	tips = ENV['TM_DOC_TIPS']
+	puts &lt;&lt;EOF
+DESCRIPTION
+	Generates FileMaker snippet for Set Variable script steps that localize values passed through script parameter.
+	Uses selected text or entire document.
+
+EXAMPLE USAGE:
+	Select the lines below and run the command again to see it work.
+
+id
+first_name\tname_first
+
+PARAMETERS:
+	col1 = parameter name
+	col2 = variable name (optional)
+
+TIPS:
+#{tips}
+EOF
+	exit
+end
+
 doc = FMSnippet.new("")
 
 # Split text to lines if necessary
-#textLines = ( text =~ /.*(.*$/ ? text.split(/;/) : text )
-if true
-	textLines = text.split(/;/)
+if text =~ /;/
+	textArray = text.split(/;/)
+elsif text =~ /\n/
+	textArray = text.split(/\n/)
 else
-	textLines = text
+	textArray = text
 end
 
-# Steps to set variables
-textLines.split(/\n/).each { |row| 
+# Generate Set Variable script steps
+textArray.each do |row| 
 	col = row.split(/\t/)
-	param = col[0]
+	param = col[0].strip
+
+	# Remove optionality flag
+	if param[0,1] == "-"
+		param.slice!(0)
+	end
 
 	# Generate calculation
 	calc = '#P ( "' + param + '" )'
@@ -43,7 +73,7 @@ textLines.split(/\n/).each { |row|
 
 	rep = 1
 	doc.stepSetVariable(name,rep,calc)
-}
+end
 
 puts doc</string>
 	<key>input</key>

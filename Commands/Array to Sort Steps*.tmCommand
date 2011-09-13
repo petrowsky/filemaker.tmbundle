@@ -8,17 +8,11 @@
 	<string>#!/usr/bin/ruby
 #
 # DESCRIPTION
-#	Generates FileMaker snippet for Sort script steps
+#	See documentation section below.
 #
 # USAGE
-#	col1 = table::field
-#	col2 = sort direction (optional)
-#
-#	Each consecutive line is added to the same sort step.
-#	Add a blank line between steps.
-#
-# EXAMPLE
-#	CONTACT::NAME \t Descending =&gt; Sort Records [Restore; No Dialog]
+#	Instructions printed when input is empty.
+#	See documentation section below.
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
@@ -26,11 +20,38 @@ require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 # Settings (can be changed to parameters if needed)
 suppressDialog = true
 
-# Open document
 text = STDIN.read
-doc = FMSnippet.new("")
+
+# Documentation
+if text.empty?
+	tips = ENV['TM_DOC_TIPS']
+	puts &lt;&lt;EOF
+DESCRIPTION:
+	Generates FileMaker snippet of Sort script steps.
+	Dialogs are suppressed by default.
+	Uses selected text or entire document.
+
+EXAMPLE:
+	CONTACT::NAME \t Descending =&gt; Sort Records [Restore; No Dialog]
+
+EXAMPLE USAGE:
+	Select the lines below and run the command again to see it work.
+
+CONTACT::NameLast\tdescending
+CONTACT::NameFirst\tascending
+
+PARAMETERS:
+	col1 = table::field
+	col2 = sort direction (optional) [ascending|descending]
+
+TIPS:
+#{tips}
+EOF
+	exit
+end
 
 # Generate Fields
+doc = FMSnippet.new("")
 text.split(/\n\n/).each { |chunk|
   arg = []
   chunk.split(/\n/).each { |row|

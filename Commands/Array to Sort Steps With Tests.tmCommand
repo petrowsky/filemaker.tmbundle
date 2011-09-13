@@ -8,25 +8,56 @@
 	<string>#!/usr/bin/ruby
 #
 # DESCRIPTION
-#	Generates FileMaker snippet of Sort script steps.
-#	Each sort step is preceded by an Else If statement.
+#	See documentation section below.
 #
 # USAGE
-#	col1 = test
-#	col2 = sort field
-#	col3 = sort direction (optional) [ascending|descending]
-#
-# EXAMPLE
-#	True \t TABLE::NAME \t ascending
+#	Instructions printed when input is empty.
+#	See documentation section below.
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 
-# Open document
 text = STDIN.read
-doc = FMSnippet.new("")
+
+# Documentation
+if text.empty?
+	tips = ENV['TM_DOC_TIPS']
+	puts &lt;&lt;EOF
+DESCRIPTION
+	Generates FileMaker snippet of Sort script steps.
+	Each sort step is preceded by an Else If statement.
+	Dialogs are suppressed by default.
+	Uses selected text or entire document.
+
+EXAMPLE:
+	$_field = "name" \t CONTACT::Name \t Descending
+	$_field = "number" \t CONTACT::Number \t Descending
+
+	=&gt; If [$_field = "name"]
+	=&gt; 	Sort Records [Restore; No Dialog]
+	=&gt; Else If [$_field = "number"]
+	=&gt; 	Sort Records [Restore; No Dialog]
+	=&gt; End If
+
+EXAMPLE USAGE:
+	Select the lines below and run the command again to see it work.
+
+$_field_name = GetFieldName ( CONTACT::NameLast )\tCONTACT::NameLast\tdescending
+$_field_name = GetFieldName ( CONTACT::NameFirst )\tCONTACT::NameFirst\tascending
+
+PARAMETERS:
+	col1 = test
+	col2 = sort field
+	col3 = sort direction (optional) [ascending|descending]
+
+TIPS:
+#{tips}
+EOF
+	exit
+end
 
 # Generate Fields
+doc = FMSnippet.new("")
 rep = 0
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)

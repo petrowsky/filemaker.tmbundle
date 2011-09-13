@@ -8,26 +8,66 @@
 	<string>#!/usr/bin/ruby
 #
 # DESCRIPTION
-#	Generates FileMaker snippet for Set Variable script steps that localize values passed through script parameter
+#	See documentation section below.
 #
 # USAGE
-#	col1 = parameter name
-#	col2 = variable name (optional
+#	Instructions printed when input is empty.
+#	See documentation section below.
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 
-# Open document
 text = STDIN.read
+
+# Documentation
+if text.empty?
+	tips = ENV['TM_DOC_TIPS']
+	puts &lt;&lt;EOF
+DESCRIPTION
+	Generates FileMaker snippet for Set Variable script steps that localize values passed through script parameter and validates the results.
+	Parameters are localized using #P ( ) function.
+	Uses selected text or entire document.
+
+EXAMPLE USAGE:
+	Select the lines below and run the command again to see it work.
+
+id
+first_name\tname_first
+
+PARAMETERS:
+	col1 = parameter name
+	col2 = variable name (optional)
+
+TIPS:
+#{tips}
+EOF
+	exit
+end
+
 doc = FMSnippet.new("")
 
 # Split text to lines if necessary
-textLines = ( text =~ /.*(.*$/ ? text.split(/;/) : text )
+if text =~ /;/
+	textArray = text.split(/;/)
+elsif text =~ /\n/
+	textArray = text.split(/\n/)
+else
+	textArray = text
+end
 
-# Steps to set variables
-textLines.split(/\n/).each { |row| 
+# Generate Set Variable script steps
+doc.stepCommentHeader(" Instantiate Variables")
+paramsToValidate = []
+textArray.each do |row| 
 	col = row.split(/\t/)
-	param = col[0]
+	param = col[0].strip
+
+	# Account for optionality (remove from variable, queue for validation)
+	if param[0,1] == "-"
+		param.slice!(0)
+	else
+		paramsToValidate &lt;&lt; param
+	end
 
 	# Generate calculation
 	calc = '#P ( "' + param + '" )'
@@ -38,15 +78,29 @@ textLines.split(/\n/).each { |row|
 
 	rep = 1
 	doc.stepSetVariable(name,rep,calc)
-}
+end
 
-# Steps
+# Generate validation script steps
+doc.stepCommentHeader(" Validate Parameters")
+rep = 0
+calc = ""
+paramsToValidate.each do |param|
+	rep += 1
+	if rep == 1
+		calc = %Q{IsEmpty ( "#{param}" )}
+	else
+		calc += %{\nor IsEmpty ( "#{param}" )}
+	end
+end
+doc.stepIf(calc)
+doc.stepSetVariable("$_error",1,10)
+doc.stepEndIf
 
 puts doc</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>List to Parameter Localization and Validation</string>
+	<string>Array to Parameter Localization and Validation</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>uuid</key>

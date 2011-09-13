@@ -11,20 +11,43 @@
 #	Generates FileMaker snippet of field layout objects
 #
 # USAGE
-#	col1 = fully qualified field name
-#	col2 = tooltip (optional)
-#	col3 = font (optional)
-#	col4 = fontSize (optional)
-#	col5 = objectName (optional)
+#	Instructions printed when input is empty.
+#	See documentation section below.
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 
-# Open document
 text = STDIN.read
-doc = FMSnippet.new("layout_object")
+
+# Documentation
+if text.empty?
+	tips = ENV['TM_DOC_TIPS']
+	puts &lt;&lt;EOF
+DESCRIPTION
+	Generates FileMaker snippet of field layout objects (to be pasted onto any layout).
+	Uses selected text or entire document.
+
+EXAMPLE USAGE:
+	Select the lines below and run the command again to see it work.
+
+CONTACT::NameFirst\tName of person\tVerdana\t12\tfield_nameFirst
+CONTACT::Global[1]\tCONTACT::Global[1]\tHelvetica\t14
+
+PARAMETERS:
+	col1 = fully qualified field name
+	col2 = tooltip (optional)
+	col3 = font (optional)
+	col4 = fontSize (optional)
+	col5 = objectName (optional)
+
+TIPS:
+#{tips}
+EOF
+	exit
+end
 
 # Generate Fields
+doc = FMSnippet.new("layout_object")
 xml = ""
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)

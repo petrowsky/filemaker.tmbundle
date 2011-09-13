@@ -8,23 +8,44 @@
 	<string>#!/usr/bin/ruby
 #
 # DESCRIPTION
-#	Generates FileMaker snippet for Set Variable script steps
+#	See documentation section below.
 #
 # USAGE
-#	col1 = variable name
-#	col2 = calculation
-#	col3 = variable repetition (optional)
-#	$_foo \t 2+2 \t $_rep =&gt; Set Variable [$_foo[$_rep]; Value:2+2]
+#	Instructions printed when input is empty.
+#	See documentation section below.
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 
-# Open document
 text = STDIN.read
-# text = "dog\t\"woof\"\ncat\t2+2"
-doc = FMSnippet.new("")
+
+# Documentation
+if text.empty?
+	tips = ENV['TM_DOC_TIPS']
+	puts &lt;&lt;EOF
+DESCRIPTION
+	Generates FileMaker snippet of Set Variable script steps.
+	Uses selected text or entire document.
+
+EXAMPLE USAGE:
+	Select the lines below and run the command again to see it work.
+
+$_local\tGet ( AccountName )
+$$_global\t"CONTACT"\t23
+
+PARAMETERS:
+	col1 = variable name
+	col2 = calculation
+	col3 = variable repetition (optional)
+
+TIPS:
+#{tips}
+EOF
+	exit
+end
 
 # Create steps
+doc = FMSnippet.new("")
 text.split(/\n/).each { |row| 
 	col = row.split(/\t/)
 	name = col[0]

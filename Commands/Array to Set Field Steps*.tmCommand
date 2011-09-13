@@ -8,30 +8,51 @@
 	<string>#!/usr/bin/ruby
 #
 # DESCRIPTION
-#	Generates FileMaker snippet for Set Field script steps
+#	See documentation section below.
 #
-# USAGE A
-#	col1 = table name
-#	col2 = field name
-#	col3 = field value
-#	col4 = field repetition
-#	CONTACT \t NAME \t $_name \t $_rep =&gt; Set Field [CONTACT::NAME[$rep]; $_name]
-#
-# USAGE B
-#	col1 = table::field
-#	col2 = field value
-#	col3 = field repetition
-#	CONTACT::NAME \t $_name \t $_rep =&gt; Set Field [CONTACT::NAME; $_name]
+# USAGE
+#	Instructions printed when input is empty.
+#	See documentation section below.
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 
-# Open document
 text = STDIN.read
-# text = "table\tname\t2+2\t$_rep\ntable::name\t3\t$rep"
-doc = FMSnippet.new("")
+
+# Documentation
+if text.empty?
+	tips = ENV['TM_DOC_TIPS']
+	puts &lt;&lt;EOF
+DESCRIPTION
+	Generates FileMaker snippet of Set Field script steps.
+	Uses selected text or entire document.
+
+EXAMPLE USAGE:
+	Select the lines below and run the command again to see it work.
+
+CONTACT::NameFirst\t"Fred"
+CONTACT\tNameLast\t"Flinstone"\t$_rep
+
+PARAMETERS:
+  USAGE A
+	col1 = table name
+	col2 = field name
+	col3 = field value
+	col4 = field repetition
+
+  USAGE B
+	col1 = table::field
+	col2 = field value
+	col3 = field repetition
+
+TIPS:
+#{tips}
+EOF
+	exit
+end
 
 # Generate Fields
+doc = FMSnippet.new("")
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)
 	if not col[0].include?("::")

@@ -11,21 +11,46 @@
 #	Generates FileMaker snippet of Fields
 #
 # USAGE
-#	col1 = field name (Fully qualified)
-#	col2 = field type (optional. Default = Text)
-#	col3 = boolean (optional. True = Global field. Default = false)
-#	col4 = comment (optional)
-#	col5 = max repetitions (optional)
-#	col6 = calculation (optional)
+#	Instructions printed when input is empty.
+#	See documentation section below.
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 
-# Open document
 text = STDIN.read
-doc = FMSnippet.new("")
+
+# Documentation
+if text.empty?
+	tips = ENV['TM_DOC_TIPS']
+	puts &lt;&lt;EOF
+DESCRIPTION:
+	Generates FileMaker snippet of Fields (to be pasted into any table).
+	Uses selected text or entire document.
+
+EXAMPLE USAGE:
+	Select the lines below and run the command again to see it work.
+
+CONTACT::NameFirst
+CONTACT::Global\tNumber\tTrue\tComment for field\t10
+CONTACT::Name_FL\tText\tFalse\tE.g., John Smith\t1\tCONTACT::NameFirst &amp; CONTACT::NameLast
+CONTACT::Name_FL\tText\t\t\t\tCONTACT::NameFirst &amp; CONTACT::NameLast
+
+PARAMETERS:
+	col1 = field name (Fully qualified)
+	col2 = field type (optional. Default = Text)
+	col3 = is global? (optional. True = Global field. Default = False)
+	col4 = comment (optional)
+	col5 = max repetitions (optional)
+	col6 = calculation (optional)
+
+TIPS:
+#{tips}
+EOF
+	exit
+end
 
 # Generate Fields
+doc = FMSnippet.new("")
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)
 	name = col[0]

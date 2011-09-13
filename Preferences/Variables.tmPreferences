@@ -32,6 +32,15 @@
 				<key>value</key>
 				<string>/lib/tm_dialog.rb</string>
 			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_DOC_TIPS</string>
+				<key>value</key>
+				<string>	The resulting XML is more readable if the current document is set to the "FileMaker Clipboard" language.
+	Press Cmd-B to load the current document or selected text onto the FileMaker clipboard.
+	Press Cmd-Ctl-T to access commands easier.
+	Optional values can be empty, even if you have tabs extending out to other columns on the right.</string>
+			</dict>
 		</array>
 	</dict>
 	<key>uuid</key>
