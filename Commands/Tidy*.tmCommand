@@ -11,9 +11,9 @@
 #	Pretty prints FileMaker calculation
 #
 # TODO: Convert to hard tabs
+# TODO: Iterate over text to deal with quoted strings properly
 # TODO: Clean indentation (see FHTML.PL command)
 # FIXME: Operators section clears entire input (test with json functions)
-# FIXME: "]" —&gt; " ]"
 #
 
 text = STDIN.read
@@ -24,9 +24,11 @@ text.gsub!(%r{(//.*)?\n[ \t]*;},";\\1\n")
 text.gsub!(/ *; */,' ; ')
 
 # brackets
-text.gsub!(/ *\[ */,'[ ')
+# 	Beware of altering quoted strings!
+ text.gsub!(/ *\[ */,'[ ')
 text.gsub!(/(\S) *\] */,'\1 ]')
 text.gsub!(/\] *;/,'] ;')
+text.gsub!(/\[\s*?([0-9]+?)\s*\]/,'[\1]')
 
 # parentheses
 text.gsub!(/(\S) *\( */,'\1 ( ')
@@ -34,6 +36,7 @@ text.gsub!(/(\S) *\) */,'\1 ) ')
 
 # operators
 text.gsub!(/ *&amp; */,' &amp; ')
+text.gsub!(/\t *&amp; */,"\t&amp; ")
 #text.gsub!(/ *([≤≥&lt;&gt;+=≠\-]+) */,' \1 ')
 
 # remove trailing spaces
