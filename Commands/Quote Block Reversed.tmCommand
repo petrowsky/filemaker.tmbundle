@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+#
+# TODO
+#	Remove leading and trailing "
+#
+
+text = STDIN.read
+
+# Undo escape of double quotes
+text.gsub!(/\\"/,'"')
+
+# Remove leading and trailing quote
+text = text.chomp('"').reverse.chomp('"').reverse
+
+# Remove CR character
+text.gsub!(/¶$/,'')
+
+print text</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Quote Block Reversed</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
+	<key>uuid</key>
+	<string>FE141437-BFA1-4419-841A-EC8CC148061B</string>
+</dict>
+</plist>
