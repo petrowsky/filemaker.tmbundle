@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION
+#	Generates FileMaker snippet of Fields
+#
+# USAGE
+#	Instructions printed when input is empty.
+#	See documentation section below.
+#
+
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+
+text = STDIN.read
+
+# Documentation
+if text.empty?
+	tips = ENV['TM_DOC_TIPS']
+	puts &lt;&lt;EOF
+DESCRIPTION:
+	Generates FileMaker snippet of Summary Fields (to be pasted into any table).
+	Uses selected text or entire document.
+
+EXAMPLE USAGE:
+	Select the lines below and run the command again to see it work.
+
+Sum_Score\tScore
+Sum_Score\tScore
+
+PARAMETERS:
+	col1 = field name
+	col2 = name of field being summarized
+	col3 = operation (optional)
+	col4 = summarize_together (optional)
+	col5 = restart_summaries (optional)
+
+TIPS:
+#{tips}
+EOF
+	exit
+end
+
+# Generate Fields
+doc = FMSnippet.new("")
+text.split(/\n/).each { |row|
+	col = row.split(/\t/)
+	name = col[0]
+	source_field = col[1]
+	arg = {
+		:source_field			=&gt; col[1],
+		:operation			=&gt; col[2],
+		:summarize_together	=&gt; col[3],
+		:restart_summaries		=&gt; col[4]
+	}
+	doc.fieldSummary(name,source_field,arg)
+	}
+
+print doc</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Array to Fields (Summary Fields)</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>10B00CF8-B43A-441A-A509-4AB9D003C1A3</string>
+</dict>
+</plist>

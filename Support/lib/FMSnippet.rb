@@ -115,6 +115,24 @@ class FMSnippet
     @template << tpl.result(binding)
   end
   
+  def stepExitScript(calculation)
+    template = %q{
+  <Step enable="True" id="" name="Exit Script">
+    <Calculation><![CDATA[<%= calculation %>]]></Calculation>
+  </Step>}.gsub(/^\s*%/, '%')
+    tpl = ERB.new(template, 0, '%<>')
+    @template << tpl.result(binding)
+  end
+  
+  def stepExitLoopIf(calculation)
+    template = %q{
+  <Step enable="True" id="" name="Exit Loop If">
+    <Calculation><![CDATA[<%= calculation %>]]></Calculation>
+  </Step>}.gsub(/^\s*%/, '%')
+    tpl = ERB.new(template, 0, '%<>')
+    @template << tpl.result(binding)
+  end
+  
   def stepIf(calculation)
     template = %q{
   <Step enable="True" id="" name="If">
@@ -235,6 +253,31 @@ class FMSnippet
     <Calculation table=""><![CDATA[<%= options[:calculation] %>]]></Calculation>
     <Comment><%= options[:comment] %></Comment>
     <Storage indexLanguage="English" global="<%= isGlobal %>" maxRepetition="<%= options[:repetitions] %>"/>
+  </Field>}.gsub(/^\s*%/, '%')
+    tpl = ERB.new(template, 0, '%<>')
+    @template << tpl.result(binding)
+  end
+  
+  # options includes { operation, summarize_together, restart_summaries }
+  def fieldSummary(name,source_field,options={})
+    name = getFieldName(name)
+    source_field = getFieldName(source_field)
+    options = {
+      :operation         => "Total",
+      :summarize_together  => "True",
+      :restart_summaries  => "True"
+    }.merge(options)
+    calc = options[:calculation]
+    summarize = Boolean(options[:summarize_together]) ? "Together" : "Individually"
+    restart = Boolean(options[:restart_summaries]) ? "True" : "False"
+    template = %q{
+  <Field id="" dataType="Number" fieldType="Summary" name="<%= name %>">
+    <SummaryInfo restartForEachSortedGroup="<%= restart %>" summarizeRepetition="<%= summarize %>" operation="<%= options[:operation] %>">
+      <SummaryField>
+        <Field id="" name="<%= source_field %>"/>
+      </SummaryField>
+    </SummaryInfo>
+    <Comment><%= options[:comment] %></Comment>
   </Field>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @template << tpl.result(binding)

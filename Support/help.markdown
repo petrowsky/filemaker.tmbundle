@@ -93,10 +93,11 @@ Note, you must have the current XML document assigned to the FileMaker Clipboard
 There are several utilities available to help you manipulate the clipboard:
 
 * AppleScript (takes some know-how)
-* fmClipboardBroker (free!)
-* bBox plug-in (free!)
-* Clip Manager (excellent, full-featured utility)
-* ScriptMaster Advanced (allows access to FileMaker clipboard)
+* [fmClipboardBroker](http://www.key-planning.co.jp/software/utility/255-fmclipboardbroker-en) (free!)
+* [Clipboard Explorer](http://www.dracoventions.com/products/2empowerFM/family/clipboard.php) (free!)
+* [bBox](http://www.beezwax.net/solutions/bbox) plug-in (free!)
+* [Clip Manager](http://www.myfmbutler.com/index.lasso?p=422) (excellent, full-featured utility)
+* [ScriptMaster Advanced](http://www.360works.com/scriptmaster/) (allows access to FileMaker clipboard)
 
 ### DDR
 

@@ -7,20 +7,15 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 #
-# TODO
-#	Return name of element or path?
-#
-
-require 'rexml/document'
-include REXML
 
 text = STDIN.read
 
 delim = "-------------\n"
 
-doc = Document.new text
-
-doc.elements.each { |e| puts e.cdatas, delim }</string>
+text.scan(/&lt;Value&gt;&lt;Calculation&gt;&lt;!\[CDATA\[(.*?)\]\]&gt;&lt;\/Calculation/m) do 
+|calc|
+	print calc, "\n#{delim}"
+end</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

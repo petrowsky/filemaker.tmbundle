@@ -7,7 +7,7 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 
-text = STDIN.read
+text = STDIN.read.strip
 
 text.gsub!(/\s*\n/," ;\n")
 

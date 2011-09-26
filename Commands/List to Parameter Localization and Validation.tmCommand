@@ -70,7 +70,7 @@ textArray.each do |row|
 	end
 
 	# Generate calculation
-	calc = '#P ( "' + param + '" )'
+	calc = '#P ( "' + param.upcase + '" )'
 
 	# Generate variable name
 	name = col[1] || param
