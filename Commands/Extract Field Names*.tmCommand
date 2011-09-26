@@ -20,32 +20,28 @@ doc = Document.new text
 
 # SCRIPT or SCRIPT STEP snippet
 doc.elements.each("//Step/Field") { |e| 
-	print e.attributes['table'], 
+	puts e.attributes['table'], 
 	"::", 
-	e.attributes['name'], 
-	"\n" 
+	e.attributes['name']
 }
 
 # TABLE snippet
 doc.elements.each("//BaseTable/Field") { |e| 
-	print e.elements['ancestor::BaseTable'].attributes['name'], 
+	puts e.elements['ancestor::BaseTable'].attributes['name'], 
 	"::", 
-	e.attributes['name'], 
-	"\n"
+	e.attributes['name']
 }
 
 # FIELD snippet
 doc.elements.each("fmxmlsnippet/Field") { |e| 
-	print e.attributes['name'], 
-	"\n"
+	puts e.attributes['name']
 }
 
 # LAYOUT OBJECT snippet
 doc.elements.each("//DDRInfo/Field") { |e| 
-	print e.attributes['table'],
+	puts e.attributes['table'],
 	"::",
-	e.attributes['name'],
-	"\n"
+	e.attributes['name']
 }
 
 # Calculation contents
