@@ -26,6 +26,12 @@
 			<string>support.function.builtin_functions.filemaker</string>
 		</dict>
 		<dict>
+			<key>match</key>
+			<string>\b(FMSAUC_FindPlugin|FMSAUC_UpdatePlugIn|FMSAUC_Version)\b</string>
+			<key>name</key>
+			<string>support.function.external_functions.filemaker</string>
+		</dict>
+		<dict>
 			<key>begin</key>
 			<string>"</string>
 			<key>end</key>
