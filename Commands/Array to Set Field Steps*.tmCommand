@@ -34,16 +34,16 @@ CONTACT::NameFirst\t"Fred"
 CONTACT\tNameLast\t"Flinstone"\t$_rep
 
 PARAMETERS:
-  USAGE A
-	col1 = table name
-	col2 = field name
-	col3 = field value
-	col4 = field repetition
+	USAGE A
+		col1 = table name
+		col2 = field name
+		col3 = field value
+		col4 = field repetition
 
-  USAGE B
-	col1 = table::field
-	col2 = field value
-	col3 = field repetition
+	USAGE B
+		col1 = table::field
+		col2 = field value
+		col3 = field repetition
 
 TIPS:
 #{tips}
