@@ -227,7 +227,7 @@ class FMSnippet
       :type         => "Text",
       :isGlobal     => false,
       :repetitions  => 1
-    }.merge(options)
+    }.merge(options.delete_blank)
     calc = options[:calculation]
     isGlobal = Boolean(options[:isGlobal]) ? "True" : "False"
     template = %q{
@@ -244,9 +244,8 @@ class FMSnippet
   # Generates field objects to paste onto FileMaker layout
   #
   # @param [Hash] options 
-  #   options includes { ((field, table) | fieldQualified), tooltip, font, fontSize, objectName, fieldHeight, fieldWidth}
+  #   options includes { ((field, table) | fieldQualified), tooltip, font, fontSize, objectName, fieldHeight, fieldWidth, verticalSpacing}
   def layoutField(options={})
-    @boundTop += 20
     fieldQualified = options[:fieldQualified]
     if fieldQualified
       table = getFieldTable(fieldQualified)
@@ -258,14 +257,16 @@ class FMSnippet
     end
     options = {
       :font         => "Verdana",
-      :fontSize     => "12",
-      :fieldheight  => 12,
+      :fontSize     => 12,
+      :fieldHeight  => 12,
       :fieldWidth   => 120
-    }.merge(options)
-    fieldLeft = 200
+    }.merge(options.delete_blank)
+    fieldLeft = 10
+    verticalSpacing = options[:verticalSpacing] || options[:fieldHeight] + 2
+    @boundTop += verticalSpacing
     template = %q{
-    <ObjectStyle id="0" fontHeight="" graphicFormat="5" fieldBorders="0">
-      <CharacterStyle mask="32567">
+    <ObjectStyle id="0" fontHeight="<%= options[:fontSize] + 3 %>" graphicFormat="5" fieldBorders="0">
+      <CharacterStyle mask="">
         <Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
         <Font-size><%= options[:fontSize] %></Font-size>
         <Face>0</Face>
@@ -309,4 +310,10 @@ class FMSnippet
   end
 
   
+end
+
+class Hash
+  def delete_blank
+    delete_if{|k, v| v.to_s.empty? or v.instance_of?(Hash) && v.delete_blank.empty?}
+  end
 end
