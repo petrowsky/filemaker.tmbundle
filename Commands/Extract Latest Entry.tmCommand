@@ -16,6 +16,7 @@
 
 text = STDIN.read
 textLast = text.split(/={66}/).last
+print textLast
 
 # lineArray = textLast.lines
 # lineLength = lineArray.length

@@ -45,11 +45,11 @@ doc.elements.each("//DDRInfo/Field") { |e|
 }
 
 # Calculation contents
-#doc.to_s.scan(/(?:[\s]|[\[])*(.*?)::(.*?)[\s\[]*/) { |t,f| print t, "::", f, "\n"}</string>
+#text.scan(/[\s\[]*?([\S]+?::[\S]+?)[\s]/) { |f| print f, "\n"}</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Extract Field Names*</string>
+	<string>Extract Field Names</string>
 	<key>output</key>
 	<string>openAsNewDocument</string>
 	<key>uuid</key>
