@@ -58,7 +58,8 @@ text.split(/\n/).each { |row|
 		:fontSize			=&gt; col[3],
 		:objectName		=&gt; col[4],
 		:fieldHeight		=&gt; 18,
-		:fieldWidth		=&gt; 120
+		:fieldWidth		=&gt; 120,
+		:verticalSpacing	=&gt; 20
 	}
 	doc.layoutField(arg)
 }
