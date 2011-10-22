@@ -39,8 +39,8 @@ doc.elements.each("fmxmlsnippet/Field") { |e|
 
 # LAYOUT OBJECT snippet
 doc.elements.each("//DDRInfo/Field") { |e| 
-	puts e.attributes['table'],
-	"::",
+	puts e.attributes['table'] +
+	"::" +
 	e.attributes['name']
 }
 
