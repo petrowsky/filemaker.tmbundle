@@ -2,10 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>fileTypes</key>
-	<array/>
 	<key>firstLineMatch</key>
-	<string>.*&lt;:.*?:=.*</string>
+	<string>.*&lt;:.*?:=</string>
 	<key>foldingStartMarker</key>
 	<string>^\s*&lt;:(?!.+?:&gt;)</string>
 	<key>foldingStopMarker</key>
@@ -35,7 +33,7 @@
 			<key>contentName</key>
 			<string>entity.name.tag.localname.xml</string>
 			<key>end</key>
-			<string>\1:\1=)</string>
+			<string>\1:\1=</string>
 			<key>patterns</key>
 			<array>
 				<dict>
