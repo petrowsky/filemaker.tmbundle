@@ -25,7 +25,7 @@ text.gsub!(/ *; */,' ; ')
 
 # brackets
 # 	Beware of altering quoted strings!
- text.gsub!(/ *\[ */,'[ ')
+text.gsub!(/(\S) *\[ */,'\1[ ')
 text.gsub!(/(\S) *\] */,'\1 ]')
 text.gsub!(/\] *;/,'] ;')
 text.gsub!(/\[\s*?([0-9]+?)\s*\]/,'[\1]')
@@ -35,7 +35,7 @@ text.gsub!(/(\S) *\( */,'\1 ( ')
 text.gsub!(/(\S) *\) */,'\1 ) ')
 
 # operators
-text.gsub!(/ *&amp; */,' &amp; ')
+text.gsub!(/(?!^) *&amp; */,' &amp; ')
 text.gsub!(/\t *&amp; */,"\t&amp; ")
 #text.gsub!(/ *([≤≥&lt;&gt;+=≠\-]+) */,' \1 ')
 
