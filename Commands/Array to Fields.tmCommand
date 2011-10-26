@@ -54,9 +54,10 @@ doc = FMSnippet.new("")
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)
 	name = col[0]
+	isGlobal = col[2] || false
 	arg = {
 		:type		=&gt; col[1],
-		:isGlobal		=&gt; col[2],
+		:isGlobal		=&gt; isGlobal,
 		:comment		=&gt; col[3],
 		:repetitions	=&gt; col[4],
 		:calculation	=&gt; col[5]
