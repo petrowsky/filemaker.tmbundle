@@ -46,6 +46,7 @@
 # Version 3.0 08/19/2008   Debi Fuchs: (Created non-CGI version for public release under Creative Commons License)
 # Version 3.1 08/21/2008   Debi Fuchs: (Removed comma as separator character (for international use); Made mindepthtoaccommodate a calc; removed filemaker6 code; improved perl indentation; fixed typos in comments )
 # Version 3.2 11/20/2011   Donovan Chandler: (Added space before separator characters)
+# Version 3.23 11/21/2011  Donovan Chandler: (Added arguments for indent width and soft tabs)
 # ------------------------ END ------------------------
 #
 #
@@ -53,7 +54,7 @@
 # time. Please excuse the code; It is pretty atrocious. It was also
 # modified as quickly as possible to handle FileMaker 7.0 calculations
 # when FileMaker 7.0 was first released, and should use spiffy regular
-# expressions for handling quoted strings and comments, like thse:
+# expressions for handling quoted strings and comments, like these:
 #   strings: (?>"(?s:\\.|[^"])*?(?:"|$))
 #   quotes: (/\*[^*]*\*+([^/*][^*]*\*+)*/)|(//.*$)
 # but it doesn't right now.
@@ -103,9 +104,15 @@
 # Note that if the user uses very long "tokens" such as quoted strings
 # and variable names, the wrap length may be exceeded
 #
+# PARSE PARAMETERS
+#
+$calc=$ARGV[0];
+$indentwidth=$ARGV[1];
+$softtabs=($ARGV[2] eq 'YES');
+#
 # CHANGE THESE PARAMETERS AS DESIRED:
 #
-$indentwidth = 3; #default: 3
+# $indentwidth = 4; #default: 2
 $wraplength = 70; #default: 70
 $wraplengthoption = 'excluding'; #default: 'excluding'; alternative: 'including'
 #
@@ -116,13 +123,13 @@ $wraplengthoption = 'excluding'; #default: 'excluding'; alternative: 'including'
 # BEGIN CODE HERE#
 ##################
 
-$calc="";
-my $i = 0;
-while(<>)
-{
-    $i++;
-    $calc= $calc . $_;
-}
+# $calc="";
+# my $i = 0;
+# while(<>)
+# {
+#     $i++;
+#     $calc= $calc . $_;
+# }
 
 #If the user wants to exclude indentation from the wraplength, then wraplength including indentation is actually "unlimited"; using a high value here, for that case.
 $wraplength_includingindentation = ((($wraplengthoption cmp "including")==0) ? $wraplength : 1000000);
@@ -134,7 +141,7 @@ $wraplength_includingindentation = ((($wraplengthoption cmp "including")==0) ? $
 
 $minindentwidth=0;
 $maxindentwidth=8;
-$defaultindentwidth=4;
+$defaultindentwidth=2;
 
 $minwraplength_includingindentation=65;
 $maxwraplength_includingindentation=1000000;
@@ -548,7 +555,7 @@ sub indent {
             # then it needs one less indent
             $relevantdepth = $depth + ($ttiscloseparen? -1 : 0); 
             $spacesneeded = mod ($indentwidth*$relevantdepth,$maxpotentialindents * $indentwidth);
-            $spaces = " " x $spacesneeded;
+            $spaces = ($softtabs==1 ? " " x $spacesneeded : "\t" x ($spacesneeded/$indentwidth));
     
             $thistext = $spaces . $thistext;
     
