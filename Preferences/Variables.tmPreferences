@@ -22,6 +22,12 @@
 			</dict>
 			<dict>
 				<key>name</key>
+				<string>TM_PATH_TIDY</string>
+				<key>value</key>
+				<string>/lib/tidy.pl</string>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>TM_PATH_SNIPPET</string>
 				<key>value</key>
 				<string>/lib/FMSnippet.rb</string>
