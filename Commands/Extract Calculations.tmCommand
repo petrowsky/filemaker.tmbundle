@@ -12,7 +12,7 @@ text = STDIN.read
 
 delim = "-------------\n"
 
-text.scan(/&lt;Value&gt;&lt;Calculation&gt;&lt;!\[CDATA\[(.*?)\]\]&gt;&lt;\/Calculation/m) do 
+text.scan(/&lt;Value&gt;\s*?&lt;Calculation&gt;&lt;!\[CDATA\[(.*?)\]\]&gt;&lt;\/Calculation/m) do 
 |calc|
 	print "#{calc}\n#{delim}"
 end</string>
