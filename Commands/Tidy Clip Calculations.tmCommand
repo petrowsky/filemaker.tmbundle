@@ -21,7 +21,7 @@ softTabs = ENV['TM_SOFT_TABS']
 
 script_path = ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_TIDY']
 
-text.scan(/&lt;Value&gt;\s*?&lt;Calculation&gt;&lt;!\[CDATA\[(.*?)\]\]&gt;&lt;\/Calculation/m) do 
+text.scan(/&lt;Calculation.*?&gt;&lt;!\[CDATA\[(.*?)\]\]&gt;&lt;\/Calculation/m) do 
 |calc|
 	calc = calc.to_s
 	calcEsc = calc.gsub('$','\$')
