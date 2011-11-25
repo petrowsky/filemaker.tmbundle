@@ -11,8 +11,7 @@
 #	Loads custom function text onto pasteboard for pasting into FileMaker.
 #	Requires format specified in custom function template supplied with bundle.
 #
-# TODO
-#	Determine why pasting sometimes doesn't work for same text
+# FIXME Support high ASCII characters like dashes
 #
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 
