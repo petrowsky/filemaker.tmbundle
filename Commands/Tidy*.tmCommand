@@ -17,7 +17,6 @@
 #
 
 TEXT="$(ruby -e 'puts STDIN.read')"
-echo "$TEXT" &gt; /tmp/fmp_tidy.txt
 
 SCRIPT_PATH="$TM_BUNDLE_SUPPORT$TM_PATH_TIDY"
 
