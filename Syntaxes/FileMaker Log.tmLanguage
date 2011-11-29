@@ -120,10 +120,33 @@
 			<string>constant.filemaker</string>
 		</dict>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>invalid</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>invalid</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>invalid</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>invalid</string>
+				</dict>
+			</dict>
 			<key>match</key>
-			<string>&lt;.+?Missing&gt;</string>
+			<string>(?:&lt;.+?(Missing)&gt;)|(?:is (missing).)|(&lt;unknown&gt;)|\t(Unknown Error):</string>
 			<key>name</key>
-			<string>invalid</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>match</key>
