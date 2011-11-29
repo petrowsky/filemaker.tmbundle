@@ -2,12 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>fileTypes</key>
+	<array/>
 	<key>firstLineMatch</key>
-	<string>.*&lt;:.*?:=</string>
+	<string>.*&lt;:.*?:=.*</string>
 	<key>foldingStartMarker</key>
-	<string>^\s*&lt;:(?!.+?:&gt;)</string>
+	<string>&lt;:</string>
 	<key>foldingStopMarker</key>
-	<string>^((?&lt;!&lt;:).)*?:&gt;(?!.*&lt;:.*)</string>
+	<string>:&gt;</string>
 	<key>keyEquivalent</key>
 	<string>^~F</string>
 	<key>name</key>
@@ -16,31 +18,31 @@
 	<array>
 		<dict>
 			<key>begin</key>
-			<string>(/*)&lt;\1:</string>
+			<string>((/*)&lt;\2:)</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.tag</string>
+					<string>punctuation.definition.tag.hash</string>
 				</dict>
-				<key>2</key>
+				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.tag</string>
+					<string>punctuation.definition.tag.hash</string>
 				</dict>
 			</dict>
 			<key>contentName</key>
-			<string>entity.name.tag.localname.xml</string>
+			<string>entity.name.tag.localname.hash</string>
 			<key>end</key>
-			<string>\1:\1=</string>
+			<string>(\2:\2=)</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
 					<string>(/*&lt;/*:)|(/*:/*&gt;)|(/*:/*=)</string>
 					<key>name</key>
-					<string>punctuation.definition.tag</string>
+					<string>punctuation.definition.tag.hash</string>
 				</dict>
 			</array>
 		</dict>
