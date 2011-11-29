@@ -10,30 +10,14 @@
 # DESCRIPTION
 #	Extracts latest entry from FileMaker log
 #
-# TODO
-#	Parse out new entries not delimited by /={66}/
-#
 
 text = STDIN.read
-textLast = text.split(/={66}/).last
-print textLast
-
-# lineArray = textLast.lines
-# lineLength = lineArray.length
-# count = lineLength
-# while count &gt; 0
-# 	lineCur = lineArray[count]
-# 	if (lineCur.match('Import operations started') )
-# 		lineResult = lineArray[-lineLength,lineLength - count].join
-# 	end
-# 	count -= 1
-# end
-# 
-# lineResult ? lineResult : textLast</string>
+textLast = text.split(/(^.*?Import operations started)/)[-2,2].join
+print textLast</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Extract Latest Entry*</string>
+	<string>Extract Latest Entry</string>
 	<key>output</key>
 	<string>openAsNewDocument</string>
 	<key>scope</key>
