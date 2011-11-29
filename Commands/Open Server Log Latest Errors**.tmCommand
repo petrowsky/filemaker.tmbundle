@@ -10,24 +10,26 @@
 # DESCRIPTION
 #	Opens FileMaker log for hosted files and filters to latest entry
 #
-# TODO
-#	Fix problem reading text
-#
 
-text = STDIN.read
+require 'etc'
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
+
 divider = "---------------------------------------------------"
 patternSpace = " "
 result = " "
 i = 1
 
 # Read file
-text = system 'cat ~/Documents/import.log'
-text = text.to_s
-#path = system "echo \"$HOME/Documents/import.log\""
-#text = IO.readlines("#{path",'r').to_s
+begin
+	text = File.open(Etc.getpwuid.dir + "/Documents/Import.log", "rb") {|io| io.read}
+rescue =&gt; err
+	puts "No server log found"
+    TextMate.exit_show_tool_tip
+end
 
 # Constrain to latest entry
-text = text.split(/={66}/).last
+text = text.split(/(^.*?Import operations started)/)[-2,2].join
 
 # Extract errors
 text.split("\n").each {|line|
@@ -53,13 +55,17 @@ text.split("\n").each {|line|
 		patternSpace &lt;&lt; "\n" &lt;&lt; line
 	end
 }
-print result
 
-# This is essentially my first Ruby script.  If you can do better, please show me! donovan_c@beezwax.net</string>
+if result.strip.length &gt; 0
+	print result
+else
+	puts "No errors found in latest entry"
+	TextMate.exit_show_tool_tip
+end</string>
 	<key>input</key>
 	<string>none</string>
 	<key>name</key>
-	<string>Open Server Log Latest Errors**</string>
+	<string>Open Server Log Latest Errors</string>
 	<key>output</key>
 	<string>openAsNewDocument</string>
 	<key>scope</key>
