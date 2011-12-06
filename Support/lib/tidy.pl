@@ -47,6 +47,7 @@
 # Version 3.1 08/21/2008   Debi Fuchs: (Removed comma as separator character (for international use); Made mindepthtoaccommodate a calc; removed filemaker6 code; improved perl indentation; fixed typos in comments )
 # Version 3.2 11/20/2011   Donovan Chandler: (Added space before separator characters)
 # Version 3.23 11/21/2011  Donovan Chandler: (Added arguments for indent width and soft tabs)
+# Version 3.24 11/21/2011  Donovan Chandler: (Fixed bug with whitespace before ( and [ )
 # ------------------------ END ------------------------
 #
 #
@@ -375,7 +376,6 @@ sub parsecalc {
 
     $calc =~ s/\/\/([^\n]*)\n/\n\/\/$1\n/g;    
 
-#   $calc =~ s/\s*([\^\*\/\+\-\<\>\=\&\,\)\]\;])\s*/\n$1\n/g; removed comma in 3.1
     $calc =~ s/\s*([\^\*\/\+\-\<\>\=\&\)\]\;])\s*/\n$1\n/g;
     $calc =~ s/\s*([\<\>\=])\s*([\<\>\=])\s*/\n$1$2\n/g;
     $calc =~ s/\(\s*/\(\n/g;
@@ -383,30 +383,25 @@ sub parsecalc {
     $calc =~ s/\s+not\s+\(/\nnot\n\(/g;
     $calc =~ s/\s+\(/\n\(/g;
     $calc =~ s/\s+\[/\n\[/g;
-#   $calc =~ s/([^\^\*\/\+\-\<\>\=\&\;\,\(\)\"\[\]])\s+\(/$1\(/g; removed comma in 3.1
-#   $calc =~ s/([^\^\*\/\+\-\<\>\=\&\;\,\(\)\"\[\]])\s+\[/$1\[/g; removed comma in 3.1
-#   Adding space before ( and [ - donovan 11/20/11
-    $calc =~ s/([^\^\*\/\+\-\<\>\=\&\;\(\)\"\[\]])\s+\(/$1 \(/g; # no idea why repeated twice, but not touching it now!
-    $calc =~ s/([^\^\*\/\+\-\<\>\=\&\;\(\)\"\[\]])\s+\[/$1 \[/g;
+    $calc =~ s/([^\^\*\/\+\-\<\>\=\&\;\(\)\"\[\]])\s+\(/$1\(/g; # no idea why repeated twice, but not touching it now!
+    $calc =~ s/([^\^\*\/\+\-\<\>\=\&\;\(\)\"\[\]])\s+\[/$1\[/g;
     $calc =~ s/\s+(and|or|xor)\(/\n$1\n\(\n/gi;
     $calc =~ s/\s+(and|or|xor)\s+/\n$1\n/gi;
 
     # Deal specifically with unary plusses and minuses
     $calc =~ s/([\-\+])\s*(?=\-)/$1/g;
     $calc =~ s/([\-\+])\s*(?=\+)/$1/g;
-#   $calc =~ s/([\,\[\;\(])(\s*)([\-\+]+)\s+/$1$2$3/g; removed comma in 3.1
     $calc =~ s/([\[\;\(])(\s*)([\-\+]+)\s+/$1$2$3/g;
-#   $calc =~ s/\[^\,\[\;\(]\s+([\-\+])([\-\+]+)/\n$1\n$2/g; removed comma in 3.1
     $calc =~ s/\[^\[\;\(]\s+([\-\+])([\-\+]+)/\n$1\n$2/g;
 
-#   $calc =~ s/([^\,\[\;\(]\s+[\^\*\/\+\-\<\>\=\&]|and|not|xor|or)\s*([\+\-]+)\s*/$1\n$2/g; removed comma in 3.1
     $calc =~ s/([^\[\;\(]\s+[\^\*\/\+\-\<\>\=\&]|and|not|xor|or)\s*([\+\-]+)\s*/$1\n$2/g;
     $calc =~ s/^\s+([\-\+]+)\s+/\n$1/g;
 
     # Move separators back to previous line
-#   $calc =~ s/([^\%\?])\s+\,/$1\,/g; removed comma in 3.1
-    # Attempting to preserve space before ; - donovan 11/20/11
-    $calc =~ s/([^\%\?])\s+\;/$1 \;/g;
+    $calc =~ s/([^\%\?])\s+\;/$1\;/g;
+
+    # Add space before chars: ([; - donovan 12/5/11
+    $calc =~ s/\s*([\(\[\;])/ $1/g;
 
     # Get rid of extraneous spaces and line feeds
     $calc =~ s/ +/ /g;
