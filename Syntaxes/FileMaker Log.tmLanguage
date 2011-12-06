@@ -5,7 +5,7 @@
 	<key>fileTypes</key>
 	<array/>
 	<key>firstLineMatch</key>
-	<string>.*((Starting FileMaker Server)|(Import operations started)).*</string>
+	<string>.*((Starting FileMaker Server)|(Import operations started)|(\*\*\* Started consistency check)).*</string>
 	<key>foldingStartMarker</key>
 	<string>started$</string>
 	<key>foldingStopMarker</key>
@@ -142,9 +142,19 @@
 					<key>name</key>
 					<string>invalid</string>
 				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>invalid</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>invalid</string>
+				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?:&lt;.+?(Missing)&gt;)|(?:is (missing).)|(&lt;unknown&gt;)|\t(Unknown Error):</string>
+			<string>(?:&lt;.+?(Missing)&gt;)|(?:is (missing).)|(&lt;unknown&gt;)|(?:\t(Unknown Error):)|(?:\b(Error)\b)|(?:\b(Warning)\b)</string>
 			<key>name</key>
 			<string></string>
 		</dict>
@@ -156,7 +166,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\t(Client|Schedule)\s</string>
+			<string>\t(Client|Schedule|(?:Opening Database)|(?:Opened Database)|(?:Starting FileMaker Server))\s</string>
+			<key>name</key>
+			<string>entity.name.function</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\t*fmserverd\[[0-9]+\]\t*</string>
 			<key>name</key>
 			<string>entity.name.function</string>
 		</dict>
