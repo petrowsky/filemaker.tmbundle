@@ -9,12 +9,18 @@
 # DESCRIPTION
 #	Loads fmxmlsnippet onto pasteboard in proper format for pasting into FileMaker
 #
-# FIXME Support high ASCII characters like dashes (encoding isn't working)
-#
 TEXT="$(ruby -e 'puts STDIN.read.lstrip')"
 
 SCRIPT_PATH="$TM_BUNDLE_SUPPORT$TM_PATH_PASTE_SNIPPET"
 
+# Substitute extended ascii characters that aren't being converted
+source "$TM_BUNDLE_SUPPORT/lib/encoding.sh"
+TEXT=$(ascii_replace "$TEXT")
+
+# Escape apostrophe (done in AppleScript for now)
+#TEXT=$(echo "$TEXT" | sed 's/'\''/'\''\\'\'\''/')
+
+# Ensure AppleScript receives text as MacRoman
 cat &lt;&lt; EOF | iconv -f UTF8 -t MAC --unicode-subst="INVALID_CHAR" --byte-subst="INVALID_CHAR" --widechar-subst="INVALID_CHAR" | osascript "$SCRIPT_PATH" "$TEXT"
 EOF</string>
 	<key>input</key>

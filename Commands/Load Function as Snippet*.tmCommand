@@ -11,8 +11,6 @@
 #	Loads custom function text onto pasteboard for pasting into FileMaker.
 #	Requires format specified in custom function template supplied with bundle.
 #
-# FIXME Support high ASCII characters like dashes
-#
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 
 # Open document
@@ -33,7 +31,7 @@ begin
   # Load to pasteboard
   script_path = ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_PASTE_SNIPPET']
   snippet = doc.to_s.lstrip.gsub(/'/,'"')
-puts snippet
+  puts snippet
   shellScript = "osascript '#{script_path}' '#{snippet}'"
   system shellScript
 

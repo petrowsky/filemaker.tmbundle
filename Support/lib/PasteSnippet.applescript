@@ -1,6 +1,6 @@
-(*
+﻿(*
 NAME:
-	PasteSnippet (v1.0)
+	PasteSnippet (v1.1)
 	
 PURPOSE:
 	Loads fmxmlsnippet onto pasteboard in proper format for pasting into FileMaker.
@@ -10,38 +10,46 @@ PARAMETERS:
 
 HISTORY:
 	Created 2011.03.23 by Donovan Chandler, donovan_c@beezwax.net
+	Modified 2011.12.17 by Donovan Chandler: Converts placeholders for high ascii characters
 
 NOTES:
 	This script is intended to be called using a command from the shell like this: osascript PasteSnippet.applescript "$XML_TEXT"
 *)
 ------------------------------------------------
 
--- TODO: Fix - Broken by chars: ¶, '
-
 on run argv
 	---- Parameters ----
 	--set clipAlias to (item 1 of argv) as POSIX file
 	set clipText to (item 1 of argv)
-	if clipText equals "" then return "Error: Missing text"
-
+	if clipText is equal to "" then return "Error: Missing text"
+	
 	---- Settings ----
 	-- Format of FileMaker object in clip [script|script_step|table|field|custom_function]
 	set clipClass to determineClass(clipText)
 	if clipClass begins with "Error" then return clipClass
-
+	
 	------------------------------------------------
 	---- Strip leading blank lines ----
-	set clipText to trim(clipText,ASCII character 10,0)
-
+	set clipText to trim(clipText, character id 10, 0)
+	
+	------------------------------------------------
+	---- Restore extended ASCII characters
+	-- Calling this script through bash replaces high ascii characters
+	-- with a placeholder (e.g., space => "#:20:#")
+	set clipText to restoreExtendedASCII(clipText, "#:", ":#")
+	
+	------------------------------------------------
+	---- Escape single quotes for shell
+	set clipText to searchReplaceText(clipText, "'\\''", "'")
+	set clipText to searchReplaceText(clipText, "'", "'\\''")
+	
 	------------------------------------------------
 	---- Validate XML ----
 	set clipText to do shell script "echo '" & clipText & "' | xmllint -"
-	-- searchReplaceText(clipText, "&#xB6;", "¶")
-	-- return clipText
-
+	
 	---- Convert clip to proper class ----
 	set clipTextFormatted to convertClip(clipText, clipClass)
-
+	
 	---- Load to clipboard ----
 	try
 		set the clipboard to clipTextFormatted
@@ -56,7 +64,7 @@ end run
 --  HANDLERS
 ------------------------------------------------
 
--- Handler: Converts xml text to FileMaker clipboard format
+-- HANDLER: Converts xml text to FileMaker clipboard format
 -- Parameters: clipText, outputClass [script|script_step|table|field|custom_function]
 -- Methodology: Write text to temp file so that it can be converted from file
 -- Formats:
@@ -70,7 +78,7 @@ on convertClip(clipText, outputClass)
 	set temp_path to (path to temporary items as Unicode text) & "FMClip.dat"
 	set temp_ref to open for access file temp_path with write permission
 	set eof temp_ref to 0
-	write clipText to temp_ref
+	write clipText to temp_ref as «class utf8»
 	close access temp_ref
 	if outputClass is "XMSC" then
 		set clipTextFormatted to read file temp_path as «class XMSC»
@@ -90,7 +98,7 @@ on convertClip(clipText, outputClass)
 	return clipTextFormatted
 end convertClip
 
--- Handler: Determines FileMaker pasteboard class of xml text
+-- HANDLER: Determines FileMaker pasteboard class of xml text
 -- Formats:
 --	XMSC for script definitions
 --	XMSS for script steps
@@ -101,7 +109,7 @@ end convertClip
 on determineClass(clipText)
 	try
 		set clipText to searchReplaceText(clipText, "<?", "?")
-		set array to my split(clipText,"<")
+		set array to my split(clipText, "<")
 		set child1 to item 3 of array
 	on error errMsg number errNum
 		--return "Error: " & errNum & ": " & errMsg
@@ -125,33 +133,16 @@ on determineClass(clipText)
 	return theClass
 end determineClass
 
--- Handler: Splits string into array by delimiter
-to split(someText, delimiter)
-	set AppleScript's text item delimiters to delimiter
-	set someText to someText's text items
-	set AppleScript's text item delimiters to {""}
-	return someText
-end split
-
--- Handler: Searches and replaces string within text block
-to searchReplaceText(theText, searchString, replaceString)
-	set searchString to searchString as list
-	set replaceString to replaceString as list
-	set theText to theText as text
-	
+-- HANDLER: Returns patterncount
+on patternCount(theText, matchString)
 	set oldTID to AppleScript's text item delimiters
-	repeat with i from 1 to count searchString
-		set AppleScript's text item delimiters to searchString's item i
-		set theText to theText's text items
-		set AppleScript's text item delimiters to replaceString's item i
-		set theText to theText as text
-	end repeat
+	set AppleScript's text item delimiters to {matchString}
+	set countedPattern to count of text items of theText
 	set AppleScript's text item delimiters to oldTID
-	
-	return theText
-end searchReplaceText
+	return countedPattern - 1
+end patternCount
 
--- Handler: Returns text from file.  Prompts for file if no alias specified.
+-- HANDLER: Returns text from file.  Prompts for file if no alias specified.
 on readFile(fileAlias)
 	if fileAlias = "" then
 		set theFile to choose file with prompt (localized string "chooseFile")
@@ -171,14 +162,56 @@ on readFile(fileAlias)
 	end try
 end readFile
 
---Handler: Returns patterncount
-on patternCount(theText, matchString)
+-- HANDLER: Replaces placeholders set by calling bash script
+--	Allows bash script to pass extended ascii characters
+--	Requires handlers: searchReplaceText, textBetween
+on restoreExtendedASCII(theText, tagStart, tagEnd)
+	set num to my textBetween(theText, tagStart, tagEnd)
+	repeat while (num > 0)
+		set char to character id num
+		set theText to my searchReplaceText(theText, tagStart & num & tagEnd, char)
+		set num to my textBetween(theText, tagStart, tagEnd)
+	end repeat
+	return theText
+end restoreExtendedASCII
+
+-- HANDLER: Searches and replaces string within text block
+--	Accepts lists in searchString and replaceString
+to searchReplaceText(theText, searchString, replaceString)
+	set searchString to searchString as list
+	set replaceString to replaceString as list
+	set theText to theText as text
+	
 	set oldTID to AppleScript's text item delimiters
-	set AppleScript's text item delimiters to {matchString}
-	set countedPattern to count of text items of theText
+	repeat with i from 1 to count searchString
+		set AppleScript's text item delimiters to searchString's item i
+		set theText to theText's text items
+		set AppleScript's text item delimiters to replaceString's item i
+		set theText to theText as text
+	end repeat
 	set AppleScript's text item delimiters to oldTID
-	return countedPattern - 1
-end PatternCount
+	
+	return theText
+end searchReplaceText
+
+-- HANDLER: Splits string into array by delimiter
+to split(someText, delimiter)
+	set AppleScript's text item delimiters to delimiter
+	set someText to someText's text items
+	set AppleScript's text item delimiters to {""}
+	return someText
+end split
+
+-- HANDLER: Returns text between first occurrences of openDelim and closeDelim
+on textBetween(theText, openDelim, closeDelim)
+	set oStart to offset of openDelim in theText
+	if oStart = 0 then return ""
+	set oStart to oStart + (length of openDelim)
+	set oEnd to offset of closeDelim in (text (oStart + 1) thru (length of theText) of theText)
+	if oEnd = 0 then return ""
+	set oEnd to oEnd + oStart - 1
+	set result to text oStart thru oEnd of theText
+end textBetween
 
 --Handler: Remove trailing and/or leading characters from strings
 on trim(this_text, trim_chars, trim_indicator)

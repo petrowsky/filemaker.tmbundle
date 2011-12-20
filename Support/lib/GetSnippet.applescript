@@ -1,4 +1,4 @@
-(*
+﻿(*
 NAME:
 	GetSnippet (v1.0)
 	
@@ -27,9 +27,10 @@ on run argv
 	-- Get snippet from pasteboard
 	tell application "FileMaker Pro Advanced"
 		set snippetRecord to my getSnippet()
+		if snippetRecord begins with "Unrecognized" then set errorText to snippetRecord
 	end tell
 	if errorText is not "" then return errorText
-
+	
 	-- Convert snippet to text
 	set fileAlias to my saveText(snippetRecord, filePath)
 	set theFile to open for access fileAlias
@@ -38,7 +39,7 @@ on run argv
 	if errorText is not "" then return errorText
 	
 	-- Convert CR to LF (recommended line ending in TextMate)
-	set snippetText to searchReplaceText(snippetText, {ascii character 13},{ascii character 10})
+	set snippetText to searchReplaceText(snippetText, {character id 13}, {character id 10})
 	
 	-- Strip invalid characters left over from record
 	--	You can also do this by retrieving the clipboard contents as 
@@ -96,7 +97,7 @@ to getSnippet()
 	on error errMsg number errNum
 		set errorText to "Invalid clipboard data" & return & errNum & ": " & errMsg
 		return
-	end try	
+	end try
 	try
 		set clipboardText to «class XMSC» of clipboardData
 		return clipboardText
