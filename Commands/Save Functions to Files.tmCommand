@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION
+# Compares current fmxmlsnippet document with one on clipboard.
+# Returns fmxmlsnippet containing functions from clipboard that are NOT in the current document.
+#
+# USAGE
+# Instructions printed when input is empty.
+# See documentation section below.
+#
+
+textStdin = STDIN.read
+
+require "rexml/document"
+# Not using ui.rb because its implementation of fileselect didn't work
+# Instead, call directly to CocoaDialog through shell
+dPath = "#{ENV['TM_SUPPORT_PATH']}/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog"
+
+# Settings
+ext = "calc"	# default file extension
+
+# Get text from clipboard, or selection
+getCB = ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_GET_SNIPPET']
+#text = `echo $(osascript "#{getCB}")`
+text = `osascript "#{getCB}"`
+if text.empty? || text =~ /Unrecognized clipboard/
+	text = textStdin
+end
+
+# Documentation
+unless text =~ /&lt;CustomFunction/
+	text = &lt;&lt;EOF
+Unrecognized clipboard data.
+
+DESCRIPTION:
+	Extracts each custom function from clipboard and saves it to a file.
+
+USAGE INSTRUCTIONS:
+	Copy custom functions in FileMaker
+	Run this command
+
+NOTES:
+	Currently does not support creation of directory from within dialog.
+	So you have to create the directory before running this command.
+EOF
+	puts text
+	exit
+end
+
+doc = REXML::Document.new text
+
+# Prompt for preferences
+dir = `#{dPath} fileselect \
+--title "Select directory" \
+--text "Functions will be saved to this directory" \
+--select-only-directories`
+if dir.empty? then exit end
+
+
+# Prompt for file extension
+ext = `#{dPath} inputbox \
+--title "File extension" \
+--informative-text "Enter extension for function files" \
+--text "#{ext}" \
+--button1 "OK" \
+--float`.lines.to_a[1].to_s.strip
+ext ||= ext
+
+def XMLToHash(rexmlDoc)
+	dic = Hash.new
+	rexmlDoc.elements.each("//CustomFunction") do |function|
+		name = function.attributes["name"]
+		text = function.elements["//Calculation"].text
+		dic[name] = text
+	end
+	return dic
+end
+
+dic = XMLToHash(doc)
+
+begin
+	dic.each do |key, value|
+		File.open("/#{dir.rstrip}/#{key}.#{ext}", 'w') {|f| f.write(value)}
+	end
+rescue
+	puts "Error saving functions: #{$!}"
+	exit
+end
+
+puts "Files saved to #{dir}"</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Save Functions to Files</string>
+	<key>output</key>
+	<string>openAsNewDocument</string>
+	<key>uuid</key>
+	<string>9DC42674-9FA5-4A53-886F-0F3E3EC1A599</string>
+</dict>
+</plist>

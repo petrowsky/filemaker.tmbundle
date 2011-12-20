@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION
+#	Compares current fmxmlsnippet document with one on clipboard.
+#	Returns fmxmlsnippet containing functions from clipboard that are NOT in the current document.
+#
+# USAGE
+#	Instructions printed when input is empty.
+#	See documentation section below.
+#
+
+require "rexml/document"
+
+text = STDIN.read
+clipboard = IO.popen('pbpaste', 'r+').read
+
+puts clipboard
+exit
+
+# Documentation
+if text.empty?
+	tips = ENV['TM_DOC_TIPS']
+	puts &lt;&lt;EOF
+DESCRIPTION:
+	Compares current fmxmlsnippet document with one on clipboard.
+	Returns fmxmlsnippet containing functions from clipboard that are NOT in the current document.
+
+USAGE INSTRUCTIONS:
+	In FILE A: Copy custom functions in FileMaker
+	Pull those functions into TextMate (using Cmd+Opt+B)
+	In FILE B: Copy custom function from another FileMaker file
+	Then run this command. It will give you the functions from FILE B that are not in FILE A.
+
+TIPS:
+#{tips}
+EOF
+	exit
+end
+
+doc1 = REXML::Document.new text
+doc2 = REXML::Document.new clipboard
+
+def XMLToHash(rexmlDoc)
+  dic = Hash.new
+  rexmlDoc.elements.each("//CustomFunction") do |function|
+    name = function.attributes["name"]
+    text = function.to_s
+    dic[name] = text
+  end
+  return dic
+end
+
+dic1 = XMLToHash(doc1)
+dic2 = XMLToHash(doc2)
+
+dic = Hash.new
+dic2.each do |key, value|
+  unless dic1.include?(key)
+    dic[key] = value
+  end
+end
+
+puts doc2
+
+result = '&lt;fmxmlsnippet type="FMObjectList"&gt;'
+dic.sort.each do |key, value|
+  result &lt;&lt; value
+end
+result &lt;&lt; '&lt;/fmxmlsnippet&gt;'
+
+puts result</string>
+	<key>input</key>
+	<string>document</string>
+	<key>name</key>
+	<string>Filter Clipboard Snippet To Unique Functions</string>
+	<key>output</key>
+	<string>openAsNewDocument</string>
+	<key>uuid</key>
+	<string>A196D466-6D69-48B5-AB7A-6DEB4184613C</string>
+</dict>
+</plist>
