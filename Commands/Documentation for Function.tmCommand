@@ -806,7 +806,7 @@ puts "&lt;meta http-equiv='Refresh' content='0;URL=#{url}'&gt;"</string>
 	<key>output</key>
 	<string>showAsHTML</string>
 	<key>scope</key>
-	<string>source.filemaker</string>
+	<string>source.filemaker, text.xml.filemakerClipboard</string>
 	<key>uuid</key>
 	<string>B4EECCF8-058C-4DC0-81FA-06B858BE5076</string>
 </dict>
