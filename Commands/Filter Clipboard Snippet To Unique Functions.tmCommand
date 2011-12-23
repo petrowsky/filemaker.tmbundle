@@ -21,9 +21,6 @@ require "rexml/document"
 text = STDIN.read
 clipboard = IO.popen('pbpaste', 'r+').read
 
-puts clipboard
-exit
-
 # Documentation
 if text.empty?
 	tips = ENV['TM_DOC_TIPS']
