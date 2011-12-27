@@ -22,6 +22,12 @@
 			</dict>
 			<dict>
 				<key>name</key>
+				<string>TM_PATH_PASTE_SNIPPET_RUBY</string>
+				<key>value</key>
+				<string>/lib/paste.rb</string>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>TM_PATH_TIDY</string>
 				<key>value</key>
 				<string>/lib/tidy.pl</string>

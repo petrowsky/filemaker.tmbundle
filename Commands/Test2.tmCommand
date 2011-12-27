@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+
+puts ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Test2</string>
+	<key>output</key>
+	<string>openAsNewDocument</string>
+	<key>uuid</key>
+	<string>F451762F-28A9-49A7-8B27-55D918413A6D</string>
+</dict>
+</plist>

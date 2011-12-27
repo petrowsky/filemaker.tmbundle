@@ -1,31 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>beforeRunningCommand</key>
-	<string>nop</string>
-	<key>command</key>
-	<string>#!/usr/bin/ruby
+#!/usr/bin/ruby
 #
 # DESCRIPTION
 # Loads custom function text onto pasteboard for pasting into FileMaker.
 # Requires format specified in custom function template supplied with bundle.
 #
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+# require '/Users/donovan/Library/Application Support/TextMate/Bundles/filemaker.tmbundle/Support/lib/FMSnippet.rb'
+require 'FMSnippet.rb'
 include FileMaker
 
-text = STDIN.read
+# text = STDIN.read
+text = '2+2 
+// NAME: function ( number )'
 
 # Documentation
 if text.empty?
-	puts &lt;&lt;EOF
+	puts <<EOF
 DESCRIPTION
 	Loads custom function text onto pasteboard for pasting into FileMaker.
 	Requires format specified in custom function template supplied with bundle.
 
 EXAMPLE USAGE:
 	Create a new document from the FileMaker custom function template
-		Select File &gt; New From Template &gt; FileMaker &gt; Custom Function
+		Select File > New From Template > FileMaker > Custom Function
 	Fill in the blanks
 	Then run this command again
 
@@ -35,14 +31,18 @@ EOF
 	exit
 end
 
-begin
+# begin
 
 	# Parse function attributes
 	calc = text.functionAsSnippet("NAME:")
+  # puts calc.to_s
 
 	# Create function snippet
-	doc = FMSnippet.new("")
-	doc &lt;&lt; calc
+	doc = FMSnippet.new(calc)
+	puts doc.inspect
+	puts "------"
+  puts doc.to_s
+	exit
 	
 	# Load to pasteboard
 	doc.setClipboard
@@ -50,19 +50,7 @@ begin
 	# Return feedback
 	puts "Function ready to paste into FileMaker"
 
-rescue
-	puts "Unrecognized function format"
-	
-end</string>
-	<key>input</key>
-	<string>selection</string>
-	<key>keyEquivalent</key>
-	<string>^@l</string>
-	<key>name</key>
-	<string>Load Function as Snippet</string>
-	<key>output</key>
-	<string>showAsTooltip</string>
-	<key>uuid</key>
-	<string>FF7F98E2-B54B-48D0-BB18-1C612E8AD0F2</string>
-</dict>
-</plist>
+# rescue
+  # puts "Unrecognized function format"
+#   
+# end

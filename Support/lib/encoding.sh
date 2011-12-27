@@ -1,48 +1,4 @@
-#!/usr/bin/bash
-#
-##################################################
-#
-# map.sh
-#
-# Provides simple associative arrays for Bash
-# 
-# 
-# map_put map_name key value
-#
-function map_put
-{
-  alias "${1}$2"="$3"
-}
-
-# map_get map_name key
-# @return value
-#
-function map_get
-{
-  alias "${1}$2" | awk -F"'" '{ print $2; }'
-}
-
-# map_keys map_name 
-# @return map keys
-#
-function map_keys
-{
-  alias -p | grep $1 | cut -d'=' -f1 | awk -F"$1" '{print $2; }'
-}
-
-# map_load map_name map_text
-# 
-function map_load
-{
-  for l in $2
-  do
-    KEY=$(echo $l | cut -d: -f1)
-    VALUE=$(echo $l | cut -d: -f2)
-    map_put "$1" "$KEY" "$VALUE"
-  done
-}
-
-##################################################
+#!/usr/bin/env bash
 #
 # encoding.sh
 #
@@ -50,7 +6,6 @@ function map_load
 #
 
 # Map character ids used by AppleScript
-mapName="map"
 mapText="161:¡
 162:¢
 163:£
@@ -91,23 +46,25 @@ mapText="161:¡
 8249:‹
 8250:›
 8482:™"
-map_load $mapName "$mapText"
 
 # char_list text
 # Replaces supplied characters with ASCII number
+# printf doesn't support extended ascii, so provide manual mappings
 #
 ascii_replace () {
-  for l in $mapName
+  TEMPFILE=`mktemp -t filemaker`
+  echo "$1" > "$TEMPFILE"
+  for l in $mapText
   do
     TAG="#:$(echo $l | cut -d: -f1):#"
     CHAR=$(echo $l | cut -d: -f2)
-    TEXT=$(echo "$1" | sed "s/$CHAR/$TAG/")
+    TEXT=$(cat $TEMPFILE | sed "s/$CHAR/$TAG/g")
+    echo "$TEXT" > "$TEMPFILE"
   done
-  echo "$TEXT"
+  cat "$TEMPFILE"
 }
-# Tried using printf but it didn't work with extended ascii
-# TAG="!:$(printf '%d' "'$char"):!"
 
+# Perform replacement on input
 if [ -n "$1" ]; then
   ascii_replace "$1"
 fi

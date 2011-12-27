@@ -43,7 +43,8 @@ begin
 	# Create function snippet
 	doc = FMSnippet.new("")
 	doc &lt;&lt; calc
-	
+puts doc
+
 	# Load to pasteboard
 	doc.setClipboard
 
@@ -51,18 +52,17 @@ begin
 	puts "Function ready to paste into FileMaker"
 
 rescue
-	puts "Unrecognized function format"
-	
-end</string>
+	puts "Error"
+end
+
+</string>
 	<key>input</key>
 	<string>selection</string>
-	<key>keyEquivalent</key>
-	<string>^@l</string>
 	<key>name</key>
-	<string>Load Function as Snippet</string>
+	<string>Test</string>
 	<key>output</key>
-	<string>showAsTooltip</string>
+	<string>openAsNewDocument</string>
 	<key>uuid</key>
-	<string>FF7F98E2-B54B-48D0-BB18-1C612E8AD0F2</string>
+	<string>7F17AB53-7BBE-4A33-B2F6-45E62314CF32</string>
 </dict>
 </plist>
