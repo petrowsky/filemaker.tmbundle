@@ -16,6 +16,7 @@
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+include FileMaker
 
 text = STDIN.read
 
@@ -47,8 +48,7 @@ EOF
 end
 
 # Generate Fields
-doc = FMSnippet.new("layout_object")
-xml = ""
+doc = FMSnippet.new
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)
 	arg = {

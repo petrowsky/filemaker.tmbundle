@@ -17,14 +17,30 @@
 
 text = STDIN.read
 
-# Convert semi-colons to newlines
-text.gsub!(/;/,"\n")
+# Documentation
+if text.empty?
+	tips = ENV['TM_DOC_TIPS']
+	puts &lt;&lt;EOF
+DESCRIPTION:
+	Generates function calls from list or semi-colon delimited strings
 
-# Convert newlines to ampersands
-# text.gsub!(/\s*(;|\n)\s*/,' &amp;')
+EXAMPLE USAGE:
+	Select the lines below and run the command again to see it work.
+
+dog ; cat
+mouse
+EOF
+	exit
+end
+
+# Convert semi-colons to newlines
+text.gsub!(/\s*;\s*/,"\n")
 
 # Wrap in function
-text.gsub!(/(.+?)((\s*&amp;\s*)|$\n?)/,"# ( \"\\1\" ; \"\" )\\2\n")
+text.gsub!(/^(.+?)$/,"# ( \"\\1\" ; \"\" )")
+
+# Insert ampersand between lines
+text.gsub!(/\s*\n\s*/," &amp;\n")
 
 print text</string>
 	<key>input</key>

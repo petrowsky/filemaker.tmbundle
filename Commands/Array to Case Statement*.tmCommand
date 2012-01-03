@@ -17,8 +17,7 @@
 #
 #	Optional columns: col3
 #
-# TODO
-#	Remove trailing ";"
+# TODO Remove trailing ";"
 #
 
 text = STDIN.read

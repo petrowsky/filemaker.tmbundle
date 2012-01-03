@@ -24,16 +24,16 @@ module FileMaker
   PATH_PASTE = "#{PATH_BASE}/PasteSnippet.applescript"
   PATH_ENCODE = "#{PATH_BASE}/encoding.sh"
 
-  def self.encodeText(text)
+  def self.encode_text(text)
     `"#{PATH_ENCODE}" "#{text}"`
   end
   
-  def encodeText(text)
-    self.encodeText(text)
+  def encode_text(text)
+    self.encode_text(text)
   end
 
-  def setClipboard(text)
-    shellScript = %Q[osascript "#{PATH_PASTE}" "#{encodeText(text)}"]
+  def set_clipboard(text)
+    shellScript = %Q[osascript "#{PATH_PASTE}" "#{encode_text(text)}"]
     system shellScript
   end
   

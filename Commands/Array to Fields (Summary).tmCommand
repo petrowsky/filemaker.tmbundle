@@ -16,13 +16,14 @@
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+include FileMaker
 
 text = STDIN.read
 
 # Documentation
 if text.empty?
 	tips = ENV['TM_DOC_TIPS']
-	puts &amp;lt;&amp;lt;EOF
+	puts &lt;&lt;EOF
 DESCRIPTION:
 	Generates FileMaker snippet of Fields (to be pasted into any table).
 	Uses selected text or entire document.
@@ -32,8 +33,8 @@ EXAMPLE USAGE:
 
 CONTACT::NameFirst
 CONTACT::Global\tNumber\tTrue\tComment for field\t10
-CONTACT::Name_FL\tText\tFalse\tE.g., John Smith\t1\tCONTACT::NameFirst &amp;amp; CONTACT::NameLast
-CONTACT::Name_FL\tText\t\t\t\tCONTACT::NameFirst &amp;amp; CONTACT::NameLast
+CONTACT::Name_FL\tText\tFalse\tE.g., John Smith\t1\tCONTACT::NameFirst &amp; CONTACT::NameLast
+CONTACT::Name_FL\tText\t\t\t\tCONTACT::NameFirst &amp; CONTACT::NameLast
 
 PARAMETERS:
 	col1 = field name (Fully qualified)
@@ -50,16 +51,16 @@ EOF
 end
 
 # Generate Fields
-doc = FMSnippet.new("")
+doc = FMSnippet.new
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)
 	name = col[0]
 	arg = {
-		:type		=&amp;gt; col[1],
-		:isGlobal		=&amp;gt; col[2],
-		:comment		=&amp;gt; col[3],
-		:repetitions	=&amp;gt; col[4],
-		:calculation	=&amp;gt; col[5]
+		:type		=&gt; col[1],
+		:isGlobal		=&gt; col[2],
+		:comment		=&gt; col[3],
+		:repetitions	=&gt; col[4],
+		:calculation	=&gt; col[5]
 	}
 	doc.field(name,arg)
 	}

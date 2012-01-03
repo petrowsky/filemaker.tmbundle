@@ -16,6 +16,7 @@
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+include FileMaker
 
 text = STDIN.read
 
@@ -30,8 +31,10 @@ DESCRIPTION
 	Uses selected text or entire document.
 
 EXAMPLE:
-	$_field = "name" \t CONTACT::Name \t Descending
-	$_field = "number" \t CONTACT::Number \t Descending
+	Select the lines below and run the command again to see it work.
+
+$_field = "name"\tCONTACT::Name_First\tDescending
+$_field = "number"\tCONTACT::Phone1\tDescending
 
 	=&gt; If [$_field = "name"]
 	=&gt; 	Sort Records [Restore; No Dialog]
@@ -57,7 +60,7 @@ EOF
 end
 
 # Generate Fields
-doc = FMSnippet.new("")
+doc = FMSnippet.new
 rep = 0
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)

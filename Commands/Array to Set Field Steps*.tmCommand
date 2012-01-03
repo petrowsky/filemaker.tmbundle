@@ -16,6 +16,7 @@
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+include FileMaker
 
 text = STDIN.read
 
@@ -30,8 +31,8 @@ DESCRIPTION
 EXAMPLE USAGE:
 	Select the lines below and run the command again to see it work.
 
-CONTACT::NameFirst\t"Fred"
-CONTACT\tNameLast\t"Flinstone"\t$_rep
+CONTACT::Name_First\t"Fred"
+CONTACT\tName_Last\t"Flinstone"\t$_rep
 
 PARAMETERS:
 	USAGE A
@@ -52,7 +53,7 @@ EOF
 end
 
 # Generate Fields
-doc = FMSnippet.new("")
+doc = FMSnippet.new
 text.split(/\n/).each { |row|
 	col = row.split(/\t/)
 	if not col[0].include?("::")

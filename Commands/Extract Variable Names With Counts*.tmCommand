@@ -7,8 +7,7 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 #
-# TODO
-#	Prevent counting of a variable more than once
+# TODO Prevent counting of a variable more than once
 #		text.scan( "#{x}\b" ) does NOT work
 #
 

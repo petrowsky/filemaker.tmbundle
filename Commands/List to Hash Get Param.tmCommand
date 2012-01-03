@@ -16,6 +16,25 @@
 
 text = STDIN.read
 
+# Documentation
+if text.empty?
+	tips = ENV['TM_DOC_TIPS']
+	puts &lt;&lt;EOF
+DESCRIPTION:
+	Generates function calls from list or semi-colon delimited strings
+
+EXAMPLE USAGE:
+	Select the lines below and run the command again to see it work.
+
+dog ; cat
+mouse
+EOF
+	exit
+end
+
+# Convert semi-colons to newlines
+text.gsub!(/\s*;\s*/,"\n")
+
 # Wrap list
 text.gsub!(/(.+?)$(\n?)/,"#P ( \"\\1\" )\\2")
 

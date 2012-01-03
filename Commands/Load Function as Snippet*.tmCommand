@@ -11,6 +11,7 @@
 # Loads custom function text onto pasteboard for pasting into FileMaker.
 # Requires format specified in custom function template supplied with bundle.
 #
+
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 include FileMaker
 
@@ -38,14 +39,13 @@ end
 begin
 
 	# Parse function attributes
-	calc = text.functionAsSnippet("NAME:")
+	calc = text.parse_function("NAME:")
 
 	# Create function snippet
-	doc = FMSnippet.new("")
-	doc &lt;&lt; calc
+	doc = FMSnippet.new(calc)
 	
 	# Load to pasteboard
-	doc.setClipboard
+	doc.set_clipboard
 
 	# Return feedback
 	puts "Function ready to paste into FileMaker"

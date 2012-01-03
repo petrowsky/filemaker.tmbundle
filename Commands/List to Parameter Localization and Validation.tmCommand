@@ -16,6 +16,7 @@
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+include FileMaker
 
 text = STDIN.read
 
@@ -44,7 +45,7 @@ EOF
 	exit
 end
 
-doc = FMSnippet.new("")
+doc = FMSnippet.new
 
 # Split text to lines if necessary
 if text =~ /;/

@@ -14,8 +14,13 @@
 #	Instructions printed when input is empty.
 #	See documentation section below.
 #
+# FIXME Clipboard doesn't have correct text
+#
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+include FileMaker
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
 
 text = STDIN.read
 
@@ -46,12 +51,12 @@ PARAMETERS:
 TIPS:
 #{tips}
 EOF
-	exit
+	TextMate.exit_replace_text
 end
 
 # Generate Fields
-doc = FMSnippet.new("")
-text.split(/\n/).each { |row|
+doc = FMSnippet.new
+text.split(/\n/).each do |row|
 	col = row.split(/\t/)
 	name = col[0]
 	isGlobal = col[2] || false
@@ -63,15 +68,19 @@ text.split(/\n/).each { |row|
 		:calculation	=&gt; col[5]
 	}
 	doc.field(name,arg)
-	}
+end
 
-print doc</string>
+doc.paste if Boolean(ENV['TM_AUTO_PASTE'])
+
+sleep 1
+
+doc.set_clipboard</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
 	<string>Array to Fields</string>
 	<key>output</key>
-	<string>replaceSelectedText</string>
+	<string>showAsTooltip</string>
 	<key>uuid</key>
 	<string>517103CD-067E-4735-B9CC-8F2AB4C17A70</string>
 </dict>

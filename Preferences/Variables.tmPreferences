@@ -36,13 +36,19 @@
 				<key>name</key>
 				<string>TM_PATH_SNIPPET</string>
 				<key>value</key>
-				<string>/lib/FMSnippet.rb</string>
+				<string>/lib/fmsnippet.rb</string>
 			</dict>
 			<dict>
 				<key>name</key>
 				<string>TM_PATH_DIALOG</string>
 				<key>value</key>
 				<string>/lib/tm_dialog.rb</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_AUTO_PASTE</string>
+				<key>value</key>
+				<string>true</string>
 			</dict>
 			<dict>
 				<key>name</key>

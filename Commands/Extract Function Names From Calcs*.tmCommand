@@ -7,9 +7,8 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 #
-# TODO
-#	Remove leading spaces, etc.
-#	Filter to unique values
+# TODO Remove leading spaces, etc.
+# TODO Filter to unique values
 #
 
 text = STDIN.read

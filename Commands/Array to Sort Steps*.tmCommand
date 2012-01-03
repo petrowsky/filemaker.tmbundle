@@ -16,6 +16,7 @@
 #
 
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+include FileMaker
 
 # Settings (can be changed to parameters if needed)
 suppressDialog = true
@@ -32,13 +33,15 @@ DESCRIPTION:
 	Uses selected text or entire document.
 
 EXAMPLE:
-	CONTACT::NAME \t Descending =&gt; Sort Records [Restore; No Dialog]
+	Select the lines below and run the command again to see it work.
+
+CONTACT::NAME \t Descending =&gt; Sort Records [Restore; No Dialog]
 
 EXAMPLE USAGE:
 	Select the lines below and run the command again to see it work.
 
-CONTACT::NameLast\tdescending
-CONTACT::NameFirst\tascending
+CONTACT::Name_Last\tdescending
+CONTACT::Name_First\tascending
 
 PARAMETERS:
 	col1 = table::field
@@ -51,7 +54,7 @@ EOF
 end
 
 # Generate Fields
-doc = FMSnippet.new("")
+doc = FMSnippet.new
 text.split(/\n\n/).each { |chunk|
   arg = []
   chunk.split(/\n/).each { |row|

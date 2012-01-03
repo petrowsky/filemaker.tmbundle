@@ -14,16 +14,13 @@
 #	Instructions printed when input is empty.
 #	See documentation section below.
 #
+
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 include FileMaker
 
 text = STDIN.read
-doc = FMSnippet.new("")
-doc.set(text)
-puts doc
-puts "----------------"
-puts doc.to_s
-doc.setClipboard</string>
+doc = FMSnippet.new(text)
+doc.set_clipboard</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>

@@ -7,8 +7,7 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 #
-# BUGS
-#	- Functions are returned as strings
+# FIXME Functions are returned as strings
 #
 
 text = STDIN.read

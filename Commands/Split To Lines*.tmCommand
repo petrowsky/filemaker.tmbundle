@@ -10,9 +10,8 @@
 # DESCRIPTION
 #	Breaks function into multiple lines
 #
-# TODO
-#	• Respect leading indentation
-#	• Remove space after leading tabs
+# TODO Respect leading indentation
+# TODO Remove space after leading tabs
 #
 
 text = STDIN.read

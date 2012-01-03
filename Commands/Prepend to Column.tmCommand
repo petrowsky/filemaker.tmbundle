@@ -11,10 +11,8 @@
 #	Prepends string to specified column in each row in selection or document
 #
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_DIALOG']
 
-# Open document
 text = STDIN.read
 
 # Prompt for string and column

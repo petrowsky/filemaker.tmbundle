@@ -7,8 +7,7 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 #
-# TODO
-#	Fix extraction of calc values
+# TODO Fix extraction of calc values
 #
 
 require 'rexml/document'

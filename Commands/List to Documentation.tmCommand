@@ -9,8 +9,10 @@
 
 text = STDIN.read
 
+# Convert semi-colons to newlines
 text.gsub!(/\s*;\s*/,"\n")
 
+# Create indented list of params
 text.gsub!(/(.+?)$/,"\t\\1\t\t")
 
 print text.upcase</string>

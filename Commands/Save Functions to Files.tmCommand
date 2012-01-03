@@ -8,17 +8,18 @@
 	<string>#!/usr/bin/ruby
 #
 # DESCRIPTION
-# Compares current fmxmlsnippet document with one on clipboard.
-# Returns fmxmlsnippet containing functions from clipboard that are NOT in the current document.
+#	Compares current fmxmlsnippet document with one on clipboard.
+#	Returns fmxmlsnippet containing functions from clipboard that are NOT in the current document.
 #
 # USAGE
-# Instructions printed when input is empty.
-# See documentation section below.
+#	Instructions printed when input is empty.
+#	See documentation section below.
 #
 
 textStdin = STDIN.read
 
 require "rexml/document"
+
 # Not using ui.rb because its implementation of fileselect didn't work
 # Instead, call directly to CocoaDialog through shell
 dPath = "#{ENV['TM_SUPPORT_PATH']}/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog"
@@ -28,7 +29,6 @@ ext = "calc"	# default file extension
 
 # Get text from clipboard, or selection
 getCB = ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_GET_SNIPPET']
-#text = `echo $(osascript "#{getCB}")`
 text = `osascript "#{getCB}"`
 if text.empty? || text =~ /Unrecognized clipboard/
 	text = textStdin

@@ -5,64 +5,26 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/usr/bin/ruby
+	<string>#!/usr/bin/ruby -wKU
 #
-# DESCRIPTION
-# Loads custom function text onto pasteboard for pasting into FileMaker.
-# Requires format specified in custom function template supplied with bundle.
-#
+
 require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 include FileMaker
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
 
-text = STDIN.read
+doc = FMSnippet.new("XXXXXXXXXX")
 
-# Documentation
-if text.empty?
-	puts &lt;&lt;EOF
-DESCRIPTION
-	Loads custom function text onto pasteboard for pasting into FileMaker.
-	Requires format specified in custom function template supplied with bundle.
+doc.paste if Boolean(ENV['TM_AUTO_PASTE'])
 
-EXAMPLE USAGE:
-	Create a new document from the FileMaker custom function template
-		Select File &gt; New From Template &gt; FileMaker &gt; Custom Function
-	Fill in the blanks
-	Then run this command again
-
-TIPS:
-	If you want to customize this command, you have to dig into the command definition in the bundle editor
-EOF
-	exit
-end
-
-begin
-
-	# Parse function attributes
-	calc = text.functionAsSnippet("NAME:")
-
-	# Create function snippet
-	doc = FMSnippet.new("")
-	doc &lt;&lt; calc
-puts doc
-
-	# Load to pasteboard
-	doc.setClipboard
-
-	# Return feedback
-	puts "Function ready to paste into FileMaker"
-
-rescue
-	puts "Error"
-end
-
-</string>
+doc.set_clipboard</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Test</string>
+	<string>test</string>
 	<key>output</key>
-	<string>openAsNewDocument</string>
+	<string>showAsTooltip</string>
 	<key>uuid</key>
-	<string>7F17AB53-7BBE-4A33-B2F6-45E62314CF32</string>
+	<string>64453AE7-5608-4DFF-AEA4-219E0A7E8AE2</string>
 </dict>
 </plist>

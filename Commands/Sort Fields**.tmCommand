@@ -10,8 +10,7 @@
 # DESCRIPTION
 #	Sorts Set Field script steps by name of table and field
 #
-# TODO
-#	Figure out how to use sort_by 
+# TODO Figure out how to use sort_by 
 #	See http://www.oreillynet.com/onlamp/blog/2005/03/rubys_enumerable_sort_by.html
 #
 
