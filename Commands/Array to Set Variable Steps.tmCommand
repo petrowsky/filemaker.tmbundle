@@ -56,7 +56,7 @@ text.split(/\n/).each { |row|
 	doc.stepSetVariable(name,rep,calc)
 }
 
-puts doc</string>
+print doc</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

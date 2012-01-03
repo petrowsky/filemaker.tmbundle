@@ -76,7 +76,7 @@ textArray.each do |row|
 	doc.stepSetVariable(name,rep,calc)
 end
 
-puts doc</string>
+print doc</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

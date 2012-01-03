@@ -35,10 +35,10 @@ DESCRIPTION:
 EXAMPLE USAGE:
 	Select the lines below and run the command again to see it work.
 
-CONTACT::NameFirst
-CONTACT::Global\tNumber\tTrue\tComment for field\t10
-CONTACT::Name_FL\tText\tFalse\tE.g., John Smith\t1\tCONTACT::NameFirst &amp; CONTACT::NameLast
-CONTACT::Name_FL\tText\t\t\t\tCONTACT::NameFirst &amp; CONTACT::NameLast
+NameFirst
+NameLast
+Global	Number	True	Comment for field	10
+Name_FL	Text	False	E.g., John Smith	1	CONTACT::NameFirst &amp; CONTACT::NameLast
 
 PARAMETERS:
 	col1 = field name (Fully qualified)
@@ -70,17 +70,13 @@ text.split(/\n/).each do |row|
 	doc.field(name,arg)
 end
 
-doc.paste if Boolean(ENV['TM_AUTO_PASTE'])
-
-sleep 1
-
-doc.set_clipboard</string>
+print doc</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
 	<string>Array to Fields</string>
 	<key>output</key>
-	<string>showAsTooltip</string>
+	<string>replaceSelectedText</string>
 	<key>uuid</key>
 	<string>517103CD-067E-4735-B9CC-8F2AB4C17A70</string>
 </dict>

@@ -97,7 +97,7 @@ doc.stepIf(calc)
 doc.stepSetVariable("$_error",1,10)
 doc.stepEndIf
 
-puts doc</string>
+print doc</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

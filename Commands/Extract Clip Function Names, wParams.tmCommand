@@ -17,7 +17,7 @@ text = text.scan(/parameters="(.*?)".*?name="(.*?)"/) {|p,n| print n + " ( " + p
 	<key>name</key>
 	<string>Extract Clip Function Names, wParams</string>
 	<key>output</key>
-	<string>openAsNewDocument</string>
+	<string>replaceSelectedText</string>
 	<key>uuid</key>
 	<string>8E96D1A3-A6DE-43F3-8D22-D7EFD4229D40</string>
 </dict>

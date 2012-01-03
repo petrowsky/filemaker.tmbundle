@@ -67,7 +67,7 @@ text.split(/\n\n/).each { |chunk|
   doc.stepSort(arg)
 }
 
-puts doc</string>
+print doc</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
