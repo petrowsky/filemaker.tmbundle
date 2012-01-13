@@ -2,7 +2,9 @@
 #
 # fmsnippet.rb - helps manipulate and construct FileMaker clipboard XML (snippets)
 #
-# Copyright (C) 2010-2011  Donovan Chandler
+# Author::      Donovan Chandler (mailto:donovan_c@beezwax.net)
+# Copyright::   Copyright (c) 2010-2012 Donovan Chandler
+# License::     Distributed under GNU General Public License <http://www.gnu.org/licenses/>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,11 +23,14 @@
 require 'erb'
 
 class Hash
+  
+  # Removes pairs in hash with empty values
   def delete_blank
     delete_if{|k, v| v.to_s.empty? or v.instance_of?(Hash) && v.delete_blank.empty?}
   end
 end
 
+# Handles all FileMaker-related actions
 module FileMaker
 
   PATH_BASE = File.dirname(__FILE__)
@@ -34,13 +39,19 @@ module FileMaker
   require "#{PATH_BASE}/fmcalc.rb"
   include FMCalc
 
+  # Escapes incoming text for submission to shell
+  # @todo Use native command?
   def escape_shell
     self.to_s.gsub(/'/,"'\\\\''")
   end
 
   # Replaces high ascii characters with placeholders for transfer to AppleScript
+  # @return [String] incoming text with extended ascii characters replaced with tags
+  # @example
+  #   "en-dash: –".encoded_text #=> "en-dash: #:8211:#"
   def encode_text
     text = @text.escape_shell
+    text.gsub!(/&(?!#[0-9]+;)/,'&#38;') # HTML-encode ampersand
     @text = `"#{PATH_ENCODE}" '#{text}'`
   end
   
@@ -50,6 +61,8 @@ module FileMaker
   # end
   
   require 'open3'
+  
+  # Tells OS to paste supplied text at cursor. Allows TextMate bundle command to return mutliple output types.
   def paste
     text = self.to_s
     # Open3.popen3( 'pbcopy' ) { |stdin, stdout, stderr| stdin << text }
@@ -64,6 +77,9 @@ module FileMaker
     `osascript -e 'tell application "System Events" to keystroke "v" using {command down}'`
   end
 
+  # Handles generation and parsing of fmxmlsnippets,
+  # which is the XML syntax used by FileMaker to describe objects
+  # on the clipboard.
   class FMSnippet
     include FMCalc
 
@@ -72,12 +88,16 @@ module FileMaker
 
     attr_accessor :type
 
-    # types = {partial,layout_object}
+    # Creates FMSnippet object
+    # @param [optional, String] XML text to be added to FMSnippet @text as fmxmlsnippet
     def initialize(xmlText='')
       @text = xmlText
       @isPartial = true unless xmlText =~ /\<#{ROOT}[\s\>]/
     end
 
+    # Sets @type of FMSnippet object. Determines type by inspecting FMSnippet @text elements.
+    # @param [optional, String] Used to override default determination. Valid values: LayoutObjectList.
+    # @return [true] Currently performs no error handling
     def set_type(type='')
       case @text
       when /\<Layout/, /\<ObjectStyle/, type == 'LayoutObjectList'
@@ -86,6 +106,7 @@ module FileMaker
       else
         @type = 'FMObjectList'
       end
+      true
     end
     
     # Ensures snippet objects are wrapped in root XML elements
@@ -103,20 +124,18 @@ module FileMaker
       @text = @text.concat(footer) unless @text.include?("</#{ROOT}>")
     end
 
+    # Prints @text (fmxmlsnippet text) as readable string
     def to_s
       self.enclose
       @text.lstrip!
       @text
     end
 
-    def self.step
-      new!('partial')
-    end
+    #
+    # == Clipboard Interaction
+    #
 
-    # ------------------------------------
-    # Clipboard Interaction
-    # ------------------------------------
-
+    # Loads contents of FMSnippet object to FileMaker's clipboard
     def set_clipboard
       text = self.to_s.escape_shell
       shellScript = %Q[osascript "#{PATH_PASTE}" '#{text}']
@@ -129,10 +148,16 @@ module FileMaker
       end
     end
 
-    # ------------------------------------
-    # Custom Function
-    # ------------------------------------
+    #
+    # == Custom Function
+    #
 
+    # Constructs custom function element and appends to @text
+    # @param [String] name name of custom function
+    # @param [String] params function parameters
+    # @param [String] calculation function calculation
+    # @example
+    #   FMSnippet.new.customFunction('TabDelimit','text;currentDelimiter','Substitute ( text ; currentDelimiter ; " " )' )
     def customFunction(name,params,calculation)
       template = %q{
     <CustomFunction id="" functionArity="1" visible="True" parameters="<%= params %>" name="<%= name %>">
@@ -142,10 +167,13 @@ module FileMaker
       @text << tpl.result(binding)
     end
 
-    # ------------------------------------
-    # Script and Script Step
-    # ------------------------------------
+    #
+    # == Script and Script Step
+    #
 
+    # Constructs comment script step and appends to @text
+    # @param [optional, String] text text for comment
+    # @return [String] XML element generated for script step
     def stepComment(text=" ")
       template = %q{
     <Step enable="True" id="" name="Comment">
@@ -156,6 +184,9 @@ module FileMaker
       @text << tpl.result(binding)
     end
 
+    # Constructs script section header steps (comments) and appends to @text
+    # @param [optional, String] text text for header
+    # @return [String] XML element generated for script step
     def stepCommentHeader(text=" ")
       template = %q{
     <Step enable="True" id="" name="Comment"/>
@@ -171,6 +202,9 @@ module FileMaker
       @text << tpl.result(binding)
     end
 
+    # Constructs If script step and appends to @text
+    # @param [optional, String] calculation FileMaker calculation for If condition
+    # @return [String] XML element generated for script step
     def stepIf(calculation)
       template = %q{
     <Step enable="True" id="" name="If">
@@ -180,6 +214,9 @@ module FileMaker
       @text << tpl.result(binding)
     end
 
+    # Constructions Else If script step and appends to @text
+    # @param [optional, String] calculation FileMaker calculation for Else If condition
+    # @return [String] XML element generated for script step
     def stepElseIf(calculation)
       template = %q{
     <Step enable="True" id="" name="Else If">
@@ -189,20 +226,54 @@ module FileMaker
       @text << tpl.result(binding)
     end
 
+    # Constructs Else script step and appends to @text
+    # @return [String] XML element generated for script step
     def stepElse
       template = %q{<Step enable="True" id="" name="Else"/>}.gsub(/^\s*%/, '%')
       tpl = ERB.new(template, 0, '%<>')
       @text << tpl.result(binding)
     end
 
+    # Constructs End If script step and appends to @text
+    # @return [String] XML element generated for script step
     def stepEndIf
       template = %q{<Step enable="True" id="" name="End If"/>}.gsub(/^\s*%/, '%')
       tpl = ERB.new(template, 0, '%<>')
       @text << tpl.result(binding)
     end
+    
+    # Constructs Exit Script script step and appends to @text
+    # @param [String] calculation FileMaker calculation for exit condition
+    # @return [String] XML element generated for script step
+    def stepExitScript(calculation)
+      template = %q{
+    <Step enable="True" id="" name="Exit Script">
+      <Calculation><![CDATA[<%= calculation %>]]></Calculation>
+    </Step>}.gsub(/^\s*%/, '%')
+      tpl = ERB.new(template, 0, '%<>')
+      @text << tpl.result(binding)
+    end
 
-    # options includes { ((table, field)|fieldQualified), repetition, calculation }
-    # TODO: See YARD for how to document params
+    # Constructs Exit Loop If script step and appends to @text
+    # @param [String] calculation FileMaker calculation for exit condition
+    # @return [String] XML element generated for script step
+    def stepExitLoopIf(calculation)
+      template = %q{
+    <Step enable="True" id="" name="Exit Loop If">
+      <Calculation><![CDATA[<%= calculation %>]]></Calculation>
+    </Step>}.gsub(/^\s*%/, '%')
+      tpl = ERB.new(template, 0, '%<>')
+      @text << tpl.result(binding)
+    end
+
+    # Constructs Exit Script script step and appends to @text
+    # @param [Hash] options Hash containing optional field attributes
+    # @option options [String] :field Name of field
+    # @option options [String] :table Name of table
+    # @option options [String] :fieldQualified Fully qualified field name (e.g., CONTACT::NAME). Can be used in lieu of field and table options
+    # @option options [Integer] :repetition
+    # @option options [String] :calculation
+    # @return [String] XML element generated for script step
     def stepSetField(options={})
       # options = { :repetition => 2 }.merge(options)
       fieldQualified = options[:fieldQualified]
@@ -210,7 +281,7 @@ module FileMaker
       field = options[:field] ||= field_name(fieldQualified)
       repetition = options[:repetition]
 
-      # FIXME: Repetition element being created for number reps
+      # @todo Fix: Repetition element being created for number reps
       repCalc = repetition.class == Fixnum ? nil : repetition
       rep = repCalc ? 0 : repetition
       template = %q{
@@ -227,6 +298,11 @@ module FileMaker
       @text << tpl.result(binding)
     end
 
+    # Constructs Set Variable script step and appends to @text
+    # @param [String] name name of variable (including $ or $$)
+    # @param [Integer] rep repetition number of variable being declared
+    # @param [String] calc FileMaker calculation for exit condition
+    # @return [String] XML element generated for script step
     def stepSetVariable(name,rep,calc)
       template = %q{
     <Step enable="True" id="" name="Set Variable">
@@ -245,6 +321,14 @@ module FileMaker
     end
 
     # fieldArray includes { field, direction }
+    # Constructs Sort script step and appends to @text
+    # @param [Array] fieldArray array containing fields
+    # @param [Boolean] hideDialog True (default) displays sort dialog
+    # @example
+    #   fields = { :field => "CONTACT::NAME_FIRST", :direction => "Ascending" }
+    #   fields << { :field => "CONTACT::NAME_LAST", :direction => "Descending" }
+    #   FMSnippet.new.stepSort(fields,true)
+    # @return [String] XML element generated for script step
     def stepSort(fieldArray,hideDialog=true)
       template = %q{
     <Step enable="True" id="" name="Sort Records">
@@ -268,11 +352,19 @@ module FileMaker
       @text << tpl.result(binding)
     end
 
-    # ------------------------------------
-    # Table, Field, Layout Object
-    # ------------------------------------
+    #
+    # == Table, Field, Layout Object
+    #
 
-    # options includes { type, comment, isGlobal, repetitions, calculation }
+    # Constructs Field and appends to @text
+    # @param [String] name name of field (fully qualified)
+    # @param [Hash] options Hash of field attributes
+    # @option options [String] :type
+    # @option options [String] :comment
+    # @option options [true, false] :isGlobal
+    # @option options [Integer] :repetitions
+    # @option options [String] :calculation
+    # @return [String] XML element generated for field
     def field(name,options={})
       name = field_name(name)
       options = {
@@ -292,11 +384,19 @@ module FileMaker
       @text << tpl.result(binding)
     end
 
-    # TODO: Finish converting documentation to YARD format
-    # Generates field objects to paste onto FileMaker layout
-    #
-    # @param [Hash] options
-    #   options includes { ((field, table) | fieldQualified), tooltip, font, fontSize, objectName, fieldHeight, fieldWidth, verticalSpacing}
+    # Constructs layout field object and appends to @text
+    # @param [Hash] options Hash containing field object attributes
+    # @option options [String] :field Name of field
+    # @option options [String] :table Name of table
+    # @option options [String] :fieldQualified Fully qualified field name (e.g., CONTACT::NAME). Can be used in lieu of field and table options
+    # @option options [String] :tooltip
+    # @option options [String] :font
+    # @option options [Integer] :fontSize
+    # @option options [String] :objectName
+    # @option options [Integer] :fieldHeight
+    # @option options [Integer] :fieldWidth
+    # @option options [Integer] :verticalSpacing
+    # @return [String] XML element generated for object
     def layoutField(options={})
       @boundTop = 0 if @boundTop.nil?
       fieldQualified = options[:fieldQualified]

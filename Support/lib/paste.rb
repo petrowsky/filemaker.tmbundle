@@ -2,7 +2,9 @@
 #
 # clipboard.rb - helps get and put FileMaker objects on the clipboard
 # 
-# Copyright (C) 2010-2011  Donovan Chandler
+# Author::      Donovan Chandler (mailto:donovan_c@beezwax.net)
+# Copyright::   Copyright (c) 2010-2012 Donovan Chandler
+# License::     Distributed under GNU General Public License <http://www.gnu.org/licenses/>
 # 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,14 +26,23 @@ module FileMaker
   PATH_PASTE = "#{PATH_BASE}/PasteSnippet.applescript"
   PATH_ENCODE = "#{PATH_BASE}/encoding.sh"
 
+  # Encodes text for submission to AppleScript that loads fmxmlsnippet to the clipboard
+  # @note Uses hard-coded placeholders for high-ascii characters. See PATH_ENCODE for logic.
+  # @param [String] text 
+  # @return [String] Text with extended ascii characters escaped with placeholders
+  # @example
+  #   "en-dash: –".encoded_text #=> "en-dash: #:8211:#"
   def self.encode_text(text)
     `"#{PATH_ENCODE}" "#{text}"`
   end
   
+  # @see #self.encode_text
   def encode_text(text)
     self.encode_text(text)
   end
 
+  # Loads fmxmlsnippet to the clipboard
+  # @param [Types] Name Description
   def set_clipboard(text)
     shellScript = %Q[osascript "#{PATH_PASTE}" "#{encode_text(text)}"]
     system shellScript

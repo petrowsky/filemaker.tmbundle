@@ -58,20 +58,11 @@ end
 # Generate Set Variable script steps
 textArray.each do |row| 
 	col = row.split(/\t/)
-	param = col[0].strip
+	paramGet = col[0].strip
+	paramSet = col[1] || paramGet
 
-	# Remove optionality flag
-	if param[0,1] == "-"
-		param.slice!(0)
-	end
-
-	# Generate calculation
-	calc = '#P ( "' + param + '" )'
-
-	# Generate variable name
-	name = col[1] || param
-	name = '$_' + name.downcase
-
+	calc = param_extract(paramGet)
+	name = param_to_var(paramSet.downcase)
 	rep = 1
 	doc.stepSetVariable(name,rep,calc)
 end
