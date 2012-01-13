@@ -39,7 +39,7 @@ end
 begin
 
 	# Parse function attributes
-	calc = text.parse_function("NAME:")
+	calc = text.parse_function(ENV['TM_FUNCTION_EXAMPLE_LABEL'])
 
 	# Create function snippet
 	doc = FMSnippet.new(calc)
