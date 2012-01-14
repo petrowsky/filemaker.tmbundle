@@ -16,9 +16,9 @@
 #	See documentation section below.
 #
 
-textStdin = STDIN.read
-
 require "rexml/document"
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+include FileMaker
 
 # Not using ui.rb because its implementation of fileselect didn't work
 # Instead, call directly to CocoaDialog through shell
@@ -28,10 +28,9 @@ dPath = "#{ENV['TM_SUPPORT_PATH']}/bin/CocoaDialog.app/Contents/MacOS/CocoaDialo
 ext = "calc"	# default file extension
 
 # Get text from clipboard, or selection
-getCB = ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_GET_SNIPPET']
-text = `osascript "#{getCB}"`
+text = get_clipboard
 if text.empty? || text =~ /Unrecognized clipboard/
-	text = textStdin
+	text = STDIN.read
 end
 
 # Documentation
@@ -77,7 +76,7 @@ def XMLToHash(rexmlDoc)
 	dic = Hash.new
 	rexmlDoc.elements.each("//CustomFunction") do |function|
 		name = function.attributes["name"]
-		text = function.elements["//Calculation"].text
+		text = function.elements["Calculation"].text
 		dic[name] = text
 	end
 	return dic
@@ -100,7 +99,7 @@ puts "Files saved to #{dir}"</string>
 	<key>name</key>
 	<string>Save Functions to Files</string>
 	<key>output</key>
-	<string>openAsNewDocument</string>
+	<string>showAsTooltip</string>
 	<key>uuid</key>
 	<string>9DC42674-9FA5-4A53-886F-0F3E3EC1A599</string>
 </dict>
