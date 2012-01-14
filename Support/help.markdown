@@ -9,10 +9,13 @@ This bundle provides tools for developing solutions in FileMaker Pro (a propriet
 * Tab triggers for FileMaker's functions
 * Documentation for functions, script steps and error codes
 * Commands
-	* Manipulating/generating calculations
-	* Manipulating/generating FileMaker clipboard XML
+	* Extracting data from FileMaker's clipboard
+	* Extracting data from fmxnlsnippet text
 	* Extracting data from the DDR
 	* Extracting data from import.log files
+	* Generating FileMaker clipboard objects
+	* Generating/Manipulating FileMaker calculations
+	* Tidy (auto-format) FileMaker calculations
 * Syntax highlighting
 	* FileMaker
 	* FileMaker Clipboard
@@ -76,7 +79,15 @@ Allows you to programmatically write code using simpler arrays and lists. Here's
 
 ### Clipboard
 
-Handles XML text extracted from the FileMaker clipboard. There are two central commands for this functionality:
+There's a suite of commands that allow you to manipulate FileMaker's clipboard. The functionalty is grouped categorically into folders:
+<table>
+	<tr><th>Folder</th><th>Functionality</th></tr>
+	<tr><td>Clipboard Interaction</td><td>Getting or setting data directly to the clipboard</td></tr>
+	<tr><td>Clipboard Extraction</td><td>Extracting specific information from XML that has been retrieved from FileMaker's clipboard</td></tr>
+	<tr><td>Clipboard Generation</td><td>Constructs clipboard objects as XML to be loaded to FileMaker's clipboard, usually from a tab-delimited array</td></tr>
+</table>
+
+There are two central commands that allow you to get and set the clipboard.
 
 <table>
 	<tr><th>Shortcut</th><th>Name</th><th>Action</th></tr>
@@ -88,11 +99,11 @@ If the Load Snippet to Clipbaord command says that the snippet was loaded but th
 
 Note, you must have the current XML document assigned to the FileMaker Clipboard language in order to use these shortcuts.
 
-#### Clipboard Manipulation Utilities
+#### Other Clipboard Manipulation Utilities
 
-There are several utilities available to help you manipulate the clipboard:
+There are several alternative utilities available to help you manipulate the clipboard:
 
-* AppleScript (takes some know-how)
+* AppleScript (available on the [wiki](https://github.com/DonovanChan/filemaker.tmbundle/wiki/Getting-Clipboard-Contents-Into-TextMate))
 * fmClipboardBroker (free!)
 * bBox plug-in (free!)
 * Clip Manager (excellent, full-featured utility)
@@ -108,7 +119,7 @@ Helps you extract specific information from FileMaker's import log files, which 
 
 # Preferences
 
-Preferences will favor conventions adopted by the FOCUS Framework at Beezwax.
+Preferences will favor conventions adopted by the FOCUS Framework at Beezwax. In some cases, you can customize behaviors using the bundle variables. Most other preference-level functionality can be isolated in the Ruby methods or the individual bundle command.
 
 # Syntax Highlighting
 
@@ -123,6 +134,10 @@ Provided for the following formats:
 	* For dictionaries generated using custom function suite from [six.fried.rice](http://sixfriedrice.com/wp/filemaker-dictionary-functions/). [FOCUS](http://focus.beezwax.net/groups/focus) makes extensive use of this hash format. A full suite of functions are vailable on github [here](https://github.com/beezwax/FOCUS/tree/master/Functions)
 
 # Usage Tips
+
+## Check out the additional resources listed below
+
+See following section called "Additional Resources". You'll find additional utilities in the wiki and progress updates via twitter.
 
 ## To open calculations in TextMate faster
 
@@ -158,7 +173,7 @@ You can customize the bundle and then update it without losing your customizatio
 
 ### Why don't the snippets expand for me?
 
-Many of the bundle snippets are bound to a certain language. Check that the language for your current document is set to "FileMaker". Do this by selecting from the languages available in the left-hand side of the footer bar.
+Many of the bundle snippets are bound to a certain language. Check that the language for your current document is set to "FileMaker". Do this by selecting from the languages available in the left-hand side of the footer bar. Also note that snippet triggers are case sensitive. This bundle uses lowercase triggers.
 
 ### Why are the FileMaker bundle commands grayed out?
 
@@ -180,9 +195,16 @@ I thought you'd never ask! There's several ways to get involved:
 * Send me a pull request on github
 * Email me at [donovan_c@beezwax.net](mailto:donovan_c@beezwax.net)
 
+# Additional Resources
+
+* Project [wiki](https://github.com/DonovanChan/filemaker.tmbundle/wiki)
+* [Video tutorials](http://www.youtube.com/playlist?list=PLC464B3BE961685D1&feature=plcp)
+* [Beezwax Buzz](http://buzz.beezwax.net) (blog)
+* Donovan on twitter: [@DonovanChan](http://twitter.com/donovanchan)
+
 # Known Bugs
 
-* Function snippets are not loading to the clipboard
+* Function snippets are not loading to the clipboard. (This related to high-ascii characters and was fixed in Dec 2011.)
 
 # How to Report Bugs or Request Features
 
@@ -203,10 +225,20 @@ This file has been modifed from its states when forked from Charles Ross and Mat
 
 # License
 
-This bundle is licensed under the Apache 2.0 license in an attempt to conform to the license used by Charles Ross in the original bundle. This license requires that files include comments indicating any modifications. I did my best with the comments, but TextMate is not very friendly in that regard.
+This bundle is distributed under the [GNU General Public License](http://www.gnu.org/licenses/).
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
 # Contact
 
 Donovan Chandler  
 Beezwax Datatools, Inc.  
-donovan_c@beezwax.net
+[donovan_c@beezwax.net](mailto:donovan_c@beezwax.net)
