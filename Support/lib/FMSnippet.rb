@@ -34,9 +34,9 @@ end
 module FileMaker
 
   PATH_BASE = File.dirname(__FILE__)
-  PATH_ENCODE = "#{PATH_BASE}/encoding.sh"
   
   require "#{PATH_BASE}/fmcalc.rb"
+  require "#{PATH_BASE}/paste.rb"
   include FMCalc
 
   # Escapes incoming text for submission to shell
@@ -130,22 +130,12 @@ module FileMaker
       @text.lstrip!
       @text
     end
-
-    #
-    # == Clipboard Interaction
-    #
-
-    # Loads contents of FMSnippet object to FileMaker's clipboard
-    def set_clipboard
-      text = self.to_s.escape_shell
-      shellScript = %Q[osascript "#{PATH_PASTE}" '#{text}']
-      begin
-        system shellScript
-      rescue
-        error = "Invalid XML. Try running Tidy first."
-        puts error
-        raise ClipboardError error
-      end
+    
+    # Appends text to @text
+    # @param [String] text XML text (presumably in fmxmlsnippet format)
+    # @return [String] New values of @text
+    def append(text)
+      @text << text
     end
 
     #

@@ -21,8 +21,9 @@
 #
 
 module FileMaker
-  
-  PATH_BASE = File.dirname(__FILE__)
+  # Defined in FMSnippet.rb
+  # PATH_BASE = File.dirname(__FILE__)
+  PATH_COPY = "#{PATH_BASE}/GetSnippet.applescript"
   PATH_PASTE = "#{PATH_BASE}/PasteSnippet.applescript"
   PATH_ENCODE = "#{PATH_BASE}/encoding.sh"
 
@@ -41,11 +42,31 @@ module FileMaker
     self.encode_text(text)
   end
 
-  # Loads fmxmlsnippet to the clipboard
-  # @param [Types] Name Description
-  def set_clipboard(text)
-    shellScript = %Q[osascript "#{PATH_PASTE}" "#{encode_text(text)}"]
-    system shellScript
+  # Returns FileMaker object on clipboard as text
+  # @return [String] Clipboard object from FileMaker describing object in XML. Returns error message in case of error.
+  def get_clipboard
+    shellScript = %Q[osascript "#{PATH_COPY}"]
+    begin
+      return `#{shellScript}`
+    rescue
+      error = "Unrecognized clipboard data"
+      raise ClipboardError error
+      return error
+    end
+  end
+
+  # Loads contents of FMSnippet object to FileMaker's clipboard
+  # @return [String,nil] XML that was loaded to the clipboard. Returns nil in case of error.
+  def set_clipboard
+    text = self.to_s.escape_shell
+    shellScript = %Q[osascript "#{PATH_PASTE}" '#{text}']
+    begin
+      result = `#{shellScript}`
+      raise 'error' if result.start_with?('Error')
+      return result
+    rescue
+      nil
+    end
   end
   
 end

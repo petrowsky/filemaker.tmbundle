@@ -39,16 +39,20 @@ module FMCalc
   # @param [String] prefixToExampleSyntax String that precedes example of custom function's syntax
   # @example
   #   %Q{Substitute ( text ; currentDelimiter ; " " )\n//TabDelimit ( text ; currentDelimiter )}.parse_function("Name:")
-  # @return [String] XML element generated for custom function
+  # @return [String,nil] XML element generated for custom function. Nil if syntax is unrecognized.
   def parse_function(prefixToExampleSyntax)
     calc = self.to_s
-    nameFull =
-      calc.match(/^\/\*.*?[\n\s]*#{prefixToExampleSyntax}[\s\n]*(.+?)\n/m) ||
-      calc.match(/^\/\/.*?\s*#{prefixToExampleSyntax}\s*(.+?)$/m)
-    nameFull = nameFull[1]
-    name = nameFull.match(/\s*(.+?)\(/)[1].strip
-    params = nameFull.match(/\((.*?)\)/)[1].gsub(/\s*/,'')
-    FMSnippet.new.customFunction(name,params,calc).to_s
+    begin
+      string =
+        calc.match(/^\/\*.*?[\n\s]*#{prefixToExampleSyntax}[\s\n]*(.+?)\n/m) ||
+        calc.match(/^\/\/.*?\s*#{prefixToExampleSyntax}\s*(.+?)$/m)
+      nameFull = string[1]
+      name = nameFull.match(/\s*(.+?)\(/)[1].strip
+      params = nameFull.match(/\((.*?)\)/)[1].gsub(/\s*/,'')
+      FMSnippet.new.customFunction(name,params,calc).to_s
+    rescue
+      nil
+    end
   end
 
   # Parses fully qualified field name to return table occurrence

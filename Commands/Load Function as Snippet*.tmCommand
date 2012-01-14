@@ -31,7 +31,10 @@ EXAMPLE USAGE:
 	Then run this command again
 
 TIPS:
-	If you want to customize this command, you have to dig into the command definition in the bundle editor
+	Functions must be in recognized format.
+	Recognized format matches the Custom Function template provided in this bundle.
+	The essential aspect really is to have a full syntax example of your function written after a label matching this: "#{ENV['TM_FUNCTION_EXAMPLE_LABEL']}".
+	You can customize this label in the bundle variables.
 EOF
 	exit
 end
@@ -45,13 +48,14 @@ begin
 	doc = FMSnippet.new(calc)
 	
 	# Load to pasteboard
-	doc.set_clipboard
+	result = doc.set_clipboard
+	raise 'Error' if result.nil?
 
 	# Return feedback
 	puts "Function ready to paste into FileMaker"
 
 rescue
-	puts "Unrecognized function format"
+	puts "Unrecognized function format.\nRun this command on an empty document for instructions."
 	
 end</string>
 	<key>input</key>

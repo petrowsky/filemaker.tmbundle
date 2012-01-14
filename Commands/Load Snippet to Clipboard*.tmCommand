@@ -20,7 +20,12 @@ include FileMaker
 
 text = STDIN.read
 doc = FMSnippet.new(text)
-doc.set_clipboard</string>
+result = doc.set_clipboard
+if result.nil?
+	puts "Unrecognized clipboard format.\nTry running Tidy command first."
+else
+	puts "Snippet ready to paste into FileMaker"
+end</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>
