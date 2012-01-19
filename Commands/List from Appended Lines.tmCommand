@@ -20,7 +20,7 @@ print prepend_delims(to_list(text))</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>List from Appended Lines</string>
+	<string>Convert &amp; to List</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>scope</key>
