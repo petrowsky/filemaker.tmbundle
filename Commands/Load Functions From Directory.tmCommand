@@ -18,8 +18,14 @@ require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 include TextMate
 include FileMaker
 
-# Prompt for files
-fileArray = UI::request_files({"text" =&gt; "Select files containing custom functions you'd like loaded to the clipboard"})
+# Use files selected in project window, if multiple selected
+# Else, prompt for files
+fileArray = ENV['TM_SELECTED_FILES'].split("' '")
+if fileArray.length &gt; 1
+	fileArray.map{|x| x.gsub!(/'/,'') }
+else
+	fileArray = UI::request_files({"text" =&gt; "Select files containing custom functions you'd like loaded to the clipboard"})
+end
 
 # Documentation
 unless fileArray.length &gt; 0
@@ -31,6 +37,7 @@ DESCRIPTION:
 
 USAGE INSTRUCTIONS:
 	Run this command and select appropriate files when prompted.
+	Or, select multiple files in the project panel to bypass prompt.
 
 NOTES:
 	Selected files must be in recognized format to be loaded properly.
