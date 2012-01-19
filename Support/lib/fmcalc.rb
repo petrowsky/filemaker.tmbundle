@@ -59,7 +59,7 @@ module FMCalc
   # @param [String] fieldName Fully qualified field name
   # @return [String] Name of table occurrence
   # @example
-  #   field_table('CONTACT_PARENT::NAME') # =>  'CONTACT_PARENT'
+  #   puts field_table('CONTACT_PARENT::NAME') # =>  'CONTACT_PARENT'
   def field_table(fieldName)
     fieldName = fieldName.to_s
     if fieldName.include?("::")
@@ -71,7 +71,7 @@ module FMCalc
   # @param [String] fieldName Fully qualified field name
   # @return [String] Name of field
   # @example
-  #   field_name('CONTACT::NAME') # => 'NAME'
+  #   puts field_name('CONTACT::NAME') # => 'NAME'
   def field_name(fieldName)
     fieldName = fieldName.to_s
     if fieldName.include?("::")
@@ -90,7 +90,7 @@ module FMCalc
   # @param [String] name Variable name
   # @return [String] Full variable name
   # @example
-  #   param_to_var('contact') # => '$_contact'
+  #   puts param_to_var('contact') # => '$_contact'
   def param_to_var(name)
     return "$_#{name}"
   end
@@ -99,7 +99,7 @@ module FMCalc
   # @param [String] name Name of FileMaker script parameter
   # @return [String] FileMaker calculation used to extract parameter. Strips optionality indicator declared in $paramDelimitOptional.
   # @example
-  #   param_extract('-id') # => '#P ( "ID" )'
+  #   puts param_extract('-id') # => '#P ( "ID" )'
   def param_extract(name)
     return '#P ( "' + param_clean(name).upcase + '" )'
   end
@@ -123,7 +123,7 @@ module FMCalc
   # @return [Array] Each input parameter
   # @example
   #   scriptName = 'script ( param1 ; -optionalParam ) : output'
-  #   parse_params(scriptName) # => '["param1","-optionalParam"]'
+  #   puts parse_params(scriptName) # => '["param1","-optionalParam"]'
   def parse_params(scriptName)
     params = scriptName.match(/\((.+)\)/)
     return nil unless params
@@ -135,11 +135,41 @@ module FMCalc
   # @return [Array] Each output parameter
   # @example
   #   scriptName = 'script ( param1 ; -optionalParam ) : output'
-  #   parse_results(scriptName) # => '["output"]'
+  #   puts parse_results(scriptName) # => '["output"]'
   def parse_results(scriptName)
     params = scriptName.match(/:(.*$)/)
     return nil unless params
     params[1].split(/;/).map{|x| x.strip}
+  end
+  
+  # Returns calculation with operators and delimiters moved to begining of each line
+  # @param [String] calculation
+  # @return [String] Calculation with operators and delimiters moved to begining of each line
+  # @example
+  #   calc = "Let ( [\n\tanimal = \"dog\" ; //comment\n\thabitat = \"house\"\n\t] ;\nanimal\n)"
+  #   puts prepend_delims(calc) # => "Let ( [\n\tanimal = \"dog\" //comment\n\t; habitat = \"house\"\n\t] ;\nanimal\n)"
+  def prepend_delims(calculation)
+    # Preserve some delimiters like "];"
+    return '' unless calculation
+    calculation.gsub!(/^(\s*)\](\s*);(\s*)$/,"\\1::93::\\2::59::\\3")
+    regex = /\s*
+            ((?:[;&=+\-<>≤≥≠^])
+            |(?:and)|(?:or)|(?:not)|(?:xor))
+            (?:(?:\s*)|(\s*\/\/.*?))?\n(\s*)          (?# Check for end-of-line comments)
+            /x
+    calculation.gsub!(regex,"\\2\n\\3\\1 ")
+    calculation.gsub('::93::',']').gsub('::59::',';')
+  end
+  
+  # Returns list of appended lines as List( ) calculation
+  # @param [String] calculation Calculation to be converted
+  # @return [String] Calculation wrapped in List( ) function with any trailing ampersand (&) on a line replaced with a semi-colon (;)
+  # @example
+  #   puts to_list("$_dog &\n$_cat &\n$_mouse") # => "List (\n$_dog ;\n$_cat ;\n$_mouse\n)"
+  def to_list(calculation)
+    return '' unless calculation
+    calculation.gsub!(/&\s*$/,";")
+    return "List (\n  #{calculation}\n)"
   end
   
   # Stub currently just used for testing and documentation
