@@ -153,9 +153,9 @@ module FMCalc
     return '' unless calculation
     calculation.gsub!(/^(\s*)\](\s*);(\s*)$/,"\\1::93::\\2::59::\\3")
     regex = /\s*
-            ((?:[;&=+\-<>≤≥≠^])
-            |(?:and)|(?:or)|(?:not)|(?:xor))
-            (?:(?:\s*)|(\s*\/\/.*?))?\n(\s*)          (?# Check for end-of-line comments)
+            ([;&+\-<>≤≥≠^]
+            |(?:and|or|not|xor))
+            (?:\s*|(\s*\/\/.*?))?\n(\s*)          (?# Preserve end-of-line comments)
             /x
     calculation.gsub!(regex,"\\2\n\\3\\1 ")
     calculation.gsub('::93::',']').gsub('::59::',';')
