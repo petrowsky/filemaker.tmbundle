@@ -63,7 +63,7 @@ module FileMaker
     begin
       result = `#{shellScript}`
       raise 'error' if result.start_with?('Error')
-      return result
+      return result #+ "\n#{self.inspect}"
     rescue
       nil
     end
