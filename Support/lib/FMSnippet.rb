@@ -100,6 +100,8 @@ module FileMaker
     # @return [true] Currently performs no error handling
     def set_type(type='')
       case @text
+      when /\<Step\b/
+        @type = 'FMObjectList'
       when /\<Layout\b/, /\<ObjectStyle\b/, type == 'LayoutObjectList'
         @type = 'LayoutObjectList'
         @boundTop = 0
