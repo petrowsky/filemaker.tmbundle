@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Get ( InstalledFMPlugins )</string>
+	<key>name</key>
+	<string>Get ( InstalledFMPlugins )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
+	<key>tabTrigger</key>
+	<string>getpl</string>
+	<key>uuid</key>
+	<string>AC21797F-06F2-4316-B7C2-D1D2C1119CD1</string>
+</dict>
+</plist>

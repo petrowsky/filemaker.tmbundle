@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Get ( ConnectionState )</string>
+	<key>name</key>
+	<string>Get ( ConnectionState )</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
+	<key>tabTrigger</key>
+	<string>getcns</string>
+	<key>uuid</key>
+	<string>8E5FD343-1B45-4996-B8F2-8EC8B8569A3F</string>
+</dict>
+</plist>

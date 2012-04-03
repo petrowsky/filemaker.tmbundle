@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>VerifyContainer ( ${1:field1} )$0</string>
+	<key>name</key>
+	<string>VerifyContainer</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
+	<key>tabTrigger</key>
+	<string>verifycon</string>
+	<key>uuid</key>
+	<string>58C2304F-7D80-44EE-B5B9-9CD8B56AC27A</string>
+</dict>
+</plist>

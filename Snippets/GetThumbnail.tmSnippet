@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>GetSummary ( ${1:field} ; ${2:width} ; ${3:height} )$0</string>
+	<key>name</key>
+	<string>GetThumbnail</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
+	<key>tabTrigger</key>
+	<string>getth</string>
+	<key>uuid</key>
+	<string>2429B92A-9FBD-4DCA-82BC-C40802F866AE</string>
+</dict>
+</plist>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>Location ( ${1:accuracy} ; ${2:timeout} )$0</string>
+	<key>name</key>
+	<string>Location</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
+	<key>tabTrigger</key>
+	<string>loca</string>
+	<key>uuid</key>
+	<string>0EAFFE9B-E0C2-46E7-8E44-E5217BBE5CD4</string>
+</dict>
+</plist>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>ExecuteSQL ( ${1:sqlQuery} ; ${2:fieldSeparator} ; ${3:rowSeparator}${4: ; arguments...} )$0
+(; ; rowSeparator {;arguments...})</string>
+	<key>name</key>
+	<string>ExecuteSQL</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
+	<key>tabTrigger</key>
+	<string>exsql</string>
+	<key>uuid</key>
+	<string>179D866C-21AA-4467-8D0C-8578F268CC8B</string>
+</dict>
+</plist>
