@@ -1,6 +1,6 @@
 ﻿(*
 NAME:
-	GetSnippet (v1.0)
+	GetSnippet (v2.0)
 	
 PURPOSE:
 	Returns fmxmlsnippet from pasteboard as xml text
@@ -10,6 +10,7 @@ PARAMETERS:
 
 HISTORY:
 	Created 2011.03.23 by Donovan Chandler, donovan_c@beezwax.net
+	Modified 2012.04.03 by Donovan Chandler, donovan_c@beezwax.net : Added FMP12 compatibility
 
 NOTES:
 	Line endings are converted to line feed (LF)
@@ -98,6 +99,12 @@ to getSnippet()
 		set errorText to "Invalid clipboard data" & return & errNum & ": " & errMsg
 		return
 	end try
+	-- FileMaker 12 format
+	try
+		set clipboardText to «class XML2» of clipboardData
+		return clipboardText
+	end try
+	-- FileMaker 11 formats
 	try
 		set clipboardText to «class XMSC» of clipboardData
 		return clipboardText

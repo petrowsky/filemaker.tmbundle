@@ -1,6 +1,6 @@
 ﻿(*
 NAME:
-	PasteSnippet (v1.1)
+	PasteSnippet (v2.0)
 	
 PURPOSE:
 	Loads fmxmlsnippet onto pasteboard in proper format for pasting into FileMaker.
@@ -11,6 +11,7 @@ PARAMETERS:
 HISTORY:
 	Created 2011.03.23 by Donovan Chandler, donovan_c@beezwax.net
 	Modified 2011.12.17 by Donovan Chandler: Converts placeholders for high ascii characters
+	Modified 2012.04.03 by Donovan Chandler: Added support for XML2 format (in FM 12)
 
 NOTES:
 	This script is intended to be called using a command from the shell like this: osascript PasteSnippet.applescript "$XML_TEXT"
@@ -73,7 +74,8 @@ end run
 --	XMTB for table definitions
 --	XMFD for field definitions
 --	XMCF for custom functions
---	XMLO for layout objects
+--	XML2 for layout objects in FileMaker 12
+--	XMLO for layout objects in FileMaker 7-11
 on convertClip(clipText, outputClass)
 	set temp_path to (path to temporary items as Unicode text) & "FMClip.dat"
 	set temp_ref to open for access file temp_path with write permission
@@ -90,6 +92,8 @@ on convertClip(clipText, outputClass)
 		set clipTextFormatted to read file temp_path as «class XMFD»
 	else if outputClass is "XMFN" then
 		set clipTextFormatted to read file temp_path as «class XMFN»
+	else if outputClass is "XML2" then
+		set clipTextFormatted to read file temp_path as «class XML2»
 	else if outputClass is "XMLO" then
 		set clipTextFormatted to read file temp_path as «class XMLO»
 	else
@@ -105,7 +109,8 @@ end convertClip
 --	XMTB for table definitions
 --	XMFD for field definitions
 --	XMCF for custom functions
---	XMLO for layout objects
+--	XML2 for layout objects in FileMaker 12
+--	XMLO for layout objects in FileMaker 7-11
 on determineClass(clipText)
 	try
 		set clipText to searchReplaceText(clipText, "<?", "?")
@@ -125,6 +130,8 @@ on determineClass(clipText)
 		set theClass to "XMFD"
 	else if child1 starts with "CustomFunction" then
 		set theClass to "XMFN"
+	else if ((offset of "<LocalCSS" in clipText) > 0) then
+		set theClass to "XML2"
 	else if child1 starts with "Layout" then
 		set theClass to "XMLO"
 	else
