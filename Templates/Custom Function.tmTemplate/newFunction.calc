@@ -1,15 +1,12 @@
 
 
-/* —————————————————————————————— //
-${TM_FUNCTION_EXAMPLE_LABEL}
-	${1:TM_NEW_FILE_BASENAME} ( )
+/* __________________________________________________
 
-PURPOSE:
-	
-
+${TM_FUNCTION_EXAMPLE_LABEL}	${1:TM_NEW_FILE_BASENAME} ( )
+PURPOSE:	
 EXAMPLES:
 	
-
 HISTORY:
-	Created: ${TM_DATETIME} — ${TM_USER_NAME}
+	Created:	Created: ${TM_DATETIME} - ${TM_USER_NAME}
+	Modified:	
 */

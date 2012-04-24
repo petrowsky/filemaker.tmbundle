@@ -6,7 +6,7 @@
 	<string>if [[ ! -f "$TM_NEW_FILE" ]]; then
    TM_YEAR=`date +%Y` \
    TM_DATE=`date +%Y-%m-%d` \
-   TM_DATETIME=`date +"%Y-%b-%d %Hh%M PST"` \
+   TM_DATETIME=`date +"%Y-%b-%d %H:%M PST"` \
    perl -pe 's/\$\{([^}]*)\}/$ENV{$1}/g' \
       &lt; newFunction.calc &gt; "$TM_NEW_FILE"
 fi</string>
