@@ -36,6 +36,11 @@ class FMSnippet
     doc = REXML::Document.new(self.to_s)
     doc.elements.to_a("//Object").reduce([]){|memo,e| memo << e.attributes['name'] }
   end
+  
+  def extract_object_css
+    doc = REXML::Document.new(self.to_s)
+    doc.elements.to_a("//LocalCSS").reduce([]){|memo,e| memo << e.text.lstrip }
+  end
 
   # Constructs layout field object and appends to @text
   # @param [Hash] options Hash containing field object attributes
