@@ -6,15 +6,19 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION
+#	Extracts FileMaker calcluations from fmxmlsnippet
+#
+
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
 
 text = STDIN.read
 
-delim = "-------------\n"
+delim = "\n-------------\n"
 
-text.scan(/&lt;Value&gt;\s*?&lt;Calculation&gt;&lt;!\[CDATA\[(.*?)\]\]&gt;&lt;\/Calculation/m) do 
-|calc|
-	print "#{calc}\n#{delim}"
-end</string>
+doc = FMSnippet.new(text)
+print doc.extract_calcs.join(delim)</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

@@ -34,9 +34,15 @@
 			</dict>
 			<dict>
 				<key>name</key>
+				<string>TM_PATH_FILEMAKER</string>
+				<key>value</key>
+				<string>/lib/filemaker.rb</string>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>TM_PATH_SNIPPET</string>
 				<key>value</key>
-				<string>/lib/fmsnippet.rb</string>
+				<string>/lib/filemaker/fmsnippet.rb</string>
 			</dict>
 			<dict>
 				<key>name</key>

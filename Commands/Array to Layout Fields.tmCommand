@@ -14,9 +14,9 @@
 #	Instructions printed when input is empty.
 #	See documentation section below.
 #
+# FIXME Field formats not being pasted
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
-include FileMaker
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
 
 text = STDIN.read
 
@@ -31,8 +31,8 @@ DESCRIPTION
 EXAMPLE USAGE:
 	Select the lines below and run the command again to see it work.
 
-CONTACT::NameFirst\tName of person\tVerdana\t12\tfield_nameFirst
-CONTACT::Global[1]\tCONTACT::Global[1]\tHelvetica\t14
+CONTACT::NameFirst\t"Name of person"\tVerdana\t12\tfield_nameFirst
+CONTACT::Global[1]\tSelf\tHelvetica\t14
 
 PARAMETERS:
 	col1 = fully qualified field name

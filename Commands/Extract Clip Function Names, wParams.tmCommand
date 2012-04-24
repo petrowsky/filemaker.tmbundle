@@ -6,18 +6,25 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION
+#	Given fmxmlsnippet, extracts names and parameters of FileMaker custom functions.
+#
+
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
 
 text = STDIN.read
 
-text = text.scan(/parameters="(.*?)".*?name="(.*?)"/) {|p,n| print n + " ( " + p.gsub(';',' ; ') + " )\n"}
+delim = "\n-------------\n"
 
-#text = text.join("\n")</string>
+doc = FMSnippet.new(text)
+print doc.extract_functions.join(delim)</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Extract Clip Function Names, wParams</string>
+	<string>Extract Custom Function Names</string>
 	<key>output</key>
-	<string>replaceSelectedText</string>
+	<string>openAsNewDocument</string>
 	<key>uuid</key>
 	<string>8E96D1A3-A6DE-43F3-8D22-D7EFD4229D40</string>
 </dict>

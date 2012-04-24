@@ -15,8 +15,7 @@
 #	See documentation section below.
 #
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
-include FileMaker
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
 
 text = STDIN.read
 
@@ -61,8 +60,8 @@ textArray.each do |row|
 	paramGet = col[0].strip
 	paramSet = col[1] || paramGet
 
-	calc = param_extract(paramGet)
-	name = param_to_var(paramSet.downcase)
+	calc = FileMaker::FMScriptCustom::param_extract(paramGet)
+	name = FileMaker::FMScriptCustom::param_to_var(paramSet.downcase)
 	rep = 1
 	doc.stepSetVariable(name,rep,calc)
 end

@@ -17,8 +17,9 @@
 #
 
 require "rexml/document"
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
-include FileMaker
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
 
 # Not using ui.rb because its implementation of fileselect didn't work
 # Instead, call directly to CocoaDialog through shell
@@ -28,9 +29,11 @@ dPath = "#{ENV['TM_SUPPORT_PATH']}/bin/CocoaDialog.app/Contents/MacOS/CocoaDialo
 ext = "calc"	# default file extension
 
 # Get text from clipboard, or selection
-text = get_clipboard
-if text.empty? || text =~ /Unrecognized clipboard/
-	text = STDIN.read
+text = FileMaker::Clipboard::get_clipboard
+text = STDIN.read if text.empty? || text =~ /Unrecognized clipboard/
+if text.empty?
+	puts 'Unrecognized clipboard format'
+	TextMate.exit_replace_text
 end
 
 # Documentation
@@ -50,7 +53,7 @@ NOTES:
 	So you have to create the directory before running this command.
 EOF
 	puts text
-	exit
+	TextMate.exit_replace_text
 end
 
 doc = REXML::Document.new text

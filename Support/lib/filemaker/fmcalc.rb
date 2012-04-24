@@ -1,4 +1,5 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby -KU
+# encoding: UTF-8
 #
 # fmcalc.rb - manipulates FileMaker calculations
 #
@@ -20,7 +21,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+# Manipulates FileMaker calculations
 module FMCalc
+  
+  # here = File.dirname(__FILE__)
+  # require "#{here}/comments.rb"
+  # include Comments
 
   # Coerces string into boolean.
   # @param [String] string String to coerce into boolean
@@ -33,6 +39,13 @@ module FMCalc
       else
         string.class == String
     end
+  end
+  
+  # Extracts names of functions used in text
+  # @param [String] text Calculation containing function names to extract
+  # @return [Array] Names of functions in text
+  def extract_functions(text)
+    text.to_s.scan(/[#a-zA-Z\._-]+?(?=\s*\()/)
   end
 
   # Generates custom function snippet from FileMaker calculation
@@ -115,7 +128,9 @@ module FMCalc
   # @param [String] name Name of parameter (including optionality indicator prefix defined in $paramDelimOptional)
   def param_clean(name)
     return nil if !name
-    name.reverse.chomp($paramDelimOptional).reverse
+    res = name.dup
+    res.slice!(/#{$paramDelimOptional}/u)
+    res
   end
 
   # Returns array of script parameters from string
@@ -141,6 +156,51 @@ module FMCalc
     return nil unless params
     params[1].split(/;/).map{|x| x.strip}
   end
+
+  # Returns calculation with operators and delimiters moved to end of each line
+  # @param [String] calculation
+  # @return [String] Calculation with operators and delimiters moved to end of each line
+  # @example
+  #   calc = "Let ( [\n\tanimal = \"dog\" //comment\n\t; habitat = \"house\"\n\t] ;\nanimal\n)"
+  #   puts append_delims(calc) # => "Let ( [\n\tanimal = \"dog\" ; //comment\n\thabitat = \"house\"\n\t] ;\nanimal\n)"
+  # @todo Remove quoted strings, cplus comments, and c comments before processing
+  # @todo Fix bug whereby delim is inserted after comments
+  # @todo Figure out how to encode not-equals and exponent signs properly
+  def append_delims(calculation)
+    # Preserve special delimiters like '];' with placeholders
+    calculation.gsub!(/^(\s*)\](\s*);(\s*)$/,"\\1::93::\\2::59::\\3")
+
+    regex = /^(\s*(?:\/\*.*?\/\*)*)           (?# Leading whitespace and comments)
+            ([;&+\-<>≤≥#{94.chr}]
+            |(?:and|or|not|xor))\s*
+            /xu
+
+    delim = nil
+    array = calculation.split("\n").reverse.map do |line|
+
+      # Skip comments
+      if line =~ %r{^(\s*|\s*//)$}
+        line
+      else
+        # Append delim from previous line
+        # line = delim ? line.gsub(/(?:\s*|(\s*\/\/.*?))$/,"#{delim}\\1") : line
+        # puts line.match(/(?:\s*|(\s*\/\/.*?))$/).inspect
+        line = delim ? line.gsub(/(?:\s*|(\s*\/\/.*?))$/," #{delim}\\1") : line
+
+        # Store delim to carry to next line
+        match = line.match(regex)
+        delim = match ? match[2] : nil
+
+        # Strip delim from current line
+        line.gsub!(regex,"\\1")
+        line
+      end
+    end
+    calculation = array.reverse.join("\n")
+    calculation.gsub('::93::',']').gsub('::59::',';')
+  end
+
+
   
   # Returns calculation with operators and delimiters moved to begining of each line
   # @param [String] calculation
@@ -148,16 +208,37 @@ module FMCalc
   # @example
   #   calc = "Let ( [\n\tanimal = \"dog\" ; //comment\n\thabitat = \"house\"\n\t] ;\nanimal\n)"
   #   puts prepend_delims(calc) # => "Let ( [\n\tanimal = \"dog\" //comment\n\t; habitat = \"house\"\n\t] ;\nanimal\n)"
+  # @todo Remove quoted strings, cplus comments, and c comments before processing
   def prepend_delims(calculation)
-    # Preserve some delimiters like "];"
-    return '' unless calculation
+    # Preserve special delimiters like '];' with placeholders
     calculation.gsub!(/^(\s*)\](\s*);(\s*)$/,"\\1::93::\\2::59::\\3")
+
     regex = /\s*
             ([;&+\-<>≤≥≠^]
             |(?:and|or|not|xor))
-            (?:\s*|(\s*\/\/.*?))?\n(\s*)          (?# Preserve end-of-line comments)
+            (?:\s*|(\s*\/\/.*?))?$          (?# Preserve end-of-line comments)
             /x
-    calculation.gsub!(regex,"\\2\n\\3\\1 ")
+
+    delim = nil
+    array = calculation.split("\n").map do |line|
+
+      # Skip comments
+      if line =~ %r{^\s*//}
+        line
+      else
+        # Prepend delim from previous line
+        line = delim ? line.gsub(/^(\s*)/,"\\1#{delim} ") : line
+
+        # Store delim to carry forward
+        match = line.match(regex)
+        delim = match ? match[1] : nil
+
+        # Strip delim from current line
+        line.gsub!(regex,"\\2")
+        line
+      end
+    end
+    calculation = array.join("\n")
     calculation.gsub('::93::',']').gsub('::59::',';')
   end
   

@@ -17,8 +17,7 @@
 # FIXME Clipboard doesn't have correct text
 #
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
-include FileMaker
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
 $LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
 require 'exit_codes.rb'
 

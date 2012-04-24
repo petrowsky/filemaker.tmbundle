@@ -6,16 +6,23 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION
+#	Given fmxmlsnippet of layout objects, extracts names of objects.
+#
+
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
 
 text = STDIN.read
 
-text = text.scan(/name="(.*?)"/) {|x| print "#{x}\n"}</string>
+doc = FMSnippet.new(text)
+print doc.extract_object_names</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Extract Clip Object Names</string>
+	<string>Extract Layout Object Names</string>
 	<key>output</key>
-	<string>replaceSelectedText</string>
+	<string>openAsNewDocument</string>
 	<key>uuid</key>
 	<string>61C57F0C-1DFE-4A29-9C9D-20BFF993A62D</string>
 </dict>

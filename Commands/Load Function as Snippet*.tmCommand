@@ -8,12 +8,13 @@
 	<string>#!/usr/bin/ruby
 #
 # DESCRIPTION
-# Loads custom function text onto pasteboard for pasting into FileMaker.
-# Requires format specified in custom function template supplied with bundle.
+#	Loads custom function text onto pasteboard for pasting into FileMaker.
+#	Requires format specified in custom function template supplied with bundle.
 #
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
-include FileMaker
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
 
 text = STDIN.read
 
@@ -36,17 +37,19 @@ TIPS:
 	The essential aspect really is to have a full syntax example of your function written after a label matching this: "#{ENV['TM_FUNCTION_EXAMPLE_LABEL']}".
 	You can customize this label in the bundle variables.
 EOF
-	exit
+	puts text
+	TextMate.exit_replace_text
 end
 
 begin
 
-	# Parse function attributes
-	calc = text.parse_function(ENV['TM_FUNCTION_EXAMPLE_LABEL'])
-
 	# Create function snippet
-	doc = FMSnippet.new(calc)
-	
+	doc = FMSnippet.new
+
+	# Parse function attributes
+ 	calc = doc.parse_function(text,ENV['TM_FUNCTION_EXAMPLE_LABEL'])
+	doc.append(calc)
+
 	# Load to pasteboard
 	result = doc.set_clipboard
 	raise 'Error' if result.nil?

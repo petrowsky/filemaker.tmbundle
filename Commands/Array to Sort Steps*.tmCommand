@@ -15,8 +15,7 @@
 #	See documentation section below.
 #
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
-include FileMaker
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
 
 # Settings (can be changed to parameters if needed)
 suppressDialog = true

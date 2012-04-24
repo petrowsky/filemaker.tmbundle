@@ -11,12 +11,12 @@
 #	 Prompts for files and loads them to clipboard as custom functions.
 #
 
-# require '/Applications/TextMate.app/Contents/SharedSupport/Support/lib/ui.rb'
-# require File.dirname(__FILE__) + '/fmsnippet'
-require ENV['TM_SUPPORT_PATH'] + '/lib/ui'
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
+
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
+require 'ui.rb'
 include TextMate
-include FileMaker
 
 # Use files selected in project window, if multiple selected
 # Else, prompt for files
@@ -37,7 +37,7 @@ DESCRIPTION:
 
 USAGE INSTRUCTIONS:
 	Run this command and select appropriate files when prompted.
-	Or, select multiple files in the project panel to bypass prompt.
+	Or, select multiple files in the project panel to bypass prompt./Users/donovan/Repository/gitRepos/fmfunctions/IsMac.calc/Users/donovan/Repository/gitRepos/fmfunctions/IsMac.calc
 
 NOTES:
 	Selected files must be in recognized format to be loaded properly.
@@ -46,7 +46,7 @@ NOTES:
 	You can customize this label in the bundle variables.
 EOF
 	puts text
-	exit
+	TextMate.exit_replace_text
 end
 
 begin
@@ -56,7 +56,7 @@ begin
 		text = File.new("#{file}","r").read
 
 		# Parse function attributes
-		calc = text.parse_function(ENV['TM_FUNCTION_EXAMPLE_LABEL'])
+		calc = doc.parse_function(text,ENV['TM_FUNCTION_EXAMPLE_LABEL'])
 		
 		# Create function snippet
 		doc.append(calc) unless calc.nil?

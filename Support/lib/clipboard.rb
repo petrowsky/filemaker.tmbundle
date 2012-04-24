@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# encoding: UTF-8
 #
 # clipboard.rb - helps get and put FileMaker objects on the clipboard
 # 
@@ -20,9 +21,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-module FileMaker
+module FileMaker::Clipboard
+  
+  require 'open3'
+  
   # Defined in FMSnippet.rb
-  # PATH_BASE = File.dirname(__FILE__)
+  PATH_BASE = File.dirname(__FILE__)
   PATH_COPY = "#{PATH_BASE}/GetSnippet.applescript"
   PATH_PASTE = "#{PATH_BASE}/PasteSnippet.applescript"
   PATH_ENCODE = "#{PATH_BASE}/encoding.sh"
@@ -33,18 +37,41 @@ module FileMaker
   # @return [String] Text with extended ascii characters escaped with placeholders
   # @example
   #   "en-dash: –".encoded_text #=> "en-dash: #:8211:#"
-  def self.encode_text(text)
-    `"#{PATH_ENCODE}" "#{text}"`
+  def self.encode_for_applescript(text=self.to_s)
+    text = text.escape_for_shell
+    text.gsub!(/&(?!#[0-9]+;)/u,'&#38;') # HTML-encode ampersand
+    `"#{PATH_ENCODE}" '#{text}'`
+  end
+
+  # Escapes incoming text for submission to shell
+  # @todo Use native command?
+  def self.escape_for_shell(text=self.to_s)
+    text.gsub(/'/u,"'\\\\''")
   end
   
-  # @see #self.encode_text
-  def encode_text(text)
-    self.encode_text(text)
+  # def paste
+  #   IO.popen('pbcopy', 'w+') { |clipboard| clipboard.print self.to_s }
+  #   `osascript -e 'tell application "System Events" to keystroke "v" using {command down}'`
+  # end
+  
+  # Tells OS to paste supplied text at cursor. Allows TextMate bundle command to return multiple output types.
+  def self.paste
+    text = self.to_s
+    # Open3.popen3( 'pbcopy' ) { |stdin, stdout, stderr| stdin << text }
+    Open3.popen3( 'pbcopy' ) do
+      |stdin, stdout, stderr|
+      stdin.write(text)
+      stdin.close_write
+      stderr.read.split("\n").each do |line|
+        puts "[parent] stderr: #{line}"
+      end
+    end
+    `osascript -e 'tell application "System Events" to keystroke "v" using {command down}'`
   end
 
   # Returns FileMaker object on clipboard as text
   # @return [String] Clipboard object from FileMaker describing object in XML. Returns error message in case of error.
-  def get_clipboard
+  def self.get_clipboard
     shellScript = %Q[osascript "#{PATH_COPY}"]
     begin
       return `#{shellScript}`
@@ -57,8 +84,8 @@ module FileMaker
 
   # Loads contents of FMSnippet object to FileMaker's clipboard
   # @return [String,nil] XML that was loaded to the clipboard. Returns nil in case of error.
-  def set_clipboard
-    text = self.to_s.escape_shell
+  def self.set_clipboard
+    text = self.escape_for_shell(self.to_s)
     shellScript = %Q[osascript "#{PATH_PASTE}" '#{text}']
     begin
       result = `#{shellScript}`
@@ -69,4 +96,8 @@ module FileMaker
     end
   end
   
+end
+
+class FileMaker
+  include FileMaker::Clipboard
 end

@@ -15,8 +15,7 @@
 #	See documentation section below.
 #
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
-include FileMaker
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
 
 text = STDIN.read
 
@@ -64,15 +63,15 @@ textArray.each do |row|
 	paramGet = col[0].strip
 	paramSet = col[1] || paramGet
 
-	calc = param_extract(paramGet)
-	name = param_to_var(paramSet.downcase)
+	calc = doc.param_extract(paramGet)
+	name = doc.param_to_var(paramSet.downcase)
 	rep = 1
 	doc.stepSetVariable(name,rep,calc)
 
 	# Queue var validation if necessary
 	# assumes mutually optional params will all have same "-" setting
-	if !param_is_optional(paramGet)
-		calcInner = param_to_var(paramSet)
+	if !doc.param_is_optional(paramGet)
+		calcInner = doc.param_to_var(paramSet)
 		validateArray &lt;&lt; "IsEmpty ( #{calcInner} )"
 	end
   
