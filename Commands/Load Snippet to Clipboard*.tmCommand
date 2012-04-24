@@ -15,10 +15,42 @@
 #	See documentation section below.
 #
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
-include FileMaker
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
 
 text = STDIN.read
+
+# Documentation
+if text.empty?
+	puts &lt;&lt;EOF
+DESCRIPTION:
+	Loads XML from selection or current document onto FileMaker clipboard.
+
+EXAMPLE USAGE:
+	Select the lines below and run the command again.
+	This will load a field onto your clipboard that you can paste into the Define Database window.
+
+&lt;?xml version="1.0"?&gt;
+&lt;fmxmlsnippet type="FMObjectList"&gt;
+	&lt;Field id="90" dataType="Text" fieldType="Normal" name="g_Scratch"&gt;
+		&lt;Comment&gt;Field created as a test of TextMate bundle&lt;/Comment&gt;
+		&lt;AutoEnter allowEditing="True" constant="False" furigana="False" lookup="False" calculation="False"&gt;
+			&lt;ConstantData/&gt;
+		&lt;/AutoEnter&gt;
+		&lt;Storage indexLanguage="English" global="True" maxRepetition="1"/&gt;
+	&lt;/Field&gt;
+&lt;/fmxmlsnippet&gt;
+
+TIPS:
+	If the snippet doesn't load…
+		1. Ensure that the XML is valid. You can do this by running the Tidy command in the XML bundle (Ctl+Shift+H when in FileMaker Clipboard language)
+		2. Check for characters that might cause encoding issues, like high-ascii characters.
+		3. Check that the snippet isn't missing any required elements or attributes. You're on your own with this one, but you can always copy and existing FileMaker object to compare the clipboard output.
+EOF
+	TextMate.exit_replace_text
+end
+
 doc = FMSnippet.new(text)
 result = doc.set_clipboard
 if result.nil?
