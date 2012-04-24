@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+#
+# DESCRIPTION
+#	Generates FileMaker snippet of field layout objects with labels
+#
+# USAGE
+#	Instructions printed when input is empty.
+#	See documentation section below.
+#
+# TODO Add parameter for label font and size or couple with field options.
+
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
+
+text = STDIN.read
+
+# Documentation
+if text.empty?
+	tips = ENV['TM_DOC_TIPS']
+	puts &lt;&lt;EOF
+DESCRIPTION
+	Generates FileMaker snippet of field layout objects (to be pasted onto any layout).
+	Each field is pasted along with label specified in array.
+	Uses selected text or entire document.
+
+EXAMPLE USAGE:
+	Select the lines below and run the command again to see it work.
+
+CONTACT::NameFirst\tFirst Name\t"Name of person"\tVerdana\t12\tfield_nameFirst
+CONTACT::Global[1]\tGlobal\tSelf\tHelvetica\t14
+
+PARAMETERS:
+	col1 = fully qualified field name
+	col2 = field label (optional
+	col3 = tooltip (optional)
+	col4 = font (optional)
+	col5 = fontSize (optional)
+	col6 = objectName (optional)
+
+TIPS:
+#{tips}
+EOF
+	exit
+end
+
+# Generate Fields
+doc = FMSnippet.new
+text.split(/\n/).each { |row|
+	col = row.split(/\t/)
+	fieldOpt = {
+		:fieldQualified	=&gt; col[0],
+		:tooltip			=&gt; col[2],
+		:font			=&gt; col[3],
+		:fontSize			=&gt; col[4],
+		:objectName		=&gt; col[5],
+		:fieldHeight		=&gt; 18,
+		:fieldWidth		=&gt; 120,
+		:verticalSpacing	=&gt; 20
+	}
+p fieldOpt
+	labelText = col[1]
+	doc.layoutFieldWithLabel(fieldOpt,labelText)
+}
+
+print doc</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Array to Layout Fields Labeled</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>75137F72-9138-4AD8-AB9C-3839A5FB698C</string>
+</dict>
+</plist>

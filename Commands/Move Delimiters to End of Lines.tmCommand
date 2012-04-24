@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+#
+# DESCRIPTION
+#	Moves delimiter/operator to begining of each line of calculation
+#
+
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+include FileMaker
+
+text = STDIN.read
+
+print append_delims(text)</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Move Delimiters to End of Lines</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.filemaker</string>
+	<key>uuid</key>
+	<string>2B980ABA-B568-480C-A6BC-31AB89747A94</string>
+</dict>
+</plist>
