@@ -7,14 +7,18 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 #
-# TODO Remove leading spaces, etc.
-# TODO Filter to unique values
+# TODO Enhance search to find functions without "(" and to omit strings
 #
 
-text = STDIN.read
+require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
+include FileMaker
 
-text = text.scan(/[\s;&amp;-](.*?)\(/) {|x| print x, " (\n" }
-#text = text.scan(/[\s;&amp;-]([^\s]*)\(/) {|x| print x, " (\n" }</string>
+text = STDIN.read
+calcs = FMSnippet.new(text).extract_calcs
+functions = calcs.reduce([]) do |memo,calc|
+  memo.concat(extract_functions(calc))
+end
+puts functions.uniq</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
