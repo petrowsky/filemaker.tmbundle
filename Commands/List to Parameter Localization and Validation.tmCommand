@@ -44,7 +44,7 @@ EOF
 	exit
 end
 
-doc = FMSnippet.new
+doc = Snippet.new
 
 # Split text to lines if necessary
 if text =~ /;/
@@ -86,11 +86,12 @@ doc.stepSetVariable("$_error",1,10)
 doc.stepExitLoopIf("True")
 doc.stepEndIf
 
-print doc</string>
+print doc
+</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Array to Parameter Localization and Validation</string>
+	<string>Array to Parameter Localization and Validation**</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>uuid</key>

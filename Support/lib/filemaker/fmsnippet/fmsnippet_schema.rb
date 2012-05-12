@@ -21,7 +21,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-class FMSnippet
+class FileMaker::Snippet
 
   here = File.dirname(__FILE__)
   require 'erb'

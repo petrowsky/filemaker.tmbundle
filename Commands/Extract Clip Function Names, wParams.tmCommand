@@ -17,8 +17,9 @@ text = STDIN.read
 
 delim = "\n-------------\n"
 
-doc = FMSnippet.new(text)
-print doc.extract_functions.join(delim)</string>
+doc = Snippet.new(text)
+print doc.extract_functions.join(delim)
+</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

@@ -43,7 +43,7 @@ EOF
 	exit
 end
 
-doc = FMSnippet.new
+doc = Snippet.new
 
 # Split text to lines if necessary
 if text =~ /;/
@@ -66,11 +66,12 @@ textArray.each do |row|
 	doc.stepSetVariable(name,rep,calc)
 end
 
-print doc</string>
+print doc
+</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Array to Parameter Localization</string>
+	<string>Array to Parameter Localization**</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>uuid</key>

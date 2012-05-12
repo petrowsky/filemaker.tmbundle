@@ -45,7 +45,7 @@ EOF
 end
 
 # Create steps
-doc = FMSnippet.new
+doc = Snippet.new
 text.split(/\n/).each { |row| 
 	col = row.split(/\t/)
 	name = col[0]
@@ -55,7 +55,8 @@ text.split(/\n/).each { |row|
 	doc.stepSetVariable(name,rep,calc)
 }
 
-print doc</string>
+print doc
+</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

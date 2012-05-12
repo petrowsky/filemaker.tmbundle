@@ -23,7 +23,7 @@
 
 require 'erb'
 
-class FMSnippet
+class FileMaker::Snippet
 
   here = File.dirname(__FILE__)
   
@@ -187,7 +187,7 @@ class FMSnippet
   # @example
   #   fields = { :field => "CONTACT::NAME_FIRST", :direction => "Ascending" }
   #   fields << { :field => "CONTACT::NAME_LAST", :direction => "Descending" }
-  #   FMSnippet.new.stepSort(fields,true)
+  #   Snippet.new.stepSort(fields,true)
   # @return [String] XML element generated for script step
   def stepSort(fieldArray,hideDialog=true)
     template = %q{

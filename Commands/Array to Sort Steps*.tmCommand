@@ -53,7 +53,7 @@ EOF
 end
 
 # Generate Fields
-doc = FMSnippet.new
+doc = Snippet.new
 text.split(/\n\n/).each { |chunk|
   arg = []
   chunk.split(/\n/).each { |row|
@@ -66,7 +66,8 @@ text.split(/\n\n/).each { |chunk|
   doc.stepSort(arg)
 }
 
-print doc</string>
+print doc
+</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

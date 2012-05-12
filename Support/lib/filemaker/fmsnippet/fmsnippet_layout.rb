@@ -22,14 +22,9 @@
 #
 
 require 'erb'
+require 'rexml/document'
 
-class FMSnippet
-
-  here = File.dirname(__FILE__)
-  
-  require 'rexml/document'
-  # require "#{here}/fmcalc.rb"
-  # include FMCalc
+class FileMaker::Snippet
 
   # Returns array of object names from fmxmlsnippet of layout objects
   def extract_object_names
@@ -66,39 +61,30 @@ class FMSnippet
       field = options[:field]
       fieldQualified = table + "::" + field
     end
-    puts 'parameter: '; p options
     options = {
       :font         => "Verdana",
       :fontSize     => 12,
       :fieldWidth   => 120
     }.merge(options.delete_blank)
-    puts 'merged: '; p options
     options[:fieldHeight] ||= options[:fontSize] + 6
     fieldLeft = 10
     verticalSpacing = options[:verticalSpacing] || options[:fieldHeight] + 2
     @boundTop += verticalSpacing
     template = %q{
-    <ObjectStyle id="0" fontHeight="<%= options[:fontSize].to_i + 3 %>" graphicFormat="5" fieldBorders="0">
-      <CharacterStyle mask="">
-        <Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
-        <Font-size><%= options[:fontSize] %></Font-size>
-        <Face>0</Face>
-        <Color>#000000</Color>
-      </CharacterStyle>
-    </ObjectStyle>
-    <Object type="Field" name="<%= options[:objectName] %>" flags="0" portal="-1" rotation="0">
-      <StyleId>0</StyleId>
-      <Bounds top="<%= @boundTop %>" left="<%= fieldLeft %>" bottom="<%= @boundTop + options[:fieldHeight].to_i %>" right="<%= fieldLeft.to_i + options[:fieldWidth].to_i %>"/>
-      <ToolTip>
-        <Calculation><![CDATA[<%= options[:tooltip] %>]]></Calculation>
-      </ToolTip>
-      <FieldObj numOfReps="1" flags="" inputMode="0" displayType="0" quickFind="0">
-        <Name><%= fieldQualified %></Name>
-        <DDRInfo>
-          <Field name="<%= field %>" id="1" repetition="1" maxRepetition="1" table="<%= table %>"/>
-        </DDRInfo>
-      </FieldObj>
-    </Object>}.gsub(/^\s*%/, '%')
+  		<Object type="Field" key="" LabelKey="" name="<%= options[:objectName] %>" flags="" rotation="0">
+  			<Bounds top="<%= @boundTop %>" left="<%= fieldLeft %>" bottom="<%= @boundTop + options[:fieldHeight].to_i %>" right="<%= fieldLeft.to_i + options[:fieldWidth].to_i %>"/>
+  			<FieldObj numOfReps="1" flags="" inputMode="0" displayType="0" quickFind="1" pictFormat="5">
+  				<Name><%= fieldQualified %></Name>
+  				<Styles>
+  					<LocalCSS>
+  					self {
+  						font-family: -fm-font-family(<%= options[:font] %>);
+  						font-size: <%= options[:fontSize] %>;
+  					}
+  					</LocalCSS>
+  				</Styles>
+  			</FieldObj>
+  		</Object>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
     {:top => @boundTop, :left => fieldLeft}
@@ -137,36 +123,32 @@ class FMSnippet
     }.merge(options.delete_blank)
     options[:height] ||= options[:fontSize].to_i + 6
     template = %q{
-  <ObjectStyle id="0" fontHeight="" graphicFormat="" fieldBorders="">
-    <CharacterStyle mask="">
-      <Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
-      <Font-size><%= options[:fontSize] %></Font-size>
-      <Face></Face>
-      <Color><%= options[:textColor] %></Color>
-    </CharacterStyle>
-    <ParagraphStyle mask="">
-      <%= "<LeftMargin>#{options[:leftMargin].to_i}</LeftMargin>" if options[:leftMargin] %>
-      <%= "<RightMargin>#{options[:RightMargin].to_i}</RightMargin>" if options[:RightMargin] %>
-      <Justification><%= options[:justification] %></Justification>
-    </ParagraphStyle>
-  </ObjectStyle>
-  <Object type="Text" flags="0" portal="-1" rotation="0">
-    <StyleId>0</StyleId>
-    <Bounds top="<%= options[:top].to_i %>" left="<%= options[:left].to_i %>" bottom="<%= options[:top].to_i + options[:height].to_i %>" right="<%= options[:left].to_i + options[:width].to_i %>"/>
-    <TextObj flags="0">
-      <CharacterStyleVector>
-        <Style>
-          <Data><%= text %></Data>
-          <CharacterStyle mask="">
-            <Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
-            <Font-size><%= options[:fontSize] %></Font-size>
-            <Face></Face>
-            <Color><%= options[:textColor] %></Color>
-          </CharacterStyle>
-        </Style>
-      </CharacterStyleVector>
-    </TextObj>
-  </Object>
+      <Object type="Text" key="" LabelKey="0" name="" flags="0" rotation="0">
+      	<Bounds top="<%= options[:top].to_i %>" left="<%= options[:left].to_i %>" bottom="<%= options[:top].to_i + options[:height].to_i %>" right="<%= options[:left].to_i + options[:width].to_i %>"/>
+      	<TextObj flags="0">
+      		<Styles>
+      			<LocalCSS>
+      			self {
+      				font-size: <%= options[:fontSize] %>;
+      				text-align: <%= options[:justification] %>;
+      				<%= "-fm-paragraph-margin-left: #{options[:leftMargin].to_i};" if options[:leftMargin] %>
+      				<%= "-fm-paragraph-margin-right: #{options[:RightMargin].to_i};" if options[:RightMargin] %>
+      			}
+      			</LocalCSS>
+      		</Styles>
+      		<CharacterStyleVector>
+      			<Style>
+      				<Data>Title</Data>
+      				<CharacterStyle mask="32695">
+      					<Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
+      					<Font-size><%= options[:fontSize] %></Font-size>
+      					<Face>0</Face>
+      					<Color><%= options[:textColor] %></Color>
+      				</CharacterStyle>
+      			</Style>
+      		</CharacterStyleVector>
+      	</TextObj>
+      </Object>
     }.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)

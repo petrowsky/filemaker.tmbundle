@@ -22,7 +22,7 @@
 #
 
 # Handles actions specific to custom functions. Switch out this module to suite your own conventions.
-module FileMaker::FMFunctionCustom
+module FileMaker::FunctionCustom
   
   # here = File.dirname(__FILE__)
   # require "#{here}/comments.rb"
@@ -30,22 +30,22 @@ module FileMaker::FMFunctionCustom
 
   # Parses custom function calculation to generate custom function snippet. Uses predetermined comment format to determine function name and parameters.
   # @param [String] calc Custom Function calculation (including comments documenting name and parameters)
-  # @param [String] prefixToExampleSyntax String that precedes example of custom function's syntax
+  # @param [String] prefixToPrototype String that precedes example of custom function's syntax
   # @example
-  #   %Q{Substitute ( text ; currentDelimiter ; " " )\n//TabDelimit ( text ; currentDelimiter )}.parse_function("Name:")
+  #   parse_function(%Q{Substitute ( text ; currentDelimiter ; " " )\n//Name: TabDelimit ( text ; currentDelimiter )},"Name:")
   # @return [String,nil] XML element generated for custom function. Nil if syntax is unrecognized.
-  def parse_function(calc,prefixToExampleSyntax)
+  def parse_function(calc,prefixToPrototype)
     begin
       string =
-        calc.match(/^\/\*.*?[\n\s]*#{prefixToExampleSyntax}[\s\n]*(.+?)\n/m) ||
-        calc.match(/^\/\/.*?\s*#{prefixToExampleSyntax}\s*(.+?)$/m)
+        calc.match(%r{(?:/\*|//).*?[\n\s]*#{prefixToPrototype}[\s\n]*(.+?)(?:\n|\*/)}m) ||
+        calc.match(%r{//.*?\s*#{prefixToPrototype}\s*(.+?)$}m)
       nameFull = string[1]
       name = nameFull.match(/\s*(.+?)\(|\n/)[1].strip
+      params = nameFull.match(/\((.*?)\)/)[1].gsub(/\s*/,'')
+      self.customFunction(name,params,calc).to_s
     rescue
-      nil
+      raise ArgumentError, "Invalid function. Ensure there's a valid syntax example after '#{prefixToPrototype}'"
     end
-    params = nameFull.match(/\((.*?)\)/)[1].gsub(/\s*/,'')
-    FMSnippet.new.customFunction(name,params,calc).to_s
   end
 
   # Returns calculation with operators and delimiters moved to end of each line
@@ -59,7 +59,6 @@ module FileMaker::FMFunctionCustom
   def append_delims(calculation)
     # Preserve special delimiters like '];' with placeholders
     calculation.gsub!(/^(\s*)\](\s*);(\s*)$/,"\\1::93::\\2::59::\\3")
-
     regex = /^(\s*(?:\/\*.*?\/\*)*)           (?# Leading whitespace and comments)
             ([;&+\-<>≤≥≠^]
             |(?:and|or|not|xor))\s*
@@ -158,6 +157,6 @@ NOTES:
   
 end
 
-class FileMaker
-  include FileMaker::FMFunctionCustom
+module FileMaker
+  include FileMaker::FunctionCustom
 end

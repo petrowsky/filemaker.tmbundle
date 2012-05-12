@@ -23,7 +23,7 @@
 
 require 'erb'
 
-class FMSnippet
+class FileMaker::Snippet
 
   here = File.dirname(__FILE__)
   
@@ -52,7 +52,7 @@ class FMSnippet
   # @param [String] params function parameters
   # @param [String] calculation function calculation
   # @example
-  #   FMSnippet.new.customFunction('TabDelimit','text;currentDelimiter','Substitute ( text ; currentDelimiter ; " " )' )
+  #   Snippet.new.customFunction('TabDelimit','text;currentDelimiter','Substitute ( text ; currentDelimiter ; " " )' )
   def customFunction(name,params,calculation)
     template = %q{
   <CustomFunction id="" functionArity="1" visible="True" parameters="<%= params %>" name="<%= name %>">

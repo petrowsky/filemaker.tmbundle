@@ -15,8 +15,9 @@ require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
 
 text = STDIN.read
 
-doc = FMSnippet.new(text)
-print doc.extract_object_names</string>
+doc = Snippet.new(text)
+print doc.extract_object_names
+</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

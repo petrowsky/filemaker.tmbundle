@@ -91,6 +91,6 @@ module FileMaker::FMScriptCustom
   
 end
 
-class FileMaker
+module FileMaker
   include FileMaker::FMScriptCustom
 end

@@ -14,11 +14,12 @@ require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
 include FileMaker
 
 text = STDIN.read
-calcs = FMSnippet.new(text).extract_calcs
+calcs = Snippet.new(text).extract_calcs
 functions = calcs.reduce([]) do |memo,calc|
   memo.concat(extract_functions(calc))
 end
-puts functions.uniq</string>
+puts functions.uniq
+</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

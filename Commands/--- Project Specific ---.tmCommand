@@ -7,7 +7,7 @@
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>--- Project Specific ---</string>
+	<string>--- FOCUS-Specific ---</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>scope</key>

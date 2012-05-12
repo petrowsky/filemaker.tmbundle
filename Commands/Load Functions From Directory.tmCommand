@@ -51,7 +51,7 @@ end
 
 begin
 
-	doc = FMSnippet.new
+	doc = Snippet.new
 	fileArray.each do |file|
 		text = File.new("#{file}","r").read
 
@@ -64,7 +64,7 @@ begin
 	end
 	
 	# Load to pasteboard
-	result = doc.set_clipboard
+	result = doc.set
 	raise 'Unrecognized function format' if result.nil?
 	
 	# Return feedback
@@ -73,7 +73,8 @@ begin
 rescue
 	puts "Unrecognized function format.\nRun this command on an empty document for instructions."
 
-end</string>
+end
+</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>

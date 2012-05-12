@@ -30,14 +30,15 @@ class Hash
   
 end
 
-class FileMaker
+module FileMaker
   
   PATH_BASE = File.dirname(__FILE__)
   PATH_PASTE = "#{PATH_BASE}/PasteSnippet.applescript"
   PATH_CUSTOM = "#{PATH_BASE}/filemaker/custom"
+  DEBUG_ON = true
   
-  require "#{PATH_BASE}/filemaker/fmcalc.rb"
-  require "#{PATH_BASE}/filemaker/fmsnippet.rb"
+  require "#{PATH_BASE}/filemaker/calc.rb"
+  require "#{PATH_BASE}/filemaker/snippet.rb"
   
   include FMCalc
   
@@ -46,8 +47,9 @@ class FileMaker
   require "#{PATH_BASE}/filemaker/custom/custom_script.rb"
 
   # Clipboard interaction
-  require "#{PATH_BASE}/clipboard.rb"
+  require "#{PATH_BASE}/filemaker/clipboard.rb"
+  
+  # Help
+  require "#{PATH_BASE}/filemaker/help.rb"
   
 end
-
-FileMaker::FMScriptCustom::param_extract('-this')

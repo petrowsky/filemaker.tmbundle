@@ -33,7 +33,7 @@ print text</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Array to Hash Set</string>
+	<string>Array to Hash Set**</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>scope</key>

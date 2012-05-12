@@ -40,6 +40,12 @@
 			</dict>
 			<dict>
 				<key>name</key>
+				<string>TM_PATH_COMMANDS</string>
+				<key>value</key>
+				<string>/commands.cmds</string>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>TM_PATH_SNIPPET</string>
 				<key>value</key>
 				<string>/lib/filemaker/fmsnippet.rb</string>

@@ -11,14 +11,20 @@
 #	Given fmxmlsnippet of layout objects, extracts all CSS. Recommend using this with only one object.
 #
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
+load ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_COMMANDS']
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
+include TextMate
 
 text = STDIN.read
+command = :extract_css
 
-delim = "\n-------------\n"
+if text.empty?
+	exit_show_html(Commands.documentation(command).to_html)
+end
 
-doc = FMSnippet.new(text)
-print doc.extract_object_css.join(delim)</string>
+puts Commands.call(command,text)
+</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

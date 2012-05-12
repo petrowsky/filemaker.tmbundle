@@ -12,64 +12,21 @@
 #
 # USAGE
 #	Instructions printed when input is empty.
-#	See documentation section below.
-#
-# FIXME Clipboard doesn't have correct text
 #
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
+load ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_COMMANDS']
 $LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
 require 'exit_codes.rb'
+include TextMate
 
 text = STDIN.read
+command = :array_to_fields
 
-# Documentation
 if text.empty?
-	tips = ENV['TM_DOC_TIPS']
-	puts &lt;&lt;EOF
-DESCRIPTION:
-	Generates FileMaker snippet of Fields (to be pasted into any table).
-	Uses selected text or entire document.
-
-EXAMPLE USAGE:
-	Select the lines below and run the command again to see it work.
-
-NameFirst
-NameLast
-Global	Number	True	Comment for field	10
-Name_FL	Text	False	E.g., John Smith	1	CONTACT::NameFirst &amp; CONTACT::NameLast
-
-PARAMETERS:
-	col1 = field name (Fully qualified)
-	col2 = field type (optional. Default = Text)
-	col3 = is global? (optional. True = Global field. Default = False)
-	col4 = comment (optional)
-	col5 = max repetitions (optional)
-	col6 = calculation (optional)
-
-TIPS:
-#{tips}
-EOF
-	TextMate.exit_replace_text
+	exit_show_html(Commands.documentation(command).to_html)
 end
 
-# Generate Fields
-doc = FMSnippet.new
-text.split(/\n/).each do |row|
-	col = row.split(/\t/)
-	name = col[0]
-	isGlobal = col[2] || false
-	arg = {
-		:type		=&gt; col[1],
-		:isGlobal		=&gt; isGlobal,
-		:comment		=&gt; col[3],
-		:repetitions	=&gt; col[4],
-		:calculation	=&gt; col[5]
-	}
-	doc.field(name,arg)
-end
-
-print doc</string>
+puts Commands.call(command,text)</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

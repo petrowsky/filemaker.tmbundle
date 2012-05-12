@@ -5,26 +5,29 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/bin/bash
+	<string>#!/usr/bin/ruby
 #
-# PURPOSE:
+# DESCRIPTION:
 #	Builds substitute statement from tab-delim array
 #
-# EXAMPLE:
-#	For format:	col1     col2     col3
-#	Returns:		[ "col1"	; "col2" ] ; // col3
-#
-# TODO Make third column optional
-# TODO Don't add enclosing paren if text was selected
-#
 
-body=`sed 's/\(.*\)	\(.*\)\	\(.*\)/	\[ "\1"	; "\2" \] ;	\/\/ \3/'`
+load ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_COMMANDS']
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
+include TextMate
 
-echo -n -e "Substitute ( \${1:text}\n${body}\n)"</string>
+text = STDIN.read
+command = :array_to_substitute
+
+if text.empty?
+	exit_show_html(Commands.documentation(command).to_html)
+end
+
+print Commands.call(command,text)</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Array to Substitute Statement*</string>
+	<string>Array to Substitute Statement</string>
 	<key>output</key>
 	<string>insertAsSnippet</string>
 	<key>scope</key>
