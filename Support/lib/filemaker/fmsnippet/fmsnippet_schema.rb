@@ -26,8 +26,6 @@ class FileMaker::Snippet
   here = File.dirname(__FILE__)
   require 'erb'
   require 'rexml/document'
-  # require "#{here}/fmcalc.rb"
-  # include FMCalc
 
   # Constructs Field and appends to @text
   # @param [String] name name of field (fully qualified)

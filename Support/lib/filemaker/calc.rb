@@ -22,7 +22,7 @@
 #
 
 # Manipulates FileMaker calculations
-module FMCalc
+module FileMaker::Calc
   
   # here = File.dirname(__FILE__)
   # require "#{here}/comments.rb"
@@ -46,26 +46,6 @@ module FMCalc
   # @return [Array] Names of functions in text
   def extract_functions(text)
     text.to_s.scan(/[#a-zA-Z\._-]+?(?=\s*\()/)
-  end
-
-  # Generates custom function snippet from FileMaker calculation
-  # @param [String] prefixToExampleSyntax String that precedes example of custom function's syntax
-  # @example
-  #   %Q{Substitute ( text ; currentDelimiter ; " " )\n//TabDelimit ( text ; currentDelimiter )}.parse_function("Name:")
-  # @return [String,nil] XML element generated for custom function. Nil if syntax is unrecognized.
-  def parse_function(prefixToExampleSyntax)
-    calc = self.to_s
-    begin
-      string =
-        calc.match(/^\/\*.*?[\n\s]*#{prefixToExampleSyntax}[\s\n]*(.+?)\n/m) ||
-        calc.match(/^\/\/.*?\s*#{prefixToExampleSyntax}\s*(.+?)$/m)
-      nameFull = string[1]
-      name = nameFull.match(/\s*(.+?)\(/)[1].strip
-      params = nameFull.match(/\((.*?)\)/)[1].gsub(/\s*/,'')
-      Snippet.new.customFunction(name,params,calc).to_s
-    rescue
-      nil
-    end
   end
 
   # Parses fully qualified field name to return table occurrence
@@ -92,69 +72,6 @@ module FMCalc
     else
       fieldName
     end
-  end
-
-  # Delimiter prepended to parameters in script names and documentation to indicate they're optional
-  $paramDelimOptional = "-"
-  # Delimiter used in script names and documentation to indicate "or" relationship between parameters
-  $paramDelimOr = "|"
-
-  # Provides default mapping between string and local variable
-  # @param [String] name Variable name
-  # @return [String] Full variable name
-  # @example
-  #   puts param_to_var('contact') # => '$_contact'
-  def param_to_var(name)
-    return "$_#{name}"
-  end
-
-  # Returns default calculation for extracting script parameters
-  # @param [String] name Name of FileMaker script parameter
-  # @return [String] FileMaker calculation used to extract parameter. Strips optionality indicator declared in $paramDelimitOptional.
-  # @example
-  #   puts param_extract('-id') # => '#P ( "ID" )'
-  def param_extract(name)
-    return '#P ( "' + param_clean(name).upcase + '" )'
-  end
-
-  # Returns true if named script parameter is optional
-  # @param [String] name Name of parameter (including optionality indicator prefix defined in $paramDelimOptional)
-  # @return [true, false]
-  def param_is_optional(name)
-    name.start_with?($paramDelimOptional)
-  end
-
-  # Strips extraneous indicators from parameter name
-  # @param [String] name Name of parameter (including optionality indicator prefix defined in $paramDelimOptional)
-  def param_clean(name)
-    return nil if !name
-    res = name.dup
-    res.slice!(/#{$paramDelimOptional}/u)
-    res
-  end
-
-  # Returns array of script parameters from string
-  # @param [String] scriptName String containing script input parameters
-  # @return [Array] Each input parameter
-  # @example
-  #   scriptName = 'script ( param1 ; -optionalParam ) : output'
-  #   puts parse_params(scriptName) # => '["param1","-optionalParam"]'
-  def parse_params(scriptName)
-    params = scriptName.match(/\((.+)\)/)
-    return nil unless params
-    params[1].split(/;/).map{|x| x.strip}
-  end
-  
-  # Returns array of script result parameters in text
-  # @param [String] scriptName String containing result parameters
-  # @return [Array] Each output parameter
-  # @example
-  #   scriptName = 'script ( param1 ; -optionalParam ) : output'
-  #   puts parse_results(scriptName) # => '["output"]'
-  def parse_results(scriptName)
-    params = scriptName.match(/:(.*$)/)
-    return nil unless params
-    params[1].split(/;/).map{|x| x.strip}
   end
 
   # Returns calculation with operators and delimiters moved to end of each line
@@ -200,8 +117,6 @@ module FMCalc
     calculation.gsub('::93::',']').gsub('::59::',';')
   end
 
-
-  
   # Returns calculation with operators and delimiters moved to begining of each line
   # @param [String] calculation
   # @return [String] Calculation with operators and delimiters moved to begining of each line
@@ -253,19 +168,40 @@ module FMCalc
     return "List (\n  #{calculation}\n)"
   end
   
-  # Stub currently just used for testing and documentation
-  def function_example
-    %Q{
-number ^ 2
-
-/* ---------------------------------- //
-NAME:
-\tsquared ( number )
-
-NOTES:
-\tThe important part is to prepend your syntax example with "NAME:"
-
-*/}
+  # Escapes and quotes text for use as literal string in FileMaker
+  def self.quote(text)
+    text.gsub!(/"/,'\\"')
+    text.gsub!(/\\/,'\\')
+    text.gsub!(/¶/,'\\¶')
+    '"' + text + '"'
   end
+  
+  # Converts literal text into List( ) statement. Ensures blank lines are preserved exactly.
+  # @example
+  #   string_to_list("Oakland\n\nPortland") # => "List (\n\t\"Oakland\" & ¶ ;\n\t\"Portland\"\n)"
+  def self.string_to_list(text)
+    lines = []
+    text.split(/\n/).each_with_index do |line,index|
+      if line.empty?
+        lines[index-1] += ' & ¶'
+      else
+        lines << quote(line)
+      end
+    end
+    %Q!List (\n\t#{lines.join(" ;\n\t")}\n)!
+  end
+  
+  # Converts literal text into List( ) statement. Adds space to blank lines so that List( ) function reads cleanly.
+  # @example
+  #   string_to_list_readable("Oakland\n\nPortland") # => "List (\n\t\"Oakland\" ;\n\t" " ;\n\t"Portland\"\n)"
+  def self.string_to_list_readable(text)
+    lines = []
+    text.split(/\n/).each_with_index do |line,index|
+      line = ' ' if line.empty?
+      lines << quote(line)
+    end
+    %Q!List (\n\t#{lines.join(" ;\n\t")}\n)!
+  end
+  
   
 end

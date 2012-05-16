@@ -28,8 +28,6 @@ class FileMaker::Snippet
   here = File.dirname(__FILE__)
   
   require 'rexml/document'
-  # require "#{here}/fmcalc.rb"
-  # include FMCalc
 
   # Constructs comment script step and appends to @text
   # @param [optional, String] text text for comment

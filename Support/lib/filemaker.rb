@@ -35,12 +35,12 @@ module FileMaker
   PATH_BASE = File.dirname(__FILE__)
   PATH_PASTE = "#{PATH_BASE}/PasteSnippet.applescript"
   PATH_CUSTOM = "#{PATH_BASE}/filemaker/custom"
-  DEBUG_ON = true
+
+  # Change to 'true' to see backtrace with error messages
+  DEBUG_ON = false
   
   require "#{PATH_BASE}/filemaker/calc.rb"
   require "#{PATH_BASE}/filemaker/snippet.rb"
-  
-  include FMCalc
   
   # Customizations
   require "#{PATH_BASE}/filemaker/custom/custom_function.rb"
