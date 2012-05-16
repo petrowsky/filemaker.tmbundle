@@ -18,12 +18,13 @@ require 'exit_codes.rb'
 include TextMate
 
 text = STDIN.read
+command = :load_function
 
 if text.empty?
-	exit_show_html(Commands.documentation(:load_function).to_html)
+	exit_show_html(Commands.documentation(command).to_html)
 end
 
-Commands.call(:load_function,text,'NAME:')</string>
+puts Commands.call(command,text,ENV['TM_FUNCTION_EXAMPLE_LABEL'])</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>
@@ -31,7 +32,7 @@ Commands.call(:load_function,text,'NAME:')</string>
 	<key>name</key>
 	<string>Load Function as Snippet</string>
 	<key>output</key>
-	<string>openAsNewDocument</string>
+	<string>showAsTooltip</string>
 	<key>scope</key>
 	<string>source.filemaker</string>
 	<key>uuid</key>

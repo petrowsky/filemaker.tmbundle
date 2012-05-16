@@ -137,7 +137,7 @@ module FileMaker::FunctionCustom
   def to_list(calculation)
     return '' unless calculation
     calculation.gsub!(/&\s*$/,";")
-    return "List (\n  #{calculation}\n)"
+    "List (\n  #{calculation}\n)"
   end
   
   # Stub currently just used for testing and documentation

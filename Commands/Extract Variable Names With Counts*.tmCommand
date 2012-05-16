@@ -8,12 +8,16 @@
 	<string>#!/usr/bin/ruby
 #
 # TODO Prevent counting of a variable more than once
-#		text.scan( "#{x}\b" ) does NOT work
+#		text.scan( /#{x}\b/ ) does NOT work
 #
 
 text = STDIN.read
 
-text = text.scan(/\$[_a-zA-Z]+/).sort.uniq!.each { |x| print text.scan("#{x}").size, "\t", x, "\n" }</string>
+res = {}
+text.scan(/\${1,2}[_a-zA-Z]+/).sort.uniq.each do |x|
+  res[x] = text.scan("#{x}").size
+end
+res.sort_by{|key,value| value}.reverse.each{|item| print "#{item[1]}\t#{item[0]}\n"}</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

@@ -74,7 +74,7 @@ doc.elements.each("//DDRInfo/Field") { |e|
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Extract Field Metadata</string>
+	<string>Extract Field Metadata**</string>
 	<key>output</key>
 	<string>openAsNewDocument</string>
 	<key>uuid</key>

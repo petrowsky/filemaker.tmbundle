@@ -15,7 +15,8 @@ text = STDIN.read
 text.gsub!(/\\"/u,'"')
 
 # Remove leading and trailing quote
-text.chomp!('"').text.slice!('"')
+text.chomp!('"')
+text.slice!('"')
 
 # Undo concatenate lines
 text.gsub!(/" &amp; ¶ &amp;(\n)"/,'\1')

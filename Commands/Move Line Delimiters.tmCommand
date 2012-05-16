@@ -11,12 +11,19 @@
 #	Moves delimiter/operator to begining of each line of calculation
 #
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_SNIPPET']
-include FileMaker
+load ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_COMMANDS']
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
+include TextMate
 
 text = STDIN.read
+command = :move_delimiters_to_beginning
 
-print prepend_delims(text)</string>
+if text.empty?
+	exit_show_html(Commands.documentation(command).to_html)
+end
+
+print Commands.call(command,text)</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

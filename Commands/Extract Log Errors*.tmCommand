@@ -46,7 +46,7 @@ print result
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Extract Errors</string>
+	<string>Extract Errors**</string>
 	<key>output</key>
 	<string>openAsNewDocument</string>
 	<key>scope</key>

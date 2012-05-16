@@ -6,20 +6,20 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/ruby
-#
-# DESCRIPTION
-#	Extracts FileMaker calcluations from fmxmlsnippet
-#
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
+load ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_COMMANDS']
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
+include TextMate
 
 text = STDIN.read
+command = :extract_calculations
 
-delim = "\n-------------\n"
+if text.empty?
+	exit_show_html(Commands.documentation(command).to_html)
+end
 
-doc = Snippet.new(text)
-print doc.extract_calcs.join(delim)
-</string>
+print Commands.call(command,text)</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

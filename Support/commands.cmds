@@ -122,10 +122,9 @@ command :load_function do |text,prefixToPrototype|
     doc = FileMaker::Snippet.new
     calc = doc.parse_function(text,prefixToPrototype)
     result = FileMaker::Clipboard.set(doc)
-    puts "Function ready to paste into FileMaker"
+    "Function ready to paste into FileMaker"
   rescue Exception => e
-  	puts "Unrecognized function format.\nRun this command on an empty document for instructions."
-  	puts return_error(e)
+  	"Unrecognized function format.\nRun this command on an empty document for instructions.\n" + return_error(e)
   end
 end
 

@@ -28,8 +28,6 @@ class FileMaker::Snippet
   here = File.dirname(__FILE__)
   
   require 'rexml/document'
-  # require "#{here}/fmcalc.rb"
-  # include FMCalc
 
   # Returns array of calculations in fmxmlsnippet
   def extract_calcs
@@ -60,6 +58,10 @@ class FileMaker::Snippet
   </CustomFunction>}.gsub(/^\s*%/, '%')
     tpl = ERB.new(template, 0, '%<>')
     @text << tpl.result(binding)
+  end
+
+  def self.customFunction?(text)
+    text =~ /<CustomFunction\b/ ? true : false
   end
     
 end

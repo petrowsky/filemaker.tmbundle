@@ -6,57 +6,20 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/ruby
-#
-# DESCRIPTION
-#	See documentation section below.
-#
-# USAGE
-#	Instructions printed when input is empty.
-#	See documentation section below.
-#
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
+load ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_COMMANDS']
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
+include TextMate
 
 text = STDIN.read
+command = :array_to_set_variable
 
-# Documentation
 if text.empty?
-	tips = ENV['TM_DOC_TIPS']
-	puts &lt;&lt;EOF
-DESCRIPTION
-	Generates FileMaker snippet of Set Variable script steps.
-	Uses selected text or entire document.
-
-EXAMPLE USAGE:
-	Select the lines below and run the command again to see it work.
-
-$_local\tGet ( AccountName )
-$$_global\t"CONTACT"\t23
-
-PARAMETERS:
-	col1 = variable name
-	col2 = calculation
-	col3 = variable repetition (optional)
-
-TIPS:
-#{tips}
-EOF
-	exit
+	exit_show_html(Commands.documentation(command).to_html)
 end
 
-# Create steps
-doc = Snippet.new
-text.split(/\n/).each { |row| 
-	col = row.split(/\t/)
-	name = col[0]
-	calc = col[1]
-	rep = col[2]
-	rep ||= 1
-	doc.stepSetVariable(name,rep,calc)
-}
-
-print doc
-</string>
+print Commands.call(command,text)</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

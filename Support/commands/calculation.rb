@@ -212,3 +212,190 @@ command :ampersand_to_list do |text|
     return_error(e)
   end
 end
+
+desc "Converts literal text into List( ) statement, ensuring blank lines are preserved exactly."
+doc %Q{
+## Quote Lines in List( )
+
+### Description
+Converts literal text into List( ) statement, ensuring blank lines are preserved exactly.
+
+### Example Usage
+Copy the lines below into a document and run the command again to see it work.
+
+#### Input:
+
+~~~~
+Oakland¶SF
+
+Portland
+~~~~
+
+#### Output:
+
+~~~~
+List (
+  "Oakland\¶SF" & ¶ ;
+  "Portland"
+)
+~~~~
+
+}
+command :quote_lines_in_list do |text|
+  begin
+    FileMaker::Calc.string_to_list(text)
+  rescue => e
+    return_error(e)
+  end
+end
+
+desc "Converts literal text into List( ) statement, adding space to blank lines so that List( ) function reads cleanly."
+doc %Q{
+## Quote Lines in List( ) Readable
+
+### Description
+Converts literal text into List( ) statement. Adds space to blank lines so that List( ) function reads cleanly."
+
+### Example Usage
+Copy the lines below into a document and run the command again to see it work.
+
+#### Input:
+
+~~~~
+Oakland¶SF
+
+Portland
+~~~~
+
+#### Output:
+
+~~~~
+List (
+  "Oakland\¶SF" ;
+  " " ;
+  "Portland"
+)
+~~~~
+
+}
+command :quote_lines_in_list_readable do |text|
+  begin
+    FileMaker::Calc.string_to_list_readable(text)
+  rescue => e
+    return_error(e)
+  end
+end
+
+desc "Moves delimiters to beginning of lines"
+doc %Q{
+## Move Delimiters to Beginning of Lines
+
+### Description
+Moves delimiters to beginning of lines
+
+### Example Usage
+Copy the lines below into a document and run the command again to see it work.
+
+#### Input:
+
+~~~~
+Let ( [
+  city = "Oakland" ;
+  state = "CA" ;
+  population =
+    390724 +
+    1
+  ] ;
+  If (
+    city = "SF" or
+    city = "Oakland" ;
+      state &
+      city
+  )
+)
+~~~~
+
+#### Output:
+
+~~~~
+Let ( [
+  city = "Oakland"
+  ; state = "CA"
+  ; population =
+    390724
+    + 1
+  ] ;
+  If (
+    city = "SF"
+    or city = "Oakland"
+      ; state
+      & city
+  )
+)
+~~~~
+  
+}
+command :move_delimiters_to_beginning do |text|
+  begin
+    FileMaker::Calc.prepend_delims(text)
+  rescue => e
+    return_error(e)
+  end
+end
+
+desc "Moves delimiters to beginning of lines"
+doc %Q{
+## Move Delimiters to Beginning of Lines
+
+### Description
+Moves delimiters to beginning of lines
+
+### Example Usage
+Copy the lines below into a document and run the command again to see it work.
+
+#### Input:
+
+~~~~
+Let ( [
+  city = "Oakland"
+  ; state = "CA"
+  ; population =
+    390724
+    + 1
+  ] ;
+  If (
+    city = "SF"
+    or city = "Oakland"
+      ; state
+      & city
+  )
+)
+~~~~
+
+#### Output:
+
+~~~~
+Let ( [
+  city = "Oakland" ;
+  state = "CA" ;
+  population =
+    390724 +
+    1
+  ] ;
+  If (
+    city = "SF" or
+    city = "Oakland" ;
+      state &
+      city
+  )
+)
+~~~~
+  
+}
+command :move_delimiters_to_end do |text|
+  begin
+    FileMaker::Calc.append_delims(text)
+  rescue => e
+    return_error(e)
+  end
+end

@@ -25,7 +25,7 @@ print text</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
-	<string>Quoted and Appended Lines to Block</string>
+	<string>Convert Quoted and Appended Lines to Block</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>scope</key>

@@ -6,10 +6,6 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/ruby
-#
-# DESCRIPTION
-#	See documentation section below.
-#
 
 load ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_COMMANDS']
 $LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"

@@ -6,68 +6,20 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/ruby
-#
-# DESCRIPTION
-#	See documentation section below.
-#
-# USAGE
-#	Instructions printed when input is empty.
-#	See documentation section below.
-#
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
-
-# Settings (can be changed to parameters if needed)
-suppressDialog = true
+load ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_COMMANDS']
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
+include TextMate
 
 text = STDIN.read
+command = :array_to_sort
 
-# Documentation
 if text.empty?
-	tips = ENV['TM_DOC_TIPS']
-	puts &lt;&lt;EOF
-DESCRIPTION:
-	Generates FileMaker snippet of Sort script steps.
-	Dialogs are suppressed by default.
-	Uses selected text or entire document.
-
-EXAMPLE:
-	Select the lines below and run the command again to see it work.
-
-CONTACT::NAME \t Descending =&gt; Sort Records [Restore; No Dialog]
-
-EXAMPLE USAGE:
-	Select the lines below and run the command again to see it work.
-
-CONTACT::Name_Last\tdescending
-CONTACT::Name_First\tascending
-
-PARAMETERS:
-	col1 = table::field
-	col2 = sort direction (optional) [ascending|descending]
-
-TIPS:
-#{tips}
-EOF
-	exit
+	exit_show_html(Commands.documentation(command).to_html)
 end
 
-# Generate Fields
-doc = Snippet.new
-text.split(/\n\n/).each { |chunk|
-  arg = []
-  chunk.split(/\n/).each { |row|
-    col = row.split(/\t/)
-    arg &lt;&lt; {
-      :field      =&gt; col[0],
-      :direction  =&gt; col[1] || 'Ascending'
-    }
-  }
-  doc.stepSort(arg)
-}
-
-print doc
-</string>
+print Commands.call(command,text)</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>

@@ -6,20 +6,20 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/ruby
-#
-# DESCRIPTION
-#	Given fmxmlsnippet, extracts names and parameters of FileMaker custom functions.
-#
 
-require ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_FILEMAKER']
+load ENV['TM_BUNDLE_SUPPORT'] + ENV['TM_PATH_COMMANDS']
+$LOAD_PATH &lt;&lt; "#{ENV['TM_SUPPORT_PATH']}/lib"
+require 'exit_codes.rb'
+include TextMate
 
 text = STDIN.read
+command = :extract_function_names
 
-delim = "\n-------------\n"
+if text.empty?
+	exit_show_html(Commands.documentation(command).to_html)
+end
 
-doc = Snippet.new(text)
-print doc.extract_functions.join(delim)
-</string>
+print Commands.call(command,text)</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>name</key>
