@@ -28,12 +28,14 @@ require 'kramdown.rb'
 
 module Commands
   
+  attr_reader :commands
+  
   def self.desc(description)
     @next_desc = description
   end
   
   def self.doc(documentation)
-    @next_doc = documentation
+    @next_doc = process_doc(documentation)
   end
   
   def self.command(name, &blk)
@@ -41,7 +43,7 @@ module Commands
     @commands[name] = {
       :block => blk,
       :description => Kramdown::Document.new(@next_desc),
-      :documentation => Kramdown::Document.new(@next_doc)
+      :documentation => Kramdown::Document.new(@next_doc, :coderay_tab_width => 4)
     }
   end
   
@@ -55,6 +57,17 @@ module Commands
   
   def self.documentation(name)
     @commands[name][:documentation]
+  end
+  
+  def self.process_doc(documentation)
+    return '' unless documentation
+    convert_tabs(documentation,2)
+  end
+  
+  private
+  
+  def self.convert_tabs(text,tab_width)
+    text.gsub(/^( {2})+/) { |spaces| "\t" * (spaces.length / tab_width) }
   end
   
 end
