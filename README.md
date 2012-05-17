@@ -8,6 +8,8 @@ This project was forked from a simpler version by Matt Petrowsky. His bundle was
 
 For more information, please see the help file. You can access that in the bundle menu or in the support folder.
 
+Sublime Text 2 users, see the [alternative branch](https://github.com/DonovanChan/filemaker.tmbundle/tree/SublimeText2).
+
 ## Features
 
 * Tab triggers for FileMaker functions
@@ -23,6 +25,7 @@ For more information, please see the help file. You can access that in the bundl
 	* FileMaker Log
 * Code folding
 * Help section
+* Full documention on most commands (displayed when running command with empty input)
 
 ## Installation
 
@@ -50,8 +53,13 @@ The TextMate 2 pre-release stores bundles in a different place, however:
 	cd ~/Library/Application\ Support/Avian/Bundles
 	git clone git://github.com/DonovanChan/filemaker.tmbundle.git "FileMaker.tmbundle"
 
+## Contact
+
+Donovan Chandler  
+Beezwax Datatools, Inc.  
+donovan_c@beezwax.net  
+
 ## History
 
-Original bundle by Charles Ross, puvinyel@znp.pbz
-
+Original bundle by Charles Ross, puvinyel@znp.pbz  
 Forked 3/12/11 by Donovan Chandler from Matt Petrowsky
