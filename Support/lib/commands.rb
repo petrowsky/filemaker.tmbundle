@@ -67,7 +67,8 @@ module Commands
   private
   
   def self.convert_tabs(text,tab_width)
-    text.gsub(/^( {2})+/) { |spaces| "\t" * (spaces.length / tab_width) }
+    # text.gsub(/^( {2})+/) { |spaces| "\t" * (spaces.length / tab_width) }
+    text.gsub(/(?:^|\G) {#{tab_width}}/m,"\t")
   end
   
 end
