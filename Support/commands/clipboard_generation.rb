@@ -192,17 +192,20 @@ command :array_to_layout_fields_labeled do |paramArray|
     doc = Snippet.new
     paramArray.split(/\n/).each do |row|
     	col = row.split(/\t/)
+      fontSize = col[4]
+      fieldHeight = fontSize ? fontSize.to_i + 10 : 22
     	fieldOpt = {
     		:fieldQualified  => col[0],
     		:tooltip         => col[2],
     		:font            => col[3],
-    		:fontSize        => col[4],
+    		:fontSize        => fontSize,
     		:objectName      => col[5],
-    		:fieldHeight     => 18,
+        :fieldHeight     => fieldHeight,
     		:fieldWidth      => 120,
-    		:verticalSpacing => 20
+    		:verticalSpacing => fieldHeight
     	}
-    	labelText = col[1] || FileMaker::Calc.field_name(col[0])
+    	labelText = col[1]
+      labelText = FileMaker::Calc.field_name(col[0]) if labelText.nil? || labelText.empty?
     	doc.layoutFieldWithLabel(fieldOpt,labelText)
     end
     doc

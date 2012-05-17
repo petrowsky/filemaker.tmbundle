@@ -30,6 +30,12 @@ class Hash
   
 end
 
+def Boolean(text)
+  return true if text == true || text =~ (/^(true|t|yes|y|1)$/i)
+  return false if text == false || text.nil? || text =~ (/^(false|f|no|n|0)$/i)
+  raise ArgumentError.new(%q{invalid value for Boolean: "#{text}"})
+end
+
 module FileMaker
   
   PATH_BASE = File.dirname(__FILE__)
@@ -37,7 +43,7 @@ module FileMaker
   PATH_CUSTOM = "#{PATH_BASE}/filemaker/custom"
 
   # Change to 'true' to see backtrace with error messages
-  DEBUG_ON = false
+  DEBUG_ON = Boolean(ENV['TM_DEBUG_ON']) || false
   
   require "#{PATH_BASE}/filemaker/calc.rb"
   require "#{PATH_BASE}/filemaker/snippet.rb"

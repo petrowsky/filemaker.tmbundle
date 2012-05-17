@@ -66,7 +66,7 @@ class FileMaker::Snippet
       :fontSize     => 12,
       :fieldWidth   => 120
     }.merge(options.delete_blank)
-    options[:fieldHeight] ||= options[:fontSize] + 6
+    options[:fieldHeight] ||= options[:fontSize].to_i + 10
     fieldLeft = 10
     verticalSpacing = options[:verticalSpacing] || options[:fieldHeight] + 2
     @boundTop += verticalSpacing
@@ -121,7 +121,7 @@ class FileMaker::Snippet
       :textColor    => '#000000',
       :width        => 120
     }.merge(options.delete_blank)
-    options[:height] ||= options[:fontSize].to_i + 6
+    options[:height] ||= options[:fontSize].to_i + 10
     template = %q{
       <Object type="Text" key="" LabelKey="0" name="" flags="0" rotation="0">
       	<Bounds top="<%= options[:top].to_i %>" left="<%= options[:left].to_i %>" bottom="<%= options[:top].to_i + options[:height].to_i %>" right="<%= options[:left].to_i + options[:width].to_i %>"/>
