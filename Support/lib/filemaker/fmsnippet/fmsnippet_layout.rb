@@ -54,8 +54,8 @@ class FileMaker::Snippet
     @boundTop = 0 if @boundTop.nil?
     fieldQualified = options[:fieldQualified]
     if fieldQualified
-      table = field_table(fieldQualified)
-      field = field_name(fieldQualified)
+      table = FileMaker::Calc.field_table(fieldQualified)
+      field = FileMaker::Calc.field_name(fieldQualified)
     else
       table = options[:table]
       field = options[:field]
@@ -138,7 +138,7 @@ class FileMaker::Snippet
       		</Styles>
       		<CharacterStyleVector>
       			<Style>
-      				<Data>Title</Data>
+      				<Data><%= text %></Data>
       				<CharacterStyle mask="32695">
       					<Font-family codeSet="" fontId=""><%= options[:font] %></Font-family>
       					<Font-size><%= options[:fontSize] %></Font-size>

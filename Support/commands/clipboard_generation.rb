@@ -181,7 +181,7 @@ Contacts::Title\t\tSelf\tHelvetica\t14pt
 | Column  | Definition    | Default Value | Required? |
 |:--------|:--------------|:--------------|:----------|
 | 1 | fully qualified field name  | | Yes  |
-| 2	| field label	| | No	|
+| 2	| field label	| field name from col 1 | No	|
 | 3	| tooltip	| | No	|
 | 4	| font	| | No	|
 | 5	| fontSize  | | No	|
@@ -190,7 +190,7 @@ Contacts::Title\t\tSelf\tHelvetica\t14pt
 command :array_to_layout_fields_labeled do |paramArray|
   begin
     doc = Snippet.new
-    paramArray.split(/\n/).each { |row|
+    paramArray.split(/\n/).each do |row|
     	col = row.split(/\t/)
     	fieldOpt = {
     		:fieldQualified  => col[0],
@@ -202,9 +202,9 @@ command :array_to_layout_fields_labeled do |paramArray|
     		:fieldWidth      => 120,
     		:verticalSpacing => 20
     	}
-    	labelText = col[1]
+    	labelText = col[1] || FileMaker::Calc.field_name(col[0])
     	doc.layoutFieldWithLabel(fieldOpt,labelText)
-    }
+    end
     doc
   rescue => e
     return_error(e)

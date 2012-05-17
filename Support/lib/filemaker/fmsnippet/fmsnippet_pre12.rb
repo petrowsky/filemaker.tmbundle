@@ -54,8 +54,8 @@ class FileMaker::Snippet::Pre12
     @boundTop = 0 if @boundTop.nil?
     fieldQualified = options[:fieldQualified]
     if fieldQualified
-      table = field_table(fieldQualified)
-      field = field_name(fieldQualified)
+      table = FileMaker::Calc.field_table(fieldQualified)
+      field = FileMaker::Calc.field_name(fieldQualified)
     else
       table = options[:table]
       field = options[:field]

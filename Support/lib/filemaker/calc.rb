@@ -31,7 +31,7 @@ module FileMaker::Calc
   # Coerces string into boolean.
   # @param [String] string String to coerce into boolean
   # @return [true, false] Defaults to true unless string = (false|f|no|0)
-  def Boolean(string)
+  def self.Boolean(string)
     string = string.to_s
     case string
       when /^(false|f|no|0)$/i
@@ -53,7 +53,7 @@ module FileMaker::Calc
   # @return [String] Name of table occurrence
   # @example
   #   puts field_table('CONTACT_PARENT::NAME') # =>  'CONTACT_PARENT'
-  def field_table(fieldName)
+  def self.field_table(fieldName)
     fieldName = fieldName.to_s
     if fieldName.include?("::")
       fieldName.split(/::/)[0]
@@ -65,7 +65,7 @@ module FileMaker::Calc
   # @return [String] Name of field
   # @example
   #   puts field_name('CONTACT::NAME') # => 'NAME'
-  def field_name(fieldName)
+  def self.field_name(fieldName)
     fieldName = fieldName.to_s
     if fieldName.include?("::")
       fieldName.split(/::/)[1]

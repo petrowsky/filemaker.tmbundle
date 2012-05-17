@@ -135,8 +135,8 @@ class FileMaker::Snippet
   def stepSetField(options={})
     # options = { :repetition => 2 }.merge(options)
     fieldQualified = options[:fieldQualified]
-    table = options[:table] ||= field_table(fieldQualified)
-    field = options[:field] ||= field_name(fieldQualified)
+    table = options[:table] ||= FileMaker::Calc.field_table(fieldQualified)
+    field = options[:field] ||= FileMaker::Calc.field_name(fieldQualified)
     repetition = options[:repetition]
 
     # @todo Fix: Repetition element being created for number reps
@@ -196,8 +196,8 @@ class FileMaker::Snippet
       % fieldArray.each do |field_cur|
         % direction = field_cur[:direction] || "Ascending"
         % fieldQualified = field_cur[:field]
-        % table = field_table(fieldQualified)
-        % name = field_name(fieldQualified)
+        % table = FileMaker::Calc.field_table(fieldQualified)
+        % name = FileMaker::Calc.field_name(fieldQualified)
         <Sort type="<%= direction.capitalize %>">
           <PrimaryField>
             <Field table="<%= table %>" id="" name="<%= name %>"/>
