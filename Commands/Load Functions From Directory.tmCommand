@@ -20,15 +20,10 @@ include TextMate
 
 # Use files selected in project window, if multiple selected
 # Else, prompt for files
-fileArray = ENV['TM_SELECTED_FILES'].split("' '")
-if fileArray.length &gt; 1
-	fileArray.map{|x| x.gsub!(/'/,'') }
-else
-	fileArray = UI::request_files({"text" =&gt; "Select files containing custom functions you'd like loaded to the clipboard"})
-end
+fileArray = ENV['TM_SELECTED_FILES']
 
 # Documentation
-unless fileArray.length &gt; 0
+if fileArray.nil?
 	text = &lt;&lt;EOF
 No files selected.
 
@@ -47,6 +42,13 @@ NOTES:
 EOF
 	puts text
 	TextMate.exit_replace_text
+end
+
+fileArray = fileArray.split("' '")
+if fileArray.length &gt; 1
+	fileArray.map{|x| x.gsub!(/'/,'') }
+else
+	fileArray = UI::request_files({"text" =&gt; "Select files containing custom functions you'd like loaded to the clipboard"})
 end
 
 begin

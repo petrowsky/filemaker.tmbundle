@@ -148,7 +148,7 @@ command :array_to_layout_fields_labeled_11 do |paramArray|
     		:fieldWidth      => 120,
     		:verticalSpacing => 20
     	}
-    	labelText = col[1]
+    	labelText = col[1] || FileMaker::Calc.field_name(col[0])
     	doc.layoutFieldWithLabel(fieldOpt,labelText)
     }
     doc

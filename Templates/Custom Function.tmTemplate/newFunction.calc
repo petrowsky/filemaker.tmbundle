@@ -2,7 +2,7 @@
 
 /* __________________________________________________
 
-${TM_FUNCTION_EXAMPLE_LABEL}	${1:TM_NEW_FILE_BASENAME} ( )
+NAME: ${TM_FUNCTION_EXAMPLE_LABEL}	${1:TM_NEW_FILE_BASENAME} ( )
 PURPOSE:	
 EXAMPLES:
 	
