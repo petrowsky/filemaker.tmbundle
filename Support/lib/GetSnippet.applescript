@@ -1,6 +1,6 @@
 ﻿(*
 NAME:
-	GetSnippet (v2.0)
+	GetSnippet (v2.1)
 	
 PURPOSE:
 	Returns fmxmlsnippet from pasteboard as xml text
@@ -11,6 +11,7 @@ PARAMETERS:
 HISTORY:
 	Created 2011.03.23 by Donovan Chandler, donovan_c@beezwax.net
 	Modified 2012.04.03 by Donovan Chandler, donovan_c@beezwax.net : Added FMP12 compatibility
+	Modified 2012.05.18 by Donovan Chandler, donovan_c@beezwax.net : No longer sends clipboard event to FileMaker ; enhanced error handling when writing initial temp file.
 
 NOTES:
 	Line endings are converted to line feed (LF)
@@ -26,18 +27,15 @@ on run argv
 	set filePath to (path to "temp" from user domain as text) & "tempSnippet.xml"
 	
 	-- Get snippet from pasteboard
-	tell application "FileMaker Pro Advanced"
-		set snippetRecord to my getSnippet()
-		if snippetRecord begins with "Unrecognized" then set errorText to snippetRecord
-	end tell
+	set snippetRecord to my getSnippet()
 	if errorText is not "" then return errorText
 	
 	-- Convert snippet to text
 	set fileAlias to my saveText(snippetRecord, filePath)
+	if errorText is not "" then return errorText
 	set theFile to open for access fileAlias
 	set snippetText to read theFile as «class utf8»
 	close access theFile
-	if errorText is not "" then return errorText
 	
 	-- Convert CR to LF (recommended line ending in TextMate)
 	set snippetText to searchReplaceText(snippetText, {character id 13}, {character id 10})
@@ -67,6 +65,7 @@ on saveText(theText, filePath)
 	on error
 		try
 			close access fileRef
+			set errorText to "Error " & errNum & ": " & errText
 		end try
 	end try
 	return filePath as alias
